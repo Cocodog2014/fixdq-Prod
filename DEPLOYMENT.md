@@ -49,17 +49,29 @@ This generates:
 ## 3) Publish to GitHub Pages (manual, branch=development, folder=/docs)
 GitHub Pages must serve the built files, not the dev entry. We mirror `dist/` → `docs/` on the `development` branch and push.
 
+<<<<<<< HEAD
 One-liner (Windows PowerShell):
+=======
+Preferred simple command (Windows PowerShell):
+>>>>>>> dev-1
 
 ```powershell
 npm run deploy; git add -A; git commit -m "Deploy dist to docs"; git push origin development
 ```
 
+<<<<<<< HEAD
 What `npm run deploy` does:
 - Runs `vite build` to create `dist/`
 - Copies `dist/` to `docs/`
 - Ensures `docs/CNAME` (dev.fixdq.org) and `docs/.nojekyll`
 - Adds a small redirect at `docs/docs/index.html` so hitting `/docs/` bounces to `/`
+=======
+What this does:
+- Builds with Vite
+- Mirrors `dist/` to `docs/`
+- Ensures `docs/CNAME` = `dev.fixdq.org` and creates `docs/.nojekyll`
+- Adds a `/docs` → `/` redirect at `docs/docs/index.html`
+>>>>>>> dev-1
 
 GitHub repository settings:
 - Settings → Pages
@@ -118,8 +130,13 @@ Then set Settings → Pages → Source = `gh-pages` (folder `/`). Add `CNAME` an
 
 ---
 
+<<<<<<< HEAD
 ## 7) GitHub Actions (disabled)
 We removed the workflow to avoid confusion. Deployment is manual via `npm run deploy` + push to `development`.
+=======
+## 7) GitHub Actions (optional)
+If you prefer automation later, you can add a GitHub Actions workflow to build and deploy. For now, deployment is manual via `npm run deploy` as documented above.
+>>>>>>> dev-1
 
 ---
 
