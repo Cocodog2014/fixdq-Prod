@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import fixdqLogo from './assets/logos/fixdq.png';
+import { Link } from 'react-router-dom';
 
 function GlobalHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,18 +27,15 @@ function GlobalHeader() {
             {/* Logo Section */}
             <div className="logo-section">
               <a href="/" className="logo-link" rel="noopener noreferrer">
-                <span className="logo-icon">🚛</span>
-                <div className="logo-text">
-                  <h1>FixDQ</h1>
-                  <span className="logo-subtitle">Commercial Drivers Hub</span>
-                </div>
+                <img className="logo-image" src={fixdqLogo} alt="FixDQ logo" />
               </a>
             </div>
             
             {/* Desktop Navigation */}
             <nav className="desktop-nav">
               <div className="nav-grid">
-        {navigationItems.map((item, index) => (
+                {navigationItems.map((item, index) => (
+                  item.href.startsWith('http') ? (
                   <a 
                     key={index}
                     href={item.href} 
@@ -47,6 +46,16 @@ function GlobalHeader() {
                     <span className="nav-icon">{item.icon}</span>
                     <span className="nav-label">{item.label}</span>
                   </a>
+                  ) : (
+                  <Link
+                    key={index}
+                    to={item.href}
+                    className={`nav-button nav-${item.color}`}
+                  >
+                    <span className="nav-icon">{item.icon}</span>
+                    <span className="nav-label">{item.label}</span>
+                  </Link>
+                  )
                 ))}
               </div>
             </nav>
@@ -73,6 +82,7 @@ function GlobalHeader() {
         <div className="container">
           <div className="mobile-nav-grid">
       {navigationItems.map((item, index) => (
+              item.href.startsWith('http') ? (
               <a 
                 key={index}
                 href={item.href} 
@@ -84,6 +94,17 @@ function GlobalHeader() {
                 <span className="nav-icon">{item.icon}</span>
                 <span className="nav-label">{item.label}</span>
               </a>
+              ) : (
+              <Link
+                key={index}
+                to={item.href}
+                className={`mobile-nav-button nav-${item.color}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="nav-icon">{item.icon}</span>
+                <span className="nav-label">{item.label}</span>
+              </Link>
+              )
             ))}
           </div>
         </div>

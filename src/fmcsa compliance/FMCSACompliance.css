@@ -1,0 +1,56 @@
+/* FMCSA Compliance Page Styles */
+.fmcsa-page {
+  background: var(--color-gray-100);
+  min-height: 100vh;
+}
+
+.fmcsa-hero {
+  background: var(--bg-gradient-primary);
+  color: var(--color-white);
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+}
+
+.fmcsa-hero .hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.fmcsa-cards {
+  padding: var(--spacing-2xl) 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-xl);
+}
+
+.card.emphasis {
+  border-left: 5px solid var(--color-accent-orange);
+}
+
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

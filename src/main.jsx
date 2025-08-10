@@ -1,10 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './global.css'
-import App from './HomePage.jsx'
+import HomePage from './HomePage.jsx'
+import FMCSACompliance from './fmcsa compliance/FMCSACompliance.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/fmcsa-compliance" element={<FMCSACompliance />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>
 )

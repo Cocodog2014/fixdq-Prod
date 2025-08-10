@@ -6,6 +6,22 @@ We publish to GitHub Pages from the `development` branch, folder `/docs`. The cu
 
 ---
 
+## 0) Quick local workflow (no build needed)
+- Start the dev server (hot reload):
+
+```powershell
+npm run dev
+```
+
+- Edit files under `src/` and refresh happens automatically. You only need `npm run build` when you want to deploy or test the production bundle.
+
+Optional prod-like check locally:
+
+```powershell
+npm run build
+npm run preview
+```
+
 ## 1) Local development
 - Start dev server
 
@@ -106,6 +122,7 @@ Then set Settings → Pages → Source = `gh-pages` (folder `/`). Add `CNAME` an
 ## 6) Notes
 - Keep `index.html` in the repo root pointing to `/src/main.jsx` for local dev only. Production content comes from `docs/index.html` (built output).
 - The “US Citizenship” button uses a normal anchor. On production, the site should load and the header should be clickable. If a click still appears “dead,” open Console to check for any asset 404s or CSP errors.
+- SPA routing: We include `public/404.html` so direct route loads (e.g., `/fmcsa-compliance`) fall back to the SPA entry point on GitHub Pages.
 
 ---
 
@@ -123,3 +140,31 @@ Then just push to `development`:
   - Publish to GitHub Pages
 
 You can also run it manually from the Actions tab ("Run workflow").
+
+Tip: Work on feature branches (e.g., `dev-1`), then merge/push to `development` to trigger deploy.
+
+---
+
+## 8) Logo setup and sizing
+
+Where to place the logo:
+- File path: `src/assets/logos/fixdq.png`
+- We import it in `GlobalHeader.jsx` with Vite’s asset handling, so it’s bundled and optimized in production builds.
+
+Recommended sizes and formats:
+- Format: PNG with transparent background for now (SVG preferred long-term).
+- Display heights (handled via CSS breakpoints in `GlobalHeader.css`):
+  - Mobile: 28 px
+  - Tablet (≥768px): 36 px
+  - Desktop (≥1024px): 44 px
+- For crispness on HiDPI screens, make the source PNG at least 2× the largest display height (e.g., ~88–120 px tall), width auto.
+
+How to change the logo later:
+- Replace `src/assets/logos/fixdq.png` with the new file (same name) and save. In local dev, the browser will refresh automatically. For production, rebuild and deploy.
+
+---
+
+## 9) Assets: src/assets vs public
+- `src/assets/**`: bundled by Vite (cache-busted filenames, tree-shaken where possible). Use for images referenced by components via imports.
+- `public/**`: served as-is at the site root (e.g., `/images/...`). Use for static files that must keep their names/paths.
+

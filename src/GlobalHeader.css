@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--spacing-md) 0;
-  min-height: 70px;
+  min-height: 90px; /* accommodate larger logo on mobile */
 }
 
 /* Logo Section */
@@ -44,6 +44,13 @@
 .logo-icon {
   font-size: 2.5rem;
   line-height: 1;
+}
+
+/* PNG/SVG logo image: hidden by default until loaded via inline style toggle */
+.logo-image {
+  height: 84px; /* mobile default (50% bigger than previous 56px) */
+  width: auto;
+  display: block;
 }
 
 .logo-text h1 {
@@ -243,12 +250,20 @@
    ================================ */
 @media (min-width: 768px) {
   .header-content {
-    padding: var(--spacing-lg) 0;
-    min-height: 80px;
+  padding: var(--spacing-lg) 0;
+  /* Bring logo and nav closer together on larger screens */
+  justify-content: flex-start;
+  gap: var(--spacing-lg);
+  min-height: 110px;
   }
 
   .logo-icon {
     font-size: 3rem;
+  }
+
+  /* Tablet logo size */
+  .logo-image {
+    height: 108px; /* 50% bigger than 72px */
   }
 
   .logo-text h1 {
@@ -352,6 +367,9 @@
    DESKTOP STYLES (1024px+)
    ================================ */
 @media (min-width: 1024px) {
+  .header-content {
+    min-height: 130px;
+  }
   .nav-grid {
     grid-template-columns: repeat(6, 1fr);
     max-width: 900px;
@@ -376,5 +394,10 @@
 
   .hero-content p {
     font-size: var(--font-size-xl);
+  }
+
+  /* Desktop logo size */
+  .logo-image {
+    height: 132px; /* 50% bigger than 88px */
   }
 }
