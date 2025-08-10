@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+  "deploy:prepare": "node ./scripts/sync-dist-to-docs.mjs",
+  "deploy": "npm run build && node ./scripts/sync-dist-to-docs.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
