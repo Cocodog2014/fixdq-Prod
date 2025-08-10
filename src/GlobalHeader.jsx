@@ -6,7 +6,6 @@ function GlobalHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const location = useLocation();
-  const isHome = location.pathname === '/';
 
   // Ten rotating mobile hero title/subtitle pairs
   const heroSlides = [
@@ -34,7 +33,9 @@ function GlobalHeader() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Unified list of all nav buttons (desktop + mobile)
   const navigationItems = [
+    { label: 'Home', href: '/', color: 'blue', icon: '🏠' },
     { label: 'FMCSA Compliance', href: '/fmcsa-compliance', color: 'orange', icon: '📋' },
     { label: 'Electronic Logbooks', href: '/electronic-logbooks', color: 'purple', icon: '📖' },
     { label: 'Vehicle Inspections', href: '/vehicle-inspections', color: 'blue', icon: '🔍' },
@@ -56,12 +57,6 @@ function GlobalHeader() {
               </a>
             </div>
 
-            {/* Back Home (desktop/tablet) – match nav-button size/style */}
-            <Link to="/" className="nav-button nav-blue desktop-only" aria-label="Back to Home">
-              <span className="nav-icon">🏠</span>
-              <span className="nav-label">Home</span>
-            </Link>
-            
             {/* Desktop Navigation */}
             <nav className="desktop-nav">
               <div className="nav-grid">
@@ -108,21 +103,11 @@ function GlobalHeader() {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+  {/* Mobile Navigation Menu */}
       <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="container">
           <div className="mobile-nav-grid">
-            {/* Back Home (mobile) */}
-            <Link
-              to="/"
-              className="mobile-nav-button nav-blue"
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Back to Home"
-            >
-              <span className="nav-icon">🏠</span>
-              <span className="nav-label">Home</span>
-            </Link>
-      {navigationItems.map((item, index) => (
+  {navigationItems.map((item, index) => (
               item.href.startsWith('http') ? (
               <a 
                 key={index}

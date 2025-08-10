@@ -48,7 +48,7 @@
 
 /* PNG/SVG logo image: hidden by default until loaded via inline style toggle */
 .logo-image {
-  height: 84px; /* mobile default (50% bigger than previous 56px) */
+  height: 68px; /* reduced ~20% from 84px */
   width: auto;
   display: block;
 }
@@ -200,7 +200,7 @@
 }
 
 .hero-logo-link { text-decoration: none; }
-.hero-logo-image { height: 50px; width: auto; display: block; } /* 100% larger than previous 12px */
+.hero-logo-image { height: 40px; width: auto; display: block; } /* reduced ~20% from 50px */
 
 .hero-mobile-menu-toggle {
   background: none;
@@ -331,9 +331,7 @@
   }
 
   /* Tablet logo size */
-  .logo-image {
-    height: 108px; /* 50% bigger than 72px */
-  }
+  .logo-image { height: 86px; /* reduced ~20% from 108px */ }
 
   .logo-text h1 {
     font-size: var(--font-size-2xl);
@@ -348,6 +346,7 @@
   display: block;
   position: relative;
   z-index: 2;
+  flex: 1; /* allow nav to take remaining header width */
   }
 
   /* Show back-home on tablet+ */
@@ -364,9 +363,9 @@
   /* Desktop Navigation Grid */
   .nav-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-sm);
-    max-width: 600px;
+  max-width: 100%;
   position: relative;
   z-index: 2;
   }
@@ -376,7 +375,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-md);
+  padding: calc(var(--spacing-sm) * 0.8); /* ~20% tighter */
     text-decoration: none;
     color: var(--color-white);
     background: var(--color-primary);
@@ -384,7 +383,7 @@
     font-weight: 600;
     font-size: var(--font-size-sm);
     transition: all 0.2s ease;
-    min-height: 80px;
+  min-height: 56px; /* 30% smaller from 80px */
     text-align: center;
     justify-content: center;
   position: relative;
@@ -397,11 +396,16 @@
   }
 
   .nav-button .nav-icon {
-    font-size: 1.5rem;
+    font-size: 1rem; /* unify icon size */
+    height: 24px; /* reserve consistent icon box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
   }
 
   .nav-button .nav-label {
-    font-size: var(--font-size-xs);
+  font-size: var(--font-size-xs);
     line-height: 1.3;
   }
 
@@ -446,21 +450,26 @@
     min-height: 130px;
   }
   .nav-grid {
-    grid-template-columns: repeat(6, 1fr);
-    max-width: 900px;
+  grid-template-columns: repeat(7, 1fr); /* single row for 7 buttons */
+  max-width: 100%;
   }
 
   .nav-button {
-    min-height: 90px;
-    padding: var(--spacing-lg);
+    min-height: 63px; /* 30% smaller from 90px */
+    padding: calc(var(--spacing-md) * 0.8); /* ~20% tighter */
   }
 
   .nav-button .nav-icon {
-    font-size: 2rem;
+    font-size: 1.2rem; /* unify desktop icon */
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
   }
 
   .nav-button .nav-label {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs); /* consistent label size */
   }
 
   .hero-content h2 {
@@ -472,9 +481,7 @@
   }
 
   /* Desktop logo size */
-  .logo-image {
-    height: 132px; /* 50% bigger than 88px */
-  }
+  .logo-image { height: 106px; /* reduced ~20% from 132px */ }
 }
 
 /* Mobile layout overrides: move logo/hamburger into hero and hide originals */
