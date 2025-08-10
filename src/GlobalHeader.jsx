@@ -113,12 +113,54 @@ function GlobalHeader() {
       {/* Hero Banner */}
       <div className="hero-banner">
         <div className="container">
-          <div className="hero-content">
-            <h2>Professional Development & Compliance Training</h2>
-            <p>Comprehensive tools designed specifically for commercial drivers</p>
-            <div className="hero-cta">
-              <button className="cta-primary">Get Started</button>
-              <button className="cta-secondary">Learn More</button>
+          {/* Mobile-only logo + hamburger inside the hero */}
+          <div className="hero-mobile-controls">
+            <a href="/" className="hero-logo-link" rel="noopener noreferrer">
+              <img className="hero-logo-image" src={fixdqLogo} alt="FixDQ logo" />
+            </a>
+            <button 
+              className="hero-mobile-menu-toggle"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+          </div>
+          <div className="hero-content"></div>
+        </div>
+        {/* Moving ribbon at the bottom of the hero */}
+        <div className="hero-ribbon" aria-label="Site topics marquee">
+          <div className="ribbon-viewport">
+            <div className="ribbon-track" aria-hidden="true">
+              <span className="ribbon-item">FMCSA Compliance</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Electronic Logbooks</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Vehicle Inspections</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">US Citizenship</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Safety Training</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Violations Management</span>
+
+              {/* Duplicate for seamless loop */}
+              <span className="ribbon-item">FMCSA Compliance</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Electronic Logbooks</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Vehicle Inspections</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">US Citizenship</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Safety Training</span>
+              <span className="ribbon-sep">•</span>
+              <span className="ribbon-item">Violations Management</span>
             </div>
           </div>
         </div>
