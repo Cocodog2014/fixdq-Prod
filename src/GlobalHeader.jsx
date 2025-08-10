@@ -1,9 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import fixdqLogo from './assets/logos/fixdq.png';
 import { Link } from 'react-router-dom';
 
 function GlobalHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  // Ten rotating mobile hero title/subtitle pairs
+  const heroSlides = [
+    { title: 'Keep Your Fleet Compliant', subtitle: 'Stay audit‑ready with proactive FMCSA monitoring.' },
+    { title: 'Pass Every DOT Inspection', subtitle: 'Tight records, clean vehicles, confident drivers.' },
+    { title: 'ELD Made Easy', subtitle: 'Simple, accurate electronic logs with zero guesswork.' },
+    { title: 'Prevent Costly Violations', subtitle: 'Spot risks early and fix issues before they escalate.' },
+    { title: 'Safer Drivers, Safer Roads', subtitle: 'Training and tools that build everyday safety habits.' },
+    { title: 'Manage DVIRs in Minutes', subtitle: 'Fast, consistent vehicle checks—no paperwork pileups.' },
+    { title: 'Roadside Ready, Anytime', subtitle: 'Organized docs and processes when it matters most.' },
+    { title: 'Build a Safety Culture', subtitle: 'Make compliance part of how your team operates.' },
+    { title: 'Navigate USCIS Confidently', subtitle: 'Guidance for forms, timelines, and approvals.' },
+    { title: 'FixDQ: Compliance, Simplified', subtitle: 'One place to manage people, paperwork, and policies.' }
+  ];
+
+  // Rotate slide every 6 seconds (mobile-first content)
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlideIndex((i) => (i + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -131,7 +154,15 @@ function GlobalHeader() {
               </span>
             </button>
           </div>
-          <div className="hero-content"></div>
+          <div className="hero-content">
+            {/* Mobile-only rotating titles/subtitles */}
+            <div className="hero-rotator" aria-live="polite">
+              <div className="hero-rotator-slide" key={slideIndex}>
+                <h2>{heroSlides[slideIndex].title}</h2>
+                <p>{heroSlides[slideIndex].subtitle}</p>
+              </div>
+            </div>
+          </div>
         </div>
         {/* Moving ribbon at the bottom of the hero */}
         <div className="hero-ribbon" aria-label="Site topics marquee">

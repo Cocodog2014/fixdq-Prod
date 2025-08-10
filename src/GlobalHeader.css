@@ -221,6 +221,17 @@
   line-height: 1.6;
 }
 
+/* Rotating hero copy (mobile-first) */
+.hero-rotator { position: relative; height: 72px; overflow: hidden; }
+.hero-rotator-slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: hero-fade-in 500ms ease both; }
+.hero-rotator-slide h2 { margin: 0 0 4px; font-size: var(--font-size-lg); font-weight: 800; }
+.hero-rotator-slide p { margin: 0; font-size: var(--font-size-sm); opacity: 0.95; }
+
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .hero-cta {
   display: flex;
   flex-direction: column;
@@ -412,6 +423,9 @@
   .hero-content p {
     font-size: var(--font-size-lg);
   }
+
+  /* Hide rotator on tablet+ if you prefer a cleaner hero; adjust as needed */
+  .hero-rotator { display: none; }
 
   .hero-cta {
     flex-direction: row;
