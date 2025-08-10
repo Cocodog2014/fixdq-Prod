@@ -48,7 +48,7 @@
 
 /* PNG/SVG logo image: hidden by default until loaded via inline style toggle */
 .logo-image {
-  height: 68px; /* reduced ~20% from 84px */
+  height: 54px; /* reduced additional ~20% from 68px */
   width: auto;
   display: block;
 }
@@ -331,7 +331,7 @@
   }
 
   /* Tablet logo size */
-  .logo-image { height: 86px; /* reduced ~20% from 108px */ }
+  .logo-image { height: 69px; /* reduced additional ~20% from 86px */ }
 
   .logo-text h1 {
     font-size: var(--font-size-2xl);
@@ -481,7 +481,7 @@
   }
 
   /* Desktop logo size */
-  .logo-image { height: 106px; /* reduced ~20% from 132px */ }
+  .logo-image { height: 85px; /* reduced additional ~20% from 106px */ }
 }
 
 /* Mobile layout overrides: move logo/hamburger into hero and hide originals */
