@@ -36,12 +36,12 @@ function GlobalHeader() {
             {/* Desktop Navigation */}
             <nav className="desktop-nav">
               <div className="nav-grid">
-                {navigationItems.map((item, index) => (
+        {navigationItems.map((item, index) => (
                   <a 
                     key={index}
                     href={item.href} 
                     className={`nav-button nav-${item.color}`}
-                    target={item.href.startsWith('http') ? '_blank' : '_self'}
+          target={item.href.startsWith('http') && item.label !== 'US Citizenship' ? '_blank' : '_self'}
                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
                     <span className="nav-icon">{item.icon}</span>
@@ -72,12 +72,12 @@ function GlobalHeader() {
       <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="container">
           <div className="mobile-nav-grid">
-            {navigationItems.map((item, index) => (
+      {navigationItems.map((item, index) => (
               <a 
                 key={index}
                 href={item.href} 
                 className={`mobile-nav-button nav-${item.color}`}
-                target={item.href.startsWith('http') ? '_blank' : '_self'}
+        target={item.href.startsWith('http') && item.label !== 'US Citizenship' ? '_blank' : '_self'}
                 rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
