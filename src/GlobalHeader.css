@@ -200,7 +200,7 @@
 }
 
 .hero-logo-link { text-decoration: none; }
-.hero-logo-image { height: 40px; width: auto; display: block; } /* reduced ~20% from 50px */
+.hero-logo-image { height: 32px; width: auto; display: block; } /* reduced additional ~20% from 40px */
 
 .hero-mobile-menu-toggle {
   background: none;
