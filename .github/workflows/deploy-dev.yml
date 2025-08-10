@@ -2,11 +2,7 @@ name: Deploy to GitHub Pages (development)
 
 on:
   push:
-    branches: [ development ]
-    paths-ignore:
-      - 'docs/**'
-      - '**/*.md'
-      - '.github/**'
+  branches: [ development ]
   workflow_dispatch:
 
 permissions:
