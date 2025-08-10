@@ -74,6 +74,25 @@
   display: none;
 }
 
+/* Back Home button (desktop/tablet) */
+.back-home-btn {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-right: var(--spacing-lg);
+  text-decoration: none;
+  background: var(--color-accent-blue);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.back-home-btn:hover { background: #38bdf8; }
+.back-home-icon { font-size: 1rem; }
+.back-home-label { font-size: var(--font-size-sm); }
+
 /* Mobile Hamburger Menu */
 .mobile-menu-toggle {
   background: none;
@@ -347,6 +366,9 @@
   position: relative;
   z-index: 2;
   }
+
+  /* Show back-home on tablet+ */
+  .back-home-btn { display: inline-flex; }
 
   .mobile-menu-toggle {
     display: none;

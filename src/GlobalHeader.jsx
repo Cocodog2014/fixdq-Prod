@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import fixdqLogo from './assets/logos/fixdq.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function GlobalHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   // Ten rotating mobile hero title/subtitle pairs
   const heroSlides = [
@@ -53,6 +55,14 @@ function GlobalHeader() {
                 <img className="logo-image" src={fixdqLogo} alt="FixDQ logo" />
               </a>
             </div>
+
+            {/* Back Home (desktop/tablet, hide on home route) */}
+            {!isHome && (
+              <Link to="/" className="back-home-btn desktop-only" aria-label="Back to Home">
+                <span className="back-home-icon">🏠</span>
+                <span className="back-home-label">Home</span>
+              </Link>
+            )}
             
             {/* Desktop Navigation */}
             <nav className="desktop-nav">
@@ -104,6 +114,18 @@ function GlobalHeader() {
       <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="container">
           <div className="mobile-nav-grid">
+            {/* Back Home (mobile, hide on home route) */}
+            {!isHome && (
+              <Link
+                to="/"
+                className="mobile-nav-button nav-blue"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Back to Home"
+              >
+                <span className="nav-icon">🏠</span>
+                <span className="nav-label">Home</span>
+              </Link>
+            )}
       {navigationItems.map((item, index) => (
               item.href.startsWith('http') ? (
               <a 
