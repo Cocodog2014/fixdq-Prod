@@ -41,6 +41,8 @@ function GlobalHeader() {
                     key={index}
                     href={item.href} 
                     className={`nav-button nav-${item.color}`}
+                    target={item.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
                     <span className="nav-icon">{item.icon}</span>
                     <span className="nav-label">{item.label}</span>
@@ -75,6 +77,8 @@ function GlobalHeader() {
                 key={index}
                 href={item.href} 
                 className={`mobile-nav-button nav-${item.color}`}
+                target={item.href.startsWith('http') ? '_blank' : '_self'}
+                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span className="nav-icon">{item.icon}</span>
