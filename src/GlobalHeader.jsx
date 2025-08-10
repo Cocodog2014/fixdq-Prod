@@ -11,7 +11,7 @@ function GlobalHeader() {
     { label: 'FMCSA Compliance', href: '/fmcsa-compliance', color: 'orange', icon: '📋' },
     { label: 'Electronic Logbooks', href: '/electronic-logbooks', color: 'purple', icon: '📖' },
     { label: 'Vehicle Inspections', href: '/vehicle-inspections', color: 'blue', icon: '🔍' },
-    { label: 'US Citizenship', href: '/us-citizenship', color: 'red', icon: '🇺🇸' },
+    { label: 'US Citizenship', href: 'https://citizenship360.org', color: 'red', icon: '🇺🇸' },
     { label: 'Safety Training', href: '/safety-training', color: 'green', icon: '🛡️' },
     { label: 'Violations Management', href: '/violations-management', color: 'teal', icon: '⚖️' }
   ];
