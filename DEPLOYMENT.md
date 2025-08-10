@@ -106,3 +106,20 @@ Then set Settings → Pages → Source = `gh-pages` (folder `/`). Add `CNAME` an
 ## 6) Notes
 - Keep `index.html` in the repo root pointing to `/src/main.jsx` for local dev only. Production content comes from `docs/index.html` (built output).
 - The “US Citizenship” button uses a normal anchor. On production, the site should load and the header should be clickable. If a click still appears “dead,” open Console to check for any asset 404s or CSP errors.
+
+---
+
+## 7) GitHub Actions (preferred)
+This repo includes a workflow at `.github/workflows/deploy-dev.yml` that builds with Vite and deploys to GitHub Pages automatically on every push to `development`.
+
+One-time setup in GitHub:
+- Settings → Pages → Build and deployment → Source = GitHub Actions
+
+Then just push to `development`:
+- The workflow will:
+  - Install deps (npm ci)
+  - Build (npm run build)
+  - Add CNAME and .nojekyll to the artifact
+  - Publish to GitHub Pages
+
+You can also run it manually from the Actions tab ("Run workflow").
