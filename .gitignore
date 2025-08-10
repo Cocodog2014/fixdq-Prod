@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 node_modules/
-dist/
+# dist/ - Allow dist for development deployment
 .env
 .DS_Store
 *.log
@@ -43,7 +43,7 @@ dist-ssr
 node_modules
 
 # production
-dist
+# dist - Allow dist for development deployment
 dist-ssr
 
 # misc
