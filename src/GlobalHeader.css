@@ -261,7 +261,9 @@
 
   /* Show desktop nav, hide mobile menu */
   .desktop-nav {
-    display: block;
+  display: block;
+  position: relative;
+  z-index: 2;
   }
 
   .mobile-menu-toggle {
@@ -278,6 +280,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-sm);
     max-width: 600px;
+  position: relative;
+  z-index: 2;
   }
 
   .nav-button {
@@ -296,6 +300,8 @@
     min-height: 80px;
     text-align: center;
     justify-content: center;
+  position: relative;
+  z-index: 3; /* ensure button stays clickable above other layers */
   }
 
   .nav-button:hover {

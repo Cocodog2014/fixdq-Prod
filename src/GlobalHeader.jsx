@@ -24,7 +24,7 @@ function GlobalHeader() {
           <div className="header-content">
             {/* Logo Section */}
             <div className="logo-section">
-              <a href="/" className="logo-link">
+              <a href="/" className="logo-link" rel="noopener noreferrer">
                 <span className="logo-icon">🚛</span>
                 <div className="logo-text">
                   <h1>FixDQ</h1>
