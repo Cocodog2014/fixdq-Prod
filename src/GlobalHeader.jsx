@@ -56,13 +56,11 @@ function GlobalHeader() {
               </a>
             </div>
 
-            {/* Back Home (desktop/tablet, hide on home route) */}
-            {!isHome && (
-              <Link to="/" className="back-home-btn desktop-only" aria-label="Back to Home">
-                <span className="back-home-icon">🏠</span>
-                <span className="back-home-label">Home</span>
-              </Link>
-            )}
+            {/* Back Home (desktop/tablet) */}
+            <Link to="/" className="back-home-btn desktop-only" aria-label="Back to Home">
+              <span className="back-home-icon">🏠</span>
+              <span className="back-home-label">Home</span>
+            </Link>
             
             {/* Desktop Navigation */}
             <nav className="desktop-nav">
@@ -114,18 +112,16 @@ function GlobalHeader() {
       <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="container">
           <div className="mobile-nav-grid">
-            {/* Back Home (mobile, hide on home route) */}
-            {!isHome && (
-              <Link
-                to="/"
-                className="mobile-nav-button nav-blue"
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-label="Back to Home"
-              >
-                <span className="nav-icon">🏠</span>
-                <span className="nav-label">Home</span>
-              </Link>
-            )}
+            {/* Back Home (mobile) */}
+            <Link
+              to="/"
+              className="mobile-nav-button nav-blue"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Back to Home"
+            >
+              <span className="nav-icon">🏠</span>
+              <span className="nav-label">Home</span>
+            </Link>
       {navigationItems.map((item, index) => (
               item.href.startsWith('http') ? (
               <a 
