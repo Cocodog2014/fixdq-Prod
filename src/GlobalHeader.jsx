@@ -56,10 +56,10 @@ function GlobalHeader() {
               </a>
             </div>
 
-            {/* Back Home (desktop/tablet) */}
-            <Link to="/" className="back-home-btn desktop-only" aria-label="Back to Home">
-              <span className="back-home-icon">🏠</span>
-              <span className="back-home-label">Home</span>
+            {/* Back Home (desktop/tablet) – match nav-button size/style */}
+            <Link to="/" className="nav-button nav-blue desktop-only" aria-label="Back to Home">
+              <span className="nav-icon">🏠</span>
+              <span className="nav-label">Home</span>
             </Link>
             
             {/* Desktop Navigation */}

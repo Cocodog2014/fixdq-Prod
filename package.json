@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+  "preview": "vite preview",
+  "deploy": "npm run build && node ./scripts/sync-dist-to-docs.mjs",
+  "deploy:prepare": "node ./scripts/sync-dist-to-docs.mjs"
   },
   "dependencies": {
     "react": "^19.1.1",

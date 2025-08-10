@@ -49,25 +49,17 @@ This generates:
 ## 3) Publish to GitHub Pages (development/docs)
 GitHub Pages must serve the built files, not the dev entry. We mirror `dist/` → `docs/` on the `development` branch and push.
 
-Run these in Windows PowerShell:
+Preferred simple command (Windows PowerShell):
 
 ```powershell
-# 1) Build fresh
-npm run build
-
-# 2) Mirror the build into docs/
-if (!(Test-Path .\docs)) { New-Item -ItemType Directory -Path .\docs | Out-Null }
-robocopy .\dist .\docs /MIR
-
-# 3) Ensure custom domain and disable Jekyll processing
-Copy-Item -Force .\CNAME .\docs\CNAME
-New-Item -ItemType File -Path .\docs\.nojekyll -Force | Out-Null
-
-# 4) Commit and push docs/ to development
-git add -A
-git commit -m "Deploy dist to docs for GitHub Pages (development branch)"
-git push origin development
+npm run deploy; git add -A; git commit -m "Deploy dist to docs"; git push origin development
 ```
+
+What this does:
+- Builds with Vite
+- Mirrors `dist/` to `docs/`
+- Ensures `docs/CNAME` = `dev.fixdq.org` and creates `docs/.nojekyll`
+- Adds a `/docs` → `/` redirect at `docs/docs/index.html`
 
 GitHub repository settings:
 - Settings → Pages
@@ -126,22 +118,8 @@ Then set Settings → Pages → Source = `gh-pages` (folder `/`). Add `CNAME` an
 
 ---
 
-## 7) GitHub Actions (preferred)
-This repo includes a workflow at `.github/workflows/deploy-dev.yml` that builds with Vite and deploys to GitHub Pages automatically on every push to `development`.
-
-One-time setup in GitHub:
-- Settings → Pages → Build and deployment → Source = GitHub Actions
-
-Then just push to `development`:
-- The workflow will:
-  - Install deps (npm ci)
-  - Build (npm run build)
-  - Add CNAME and .nojekyll to the artifact
-  - Publish to GitHub Pages
-
-You can also run it manually from the Actions tab ("Run workflow").
-
-Tip: Work on feature branches (e.g., `dev-1`), then merge/push to `development` to trigger deploy.
+## 7) GitHub Actions (optional)
+If you prefer automation later, you can add a GitHub Actions workflow to build and deploy. For now, deployment is manual via `npm run deploy` as documented above.
 
 ---
 
