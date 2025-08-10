@@ -1,3 +1,4 @@
+added a fix
 # FixDQ Development Guide (Global)
 
 This document describes how the FixDQ app is organized, how to add features/pages, styling conventions, routing, and deployment. It covers global aspects; each feature folder can include its own README.md for specifics.

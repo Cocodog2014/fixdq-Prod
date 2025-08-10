@@ -6,6 +6,7 @@ export const ribbonItems = [
   'US Citizenship',
   'Safety Training',
   'Violations Management',
+
 ];
 
 export default ribbonItems;
