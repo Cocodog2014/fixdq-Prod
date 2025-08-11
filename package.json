@@ -6,12 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-  "deploy:prepare": "node ./scripts/sync-dist-to-docs.mjs",
-  "deploy": "npm run build && node ./scripts/sync-dist-to-docs.mjs",
+    "preview": "vite preview",
     "lint": "eslint .",
-  "preview": "vite preview",
-  "deploy": "npm run build && node ./scripts/sync-dist-to-docs.mjs",
-  "deploy:prepare": "node ./scripts/sync-dist-to-docs.mjs"
+    "deploy": "npm run build && node ./scripts/sync-dist-to-docs.mjs",
+    "deploy:prepare": "node ./scripts/sync-dist-to-docs.mjs"
   },
   "dependencies": {
     "react": "^19.1.1",

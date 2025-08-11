@@ -5,6 +5,41 @@ function App() {
     <div className="app">
       <GlobalHeader />
 
+      {/* State Permits + IFTA */}
+      <section className="permits-ifta">
+        <div className="container">
+          <h2>Permits and IFTA</h2>
+          <div className="grid">
+            <div className="feature-card blue-border">
+              <div className="feature-header">
+                <span className="icon">🗺️</span>
+                <h3>State Permits</h3>
+              </div>
+              <ul>
+                <li>Oversize/Overweight permits by state</li>
+                <li>Trip and fuel permits (temporary)</li>
+                <li>Tolling and transponder setup</li>
+                <li>IRP registration basics</li>
+                <li>Port-of-entry requirements</li>
+              </ul>
+            </div>
+            <div className="feature-card green-border">
+              <div className="feature-header">
+                <span className="icon">⛽</span>
+                <h3>IFTA (International Fuel Tax Agreement)</h3>
+              </div>
+              <ul>
+                <li>Quarterly filing timelines</li>
+                <li>Miles and fuel recordkeeping</li>
+                <li>Jurisdiction rate lookup</li>
+                <li>Common audit triggers</li>
+                <li>Best practices to stay compliant</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Coming Soon Section */}
       <section className="coming-soon">
         <div className="container">
