@@ -4,8 +4,8 @@
    ================================ */
 
 /* Import all component styles */
-@import './GlobalHeader.css';
-@import './HomePage.css';
+@import './components/GlobalHeader/GlobalHeader.css';
+@import './pages/HomePage/HomePage.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';
