@@ -57,6 +57,7 @@
   border-color: var(--color-accent-green);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12), var(--shadow-sm);
 }
+.fc-select select { width: 100%; padding: 10px 12px; border-radius: var(--radius-lg); border: 1px solid var(--fc-option-border); background: #fff; font-size: 0.95rem; }
 
 .fc-result .result-callout {
   display: grid;
@@ -91,6 +92,24 @@
 /* Collapsible statutes */
 .statutes { margin-top: var(--spacing-md); }
 .statutes summary { cursor: pointer; font-weight: 700; margin-bottom: var(--spacing-sm); }
+
+/* Exemption matrix */
+.exemption-table { margin-top: var(--spacing-md); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); overflow: hidden; background: #fff; }
+.exemption-table .row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; }
+.exemption-table .row > div { padding: 10px 12px; border-bottom: 1px solid var(--color-gray-200); }
+.exemption-table .row.head { background: var(--color-gray-50); font-weight: 700; }
+.exemption-table .row:last-child > div { border-bottom: none; }
+.exemption-table .ok { color: #065f46; font-weight: 700; }
+.exemption-table .no { color: #7c2d12; font-weight: 700; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+.modal-dialog { width: min(720px, 96vw); background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200); }
+.modal-header h3 { margin: 0; font-size: 1.2rem; }
+.modal-close { background: transparent; border: none; font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 4px 8px; }
+.modal-body { padding: 16px 18px; }
+.modal-actions { padding: 16px 18px 18px; display: flex; gap: 10px; justify-content: flex-end; border-top: 1px solid var(--color-gray-200); }
 
 /* Cards */
 .fmcsa-cards { padding: var(--spacing-2xl) 0; }
