@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 
 // State-specific override registry. Add states here as their custom notes/rules are implemented.
@@ -169,6 +170,7 @@ function computeFvdResult({ stateCode, stateName, operatingArea, vehicleUse, dri
 }
 
 export default function FarmExemptionChecker() {
+  const navigate = useNavigate()
   const US_STATES = [
     { value: 'AL', label: 'Alabama' }, { value: 'AK', label: 'Alaska' }, { value: 'AZ', label: 'Arizona' }, { value: 'AR', label: 'Arkansas' },
     { value: 'CA', label: 'California' }, { value: 'CO', label: 'Colorado' }, { value: 'CT', label: 'Connecticut' }, { value: 'DE', label: 'Delaware' },
@@ -197,11 +199,49 @@ export default function FarmExemptionChecker() {
   const [articulated, setArticulated] = useState('no')
   const [cfvDefinition, setCfvDefinition] = useState('unknown')
   const [showCfvHelp, setShowCfvHelp] = useState(false)
+  const [ttsSupport, setTtsSupport] = useState(false)
+  const [ttsSpeaking, setTtsSpeaking] = useState(false)
+  const cfvBodyRef = useRef(null)
 
   const stateName = US_STATES.find((s) => s.value === stateCode)?.label || 'Your State'
   const result = useMemo(() => computeFvdResult({ stateCode, stateName, operatingArea, vehicleUse, driverType, distance, forHire, hazmatPlacarded, passenger, vehicleWeight, articulated, cfvDefinition }), [stateCode, stateName, operatingArea, vehicleUse, driverType, distance, forHire, hazmatPlacarded, passenger, vehicleWeight, articulated, cfvDefinition])
 
   const [showStatutes, setShowStatutes] = useState(false)
+  // Detect TTS support when modal opens
+  useEffect(() => {
+    const supported = typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window
+    setTtsSupport(!!supported)
+    if (!showCfvHelp && supported) {
+      // Stop speaking if modal was closed
+      try { window.speechSynthesis.cancel() } catch {}
+      setTtsSpeaking(false)
+    }
+  }, [showCfvHelp])
+
+  function speakCfvHelp() {
+    if (!ttsSupport) return
+    try {
+      const synth = window.speechSynthesis
+      const text = (cfvBodyRef.current?.innerText || '').trim()
+      if (!text) return
+      if (synth.speaking) synth.cancel()
+      const u = new window.SpeechSynthesisUtterance(text)
+      u.rate = 1
+      u.pitch = 1
+      u.onend = () => setTtsSpeaking(false)
+      u.onerror = () => setTtsSpeaking(false)
+      setTtsSpeaking(true)
+      synth.speak(u)
+    } catch {
+      setTtsSpeaking(false)
+    }
+  }
+
+  function stopCfvHelp() {
+    if (!ttsSupport) return
+    try { window.speechSynthesis.cancel() } catch {}
+    setTtsSpeaking(false)
+  }
 
   // Coverage helpers
   const implementedStates = useMemo(() => Object.keys(STATE_OVERRIDES).sort(), [])
@@ -219,9 +259,9 @@ export default function FarmExemptionChecker() {
           <div className="modal-dialog">
             <div className="modal-header">
               <h3 id="cfv-help-title">What is a Covered Farm Vehicle (CFV)?</h3>
-              <button type="button" className="modal-close" aria-label="Close" onClick={() => setShowCfvHelp(false)}>×</button>
+              <button type="button" className="modal-close" aria-label="Close" onClick={() => { stopCfvHelp(); setShowCfvHelp(false) }}>×</button>
             </div>
-            <div className="modal-body">
+            <div className="modal-body" ref={cfvBodyRef}>
               <p><strong>Covered Farm Vehicle (CFV)</strong> generally refers to a farm vehicle operated by a farmer, family member, or farm employee, used to transport agricultural commodities, machinery, or supplies to or from a farm, not used for-hire, and not transporting placarded hazardous materials (with limited exceptions). Special distance and weight conditions may apply.</p>
               <ul className="result-notes">
                 <li>Often recognized with a special farm plate or designation issued by the state.</li>
@@ -231,8 +271,8 @@ export default function FarmExemptionChecker() {
               <p>
                 For the official definition, see the
                 {' '}<a href="https://www.fmcsa.dot.gov/faq/what-covered-farm-vehicle-cfv" target="_blank" rel="noopener noreferrer">FMCSA CFV FAQ</a>.
-                {' '}For broader program details, see the
-                {' '}<a href="https://www.fmcsa.dot.gov/registration/commercial-drivers-license/farm-vehicle-driver-exemptions" target="_blank" rel="noopener noreferrer">Farm Vehicle Driver Exemptions overview</a>.
+                {' '}For a concise summary of MAP‑21 agricultural commodities exemptions, see the
+                {' '}<a href="https://www.fmcsa.dot.gov/faq/how-can-map-21-transportation-agricultural-commodities-exemptions-be-summarized" target="_blank" rel="noopener noreferrer">FMCSA FAQ: MAP‑21 agricultural commodities exemptions</a>.
               </p>
             </div>
             <div className="modal-actions">
@@ -242,7 +282,14 @@ export default function FarmExemptionChecker() {
                 rel="noopener noreferrer"
                 className="cta-btn"
               >Open CFV FAQ</a>
-              <button type="button" className="cta-btn" onClick={() => setShowCfvHelp(false)}>Close</button>
+              {ttsSupport ? (
+                <button type="button" className="cta-btn" onClick={ttsSpeaking ? stopCfvHelp : speakCfvHelp} aria-pressed={ttsSpeaking}>
+                  {ttsSpeaking ? 'Stop reading' : 'Listen'}
+                </button>
+              ) : (
+                <span style={{ marginLeft: 8, color: 'var(--color-gray-600)' }}>Text-to-speech not available</span>
+              )}
+              <button type="button" className="cta-btn" onClick={() => { stopCfvHelp(); setShowCfvHelp(false) }}>Close</button>
             </div>
           </div>
         </div>
@@ -254,6 +301,11 @@ export default function FarmExemptionChecker() {
 
           <div className="fc-grid">
             <div className="fc-panel">
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '8px' }}>
+                <button type="button" className="cta-btn" onClick={() => navigate('/fmcsa-compliance')}>
+                  Back to FMCSA Compliance
+                </button>
+              </div>
               <StepDropdown
                 label="Select your state"
                 value={stateCode}

@@ -111,6 +111,7 @@ export default function FMCSACompliance() {
     () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
     [vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus]
   )
+  const cdlRequired = useMemo(() => !/^No CDL Required/i.test(result.cdlClass), [result.cdlClass])
 
   return (
     <div className="fmcsa-page">
@@ -254,7 +255,7 @@ export default function FMCSACompliance() {
 
             <div className="fc-panel fc-result">
               <h3>Your Result</h3>
-              <div className={`result-callout ${result.endorsements.length ? 'has-endorsements' : 'no-endorsements'}`}>
+              <div className={`result-callout ${cdlRequired ? 'cdl-required' : ''}`}>
                 <div className="result-item">
                   <span className="result-label">CDL Class</span>
                   <span className="result-value">{result.cdlClass}</span>

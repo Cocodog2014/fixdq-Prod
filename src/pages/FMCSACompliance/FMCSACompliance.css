@@ -69,6 +69,11 @@
   border: 1px solid #fcd34d; /* amber-300 */
   border-radius: var(--radius-lg);
 }
+.fc-result .result-callout.cdl-required {
+  background: #dcfce7; /* green-100 */
+  border-color: #34d399; /* green-400 */
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.15) inset;
+}
 .fc-result .result-callout.has-endorsements {
   background: #dcfce7; /* green-100 */
   border-color: #34d399; /* green-400 */
