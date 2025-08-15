@@ -36,6 +36,21 @@
   gap: calc(var(--spacing-sm) * 0.8); /* -20% */
 }
 
+/* Small pill button shown next to the logo on Home only */
+.logo-side-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.logo-side-btn:hover { background: rgba(255, 255, 255, 0.28); }
+
 .logo-link {
   display: flex;
   align-items: center;
@@ -365,7 +380,7 @@
   /* Desktop Navigation Grid */
   .nav-grid {
     display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: calc(var(--spacing-sm) * 0.8); /* -20% */
   max-width: 100%;
   position: relative;
@@ -450,18 +465,18 @@
   /* Slightly taller hero on desktop for presence */
   .hero-banner { min-height: 64px; } /* tighter */
   .nav-grid {
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   max-width: 100%;
   }
 
   .nav-button {
-    min-height: 38px; /* ~25% reduction */
-    padding: calc(var(--spacing-md) * 0.64); /* keep relative padding scale */
+    min-height: 34px; /* smaller to fit 1200px */
+    padding: 6px 8px; /* tighter */
   }
 
   .nav-button .nav-icon {
-    font-size: 1.2rem;
-    height: 26px;
+    font-size: 1rem;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -469,7 +484,7 @@
   }
 
   .nav-button .nav-label {
-    font-size: var(--font-size-xs);
+    font-size: 0.7rem;
   }
 
   .hero-content h2 {
