@@ -12,9 +12,23 @@
 .fc-disclaimer { color: var(--color-gray-600); margin: var(--spacing-sm) 0 var(--spacing-lg); }
 .fc-grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-lg); }
 .fc-panel { background: var(--color-white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: var(--spacing-xl); }
-.fc-label { font-weight: 600; margin-bottom: var(--spacing-sm); display: block; }
+.fc-label {
+  font-weight: 600;
+  margin-bottom: calc(var(--spacing-sm) * 0.56);
+  font-size: 0.7rem;
+  display: block;
+}
 .fc-options { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm); }
-.fc-option { background: var(--color-gray-100); border: 2px solid transparent; border-radius: var(--radius-lg); padding: var(--spacing-md); text-align: center; cursor: pointer; }
+.fc-option {
+  background: var(--color-gray-100);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  padding: calc(var(--spacing-md) * 0.56);
+  min-height: 25px;
+  font-size: 0.66rem;
+  text-align: center;
+  cursor: pointer;
+}
 .fc-option.selected { background: #fff; border-color: var(--color-primary-light); box-shadow: var(--shadow-sm); }
 
 .fc-result .result-callout { display: grid; grid-template-columns: 1fr; gap: var(--spacing-sm); margin: var(--spacing-md) 0; padding: var(--spacing-md); background: var(--color-gray-50); border-radius: var(--radius-lg); }

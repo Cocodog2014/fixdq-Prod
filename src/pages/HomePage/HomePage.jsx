@@ -1,67 +1,17 @@
 import GlobalHeader from '../../components/GlobalHeader';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   return (
     <div className="app">
       <GlobalHeader />
 
-      {/* State Permits + IFTA */}
-      <section className="permits-ifta">
-        <div className="container">
-          <h2>Permits and IFTA</h2>
-          <div className="grid">
-            <div className="feature-card blue-border">
-              <div className="feature-header">
-                <span className="icon">🗺️</span>
-                <h3>State Permits</h3>
-              </div>
-              <ul>
-                <li>Oversize/Overweight permits by state</li>
-                <li>Trip and fuel permits (temporary)</li>
-                <li>Tolling and transponder setup</li>
-                <li>IRP registration basics</li>
-                <li>Port-of-entry requirements</li>
-              </ul>
-            </div>
-            <div className="feature-card green-border">
-              <div className="feature-header">
-                <span className="icon">⛽</span>
-                <h3>IFTA (International Fuel Tax Agreement)</h3>
-              </div>
-              <ul>
-                <li>Quarterly filing timelines</li>
-                <li>Miles and fuel recordkeeping</li>
-                <li>Jurisdiction rate lookup</li>
-                <li>Common audit triggers</li>
-                <li>Best practices to stay compliant</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Coming Soon Section */}
-      <section className="coming-soon">
-        <div className="container">
-          <div className="coming-soon-header">
-            <span className="truck-icon">🚚</span>
-            <h2>What's Coming Soon</h2>
-          </div>
-          <p>Comprehensive training and compliance tools designed specifically for professional drivers</p>
-          <p>
-            Explore our new{' '}
-            <a href="/fmcsa-compliance#flowchart">FMCSA Compliance flowchart</a>{' '}
-            to quickly determine your CDL class and endorsements.
-          </p>
-        </div>
-      </section>
-
-      {/* Features Grid */}
+      {/* Features Grid (six flash cards, FMCSA Compliance first) */}
       <section className="features-grid">
         <div className="container">
           <div className="grid">
             {/* FMCSA Compliance (card is fully clickable) */}
-            <a href="/fmcsa-compliance" className="feature-card orange-border feature-link-card">
+            <Link to="/fmcsa-compliance" className="feature-card orange-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">📋</span>
                 <h3>FMCSA Compliance</h3>
@@ -76,27 +26,12 @@ function HomePage() {
               <div className="feature-footer">
                 <span className="card-cta">Open FMCSA Page</span>
               </div>
-            </a>
-
-            {/* Electronic Logbooks Training */}
-            <div className="feature-card purple-border">
-              <div className="feature-header">
-                <span className="icon">📖</span>
-                <h3>Electronic Logbooks Training</h3>
-              </div>
-              <ul>
-                <li>ELD (Electronic Logging Device) Setup</li>
-                <li>Daily Logs & Record Keeping</li>
-                <li>Duty Status Changes</li>
-                <li>RODS (Record of Duty Status)</li>
-                <li>Logbook Violations & Corrections</li>
-              </ul>
-            </div>
+            </Link>
 
             {/* Vehicle Inspections */}
             <div className="feature-card blue-border">
               <div className="feature-header">
-                <span className="icon">🔍</span>
+                <span className="icon">�</span>
                 <h3>Vehicle Inspections</h3>
               </div>
               <ul>
@@ -126,7 +61,7 @@ function HomePage() {
             {/* Safety Training */}
             <div className="feature-card green-border">
               <div className="feature-header">
-                <span className="icon">🛡️</span>
+                <span className="icon">�️</span>
                 <h3>Safety Training</h3>
               </div>
               <ul>
@@ -156,6 +91,41 @@ function HomePage() {
         </div>
       </section>
 
+      {/* State Permits + IFTA (now underneath flash cards) */}
+      <section className="permits-ifta">
+        <div className="container">
+          <h2>Permits and IFTA</h2>
+          <div className="grid">
+            <div className="feature-card blue-border">
+              <div className="feature-header">
+                <span className="icon">�️</span>
+                <h3>State Permits</h3>
+              </div>
+              <ul>
+                <li>Oversize/Overweight permits by state</li>
+                <li>Trip and fuel permits (temporary)</li>
+                <li>Tolling and transponder setup</li>
+                <li>IRP registration basics</li>
+                <li>Port-of-entry requirements</li>
+              </ul>
+            </div>
+            <div className="feature-card green-border">
+              <div className="feature-header">
+                <span className="icon">⛽</span>
+                <h3>IFTA (International Fuel Tax Agreement)</h3>
+              </div>
+              <ul>
+                <li>Quarterly filing timelines</li>
+                <li>Miles and fuel recordkeeping</li>
+                <li>Jurisdiction rate lookup</li>
+                <li>Common audit triggers</li>
+                <li>Best practices to stay compliant</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="why-choose">
         <div className="container">
@@ -177,7 +147,7 @@ function HomePage() {
               <p>Download content for areas with poor cell coverage. No internet? No problem!</p>
             </div>
             <div className="benefit">
-              <span className="benefit-icon">🏆</span>
+              <span className="benefit-icon">�</span>
               <h4>Industry Expertise</h4>
               <p>Content developed by experienced drivers and FMCSA compliance experts.</p>
             </div>
@@ -243,6 +213,22 @@ function HomePage() {
               <button className="community-btn">Join Our Forum (Coming Soon)</button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Coming Soon Section (now at the bottom) */}
+      <section className="coming-soon">
+        <div className="container">
+          <div className="coming-soon-header">
+            <span className="truck-icon">🚚</span>
+            <h2>What's Coming Soon</h2>
+          </div>
+          <p>Comprehensive training and compliance tools designed specifically for professional drivers</p>
+          <p>
+            Explore our new{' '}
+            <a href="/fmcsa-compliance#flowchart">FMCSA Compliance flowchart</a>{' '}
+            to quickly determine your CDL class and endorsements.
+          </p>
         </div>
       </section>
 
