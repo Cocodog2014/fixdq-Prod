@@ -137,6 +137,16 @@ export default function FMCSACompliance() {
           <div className="fc-grid">
             <div className="fc-panel">
               <StepSelect
+                label="Operating Area"
+                value={operatingArea}
+                onChange={setOperatingArea}
+                options={[
+                  { label: 'Interstate', value: 'interstate' },
+                  { label: 'Intrastate', value: 'intrastate' },
+                ]}
+              />
+
+              <StepSelect
                 label="Type of Vehicle"
                 value={vehicleType}
                 onChange={setVehicleType}
@@ -149,13 +159,13 @@ export default function FMCSACompliance() {
               />
 
               <StepSelect
-                label="Gross Vehicle Weight Rating (GVWR)"
+                label="Is the Vehicle(s) GVW, GVWR, and GCWR"
                 value={gvwr}
                 onChange={setGvwr}
                 options={[
-                  { label: 'Over 26,001 lbs', value: 'over_26001' },
+                  { label: 'Under 10,001 lbs', value: 'under_10000' },
                   { label: '10,001 – 26,000 lbs', value: '10001_26000' },
-                  { label: 'Under 10,000 lbs', value: 'under_10000' },
+                  { label: 'Over 26,000 lbs', value: 'over_26001' },
                 ]}
               />
 
@@ -166,16 +176,6 @@ export default function FMCSACompliance() {
                 options={[
                   { label: 'No trailer or ≤ 10,000 lbs', value: 'trailer_10000_or_less' },
                   { label: 'Trailer > 10,000 lbs', value: 'trailer_over_10000' },
-                ]}
-              />
-
-              <StepSelect
-                label="Operating Area"
-                value={operatingArea}
-                onChange={setOperatingArea}
-                options={[
-                  { label: 'Interstate', value: 'interstate' },
-                  { label: 'Intrastate', value: 'intrastate' },
                 ]}
               />
 
