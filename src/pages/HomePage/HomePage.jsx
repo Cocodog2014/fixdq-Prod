@@ -48,6 +48,11 @@ function HomePage() {
             <h2>What's Coming Soon</h2>
           </div>
           <p>Comprehensive training and compliance tools designed specifically for professional drivers</p>
+          <p>
+            Explore our new{' '}
+            <a href="/fmcsa-compliance#flowchart">FMCSA Compliance flowchart</a>{' '}
+            to quickly determine your CDL class and endorsements.
+          </p>
         </div>
       </section>
 
@@ -55,8 +60,8 @@ function HomePage() {
       <section className="features-grid">
         <div className="container">
           <div className="grid">
-            {/* FMCSA Compliance */}
-            <div className="feature-card orange-border">
+            {/* FMCSA Compliance (card is fully clickable) */}
+            <a href="/fmcsa-compliance" className="feature-card orange-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">📋</span>
                 <h3>FMCSA Compliance</h3>
@@ -68,7 +73,10 @@ function HomePage() {
                 <li>Compliance, Safety, Accountability (CSA)</li>
                 <li>Violation Prevention & Management</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open FMCSA Page</span>
+              </div>
+            </a>
 
             {/* Electronic Logbooks Training */}
             <div className="feature-card purple-border">

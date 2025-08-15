@@ -146,6 +146,33 @@
   margin-right: var(--spacing-xs);
 }
 
+/* Make link cards behave like blocks without underline */
+.feature-link-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.feature-footer {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-cta {
+  display: inline-block;
+  background: var(--color-accent-orange);
+  color: #fff;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-link-card:hover .card-cta {
+  filter: brightness(1.05);
+}
+
 /* Tablet Features */
 @media (min-width: 768px) {
   .features-grid {

@@ -6,6 +6,7 @@
 /* Import all component styles */
 @import './components/GlobalHeader/GlobalHeader.css';
 @import './pages/HomePage/HomePage.css';
+@import './pages/FMCSACompliance/FMCSACompliance.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';
