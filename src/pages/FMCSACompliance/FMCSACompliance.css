@@ -1,6 +1,6 @@
 /* FMCSA Compliance Page Styles */
 
-.fmcsa-page { background: var(--color-gray-100); min-height: 100vh; }
+.fmcsa-page { background: var(--bg-gradient-primary); min-height: 100vh; }
 
 .fmcsa-hero { background: var(--bg-gradient-primary); color: var(--color-white); padding: var(--spacing-2xl) 0; text-align: center; }
 .fmcsa-hero .hero-inner { max-width: 800px; margin: 0 auto; }
@@ -8,46 +8,133 @@
 .quick-start-btn { display: inline-block; margin-top: var(--spacing-md); padding: 0.75rem 1.25rem; background: var(--color-accent-orange); color: #fff; border-radius: var(--radius-full); box-shadow: var(--shadow-md); text-decoration: none; }
 .quick-start-btn:hover { filter: brightness(1.05); }
 
-.fmcsa-flowchart { padding: var(--spacing-2xl) 0; }
+.fmcsa-flowchart {
+  padding: var(--spacing-2xl) 0;
+  /* Soft green tints for a more engaging, friendly look */
+  --fc-panel-bg: #f0fdf4;        /* green-50 */
+  --fc-panel-border: #bbf7d0;    /* green-200 */
+  --fc-result-bg: #fffbeb;       /* amber-50 (yellow) */
+  --fc-result-border: #fde68a;   /* amber-200 */
+  --fc-option-bg: #f0fdf4;       /* green-50 */
+  --fc-option-border: #bbf7d0;   /* green-200 */
+}
 .fc-disclaimer { color: var(--color-gray-600); margin: var(--spacing-sm) 0 var(--spacing-lg); }
+.fmcsa-flowchart .fc-disclaimer { font-size: 1.1rem; color: var(--color-white); }
+.fmcsa-flowchart h2 { color: var(--color-white); }
 .fc-grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-lg); }
-.fc-panel { background: var(--color-white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: var(--spacing-xl); }
+.fc-panel {
+  background: var(--fc-panel-bg);
+  border: 1px solid var(--fc-panel-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-xl);
+}
+.fc-panel.fc-result {
+  background: var(--fc-result-bg);
+  border-color: var(--fc-result-border);
+}
 .fc-label {
   font-weight: 600;
   margin-bottom: calc(var(--spacing-sm) * 0.56);
-  font-size: 0.7rem;
+  font-size: 0.77rem; /* +10% */
   display: block;
 }
 .fc-options { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm); }
 .fc-option {
-  background: var(--color-gray-100);
-  border: 2px solid transparent;
+  background: var(--fc-option-bg);
+  border: 2px solid var(--fc-option-border);
   border-radius: var(--radius-lg);
   padding: calc(var(--spacing-md) * 0.56);
-  min-height: 25px;
-  font-size: 0.66rem;
+  min-height: 28px; /* +12% to keep tap targets comfortable */
+  font-size: 0.73rem; /* +10% */
   text-align: center;
   cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
-.fc-option.selected { background: #fff; border-color: var(--color-primary-light); box-shadow: var(--shadow-sm); }
+.fc-option:hover { background: #dcfce7; /* green-100 */ }
+.fc-option.selected {
+  background: #dcfce7; /* green-100 */
+  border-color: var(--color-accent-green);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12), var(--shadow-sm);
+}
+.fc-select select { width: 100%; padding: 10px 12px; border-radius: var(--radius-lg); border: 1px solid var(--fc-option-border); background: #fff; font-size: 0.95rem; }
 
-.fc-result .result-callout { display: grid; grid-template-columns: 1fr; gap: var(--spacing-sm); margin: var(--spacing-md) 0; padding: var(--spacing-md); background: var(--color-gray-50); border-radius: var(--radius-lg); }
+.fc-result .result-callout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background: #fef3c7; /* amber-100 */
+  border: 1px solid #fcd34d; /* amber-300 */
+  border-radius: var(--radius-lg);
+}
+.fc-result .result-callout.cdl-required {
+  background: #dcfce7; /* green-100 */
+  border-color: #34d399; /* green-400 */
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.15) inset;
+}
+.fc-result .result-callout.has-endorsements {
+  background: #dcfce7; /* green-100 */
+  border-color: #34d399; /* green-400 */
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.15) inset;
+}
 .result-item { display: flex; align-items: center; justify-content: space-between; }
-.result-label { color: var(--color-gray-600); }
-.result-value { font-weight: 700; }
+.result-label { color: var(--color-gray-600); font-size: 1.1rem; }
+.result-value { font-weight: 700; font-size: 1.1rem; }
 .result-notes { margin: var(--spacing-md) 0; padding-left: var(--spacing-lg); }
-.result-links a { display: inline-block; margin-right: var(--spacing-md); color: var(--color-primary-light); }
+.result-links a { display: inline-block; margin-right: var(--spacing-md); color: var(--color-primary-light); font-size: 1.1rem; }
+
+/* Status badges */
+.status-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-sm); margin: var(--spacing-sm) 0 var(--spacing-md); }
+.status-pill { display: flex; align-items: center; gap: var(--spacing-sm); padding: 8px 10px; border-radius: var(--radius-full); font-size: 0.9rem; border: 1px solid var(--color-gray-200); background: #fff; }
+.status-pill .k { font-weight: 700; color: var(--color-gray-700); }
+.status-pill .v { font-weight: 600; }
+.status-pill.ok { background: #ecfdf5; border-color: #34d399; color: #065f46; }
+.status-pill.warn { background: #fff7ed; border-color: #fb923c; color: #7c2d12; }
+.status-pill.info { background: #eff6ff; border-color: #60a5fa; color: #1e3a8a; }
+
+/* Collapsible statutes */
+.statutes { margin-top: var(--spacing-md); }
+.statutes summary { cursor: pointer; font-weight: 700; margin-bottom: var(--spacing-sm); }
+
+/* Exemption matrix */
+.exemption-table { margin-top: var(--spacing-md); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); overflow: hidden; background: #fff; }
+.exemption-table .row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; }
+.exemption-table .row > div { padding: 10px 12px; border-bottom: 1px solid var(--color-gray-200); }
+.exemption-table .row.head { background: var(--color-gray-50); font-weight: 700; }
+.exemption-table .row:last-child > div { border-bottom: none; }
+.exemption-table .ok { color: #065f46; font-weight: 700; }
+.exemption-table .no { color: #7c2d12; font-weight: 700; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+.modal-dialog { width: min(720px, 96vw); background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200); }
+.modal-header h3 { margin: 0; font-size: 1.2rem; }
+.modal-close { background: transparent; border: none; font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 4px 8px; }
+.modal-body { padding: 16px 18px; }
+.modal-actions { padding: 16px 18px 18px; display: flex; gap: 10px; justify-content: flex-end; border-top: 1px solid var(--color-gray-200); }
 
 /* Cards */
 .fmcsa-cards { padding: var(--spacing-2xl) 0; }
+.fmcsa-cards h2 { color: var(--color-white); }
 .cards-grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-lg); }
 .card { background: var(--color-white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: var(--spacing-xl); text-decoration: none; color: inherit; }
 .card:hover { box-shadow: var(--shadow-lg); }
 
 /* Tools */
 .fmcsa-tools { padding: var(--spacing-2xl) 0; }
+.fmcsa-tools .container {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  color: var(--color-white);
+}
 .quick-list { list-style: disc; padding-left: var(--spacing-xl); }
 .quick-list li { margin-bottom: var(--spacing-sm); }
+.quick-list a { color: #e0f2fe; }
 
 /* CTA */
 .fmcsa-cta { padding: var(--spacing-2xl) 0; }
@@ -69,3 +156,5 @@
   .fc-options { grid-template-columns: repeat(4, 1fr); }
   .cards-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Farm Exemption Checker will reuse these flowchart styles via shared classes */

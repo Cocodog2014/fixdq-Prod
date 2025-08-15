@@ -35,12 +35,14 @@ function GlobalHeader() {
 
   // Unified list of all nav buttons (desktop + mobile)
   const navigationItems = [
+    { label: 'Who is FixDQ', href: '/about', color: 'orange', icon: 'ℹ️' },
     { label: 'Home', href: '/', color: 'blue', icon: '🏠' },
     { label: 'Electronic Logbooks', href: '/electronic-logbooks', color: 'purple', icon: '📖' },
     { label: 'Vehicle Inspections', href: '/vehicle-inspections', color: 'blue', icon: '🔍' },
     { label: 'US Citizenship', href: 'https://citizenship360.org', color: 'red', icon: '🇺🇸' },
     { label: 'Safety Training', href: '/safety-training', color: 'green', icon: '🛡️' },
-    { label: 'Violations Management', href: '/violations-management', color: 'teal', icon: '⚖️' }
+  { label: 'Violations Management', href: '/violations-management', color: 'teal', icon: '⚖️' },
+  { label: 'Frequently Asked Questions', href: '/faq', color: 'orange', icon: '❓' },
   ];
 
   return (
