@@ -22,26 +22,46 @@ function StepSelect({ label, options, value, onChange }) {
   )
 }
 
-function computeResult({ vehicleType, gvwr, operatingArea, cargoType }) {
+function computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }) {
   // Very simplified, informational-only logic. Always verify with official FMCSA rules.
   let cdlClass = 'No CDL Required'
   let endorsements = new Set()
 
   // Endorsements by cargo/vehicle
-  if (cargoType === 'hazmat') endorsements.add('HazMat (H)')
-  if (vehicleType === 'bus' || vehicleType === 'passenger') endorsements.add('Passenger (P)')
+  const isPassengerScenario = vehicleType === 'bus' || vehicleType === 'passenger' || passengerCount === '16_plus'
+  if (isPassengerScenario) endorsements.add('Passenger (P)')
+  if (schoolBus === 'yes') endorsements.add('School Bus (S)')
+
+  // Hazmat / Tank endorsement combos
+  const wantsHazmat = placardedHazmat === 'yes' || cargoType === 'hazmat'
+  const wantsTank = tankLiquids === 'yes'
+  if (wantsTank && wantsHazmat) {
+    endorsements.add('Tank + HazMat (X)')
+  } else if (wantsHazmat) {
+    endorsements.add('HazMat (H)')
+  } else if (wantsTank) {
+    endorsements.add('Tank (N)')
+  }
 
   // CDL Class by GVWR and special cases
   if (gvwr === 'over_26001') {
-    // Without combination/trailer details we default to Class B for single heavy vehicles
-    cdlClass = 'Class B'
+    // Heavy power unit. Trailer >10k makes this Class A; otherwise Class B.
+    cdlClass = trailer === 'trailer_over_10000' ? 'Class A' : 'Class B'
   } else if (gvwr === '10001_26000') {
-    // Class C if transporting passengers or hazmat, else typically non‑CDL
-    if (endorsements.size > 0) cdlClass = 'Class C'
+    // Mid-weight. Trailer >10k likely bumps to Class A if GCWR ≥ 26,001.
+    if (trailer === 'trailer_over_10000') {
+      cdlClass = 'Class A (likely; verify GCWR ≥ 26,001)'
+    } else if (endorsements.size > 0) {
+      cdlClass = 'Class C'
+    } else {
+      cdlClass = 'No CDL Required'
+    }
   } else if (gvwr === 'under_10000') {
-    // Under 10k generally non‑CDL, except passenger/hazmat scenarios can push to C in some states
-    if (vehicleType === 'bus' || vehicleType === 'passenger' || cargoType === 'hazmat') {
+    // Under 10k generally non‑CDL; passenger/hazmat/tank scenarios may require Class C in some states.
+    if (isPassengerScenario || wantsHazmat || wantsTank) {
       cdlClass = 'Class C (check state-specific thresholds)'
+    } else {
+      cdlClass = 'No CDL Required'
     }
   }
 
@@ -52,6 +72,14 @@ function computeResult({ vehicleType, gvwr, operatingArea, cargoType }) {
     notes.push('Intrastate rules vary by state; verify additional state requirements.')
   }
 
+  if (trailer === 'trailer_over_10000' && gvwr !== 'over_26001') {
+    notes.push('If GCWR ≥ 26,001 and trailer > 10,000 lbs, Class A applies.')
+  }
+
+  if (farmExemption === 'yes' && operatingArea === 'intrastate' && !wantsHazmat && passengerCount !== '16_plus' && schoolBus !== 'yes') {
+    notes.push('Farm Vehicle Driver (FVD) exemption may apply within 150 air-miles; CDL may not be required. Confirm with your state DMV.')
+  }
+
   return {
     cdlClass,
     endorsements: Array.from(endorsements),
@@ -59,6 +87,8 @@ function computeResult({ vehicleType, gvwr, operatingArea, cargoType }) {
     references: [
       { label: 'FMCSA: Do I Need a CDL?', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license' },
       { label: 'FMCSA: Medical Requirements', href: 'https://www.fmcsa.dot.gov/medical/driver-medical-requirements/medical-requirements' },
+      { label: 'FMCSA: Tank Vehicle (N) & HazMat (H/X)', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/endorsements' },
+      { label: 'FMCSA: Farm Vehicle Driver Exemptions', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/farm-vehicle-driver-exemptions' },
     ],
   }
 }
@@ -68,10 +98,16 @@ export default function FMCSACompliance() {
   const [gvwr, setGvwr] = useState('over_26001')
   const [operatingArea, setOperatingArea] = useState('interstate')
   const [cargoType, setCargoType] = useState('general')
+  const [trailer, setTrailer] = useState('trailer_10000_or_less')
+  const [passengerCount, setPassengerCount] = useState('under16')
+  const [tankLiquids, setTankLiquids] = useState('no')
+  const [placardedHazmat, setPlacardedHazmat] = useState('no')
+  const [farmExemption, setFarmExemption] = useState('no')
+  const [schoolBus, setSchoolBus] = useState('no')
 
   const result = useMemo(
-    () => computeResult({ vehicleType, gvwr, operatingArea, cargoType }),
-    [vehicleType, gvwr, operatingArea, cargoType]
+    () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
+    [vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus]
   )
 
   return (
@@ -124,6 +160,16 @@ export default function FMCSACompliance() {
               />
 
               <StepSelect
+                label="Towing / Trailer"
+                value={trailer}
+                onChange={setTrailer}
+                options={[
+                  { label: 'No trailer or ≤ 10,000 lbs', value: 'trailer_10000_or_less' },
+                  { label: 'Trailer > 10,000 lbs', value: 'trailer_over_10000' },
+                ]}
+              />
+
+              <StepSelect
                 label="Operating Area"
                 value={operatingArea}
                 onChange={setOperatingArea}
@@ -141,6 +187,58 @@ export default function FMCSACompliance() {
                   { label: 'General Freight', value: 'general' },
                   { label: 'Hazardous Materials', value: 'hazmat' },
                   { label: 'Passenger Transport', value: 'passenger' },
+                ]}
+              />
+
+              {/* Passengers & Special Cases */}
+              <StepSelect
+                label="Passenger Count"
+                value={passengerCount}
+                onChange={setPassengerCount}
+                options={[
+                  { label: 'Under 16 (including driver)', value: 'under16' },
+                  { label: '16 or more (including driver)', value: '16_plus' },
+                ]}
+              />
+
+              {/* Endorsement detail toggles */}
+              <StepSelect
+                label="Bulk Liquids / Tank Vehicle"
+                value={tankLiquids}
+                onChange={setTankLiquids}
+                options={[
+                  { label: 'No', value: 'no' },
+                  { label: 'Yes', value: 'yes' },
+                ]}
+              />
+
+              <StepSelect
+                label="Placarded Hazardous Materials"
+                value={placardedHazmat}
+                onChange={setPlacardedHazmat}
+                options={[
+                  { label: 'No', value: 'no' },
+                  { label: 'Yes', value: 'yes' },
+                ]}
+              />
+
+              <StepSelect
+                label="School Bus"
+                value={schoolBus}
+                onChange={setSchoolBus}
+                options={[
+                  { label: 'No', value: 'no' },
+                  { label: 'Yes', value: 'yes' },
+                ]}
+              />
+
+              <StepSelect
+                label="Farm Exemption (FVD)"
+                value={farmExemption}
+                onChange={setFarmExemption}
+                options={[
+                  { label: 'No', value: 'no' },
+                  { label: 'Yes', value: 'yes' },
                 ]}
               />
             </div>
