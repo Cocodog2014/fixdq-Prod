@@ -36,7 +36,6 @@ function GlobalHeader() {
   // Unified list of all nav buttons (desktop + mobile)
   const navigationItems = [
     { label: 'Home', href: '/', color: 'blue', icon: '🏠' },
-    { label: 'FMCSA Compliance', href: '/fmcsa-compliance', color: 'orange', icon: '📋' },
     { label: 'Electronic Logbooks', href: '/electronic-logbooks', color: 'purple', icon: '📖' },
     { label: 'Vehicle Inspections', href: '/vehicle-inspections', color: 'blue', icon: '🔍' },
     { label: 'US Citizenship', href: 'https://citizenship360.org', color: 'red', icon: '🇺🇸' },

@@ -3,14 +3,13 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './global.css'
 import HomePage from './pages/HomePage'
-import FMCSACompliance from './features/fmcsa-compliance/pages/FMCSACompliance.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/fmcsa-compliance" element={<FMCSACompliance />} />
+  {/* FMCSA Compliance route removed */}
       </Routes>
     </BrowserRouter>
   </StrictMode>
