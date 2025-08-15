@@ -61,32 +61,32 @@ function GlobalHeader() {
               <div className="nav-grid">
                 {navigationItems.map((item, index) => (
                   item.href.startsWith('http') ? (
-                  <a 
-                    key={index}
-                    href={item.href} 
-                    className={`nav-button nav-${item.color}`}
-          target={item.href.startsWith('http') && item.label !== 'US Citizenship' ? '_blank' : '_self'}
-                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  >
-                    <span className="nav-icon">{item.icon}</span>
-                    <span className="nav-label">{item.label}</span>
-                  </a>
+                    <a
+                      key={index}
+                      href={item.href}
+                      className={`nav-button nav-${item.color}`}
+                      target={item.href.startsWith('http') && item.label !== 'US Citizenship' ? '_blank' : '_self'}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      <span className="nav-icon">{item.icon}</span>
+                      <span className="nav-label">{item.label}</span>
+                    </a>
                   ) : (
-                  <Link
-                    key={index}
-                    to={item.href}
-                    className={`nav-button nav-${item.color}`}
-                  >
-                    <span className="nav-icon">{item.icon}</span>
-                    <span className="nav-label">{item.label}</span>
-                  </Link>
+                    <Link
+                      key={index}
+                      to={item.href}
+                      className={`nav-button nav-${item.color}`}
+                    >
+                      <span className="nav-icon">{item.icon}</span>
+                      <span className="nav-label">{item.label}</span>
+                    </Link>
                   )
                 ))}
               </div>
             </nav>
 
             {/* Mobile Hamburger Button */}
-            <button 
+            <button
               className="mobile-menu-toggle"
               onClick={toggleMobileMenu}
               aria-label="Toggle navigation menu"
@@ -102,33 +102,33 @@ function GlobalHeader() {
         </div>
       </div>
 
-  {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu */}
       <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="container">
           <div className="mobile-nav-grid">
-  {navigationItems.map((item, index) => (
+            {navigationItems.map((item, index) => (
               item.href.startsWith('http') ? (
-              <a 
-                key={index}
-                href={item.href} 
-                className={`mobile-nav-button nav-${item.color}`}
-        target={item.href.startsWith('http') && item.label !== 'US Citizenship' ? '_blank' : '_self'}
-                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </a>
+                <a
+                  key={index}
+                  href={item.href}
+                  className={`mobile-nav-button nav-${item.color}`}
+                  target={item.href.startsWith('http') && item.label !== 'US Citizenship' ? '_blank' : '_self'}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="nav-icon">{item.icon}</span>
+                  <span className="nav-label">{item.label}</span>
+                </a>
               ) : (
-              <Link
-                key={index}
-                to={item.href}
-                className={`mobile-nav-button nav-${item.color}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </Link>
+                <Link
+                  key={index}
+                  to={item.href}
+                  className={`mobile-nav-button nav-${item.color}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="nav-icon">{item.icon}</span>
+                  <span className="nav-label">{item.label}</span>
+                </Link>
               )
             ))}
           </div>
@@ -143,7 +143,7 @@ function GlobalHeader() {
             <a href="/" className="hero-logo-link" rel="noopener noreferrer">
               <img className="hero-logo-image" src={fixdqLogo} alt="FixDQ logo" />
             </a>
-            <button 
+            <button
               className="hero-mobile-menu-toggle"
               onClick={toggleMobileMenu}
               aria-label="Toggle navigation menu"
@@ -166,35 +166,23 @@ function GlobalHeader() {
             </div>
           </div>
         </div>
-        {/* Moving ribbon at the bottom of the hero */}
-        <div className="hero-ribbon" aria-label="Site topics marquee">
-          <div className="ribbon-viewport">
-            <div className="ribbon-track" aria-hidden="true">
-              <span className="ribbon-item">FMCSA Compliance</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Electronic Logbooks</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Vehicle Inspections</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">US Citizenship</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Safety Training</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Violations Management</span>
+      </div>
 
-              {/* Duplicate for seamless loop */}
-              <span className="ribbon-item">FMCSA Compliance</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Electronic Logbooks</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Vehicle Inspections</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">US Citizenship</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Safety Training</span>
-              <span className="ribbon-sep">•</span>
-              <span className="ribbon-item">Violations Management</span>
-            </div>
+      {/* Header bottom moving ribbon */}
+      <div className="header-ribbon" aria-label="Site topics marquee">
+        <div className="ribbon-viewport">
+          <div className="ribbon-track" aria-hidden="true">
+            <span className="ribbon-item">FMCSA Compliance</span>
+            <span className="ribbon-sep">•</span>
+            <span className="ribbon-item">Electronic Logbooks</span>
+            <span className="ribbon-sep">•</span>
+            <span className="ribbon-item">Vehicle Inspections</span>
+            <span className="ribbon-sep">•</span>
+            <span className="ribbon-item">US Citizenship</span>
+            <span className="ribbon-sep">•</span>
+            <span className="ribbon-item">Safety Training</span>
+            <span className="ribbon-sep">•</span>
+            <span className="ribbon-item">Violations Management</span>
           </div>
         </div>
       </div>

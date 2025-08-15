@@ -14,8 +14,9 @@
    HEADER BANNER
    ================================ */
 .header-banner {
-  background: var(--color-white);
-  border-bottom: 3px solid var(--color-primary);
+  background: var(--bg-gradient-primary); /* make header blue */
+  color: var(--color-white);
+  border-bottom: 0;
   box-shadow: var(--shadow-md);
   position: relative;
 }
@@ -24,21 +25,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-md) 0;
-  min-height: 90px; /* accommodate larger logo on mobile */
+  padding: calc(var(--spacing-md) * 0.8) 0; /* -20% */
+  min-height: 72px; /* -20% from 90px */
 }
 
 /* Logo Section */
 .logo-section {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: calc(var(--spacing-sm) * 0.8); /* -20% */
 }
 
 .logo-link {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: calc(var(--spacing-sm) * 0.8); /* -20% */
   text-decoration: none;
   color: inherit;
 }
@@ -50,7 +51,7 @@
 
 /* PNG/SVG logo image: hidden by default until loaded via inline style toggle */
 .logo-image {
-  height: 54px; /* reduced additional ~20% from 68px */
+  height: 43px; /* -20% from 54px */
   width: auto;
   display: block;
 }
@@ -83,7 +84,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--spacing-sm);
+  padding: calc(var(--spacing-sm) * 0.8); /* -20% */
   border-radius: var(--radius-md);
   transition: background-color 0.2s ease;
 }
@@ -143,7 +144,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
-  padding: var(--spacing-md) 0;
+  padding: calc(var(--spacing-md) * 0.8) 0; /* -20% */
 }
 
 .mobile-nav-button {
@@ -188,7 +189,7 @@
 .hero-banner {
   background: var(--bg-gradient-primary);
   color: var(--color-white);
-  padding: var(--spacing-xl) 0;
+  padding: calc(var(--spacing-xl) * 0.8) 0; /* -20% */
   text-align: center;
   position: relative;
 }
@@ -198,7 +199,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: calc(var(--spacing-lg) * 0.8); /* -20% */
 }
 
 .hero-logo-link { text-decoration: none; }
@@ -279,30 +280,29 @@
   color: var(--color-primary);
 }
 
-/* Moving ribbon inside hero */
-.hero-ribbon {
-  position: absolute;
+/* Moving ribbon at bottom of header */
+.header-ribbon {
+  position: relative;
   left: 0;
   right: 0;
-  bottom: 0;
   background: linear-gradient(90deg, var(--color-accent-red) 0%, var(--color-accent-yellow) 50%, var(--color-accent-blue) 100%);
   border-top: 2px solid rgba(255,255,255,0.25);
 }
 
-.hero-ribbon .ribbon-viewport {
+.header-ribbon .ribbon-viewport {
   overflow: hidden;
   white-space: nowrap;
 }
 
-.hero-ribbon .ribbon-track {
+.header-ribbon .ribbon-track {
   display: inline-flex;
   gap: var(--spacing-lg);
   padding: 8px 0;
   animation: hero-ribbon-scroll 28s linear infinite;
 }
 
-.hero-ribbon .ribbon-item { font-weight: 600; color: #fff; }
-.hero-ribbon .ribbon-sep { opacity: 0.6; color: #fff; }
+.header-ribbon .ribbon-item { font-weight: 600; color: #fff; }
+.header-ribbon .ribbon-sep { opacity: 0.6; color: #fff; }
 
 @keyframes hero-ribbon-scroll {
   0% { transform: translateX(0); }
@@ -310,7 +310,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-ribbon .ribbon-track { animation: none; }
+  .header-ribbon .ribbon-track { animation: none; }
 }
 
 /* ================================
@@ -318,10 +318,15 @@
    ================================ */
 @media (min-width: 768px) {
   .header-content {
-  padding: var(--spacing-lg) 0;
+  padding: calc(var(--spacing-lg) * 0.8) 0; /* -20% */
   justify-content: flex-start;
   gap: var(--spacing-lg);
-  min-height: 110px;
+  min-height: 88px; /* -20% */
+  }
+
+  /* Keep the hero area visible on tablet+ */
+  .hero-banner {
+  min-height: 96px; /* -20% */
   }
 
   .hero-mobile-controls { display: none; }
@@ -344,7 +349,7 @@
   display: block;
   position: relative;
   z-index: 2;
-  flex: 1;
+  padding: calc(var(--spacing-md) * 0.8) calc(var(--spacing-lg) * 0.8); /* -20% */
   }
 
   .back-home-btn { display: inline-flex; }
@@ -361,7 +366,7 @@
   .nav-grid {
     display: grid;
   grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-sm);
+    gap: calc(var(--spacing-sm) * 0.8); /* -20% */
   max-width: 100%;
   position: relative;
   z-index: 2;
@@ -371,7 +376,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xs);
+  gap: calc(var(--spacing-xs) * 0.8); /* -20% */
   padding: calc(var(--spacing-sm) * 0.8);
     text-decoration: none;
     color: var(--color-white);
@@ -391,7 +396,6 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
   }
-
   .nav-button .nav-icon {
     font-size: 1rem;
     height: 24px;
@@ -400,7 +404,6 @@
     justify-content: center;
     line-height: 1;
   }
-
   .nav-button .nav-label {
   font-size: var(--font-size-xs);
     line-height: 1.3;
@@ -428,7 +431,8 @@
     font-size: var(--font-size-lg);
   }
 
-  .hero-rotator { display: none; }
+  /* Show rotating titles on tablet+ as well */
+  .hero-rotator { display: block; }
 
   .hero-cta {
     flex-direction: row;
@@ -441,16 +445,18 @@
    ================================ */
 @media (min-width: 1024px) {
   .header-content {
-    min-height: 130px;
+  min-height: 104px; /* -20% */
   }
+  /* Slightly taller hero on desktop for presence */
+  .hero-banner { min-height: 112px; } /* -20% */
   .nav-grid {
   grid-template-columns: repeat(7, 1fr);
   max-width: 100%;
   }
 
   .nav-button {
-    min-height: 63px;
-    padding: calc(var(--spacing-md) * 0.8);
+    min-height: 50px; /* -20% */
+    padding: calc(var(--spacing-md) * 0.64); /* 0.8 of 0.8 spacing to keep scale */
   }
 
   .nav-button .nav-icon {
@@ -485,6 +491,8 @@
 
   .hero-banner { padding: 12px 0; }
   .hero-banner { min-height: 120px; }
+  /* Increase mobile logo size by 50% (32px -> 48px) */
+  .hero-logo-image { height: 48px; }
   .hero-mobile-controls { margin-top: -6px; margin-bottom: var(--spacing-sm); }
   .hero-content h1 { margin-bottom: var(--spacing-xs); font-size: var(--font-size-xl); }
   .hero-content p { margin-bottom: var(--spacing-sm); font-size: var(--font-size-sm); }
