@@ -1,0 +1,20 @@
+.pm-page{background:var(--bg-gradient-primary);min-height:100vh}
+.pm-page .container{color:var(--color-white)}
+.pm-page a{color:#e0f2fe}
+
+.pm-hero{padding-top:1.25rem;padding-bottom:1rem}
+.pm-backbar{margin-top:.5rem}
+.pm-back-btn{background:var(--color-accent-orange);color:#fff;border:1px solid var(--color-accent-orange);border-radius:var(--radius-full);padding:.5rem .9rem;cursor:pointer;box-shadow:var(--shadow-sm)}
+.pm-back-btn:hover{filter:brightness(1.05)}
+
+.pm-section{padding:1.25rem 0;border-top:1px solid rgba(255,255,255,0.15)}
+.pm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:.5rem}
+.pm-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:1rem;color:var(--color-gray-900)}
+.pm-card ul{line-height:1.75;margin-left:1rem}
+.pm-card ol{line-height:1.75;margin-left:1rem}
+.pm-note{color:#fef08a}
+.pm-links ul{list-style:disc;padding-left:1.25rem}
+
+@media (min-width:768px){
+  .pm-hero{padding-top:1.5rem;padding-bottom:1.25rem}
+}

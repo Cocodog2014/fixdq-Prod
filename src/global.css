@@ -7,6 +7,9 @@
 @import './components/GlobalHeader/GlobalHeader.css';
 @import './pages/HomePage/HomePage.css';
 @import './pages/FMCSACompliance/FMCSACompliance.css';
+@import './pages/FMCSACompliance/SafetyManagement.css';
+@import './pages/FMCSACompliance/CSA.css';
+@import './pages/FMCSACompliance/PreventionManagement.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';

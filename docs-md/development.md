@@ -49,6 +49,13 @@ README.md              # root handbook (overview + deploy)
     - `@import './pages/HomePage/HomePage.css';`
 - Accessibility: keep touch targets ≥ 44px height, ensure sufficient contrast, and use semantic HTML.
 
+### Page background convention (blue)
+- Most feature pages use our primary blue gradient background for continuity.
+- Apply a top-level wrapper with `background: var(--bg-gradient-primary); min-height: 100vh;` and set foreground colors for readability.
+- Examples:
+  - FMCSA Compliance: `.fmcsa-page { background: var(--bg-gradient-primary); min-height: 100vh; }`
+  - FMCSA Regulations detail: `.fmcsa-regulations-page { background: var(--bg-gradient-primary); min-height: 100vh; } .fmcsa-regulations-page .container { color: var(--color-white); }`
+
 ## Routing
 - Router is declared in `src/main.jsx` using React Router v6.
 - Current routes:

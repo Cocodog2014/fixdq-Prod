@@ -1,0 +1,63 @@
+/* FMCSA Regulations dedicated card */
+.fmcsa-reg-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+.fmcsa-reg-card:hover { box-shadow: var(--shadow-lg); }
+.fmcsa-reg-card:focus-visible { box-shadow: 0 0 0 3px rgba(59,130,246,0.45), var(--shadow-md); }
+.fmcsa-reg-title { margin: 0 0 6px; font-size: 1.2rem; }
+.fmcsa-reg-desc { margin: 0; color: var(--color-gray-700); }
+.fmcsa-reg-footer { margin-top: var(--spacing-md); display: flex; justify-content: flex-end; }
+.fmcsa-reg-btn {
+  display: inline-block;
+  padding: 0.55rem 0.95rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+}
+.fmcsa-reg-btn:hover { filter: brightness(1.05); }
+
+/* Variant: light red button */
+.fmcsa-reg-btn--red {
+  background: #f87171; /* red-400 */
+  border-color: #f87171;
+  color: #fff;
+}
+.fmcsa-reg-btn--red:hover { filter: brightness(1.05); }
+
+/* FMCSA Regulations full page background + readable defaults */
+.fmcsa-regulations-page { background: var(--bg-gradient-primary); min-height: 100vh; }
+.fmcsa-regulations-page .container { color: var(--color-white); }
+.fmcsa-regulations-page a { color: #e0f2fe; }
+
+/* Highlight variant for CSA card */
+.csa-highlight {
+  background: #fee2e2; /* red-100 */
+  border: 1px solid #fecaca; /* red-200 */
+}
+.csa-highlight .fmcsa-reg-title,
+.csa-highlight .fmcsa-reg-desc { color: #7f1d1d; /* red-900 text */ }
+.fmcsa-reg-btn.fmcsa-reg-btn--red { background: #ef4444; border-color: #ef4444; }
+.fmcsa-reg-btn.fmcsa-reg-btn--red:hover { filter: brightness(1.05); }
+
+/* Back button within regulation detail page */
+.fmcsa-back-btn {
+  background: var(--color-accent-orange);
+  color: #fff;
+  border: 1px solid var(--color-accent-orange);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.fmcsa-back-btn:hover { filter: brightness(1.05); }

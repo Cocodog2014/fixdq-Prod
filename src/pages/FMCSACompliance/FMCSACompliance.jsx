@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
+import FMCSARegulations from './FMCSARegulations'
 
 function StepSelect({ label, options, value, onChange }) {
   return (
@@ -291,26 +292,58 @@ export default function FMCSACompliance() {
         <div className="container">
           <h2>Learn the Essentials</h2>
           <div className="cards-grid">
-            <a className="card" href="#fmcsr-overview">
-              <h3>Federal Motor Carrier Safety Regulations</h3>
-              <p>Overview of key FMCSR parts that affect daily operations.</p>
-            </a>
-            <a className="card" href="#hos-rules">
-              <h3>Hours of Service (HOS) Rules</h3>
-              <p>Limits, examples, and calculators for common scenarios.</p>
-            </a>
-            <a className="card" href="#smc">
-              <h3>Safety Management Cycles</h3>
-              <p>Methods to track and maintain compliance over time.</p>
-            </a>
-            <a className="card" href="#csa">
-              <h3>CSA (Compliance, Safety, Accountability)</h3>
-              <p>Driver scores, inspections, and how to improve.</p>
-            </a>
-            <a className="card" href="#violations">
-              <h3>Violation Prevention & Management</h3>
-              <p>Avoiding, documenting, and contesting violations.</p>
-            </a>
+            <FMCSARegulations />
+      {/* Hours of Service dedicated card */}
+      <div className="fmcsa-reg-card" role="link" tabIndex={0} onClick={() => (window.location.href = '/hours-of-service')}>
+              <div className="fmcsa-reg-body">
+                <h3 className="fmcsa-reg-title">Hours of Service (HOS) Rules</h3>
+                <p className="fmcsa-reg-desc">Limits, examples, and calculators for common scenarios.</p>
+              </div>
+              <div className="fmcsa-reg-footer">
+        <a className="fmcsa-reg-btn" href="/hours-of-service" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/hours-of-service' }}>Explore</a>
+              </div>
+            </div>
+
+      <div className="fmcsa-reg-card" role="link" tabIndex={0} onClick={() => (window.location.href = '/safety-management')}>
+              <div className="fmcsa-reg-body">
+                <h3 className="fmcsa-reg-title">Safety Management Cycles</h3>
+                <p className="fmcsa-reg-desc">Methods to track and maintain compliance over time.</p>
+              </div>
+              <div className="fmcsa-reg-footer">
+        <a className="fmcsa-reg-btn" href="/safety-management" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/safety-management' }}>Explore</a>
+              </div>
+            </div>
+
+  <div className="fmcsa-reg-card csa-highlight" role="link" tabIndex={0} onClick={() => (window.location.href = '/csa')}>
+              <div className="fmcsa-reg-body">
+                <h3 className="fmcsa-reg-title">CSA (Compliance, Safety, Accountability)</h3>
+                <p className="fmcsa-reg-desc">Driver scores, inspections, and how to improve.</p>
+              </div>
+              <div className="fmcsa-reg-footer">
+                <a className="fmcsa-reg-btn fmcsa-reg-btn--red" href="/csa" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/csa' }}>Explore</a>
+              </div>
+            </div>
+
+            <div
+              className="fmcsa-reg-card"
+              role="link"
+              tabIndex={0}
+              onClick={() => (window.location.href = '/prevention-management')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  window.location.href = '/prevention-management'
+                }
+              }}
+            >
+              <div className="fmcsa-reg-body">
+                <h3 className="fmcsa-reg-title">Violation Prevention & Management</h3>
+                <p className="fmcsa-reg-desc">Avoiding, documenting, and contesting violations.</p>
+              </div>
+              <div className="fmcsa-reg-footer">
+                <a className="fmcsa-reg-btn" href="/prevention-management" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/prevention-management' }}>Explore</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
