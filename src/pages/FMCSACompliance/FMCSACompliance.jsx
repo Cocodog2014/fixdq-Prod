@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 
 function StepSelect({ label, options, value, onChange }) {
@@ -94,6 +95,7 @@ function computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, p
 }
 
 export default function FMCSACompliance() {
+  const navigate = useNavigate()
   const [vehicleType, setVehicleType] = useState('truck')
   const [gvwr, setGvwr] = useState('over_26001')
   const [operatingArea, setOperatingArea] = useState('interstate')
@@ -235,10 +237,17 @@ export default function FMCSACompliance() {
               <StepSelect
                 label="Farm Exemption (FVD)"
                 value={farmExemption}
-                onChange={setFarmExemption}
+                onChange={(val) => {
+                  if (val === 'unknown') {
+                    navigate('/farm-exemption-checker')
+                  } else {
+                    setFarmExemption(val)
+                  }
+                }}
                 options={[
                   { label: 'No', value: 'no' },
                   { label: 'Yes', value: 'yes' },
+                  { label: 'Unknown', value: 'unknown' },
                 ]}
               />
             </div>

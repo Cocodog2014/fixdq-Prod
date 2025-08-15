@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './global.css'
 import HomePage from './pages/HomePage'
 import FMCSACompliance from './pages/FMCSACompliance'
+import FarmExemptionChecker from './pages/FarmExemptionChecker'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<HomePage />} />
   <Route path="/fmcsa-compliance" element={<FMCSACompliance />} />
+  <Route path="/farm-exemption-checker" element={<FarmExemptionChecker />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
