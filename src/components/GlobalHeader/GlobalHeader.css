@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: space-between;
   padding: calc(var(--spacing-md) * 0.8) 0; /* -20% */
-  min-height: 72px; /* -20% from 90px */
+  min-height: 54px; /* 25% reduction from current */
 }
 
 /* Logo Section */
@@ -189,7 +189,7 @@
 .hero-banner {
   background: var(--bg-gradient-primary);
   color: var(--color-white);
-  padding: calc(var(--spacing-xl) * 0.8) 0; /* -20% */
+  padding: calc(var(--spacing-lg) * 0.5) 0; /* tighter spacing to reduce gap under header */
   text-align: center;
   position: relative;
 }
@@ -297,7 +297,7 @@
 .header-ribbon .ribbon-track {
   display: inline-flex;
   gap: var(--spacing-lg);
-  padding: 8px 0;
+  padding: 4px 0; /* slimmer ribbon to reduce separation */
   animation: hero-ribbon-scroll 28s linear infinite;
 }
 
@@ -326,7 +326,7 @@
 
   /* Keep the hero area visible on tablet+ */
   .hero-banner {
-  min-height: 96px; /* -20% */
+  min-height: 56px; /* tighter */
   }
 
   .hero-mobile-controls { display: none; }
@@ -385,7 +385,7 @@
     font-weight: 600;
     font-size: var(--font-size-sm);
     transition: all 0.2s ease;
-  min-height: 56px;
+  min-height: 42px; /* 25% reduction */
     text-align: center;
     justify-content: center;
   position: relative;
@@ -445,18 +445,18 @@
    ================================ */
 @media (min-width: 1024px) {
   .header-content {
-  min-height: 104px; /* -20% */
+  min-height: 78px; /* ~25% reduction */
   }
   /* Slightly taller hero on desktop for presence */
-  .hero-banner { min-height: 112px; } /* -20% */
+  .hero-banner { min-height: 64px; } /* tighter */
   .nav-grid {
   grid-template-columns: repeat(7, 1fr);
   max-width: 100%;
   }
 
   .nav-button {
-    min-height: 50px; /* -20% */
-    padding: calc(var(--spacing-md) * 0.64); /* 0.8 of 0.8 spacing to keep scale */
+    min-height: 38px; /* ~25% reduction */
+    padding: calc(var(--spacing-md) * 0.64); /* keep relative padding scale */
   }
 
   .nav-button .nav-icon {
