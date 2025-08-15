@@ -245,7 +245,7 @@ export default function FMCSACompliance() {
 
             <div className="fc-panel fc-result">
               <h3>Your Result</h3>
-              <div className="result-callout">
+              <div className={`result-callout ${result.endorsements.length ? 'has-endorsements' : 'no-endorsements'}`}>
                 <div className="result-item">
                   <span className="result-label">CDL Class</span>
                   <span className="result-value">{result.cdlClass}</span>
