@@ -302,6 +302,8 @@
   right: 0;
   background: linear-gradient(90deg, var(--color-accent-red) 0%, var(--color-accent-yellow) 50%, var(--color-accent-blue) 100%);
   border-top: 2px solid rgba(255,255,255,0.25);
+  pointer-events: none; /* do not block clicks on nav above */
+  z-index: 1; /* keep below nav buttons (z-index:3) */
 }
 
 .header-ribbon .ribbon-viewport {
