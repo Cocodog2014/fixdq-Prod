@@ -6,7 +6,10 @@ const LS_KEY = 'eld.setup';
 const load = () => {
   try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { return {}; }
 };
-const save = (data) => localStorage.setItem(LS_KEY, JSON.stringify(data));
+const save = (data) => {
+  localStorage.setItem(LS_KEY, JSON.stringify(data));
+  try { window.dispatchEvent(new Event('eld:setup-updated')); } catch {}
+};
 
 function ELDSetup() {
   const [step, setStep] = useState(1);

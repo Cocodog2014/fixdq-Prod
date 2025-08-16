@@ -9,9 +9,10 @@
 .eld-modules .feature-footer { margin-top:auto; display:flex; justify-content:center; }
 
 /* Shared form styles */
-.card { background: rgba(255,255,255,0.95); border-radius: var(--radius-xl); padding: var(--spacing-lg); margin-top: var(--spacing-md); }
-label { display:flex; flex-direction:column; gap:6px; margin-bottom: 12px; font-size: var(--font-size-sm); }
-input, select { padding: 10px 12px; border:1px solid var(--color-gray-200); border-radius: var(--radius-lg); font-size: var(--font-size-base); }
+.card { background: rgba(255,255,255,0.97); border-radius: var(--radius-xl); padding: calc(var(--spacing-lg) * 0.7); margin-top: var(--spacing-md); }
+.card-title { text-align:center; margin-top:4px; margin-bottom: 10px; }
+label { display:flex; flex-direction:column; gap:4px; margin-bottom: 8px; font-size: calc(var(--font-size-sm) * 0.9); }
+input, select { padding: 8px 10px; border:1px solid var(--color-gray-200); border-radius: var(--radius-lg); font-size: calc(var(--font-size-base) * 0.9); }
 
 /* Status Pad */
 .status-row { display:flex; gap:12px; margin: 12px 0; }
@@ -36,3 +37,50 @@ input, select { padding: 10px 12px; border:1px solid var(--color-gray-200); bord
 .good { color:#065f46; }
 
 .preview { max-height: 300px; overflow:auto; background:#111; color:#0f0; padding:12px; border-radius: var(--radius-lg); }
+
+/* Improve blue-screen readability for ELD pages */
+.eld-setup .container h1,
+.eld-day-start .container h1,
+.eld-status .container h1 {
+	color:#fff;
+	text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+.eld-setup .container,
+.eld-day-start .container,
+.eld-status .container {
+	color:#eaf2ff;
+}
+
+/* Daily Start: reduce card width ~30% on desktop and center */
+@media (min-width: 1024px) {
+	.eld-day-start .card { max-width: 70%; margin-left:auto; margin-right:auto; }
+}
+
+/* Daily Start: make secondary action links readable on blue */
+.eld-day-start .actions { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
+/* Inside the white card, use dark text and outline style so they don't disappear */
+.eld-day-start .card .actions a.btn {
+	color:#1e293b !important; /* slate-800 */
+	background:#ffffff;
+	border:1px solid var(--color-gray-200);
+	border-radius: var(--radius-lg);
+}
+.eld-day-start .card .actions a.btn:hover { background:#f8fafc; }
+
+/* Force dark text inside white cards for readability */
+.eld-setup .card,
+.eld-day-start .card,
+.eld-status .card { color: #0f172a; }
+.eld-setup .card label,
+.eld-day-start .card label,
+.eld-status .card label { color: #0f172a; font-weight: 600; }
+.eld-setup .card input,
+.eld-day-start .card input,
+.eld-status .card input,
+.eld-setup .card select,
+.eld-day-start .card select,
+.eld-status .card select { color: #0f172a; }
+.eld-setup .card input::placeholder,
+.eld-day-start .card input::placeholder,
+.eld-status .card input::placeholder { color: #334155; }

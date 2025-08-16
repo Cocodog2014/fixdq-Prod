@@ -21,12 +21,17 @@ function ELDStatusPad() {
   const addStatus = (status) => {
     const e = { t: nowIso(), status, pc, ym };
     const next = { ...logs, [day]: [...entries, e] };
-    setLogs(next);
+  setLogs(next);
+  try { localStorage.setItem(LS_LOGS, JSON.stringify(next)); } catch {}
+  // Notify other views (device) instantly
+  window.dispatchEvent(new Event('eld:logs-updated'));
   };
 
   const certify = () => {
     const next = { ...logs, [`${day}:cert`]: true };
-    setLogs(next); setCertified(true);
+  setLogs(next); setCertified(true);
+  try { localStorage.setItem(LS_LOGS, JSON.stringify(next)); } catch {}
+  window.dispatchEvent(new Event('eld:logs-updated'));
   };
 
   const current = entries[entries.length-1];

@@ -183,6 +183,33 @@ function ELDDevice() {
     return () => clearInterval(id);
   }, []);
 
+  // Auto-sync with updates from other pages/tabs
+  useEffect(() => {
+    const refresh = () => {
+      setLogs(load(LS_LOGS, {}));
+      // refresh identity/top-bar data
+      setSetupState(load(LS_SETUP, {}));
+      setDayState(load(LS_DAY, {}));
+    };
+    const onStorage = (e) => {
+      // React to our key or to the custom event
+      if (!e || e.type === 'eld:logs-updated' || e.type === 'eld:setup-updated' || e.type === 'eld:day-updated' || e.key === LS_LOGS || e.key === LS_SETUP || e.key === LS_DAY) refresh();
+    };
+    window.addEventListener('storage', onStorage);
+    window.addEventListener('eld:logs-updated', onStorage);
+    window.addEventListener('eld:setup-updated', onStorage);
+    window.addEventListener('eld:day-updated', onStorage);
+    // Fallback safety poll (in case some browsers swallow events in SPA)
+    const poll = setInterval(refresh, 5000);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('eld:logs-updated', onStorage);
+      window.removeEventListener('eld:setup-updated', onStorage);
+      window.removeEventListener('eld:day-updated', onStorage);
+      clearInterval(poll);
+    };
+  }, []);
+
   useEffect(() => { drawGraph(canvasRef.current, entries, certified); }, [entries, tick, certified]);
   useEffect(() => { saveLogs(logs); }, [logs]);
 
@@ -197,6 +224,9 @@ function ELDDevice() {
     setLogs(next);
   };
 
+  // Top-bar identity state (live)
+  const [setupState, setSetupState] = useState(setup);
+  const [dayState, setDayState] = useState(dayStart);
   const timeStr = useMemo(() => new Date().toLocaleTimeString([], { hour: '2-digit', minute:'2-digit' }), [tick]);
 
   return (
@@ -212,11 +242,11 @@ function ELDDevice() {
               <div className="status-bar">
                 <div className="sb-left">
                   <div className="time">{timeStr}</div>
-                  <div className="driver">{setup.driverName || 'Driver'}</div>
+                  <div className="driver">{setupState.driverName || 'Driver'}</div>
                 </div>
                 <div className="sb-right">
-                  <div className="unit">Unit {dayStart.unit || '—'}</div>
-                  <div className="cycle">Cycle {setup.cycle || '60/7'}</div>
+                  <div className="unit">Unit {dayState.unit || '—'}{dayState.trailer ? ` · Trl ${dayState.trailer}` : ''}</div>
+                  <div className="cycle">Cycle {setupState.cycle || '60/7'}{dayState.bol ? ` · BOL ${dayState.bol}` : ''}</div>
                 </div>
               </div>
 
