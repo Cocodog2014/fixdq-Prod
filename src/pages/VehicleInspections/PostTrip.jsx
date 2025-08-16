@@ -46,7 +46,6 @@ export default function PostTrip() {
   const mustPrepareDVIR = defects.length > 0
 
   function exportJSON() { const kind = mustPrepareDVIR ? 'dvir' : 'posttrip_log'; const data = { kind, driver, unit, trailer, odometer, location, dt, signature, answers, carrierCert }; const fname = `${kind}_${unit || 'unit'}_${new Date().toISOString().slice(0, 10)}.json`; downloadJSON(fname, data) }
-  function importJSON(ev) { const file = ev.target.files?.[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { try { const data = JSON.parse(reader.result); setDriver(data.driver || ''); setUnit(data.unit || ''); setTrailer(data.trailer || ''); setOdometer(data.odometer || ''); setLocation(data.location || ''); setDt(data.dt || new Date().toISOString().slice(0, 16)); setSignature(data.signature || ''); setAnswers(data.answers || {}); setCarrierCert(data.carrierCert || { action: '', mechanic: '', date: '', remarks: '' }) } catch { alert('Could not read file.') } }; reader.readAsText(file) }
 
   return (
     <div className="vehicle-inspections-page">
@@ -69,7 +68,6 @@ export default function PostTrip() {
               <div className="btns">
                 <button className="btn" onClick={() => window.print()}>Print / Save PDF</button>
                 <button className="btn" onClick={exportJSON}>Export JSON</button>
-                <label className="btn" style={{ cursor: 'pointer' }}>Import JSON<input type="file" accept="application/json" style={{ display: 'none' }} onChange={importJSON} /></label>
               </div>
             </div>
 

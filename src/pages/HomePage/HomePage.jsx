@@ -46,8 +46,8 @@ function HomePage() {
               </div>
             </Link>
 
-            {/* US Citizenship for Truckers */}
-            <div className="feature-card red-border">
+            {/* US Citizenship for Truckers (link to same URL as header button) */}
+            <a href="https://citizenship360.org" className="feature-card red-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">🇺🇸</span>
                 <h3>US Citizenship for Truckers</h3>
@@ -59,7 +59,10 @@ function HomePage() {
                 <li>Rest Stop Study Sessions</li>
                 <li>Mobile-Friendly Practice Tests</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open US Citizenship</span>
+              </div>
+            </a>
 
             {/* Safety Training */}
             <div className="feature-card green-border">

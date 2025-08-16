@@ -3,7 +3,8 @@
 .vehicle-inspections-page {
   background: var(--bg-gradient-primary);
   min-height: 100vh;
-  color: var(--color-gray-900);
+  /* Canvas text should be light for contrast on blue gradient */
+  color: var(--color-white);
 }
 
 /* Keep header/hero text white; don't override via generic container color */
@@ -21,6 +22,8 @@
   padding: var(--spacing-xl);
   margin-top: var(--spacing-xl);
   border-left: 6px solid var(--color-primary-light);
+  /* Ensure readable dark text on white card */
+  color: var(--color-gray-800);
 }
 
 @media (min-width: 768px) {
@@ -103,7 +106,8 @@
 .vi-step-card {
   display: block;
   text-decoration: none;
-  color: inherit;
+  /* Force dark text on white card regardless of canvas color */
+  color: var(--color-gray-800);
   background: var(--color-white);
   border-radius: var(--radius-xl);
   padding: var(--spacing-lg);

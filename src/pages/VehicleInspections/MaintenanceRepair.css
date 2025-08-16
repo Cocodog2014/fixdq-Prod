@@ -1,0 +1,47 @@
+.mr-wrap{ color:var(--ink); }
+/* Action bar spacing and colored buttons */
+.mr-wrap .btns{ display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1rem; margin-bottom:.75rem; padding:.25rem 0; }
+/* Direct child buttons for stronger targeting */
+.mr-wrap .card .btns > button.btn{ border-radius:.65rem; padding:.6rem .95rem; font-weight:700; border:1px solid transparent; color:#111; margin:.15rem .35rem; box-shadow:0 1px 2px rgba(0,0,0,.08); -webkit-appearance:none; appearance:none; background-color:#e5e7eb; }
+/* Order-specific colors: 1=Print, 2=Add, 3=Export JSON, 4=Export CSV, 5=Reset */
+.mr-wrap .card .btns > button.btn:nth-of-type(1){ background-color:#1e40af !important; color:#fff !important; border-color:#3b82f6 !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(1):hover{ background-color:#1e3a8a !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(2){ background-color:#16a34a !important; color:#fff !important; border-color:#34d399 !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(2):hover{ background-color:#15803d !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(3){ background-color:#7c3aed !important; color:#fff !important; border-color:#a78bfa !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(3):hover{ background-color:#6d28d9 !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(4){ background-color:#d97706 !important; color:#fff !important; border-color:#fbbf24 !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(4):hover{ background-color:#b45309 !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(5){ background-color:#b91c1c !important; color:#fff !important; border-color:#ef4444 !important; }
+.mr-wrap .card .btns > button.btn:nth-of-type(5):hover{ background-color:#991b1b !important; }
+.mr-title{ font-size:1.4rem; font-weight:800; }
+.mr-sub{ color:var(--muted); margin-top:.25rem; }
+.mr-list{ margin-top:.9rem; display:flex; flex-direction:column; gap:.8rem; }
+.empty{ color:var(--muted); border:1px dashed var(--line); padding:1rem; border-radius:.75rem; }
+.mr-item .mr-head{ display:flex; align-items:center; justify-content:space-between; gap:.6rem; margin-bottom:.5rem; }
+.mr-left{ display:flex; gap:.5rem; flex-wrap:wrap; }
+.mr-date input{ padding:.4rem .5rem; border:1px solid var(--line); border-radius:.5rem; background:#0d1f40; color:var(--ink); }
+.mr-type select{ padding:.4rem .5rem; border:1px solid var(--line); border-radius:.5rem; background:#0d1f40; color:var(--ink); }
+.mr-odo input{ padding:.4rem .5rem; border:1px solid var(--line); border-radius:.5rem; background:#0d1f40; color:var(--ink); width:8rem; }
+.mr-right .btn{ background:#0d1f40; border:1px solid var(--line); color:var(--ink); padding:.45rem .7rem; border-radius:.6rem; }
+.mr-body .ctrl textarea, .mr-body .ctrl input{ background:#0d1f40; border:1px solid var(--line); color:var(--ink); }
+
+/* Summary badges reuse global badge styles if present */
+.summary{ display:flex; justify-content:space-between; gap:.6rem; flex-wrap:wrap; }
+.badge{ display:inline-block; padding:.2rem .6rem; border-radius:999px; font-weight:800; letter-spacing:.2px; font-size:.85rem; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--ink); }
+.badge.ok{ background: rgba(16,185,129,.18); color:#a7f3d0; border-color: rgba(16,185,129,.45); }
+.badge.warn{ background: rgba(245,158,11,.18); color:#fde68a; border-color: rgba(245,158,11,.45); }
+
+/* Print helpers: hide screen-only blocks, show print table */
+.mr-screen{ display:block; }
+.mr-print{ display:none; color:#000; }
+.mr-print-table{ width:100%; border-collapse:collapse; color:#000; }
+.mr-print-table th, .mr-print-table td{ border:1px solid #000; padding:6px; text-align:left; vertical-align:top; }
+.mr-print-table th{ background:#f1f5f9; }
+
+@media print{
+	body{ background:#fff !important; }
+	.vehicle-inspections-page .section-padding{ padding:0; }
+	.mr-screen, .vehicle-inspections-page .btn, .vehicle-inspections-page .card .btns{ display:none !important; }
+	.mr-print{ display:block; }
+}

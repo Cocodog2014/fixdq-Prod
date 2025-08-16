@@ -193,21 +193,6 @@ export default function PreTrip({ orgName = 'Company' }) {
     downloadJSON(fname, data)
   }
 
-  function importJSON(ev) {
-    const file = ev.target.files?.[0]; if (!file) return
-    const reader = new FileReader()
-    reader.onload = () => {
-      try {
-        const data = JSON.parse(reader.result)
-        if (data?.kind !== 'pretrip') { alert('Not a pre‑trip JSON file.'); return }
-        setDriver(data.driver || ''); setUnit(data.unit || ''); setTrailer(data.trailer || ''); setOdometer(data.odometer || '')
-        setLocation(data.location || ''); setDt(data.dt || new Date().toISOString().slice(0, 16)); setSignature(data.signature || '')
-        setAnswers(data.answers || {})
-      } catch { alert('Could not read file.') }
-    }
-    reader.readAsText(file)
-  }
-
   return (
     <div className="vehicle-inspections-page">
       <GlobalHeader />
@@ -232,10 +217,6 @@ export default function PreTrip({ orgName = 'Company' }) {
                 <button className="btn" onClick={collapseAll}>Collapse All</button>
                 <button className="btn" onClick={() => window.print()}>Print / Save PDF</button>
                 <button className="btn" onClick={exportJSON}>Export JSON</button>
-                <label className="btn" style={{ cursor: 'pointer' }}>
-                  Import JSON
-                  <input type="file" accept="application/json" style={{ display: 'none' }} onChange={importJSON} />
-                </label>
                 <button className="btn" onClick={reset}>Reset</button>
               </div>
             </div>

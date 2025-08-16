@@ -125,7 +125,6 @@ export default function DotRoadside({ orgName = 'Company' }) {
   function setNote(id, note) { setFlowState((prev) => ({ ...prev, [id]: { ...(prev[id] || {}), note } })) }
 
   function exportJSON() { const data = { orgName, driver, unit, vehicle, level, scenario, notes, state: flowState, when: new Date().toISOString() }; const fname = `inspection_flow_${level}_${scenario}_${unit || 'unit'}_${new Date().toISOString().slice(0, 10)}.json`; downloadJSON(fname, data) }
-  function importJSON(ev) { const file = ev.target.files?.[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { try { const d = JSON.parse(reader.result); setDriver(d.driver || ''); setUnit(d.unit || ''); setVehicle(d.vehicle || 'tt'); setLevel(d.level || 'I'); setScenario(d.scenario || 'general'); setNotes(d.notes || ''); setFlowState(d.state || {}) } catch { alert('Could not read file.') } }; reader.readAsText(file) }
   function reset() { localStorage.removeItem(LOCAL_KEY); window.location.reload() }
 
   return (
@@ -161,7 +160,6 @@ export default function DotRoadside({ orgName = 'Company' }) {
               <div className="btns">
                 <button className="btn" onClick={() => window.print()}>Print / Save PDF</button>
                 <button className="btn" onClick={exportJSON}>Export JSON</button>
-                <label className="btn" style={{ cursor: 'pointer' }}>Import JSON<input type="file" accept="application/json" style={{ display: 'none' }} onChange={importJSON} /></label>
                 <button className="btn" onClick={reset}>Reset</button>
               </div>
             </div>
