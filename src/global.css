@@ -23,6 +23,10 @@
 @import './pages/VehicleInspections/PreTrip.css';
 @import './pages/VehicleInspections/PostTrip.css';
 @import './pages/VehicleInspections/DotRoadside.css';
+@import './pages/VehicleInspections/MaintenanceRepair.css';
+@import './pages/RDS/RDS.css';
+@import './pages/ELDCoach/ELDCoach.css';
+@import './pages/ELDCoach/ELDDevice.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';
@@ -216,8 +220,7 @@ h6 { font-size: var(--font-size-xs); font-weight: 600; line-height: 1.4; }
   h2 { font-size: var(--font-size-3xl); }
   h3 { font-size: var(--font-size-2xl); }
 }
-/* Vehicle Inspections: Maintenance & Repair */
-@import url('./pages/VehicleInspections/MaintenanceRepair.css');
+/* Vehicle Inspections: Maintenance & Repair import moved to top with other imports */
 
 /* ================================
    RESPONSIVE GRID UTILITIES

@@ -16,6 +16,16 @@ import PostTrip from './pages/VehicleInspections/PostTrip'
 import DotRoadside from './pages/VehicleInspections/DotRoadside'
 import MaintenanceRepair from './pages/VehicleInspections/MaintenanceRepair'
 import EnglishProficiency from './pages/VehicleInspections/EnglishProficiency'
+import RDS from './pages/RDS/RDS'
+import ELDCoach from './pages/ELDCoach/ELDCoach'
+import ELDSetup from './pages/ELDCoach/ELDSetup'
+import ELDDayStart from './pages/ELDCoach/ELDDayStart'
+import ELDStatusPad from './pages/ELDCoach/ELDStatusPad'
+import ELDRiskPanel from './pages/ELDCoach/ELDRiskPanel'
+import ELDTransfer from './pages/ELDCoach/ELDTransfer'
+import ELDMalfunction from './pages/ELDCoach/ELDMalfunction'
+import ELDLessons from './pages/ELDCoach/ELDLessons'
+import ELDDevice from './pages/ELDCoach/ELDDevice'
 import About from './pages/About/About'
 import FAQ from './pages/FAQ/FAQ'
 import Consultation from './pages/Consultation/Consultation'
@@ -39,6 +49,17 @@ createRoot(document.getElementById('root')).render(
   <Route path="/vehicle-inspections/english-proficiency" element={<EnglishProficiency />} />
   <Route path="/vehicle-inspections/dvir" element={<PostTrip />} />
   <Route path="/vehicle-inspections/maintenance-repair" element={<MaintenanceRepair />} />
+  <Route path="/records-of-duty" element={<RDS />} />
+  <Route path="/rds" element={<RDS />} />
+  <Route path="/eld-coach" element={<ELDCoach />} />
+  <Route path="/eld-coach/setup" element={<ELDSetup />} />
+  <Route path="/eld-coach/day-start" element={<ELDDayStart />} />
+  <Route path="/eld-coach/status" element={<ELDStatusPad />} />
+  <Route path="/eld-coach/risk" element={<ELDRiskPanel />} />
+  <Route path="/eld-coach/transfer" element={<ELDTransfer />} />
+  <Route path="/eld-coach/malfunction" element={<ELDMalfunction />} />
+  <Route path="/eld-coach/lessons" element={<ELDLessons />} />
+  <Route path="/eld-coach/device" element={<ELDDevice />} />
   <Route path="/faq" element={<FAQ />} />
   <Route path="/about" element={<About />} />
   <Route path="/consultation" element={<Consultation />} />

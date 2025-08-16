@@ -1,0 +1,86 @@
+/* ELD & Logbook Coach */
+.eld-hero { padding: var(--spacing-xl) 0; color: var(--color-white); }
+.eld-hero .subtitle { opacity: 0.9; }
+.quick-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top: var(--spacing-md); }
+.quick-actions .btn { background: var(--color-accent-orange); color:#fff; border:none; border-radius: var(--radius-full); padding: 8px 14px; font-weight:600; }
+
+.eld-modules .module-card { background: rgba(255,255,255,0.95); border-radius: var(--radius-xl); padding: var(--spacing-lg); border-left: 4px solid; display:flex; flex-direction:column; }
+.eld-modules .feature-header { display:flex; align-items:center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); }
+.eld-modules .feature-footer { margin-top:auto; display:flex; justify-content:center; }
+
+/* Shared form styles */
+.card { background: rgba(255,255,255,0.97); border-radius: var(--radius-xl); padding: calc(var(--spacing-lg) * 0.7); margin-top: var(--spacing-md); }
+.card-title { text-align:center; margin-top:4px; margin-bottom: 10px; }
+label { display:flex; flex-direction:column; gap:4px; margin-bottom: 8px; font-size: calc(var(--font-size-sm) * 0.9); }
+input, select { padding: 8px 10px; border:1px solid var(--color-gray-200); border-radius: var(--radius-lg); font-size: calc(var(--font-size-base) * 0.9); }
+
+/* Status Pad */
+.status-row { display:flex; gap:12px; margin: 12px 0; }
+.toggle { padding: 6px 12px; border-radius: var(--radius-full); background:#fff3; color:#fff; border:1px solid #fff6; cursor:pointer; }
+.toggle.on { background: var(--color-accent-blue); color:#fff; border-color: transparent; }
+.pad { display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0; }
+.pad-btn { min-height:56px; border:none; border-radius: var(--radius-lg); font-weight:700; color:#fff; }
+.pad-btn.off { background:#64748b; }
+.pad-btn.sb { background:#0ea5e9; }
+.pad-btn.on { background:#10b981; }
+.pad-btn.drive { background:#ef4444; }
+.entry { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--color-gray-200); }
+.entry .badge { padding:2px 8px; border-radius: var(--radius-full); font-size: 12px; color:#fff; }
+.entry .badge.pc { background:#f59e0b; }
+.entry .badge.ym { background:#9333ea; }
+
+/* Risk Panel */
+.risk { padding:8px 12px; border-radius: var(--radius-lg); margin-bottom:8px; }
+.risk.red { background:#fee2e2; color:#991b1b; }
+.risk.amber { background:#fef3c7; color:#92400e; }
+.risk.green { background:#dcfce7; color:#065f46; }
+.good { color:#065f46; }
+
+.preview { max-height: 300px; overflow:auto; background:#111; color:#0f0; padding:12px; border-radius: var(--radius-lg); }
+
+/* Improve blue-screen readability for ELD pages */
+.eld-setup .container h1,
+.eld-day-start .container h1,
+.eld-status .container h1 {
+	color:#fff;
+	text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+.eld-setup .container,
+.eld-day-start .container,
+.eld-status .container {
+	color:#eaf2ff;
+}
+
+/* Daily Start: reduce card width ~30% on desktop and center */
+@media (min-width: 1024px) {
+	.eld-day-start .card { max-width: 70%; margin-left:auto; margin-right:auto; }
+}
+
+/* Daily Start: make secondary action links readable on blue */
+.eld-day-start .actions { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
+/* Inside the white card, use dark text and outline style so they don't disappear */
+.eld-day-start .card .actions a.btn {
+	color:#1e293b !important; /* slate-800 */
+	background:#ffffff;
+	border:1px solid var(--color-gray-200);
+	border-radius: var(--radius-lg);
+}
+.eld-day-start .card .actions a.btn:hover { background:#f8fafc; }
+
+/* Force dark text inside white cards for readability */
+.eld-setup .card,
+.eld-day-start .card,
+.eld-status .card { color: #0f172a; }
+.eld-setup .card label,
+.eld-day-start .card label,
+.eld-status .card label { color: #0f172a; font-weight: 600; }
+.eld-setup .card input,
+.eld-day-start .card input,
+.eld-status .card input,
+.eld-setup .card select,
+.eld-day-start .card select,
+.eld-status .card select { color: #0f172a; }
+.eld-setup .card input::placeholder,
+.eld-day-start .card input::placeholder,
+.eld-status .card input::placeholder { color: #334155; }
