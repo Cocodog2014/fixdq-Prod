@@ -29,9 +29,19 @@ const NOTES = [
   'State‑specific rules can vary; always verify with your DMV.',
 ]
 
-export default function CdlClassComparison({ title = 'CDL Class Comparison (A, B, C)', showNotes = true }) {
+export default function CdlClassComparison({ title = 'CDL Class Comparison (A, B, C)', showNotes = true, onClose }) {
   return (
     <section className="cdl-wrap" aria-label="CDL classes A, B, and C comparison">
+      {onClose && (
+        <button
+          type="button"
+          className="cdl-close"
+          aria-label="Close CDL Class Comparison"
+          onClick={onClose}
+        >
+          ✕
+        </button>
+      )}
       <header className="cdl-header">
         <span className="cdl-dot" aria-hidden></span>
         <div>
