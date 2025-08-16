@@ -9,7 +9,12 @@ const todayKey = () => new Date().toISOString().slice(0,10);
 const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch { return d; } };
 const saveLogs = (data) => localStorage.setItem(LS_LOGS, JSON.stringify(data));
 
-const STATUS_Y = { D: 45, ON: 95, SB: 145, OFF: 195 }; // y positions for graph lines
+// Lane order: top -> bottom
+const LANE_ORDER = ['SB', 'OFF', 'D', 'ON'];
+const STATUS_Y = LANE_ORDER.reduce((acc, st, i) => {
+  acc[st] = 45 + i * 50; // evenly spaced rows
+  return acc;
+}, {}); // y positions for graph lines
 const STATUS_COLOR = { D: '#22c55e', ON: '#f59e0b', SB: '#ef4444', OFF: '#64748b' };
 
 function minutesFromMidnight(iso) {
@@ -96,7 +101,7 @@ function drawGraph(canvas, entries, certified) {
   }
 
   // Horizontal lanes
-  ['D','ON','SB','OFF'].forEach((st) => {
+  LANE_ORDER.forEach((st) => {
     const y = STATUS_Y[st];
     ctx.strokeStyle = 'rgba(255,255,255,0.25)';
     ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
@@ -154,7 +159,8 @@ function drawGraph(canvas, entries, certified) {
   ctx.fillStyle = '#0b1229';
   ctx.font = 'bold 11px system-ui, -apple-system, Segoe UI, Roboto, Arial';
   ctx.textAlign = 'center';
-  [['OFF', STATUS_Y.OFF], ['SB', STATUS_Y.SB], ['D', STATUS_Y.D], ['ON', STATUS_Y.ON]].forEach(([st, y]) => {
+  LANE_ORDER.forEach((st) => {
+    const y = STATUS_Y[st];
     const t = fmtHM(totals[st] || 0);
     ctx.fillText(t, rightX + 28, y - 6);
   });
@@ -170,6 +176,7 @@ function ELDDevice() {
   const day = todayKey();
   const entries = logs[day] || [];
   const canvasRef = useRef(null);
+  const certified = !!logs[`${day}:cert`];
 
   useEffect(() => {
     const id = setInterval(() => setTick((t) => t + 1), 60000); // redraw each minute
@@ -190,7 +197,6 @@ function ELDDevice() {
     setLogs(next);
   };
 
-  const certified = !!logs[`${day}:cert`];
   const timeStr = useMemo(() => new Date().toLocaleTimeString([], { hour: '2-digit', minute:'2-digit' }), [tick]);
 
   return (
@@ -223,8 +229,8 @@ function ELDDevice() {
                 <div className="legend">
                   <div className="lg-item"><span className="lg swatch verified"></span>Verified</div>
                   <div className="lg-item"><span className="lg swatch unverified"></span>Unverified</div>
-                  <div className="lg-item"><span className="lg swatch edited"></span>Edited</div>
                   <div className="lg-item"><span className="lg swatch hatch"></span>PC / Yard Move</div>
+                  <div className="lg-item"><span className="lg swatch edited"></span>Edited</div>
                   <div className="lg-item"><span className="lg swatch violation"></span>Violation</div>
                 </div>
               </div>
