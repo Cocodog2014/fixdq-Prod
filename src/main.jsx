@@ -16,6 +16,7 @@ import PostTrip from './pages/VehicleInspections/PostTrip'
 import DotRoadside from './pages/VehicleInspections/DotRoadside'
 import MaintenanceRepair from './pages/VehicleInspections/MaintenanceRepair'
 import EnglishProficiency from './pages/VehicleInspections/EnglishProficiency'
+import RDS from './pages/RDS/RDS'
 import About from './pages/About/About'
 import FAQ from './pages/FAQ/FAQ'
 import Consultation from './pages/Consultation/Consultation'
@@ -39,6 +40,8 @@ createRoot(document.getElementById('root')).render(
   <Route path="/vehicle-inspections/english-proficiency" element={<EnglishProficiency />} />
   <Route path="/vehicle-inspections/dvir" element={<PostTrip />} />
   <Route path="/vehicle-inspections/maintenance-repair" element={<MaintenanceRepair />} />
+  <Route path="/records-of-duty" element={<RDS />} />
+  <Route path="/rds" element={<RDS />} />
   <Route path="/faq" element={<FAQ />} />
   <Route path="/about" element={<About />} />
   <Route path="/consultation" element={<Consultation />} />

@@ -28,6 +28,24 @@ function HomePage() {
               </div>
             </Link>
 
+            {/* Records of Duty Status (RDS) */}
+            <Link to="/records-of-duty" className="feature-card purple-border feature-link-card">
+              <div className="feature-header">
+                <span className="icon">🕒</span>
+                <h3>Records of Duty Status</h3>
+              </div>
+              <ul>
+                <li>ELD vs Paper: who must use which</li>
+                <li>Allowed and not allowed scenarios</li>
+                <li>Short-haul exceptions</li>
+                <li>ELD malfunction temporary paper rules</li>
+                <li>Pre-2000 vehicle exemptions</li>
+              </ul>
+              <div className="feature-footer">
+                <span className="card-cta">Open RDS Guide</span>
+              </div>
+            </Link>
+
             {/* Vehicle Inspections */}
             <Link to="/vehicle-inspections" className="feature-card blue-border feature-link-card">
               <div className="feature-header">

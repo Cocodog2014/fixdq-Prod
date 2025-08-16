@@ -1,0 +1,45 @@
+/* Records of Duty Status (RODS) */
+.rds-page .rds-hero {
+  padding: var(--spacing-xl) 0;
+  color: var(--color-white);
+}
+
+.rds-page .rds-hero h1 {
+  font-size: var(--font-size-2xl);
+}
+
+.rds-page .rds-hero .subtitle {
+  opacity: 0.9;
+}
+
+.rds-content .grid {
+  margin-top: var(--spacing-lg);
+}
+
+.rds-content .card {
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  border-left: 4px solid;
+}
+
+.rds-content h3 { color: var(--color-gray-800); }
+
+.rds-content ul { list-style: none; margin-top: var(--spacing-md); }
+.rds-content li { padding: var(--spacing-xs) 0; border-bottom: 1px solid var(--color-gray-200); color: var(--color-gray-700); }
+.rds-content li:last-child { border-bottom: none; }
+
+.rds-content .allowed li::before {
+  content: '✓ ';
+  color: var(--color-accent-green);
+  font-weight: 700;
+}
+
+.rds-content .not-allowed li::before {
+  content: '✗ ';
+  color: var(--color-accent-red);
+  font-weight: 700;
+}
+
+.rds-content .notes { margin-top: var(--spacing-lg); color: var(--color-white); }
+.rds-content .disclaimer { opacity: 0.9; font-size: var(--font-size-sm); }
