@@ -72,7 +72,7 @@ export default function CSA() {
         <h2>Related Links</h2>
         <ul className="csa-links">
           <li><Link to="/hours-of-service">Hours of Service (HOS)</Link></li>
-          <li><a href="/fmcsa-compliance#violations">Violations</a></li>
+          <li><Link to="/prevention-management">Violations</Link></li>
           <li><a href="https://csa.fmcsa.dot.gov" target="_blank" rel="noreferrer noopener">FMCSA: CSA</a></li>
         </ul>
         <p className="note">We keep it practical here — no deep dive into violation weights tables or insurance legalities.</p>
