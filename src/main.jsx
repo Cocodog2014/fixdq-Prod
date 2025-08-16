@@ -12,6 +12,7 @@ import PreventionManagement from './pages/FMCSACompliance/PreventionManagement'
 import FarmExemptionChecker from './pages/FarmExemptionChecker'
 import About from './pages/About/About'
 import FAQ from './pages/FAQ/FAQ'
+import Consultation from './pages/Consultation/Consultation'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')).render(
   <Route path="/farm-exemption-checker" element={<FarmExemptionChecker />} />
   <Route path="/faq" element={<FAQ />} />
   <Route path="/about" element={<About />} />
+  <Route path="/consultation" element={<Consultation />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

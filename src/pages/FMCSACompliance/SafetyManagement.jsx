@@ -104,8 +104,8 @@ export default function SafetyManagement() {
         <h2>Related Links</h2>
         <ul className="smc-links">
           <li><Link to="/hours-of-service">Hours of Service (HOS)</Link></li>
-          <li><a href="/fmcsa-compliance#violations">Violations</a></li>
-          <li><a href="/fmcsa-compliance#csa">CSA</a></li>
+          <li><Link to="/prevention-management">Violations</Link></li>
+          <li><Link to="/csa">CSA</Link></li>
         </ul>
         <p className="note">We intentionally do not duplicate violation weights or insurance topics here.</p>
       </section>
