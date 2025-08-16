@@ -90,6 +90,24 @@ function HomePage() {
                 <li>Record Maintenance</li>
               </ul>
             </div>
+
+            {/* English Proficiency */}
+            <Link to="/vehicle-inspections/english-proficiency" className="feature-card red-border feature-link-card">
+              <div className="feature-header">
+                <span className="icon">🗣️</span>
+                <h3>English Proficiency</h3>
+              </div>
+              <ul>
+                <li>Roadside interview practice</li>
+                <li>Common safety phrases & questions</li>
+                <li>Reading signs and paperwork</li>
+                <li>ELD notes & clear communication</li>
+                <li>Study flashcards (coming soon)</li>
+              </ul>
+              <div className="feature-footer">
+                <span className="card-cta">Study English</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
