@@ -5,6 +5,7 @@ import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
 import StateRules from './StateRules'
 import WeightCalculator from './WeightCalculator'
+import ComplianceQuiz from './ComplianceQuiz'
 
 function StepSelect({ label, options, value, onChange }) {
   return (
@@ -113,6 +114,7 @@ export default function FMCSACompliance() {
   const [showCdlChart, setShowCdlChart] = useState(false)
   const [showStateRules, setShowStateRules] = useState(false)
   const [showWeightCalc, setShowWeightCalc] = useState(false)
+  const [showQuiz, setShowQuiz] = useState(false)
 
   const result = useMemo(
     () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
@@ -138,6 +140,12 @@ export default function FMCSACompliance() {
       setShowWeightCalc(true)
       setTimeout(() => {
         document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 0)
+    }
+    if (typeof window !== 'undefined' && window.location?.hash === '#compliance-quiz') {
+      setShowQuiz(true)
+      setTimeout(() => {
+        document.getElementById('compliance-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 0)
     }
   }, [])
@@ -463,6 +471,20 @@ export default function FMCSACompliance() {
           <ul className="quick-list">
             <li>
               <a
+                href="#compliance-quiz"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowQuiz(true)
+                  setTimeout(() => {
+                    document.getElementById('compliance-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                Take the Compliance Quiz
+              </a>
+            </li>
+            <li>
+              <a
                 href="#cdl-chart"
                 onClick={(e) => {
                   e.preventDefault()
@@ -520,6 +542,23 @@ export default function FMCSACompliance() {
         </div>
       </section>
 
+      {/* Compliance Quiz (show on click) */}
+      <section className="fmcsa-tools" id="compliance-quiz" style={{ display: showQuiz ? 'block' : 'none' }}>
+        <div className="container">
+          <ComplianceQuiz
+            companyName="FixDQ"
+            includeHazmat={true}
+            onClose={() => {
+              setShowQuiz(false)
+              if (typeof window !== 'undefined') {
+                const { pathname, search } = window.location
+                window.history.replaceState(null, '', pathname + search)
+              }
+            }}
+          />
+        </div>
+      </section>
+
       {/* Weight Calculator (show on click) */}
       <section className="fmcsa-tools" id="weight-calculator" style={{ display: showWeightCalc ? 'block' : 'none' }}>
         <div className="container">
@@ -550,15 +589,61 @@ export default function FMCSACompliance() {
       <section className="fmcsa-cta">
         <div className="container">
           <div className="cta-grid">
-            <div className="cta-card">
+            <div
+              className="cta-card"
+              role="link"
+              tabIndex={0}
+              aria-label="Open the Compliance Quiz"
+              onClick={() => {
+                setShowQuiz(true)
+                setTimeout(() => {
+                  document.getElementById('compliance-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }, 0)
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setShowQuiz(true)
+                  setTimeout(() => {
+                    document.getElementById('compliance-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }
+              }}
+            >
               <h3>Take the Compliance Quiz</h3>
               <p>Check your understanding and find gaps to study.</p>
-              <button type="button" className="cta-btn" disabled>Coming Soon</button>
+              <a
+                className="cta-btn"
+                href="#compliance-quiz"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setShowQuiz(true)
+                  setTimeout(() => {
+                    document.getElementById('compliance-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                Start Quiz
+              </a>
             </div>
-            <div className="cta-card">
+            <div
+              className="cta-card"
+              role="link"
+              tabIndex={0}
+              aria-label="Book a Compliance Consultation"
+              onClick={() => navigate('/consultation')}
+              onKeyDown={(e) => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); navigate('/consultation') } }}
+            >
               <h3>Book a Compliance Consultation</h3>
               <p>Get personalized guidance for your fleet or career.</p>
-              <button type="button" className="cta-btn" disabled>Coming Soon</button>
+              <a
+                className="cta-btn"
+                href="/consultation"
+                onClick={(e)=>{ e.preventDefault(); e.stopPropagation(); navigate('/consultation') }}
+              >
+                Book Now
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,57 @@
+/* Book a Compliance Consultation page */
+.consult-hero { background: radial-gradient(60% 120% at 20% 0%, #1e3a8a 0%, #1f2937 100%); color: #fff; padding: 60px 0; }
+.consult-hero .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+.consult-hero h1 { margin: 0 0 8px; font-size: 2.2rem; }
+.consult-hero p { margin: 0; opacity: .9; }
+
+.consult-content { max-width: 1000px; margin: -30px auto 40px; padding: 0 16px; }
+
+/* Blue canvas wrapper */
+.consult-canvas { background: linear-gradient(180deg,#0b3b8a 0%, #0a2d66 100%); padding: 30px 0; }
+.consult-canvas .consult-content { margin: 0 auto; }
+
+.pitch-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+@media (max-width: 900px) { .pitch-grid { grid-template-columns: 1fr; } }
+
+.pitch { background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.08); padding: 18px; }
+.pitch h2 { margin: 6px 0 10px; font-size: 1.54rem; }
+.pitch p { color: #334155; }
+.pitch { font-size: 1.1rem; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 2px; }
+.badge { padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: .85rem; }
+.badge.blue { background: #dbeafe; color: #1e40af; }
+.badge.green { background: #dcfce7; color: #166534; }
+.badge.purple { background: #ede9fe; color: #5b21b6; }
+.badge.rose { background: #ffe4e6; color: #9f1239; }
+
+.team { background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.08); padding: 18px; }
+.team h3 { margin: 6px 0 10px; font-size: 1.32rem; }
+.team-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 700px) { .team-list { grid-template-columns: 1fr; } }
+.team-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; }
+.team-card strong { color: #0f172a; }
+.team-card p { margin: 4px 0 0; color: #475569; font-size: 1.05rem; }
+
+.value { background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.08); padding: 18px; }
+.value h3 { margin: 6px 0 10px; font-size: 1.21rem; }
+.value ul { margin: 0; padding-left: 18px; }
+.value li { margin: 6px 0; color: #0f172a; font-size: 1.1rem; }
+.value { font-size: 1.1rem; }
+
+.booking { background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.08); padding: 18px; }
+.booking h3 { margin: 6px 0 10px; }
+.booking .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.booking input, .booking select, .booking textarea { width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 10px; }
+.booking textarea { min-height: 90px; }
+.booking .actions { display: flex; gap: 10px; margin-top: 10px; }
+.booking .btn { background: #2563eb; color: #fff; padding: 10px 14px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.booking .btn.secondary { background: #f3f4f6; color: #111; }
+
+.fine { color: #475569; font-size: .9rem; margin-top: 8px; }
+
+/* Light color variants */
+.card-rose { background: #fff1f2; border: 1px solid #fecdd3; }
+.card-amber { background: #fff7ed; border: 1px solid #fed7aa; }
+.card-sky { background: #f0f9ff; border: 1px solid #bae6fd; }
+.card-green { background: #ecfdf5; border: 1px solid #a7f3d0; }
