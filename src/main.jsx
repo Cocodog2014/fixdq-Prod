@@ -25,6 +25,7 @@ import ELDRiskPanel from './pages/ELDCoach/ELDRiskPanel'
 import ELDTransfer from './pages/ELDCoach/ELDTransfer'
 import ELDMalfunction from './pages/ELDCoach/ELDMalfunction'
 import ELDLessons from './pages/ELDCoach/ELDLessons'
+import ELDDevice from './pages/ELDCoach/ELDDevice'
 import About from './pages/About/About'
 import FAQ from './pages/FAQ/FAQ'
 import Consultation from './pages/Consultation/Consultation'
@@ -58,6 +59,7 @@ createRoot(document.getElementById('root')).render(
   <Route path="/eld-coach/transfer" element={<ELDTransfer />} />
   <Route path="/eld-coach/malfunction" element={<ELDMalfunction />} />
   <Route path="/eld-coach/lessons" element={<ELDLessons />} />
+  <Route path="/eld-coach/device" element={<ELDDevice />} />
   <Route path="/faq" element={<FAQ />} />
   <Route path="/about" element={<About />} />
   <Route path="/consultation" element={<Consultation />} />

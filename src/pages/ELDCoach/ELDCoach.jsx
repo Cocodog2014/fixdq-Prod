@@ -12,6 +12,7 @@ function ELDCoach() {
           <p className="subtitle">Mobile-first practice and coaching to avoid false logs and pass roadside</p>
 
           <div className="quick-actions">
+            <Link className="btn" to="/eld-coach/device">Open Device</Link>
             <Link className="btn" to="/eld-coach/setup">Setup Wizard</Link>
             <Link className="btn" to="/eld-coach/day-start">Daily Start</Link>
             <Link className="btn" to="/eld-coach/status">Duty Controller</Link>

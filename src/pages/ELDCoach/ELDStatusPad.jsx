@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GlobalHeader from '../../components/GlobalHeader';
 
 const LS_LOGS = 'eld.logs';
@@ -39,6 +40,9 @@ function ELDStatusPad() {
       <GlobalHeader />
       <section className="container">
         <h1>Duty Controller</h1>
+        <div className="back-link" style={{ marginBottom: 8 }}>
+          <Link to="/eld-coach" className="btn btn-primary">← Back to ELD Coach</Link>
+        </div>
         <div className="status-row">
           <div className={`toggle ${pc?'on':''}`} onClick={() => setPc(!pc)}>PC</div>
           <div className={`toggle ${ym?'on':''}`} onClick={() => setYm(!ym)}>YM</div>
@@ -66,6 +70,9 @@ function ELDStatusPad() {
         <div className="actions">
           <button className="btn" onClick={certify} disabled={certified}>{certified?'Certified':'Certify Day'}</button>
           <button className="btn" onClick={() => { localStorage.removeItem(LS_LOGS); setLogs({}); setCertified(false); }}>Reset Logs</button>
+        </div>
+        <div className="back-link" style={{ marginTop: 12 }}>
+          <Link to="/eld-coach" className="btn btn-primary">← Back to ELD Coach</Link>
         </div>
       </section>
     </div>
