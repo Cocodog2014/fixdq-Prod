@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import GlobalHeader from '../../components/GlobalHeader'
-import './FAQ.css'
 
 function Category({ idx, item, isOpen, onToggle }) {
   const [openQuestions, setOpenQuestions] = useState({})

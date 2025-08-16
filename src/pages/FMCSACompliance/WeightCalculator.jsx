@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import './WeightCalculator.css'
 
 // Federal baseline limits (informational; verify with posted limits/permits)
 const FEDERAL_LIMITS = {

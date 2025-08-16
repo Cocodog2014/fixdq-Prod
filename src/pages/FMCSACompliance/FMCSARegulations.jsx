@@ -1,7 +1,6 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
-import './FMCSARegulations.css'
 
 export default function FMCSARegulations() {
   const title = 'Federal Motor Carrier Safety Regulations'

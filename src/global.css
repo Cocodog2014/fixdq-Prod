@@ -10,7 +10,15 @@
 @import './pages/FMCSACompliance/SafetyManagement.css';
 @import './pages/FMCSACompliance/CSA.css';
 @import './pages/FMCSACompliance/PreventionManagement.css';
+@import './pages/FMCSACompliance/FMCSARegulations.css';
+@import './pages/FMCSACompliance/HoursOfService.css';
+@import './pages/FMCSACompliance/StateRules.css';
+@import './pages/FMCSACompliance/CdlClassComparison.css';
+@import './pages/FMCSACompliance/WeightCalculator.css';
+@import './pages/FMCSACompliance/ComplianceQuiz.css';
 @import './pages/About/About.css';
+@import './pages/FAQ/FAQ.css';
+@import './pages/Consultation/Consultation.css';
 @import './pages/VehicleInspections/VehicleInspections.css';
 /* Add future page imports here:
    @import './AboutPage.css';
