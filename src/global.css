@@ -20,6 +20,8 @@
 @import './pages/FAQ/FAQ.css';
 @import './pages/Consultation/Consultation.css';
 @import './pages/VehicleInspections/VehicleInspections.css';
+@import './pages/VehicleInspections/PreTrip.css';
+@import './pages/VehicleInspections/PostTrip.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';
