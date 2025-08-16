@@ -293,46 +293,116 @@ export default function FMCSACompliance() {
           <h2>Learn the Essentials</h2>
           <div className="cards-grid">
             <FMCSARegulations />
-      {/* Hours of Service dedicated card */}
-      <div className="fmcsa-reg-card" role="link" tabIndex={0} onClick={() => (window.location.href = '/hours-of-service')}>
+            {/* Hours of Service dedicated card */}
+            <div
+              className="fmcsa-reg-card"
+              role="link"
+              tabIndex={0}
+              aria-label={`Hours of Service (HOS) Rules - Limits, examples, and calculators for common scenarios.`}
+              onClick={() => navigate('/hours-of-service')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  navigate('/hours-of-service')
+                }
+              }}
+            >
               <div className="fmcsa-reg-body">
                 <h3 className="fmcsa-reg-title">Hours of Service (HOS) Rules</h3>
                 <p className="fmcsa-reg-desc">Limits, examples, and calculators for common scenarios.</p>
               </div>
               <div className="fmcsa-reg-footer">
-        <a className="fmcsa-reg-btn" href="/hours-of-service" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/hours-of-service' }}>Explore</a>
+                <a
+                  className="fmcsa-reg-btn"
+                  href="/hours-of-service"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    navigate('/hours-of-service')
+                  }}
+                >
+                  Explore
+                </a>
               </div>
             </div>
 
-      <div className="fmcsa-reg-card" role="link" tabIndex={0} onClick={() => (window.location.href = '/safety-management')}>
+            {/* Safety Management Cycles */}
+            <div
+              className="fmcsa-reg-card"
+              role="link"
+              tabIndex={0}
+              aria-label={`Safety Management Cycles - Methods to track and maintain compliance over time.`}
+              onClick={() => navigate('/safety-management')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  navigate('/safety-management')
+                }
+              }}
+            >
               <div className="fmcsa-reg-body">
                 <h3 className="fmcsa-reg-title">Safety Management Cycles</h3>
                 <p className="fmcsa-reg-desc">Methods to track and maintain compliance over time.</p>
               </div>
               <div className="fmcsa-reg-footer">
-        <a className="fmcsa-reg-btn" href="/safety-management" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/safety-management' }}>Explore</a>
+                <a
+                  className="fmcsa-reg-btn"
+                  href="/safety-management"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    navigate('/safety-management')
+                  }}
+                >
+                  Explore
+                </a>
               </div>
             </div>
 
-  <div className="fmcsa-reg-card csa-highlight" role="link" tabIndex={0} onClick={() => (window.location.href = '/csa')}>
+            {/* CSA */}
+            <div
+              className="fmcsa-reg-card csa-highlight"
+              role="link"
+              tabIndex={0}
+              aria-label={`CSA (Compliance, Safety, Accountability) - Driver scores, inspections, and how to improve.`}
+              onClick={() => navigate('/csa')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  navigate('/csa')
+                }
+              }}
+            >
               <div className="fmcsa-reg-body">
                 <h3 className="fmcsa-reg-title">CSA (Compliance, Safety, Accountability)</h3>
                 <p className="fmcsa-reg-desc">Driver scores, inspections, and how to improve.</p>
               </div>
               <div className="fmcsa-reg-footer">
-                <a className="fmcsa-reg-btn fmcsa-reg-btn--red" href="/csa" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/csa' }}>Explore</a>
+                <a
+                  className="fmcsa-reg-btn fmcsa-reg-btn--red"
+                  href="/csa"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    navigate('/csa')
+                  }}
+                >
+                  Explore
+                </a>
               </div>
             </div>
 
+            {/* Violation Prevention & Management */}
             <div
               className="fmcsa-reg-card"
               role="link"
               tabIndex={0}
-              onClick={() => (window.location.href = '/prevention-management')}
+              aria-label={`Violation Prevention & Management - Avoiding, documenting, and contesting violations.`}
+              onClick={() => navigate('/prevention-management')}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault()
-                  window.location.href = '/prevention-management'
+                  navigate('/prevention-management')
                 }
               }}
             >
@@ -341,7 +411,17 @@ export default function FMCSACompliance() {
                 <p className="fmcsa-reg-desc">Avoiding, documenting, and contesting violations.</p>
               </div>
               <div className="fmcsa-reg-footer">
-                <a className="fmcsa-reg-btn" href="/prevention-management" onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = '/prevention-management' }}>Explore</a>
+                <a
+                  className="fmcsa-reg-btn"
+                  href="/prevention-management"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    navigate('/prevention-management')
+                  }}
+                >
+                  Explore
+                </a>
               </div>
             </div>
           </div>
