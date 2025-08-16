@@ -1,5 +1,4 @@
 import React, { useMemo, useState, useEffect } from 'react'
-import './StateRules.css'
 
 const STATES = [
   { abbr: 'AL', name: 'Alabama' }, { abbr: 'AK', name: 'Alaska' }, { abbr: 'AZ', name: 'Arizona' }, { abbr: 'AR', name: 'Arkansas' },

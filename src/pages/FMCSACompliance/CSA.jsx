@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
-import './CSA.css'
 
 export default function CSA() {
   const navigate = useNavigate()

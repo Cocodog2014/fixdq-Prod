@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
-import './SafetyManagement.css'
 
 export default function SafetyManagement() {
   const navigate = useNavigate()

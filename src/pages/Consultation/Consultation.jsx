@@ -1,6 +1,4 @@
 import React from 'react'
-import '../FMCSACompliance/FMCSACompliance.css'
-import './Consultation.css'
 import GlobalHeader from '../../components/GlobalHeader'
 
 export default function Consultation() {

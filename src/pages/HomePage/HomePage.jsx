@@ -29,9 +29,9 @@ function HomePage() {
             </Link>
 
             {/* Vehicle Inspections */}
-            <div className="feature-card blue-border">
+            <Link to="/vehicle-inspections" className="feature-card blue-border feature-link-card">
               <div className="feature-header">
-                <span className="icon">�</span>
+                <span className="icon">❓</span>
                 <h3>Vehicle Inspections</h3>
               </div>
               <ul>
@@ -41,10 +41,13 @@ function HomePage() {
                 <li>Driver Vehicle Inspection Report (DVIR)</li>
                 <li>Maintenance & Repair Documentation</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open Vehicle Inspections</span>
+              </div>
+            </Link>
 
-            {/* US Citizenship for Truckers */}
-            <div className="feature-card red-border">
+            {/* US Citizenship for Truckers (link to same URL as header button) */}
+            <a href="https://citizenship360.org" className="feature-card red-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">🇺🇸</span>
                 <h3>US Citizenship for Truckers</h3>
@@ -56,7 +59,10 @@ function HomePage() {
                 <li>Rest Stop Study Sessions</li>
                 <li>Mobile-Friendly Practice Tests</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open US Citizenship</span>
+              </div>
+            </a>
 
             {/* Safety Training */}
             <div className="feature-card green-border">
@@ -87,6 +93,24 @@ function HomePage() {
                 <li>Record Maintenance</li>
               </ul>
             </div>
+
+            {/* English Proficiency */}
+            <Link to="/vehicle-inspections/english-proficiency" className="feature-card red-border feature-link-card">
+              <div className="feature-header">
+                <span className="icon">🗣️</span>
+                <h3>English Proficiency</h3>
+              </div>
+              <ul>
+                <li>Roadside interview practice</li>
+                <li>Common safety phrases & questions</li>
+                <li>Reading signs and paperwork</li>
+                <li>ELD notes & clear communication</li>
+                <li>Study flashcards (coming soon)</li>
+              </ul>
+              <div className="feature-footer">
+                <span className="card-cta">Study English</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

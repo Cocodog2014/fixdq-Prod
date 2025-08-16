@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import './ComplianceQuiz.css'
 
 // BASIC tags
 const BASIC = {

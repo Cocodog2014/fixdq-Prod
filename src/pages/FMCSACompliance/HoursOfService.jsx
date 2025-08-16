@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
-import './HoursOfService.css'
 
 export default function HoursOfService() {
   const navigate = useNavigate()

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
-import './PreventionManagement.css'
 
 export default function PreventionManagement() {
   const navigate = useNavigate()
