@@ -1,15 +1,7 @@
-import GlobalHeader from '../../components/GlobalHeader'
+import React from 'react'
+import PostTrip from './PostTrip'
 
+// Render only the DVIR tool (Post‑Trip) when visiting /vehicle-inspections/dvir
 export default function DVIR() {
-  return (
-    <div className="vehicle-inspections-page">
-      <GlobalHeader />
-      <section className="section-padding">
-        <div className="container">
-          <h1>Driver Vehicle Inspection Report (DVIR)</h1>
-          <p>Content coming soon.</p>
-        </div>
-      </section>
-    </div>
-  )
+  return <PostTrip />
 }
