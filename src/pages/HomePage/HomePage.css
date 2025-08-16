@@ -80,6 +80,8 @@
 
 .features-grid .grid {
   margin-top: var(--spacing-lg);
+  /* Ensure cards in each row share height so footers align */
+  align-items: stretch;
 }
 
 .feature-card {
@@ -90,6 +92,9 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   margin-bottom: var(--spacing-md);
+  /* Make inner layout vertical so footer can stick to bottom */
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card:hover {
@@ -148,15 +153,19 @@
 
 /* Make link cards behave like blocks without underline */
 .feature-link-card {
-  display: block;
+  /* Keep link cards as flex containers to support footer alignment */
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
 }
 
 .feature-footer {
-  margin-top: var(--spacing-md);
+  /* Push footer to the bottom for consistent alignment */
+  margin-top: auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-cta {
