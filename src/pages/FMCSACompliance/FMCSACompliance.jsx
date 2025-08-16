@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
+import StateRules from './StateRules'
 
 function StepSelect({ label, options, value, onChange }) {
   return (
@@ -109,6 +110,7 @@ export default function FMCSACompliance() {
   const [farmExemption, setFarmExemption] = useState('no')
   const [schoolBus, setSchoolBus] = useState('no')
   const [showCdlChart, setShowCdlChart] = useState(false)
+  const [showStateRules, setShowStateRules] = useState(false)
 
   const result = useMemo(
     () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
@@ -122,6 +124,12 @@ export default function FMCSACompliance() {
       setShowCdlChart(true)
       setTimeout(() => {
         document.getElementById('cdl-chart')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 0)
+    }
+    if (typeof window !== 'undefined' && window.location?.hash === '#state-rules') {
+      setShowStateRules(true)
+      setTimeout(() => {
+        document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 0)
     }
   }, [])
@@ -460,7 +468,20 @@ export default function FMCSACompliance() {
               </a>
             </li>
             <li><a href="#weight-endorsement">Weight & Endorsement Guide</a></li>
-            <li><a href="#state-rules">State-by-State FMCSA Rules</a></li>
+            <li>
+              <a
+                href="#state-rules"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowStateRules(true)
+                  setTimeout(() => {
+                    document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                State-by-State FMCSA Rules
+              </a>
+            </li>
             <li><a href="#printable-checklist">Printable Pre-trip Checklist</a></li>
           </ul>
           <div id="cdl-chart" style={{ marginTop: '1rem', display: showCdlChart ? 'block' : 'none' }}>
@@ -475,6 +496,19 @@ export default function FMCSACompliance() {
               }}
             />
           </div>
+        </div>
+      </section>
+
+      {/* State-by-State Rules (show on click) */}
+      <section className="fmcsa-tools" id="state-rules" style={{ display: showStateRules ? 'block' : 'none' }}>
+        <div className="container">
+          <StateRules onClose={() => {
+            setShowStateRules(false)
+            if (typeof window !== 'undefined') {
+              const { pathname, search } = window.location
+              window.history.replaceState(null, '', pathname + search)
+            }
+          }} />
         </div>
       </section>
 
