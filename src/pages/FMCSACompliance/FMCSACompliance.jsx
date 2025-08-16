@@ -4,6 +4,7 @@ import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
 import StateRules from './StateRules'
+import WeightCalculator from './WeightCalculator'
 
 function StepSelect({ label, options, value, onChange }) {
   return (
@@ -111,6 +112,7 @@ export default function FMCSACompliance() {
   const [schoolBus, setSchoolBus] = useState('no')
   const [showCdlChart, setShowCdlChart] = useState(false)
   const [showStateRules, setShowStateRules] = useState(false)
+  const [showWeightCalc, setShowWeightCalc] = useState(false)
 
   const result = useMemo(
     () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
@@ -130,6 +132,12 @@ export default function FMCSACompliance() {
       setShowStateRules(true)
       setTimeout(() => {
         document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 0)
+    }
+    if (typeof window !== 'undefined' && window.location?.hash === '#weight-calculator') {
+      setShowWeightCalc(true)
+      setTimeout(() => {
+        document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 0)
     }
   }, [])
@@ -467,7 +475,20 @@ export default function FMCSACompliance() {
                 CDL Class Comparison Chart (A, B, C)
               </a>
             </li>
-            <li><a href="#weight-endorsement">Weight & Endorsement Guide</a></li>
+            <li>
+              <a
+                href="#weight-calculator"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowWeightCalc(true)
+                  setTimeout(() => {
+                    document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                Weight & Endorsement Guide
+              </a>
+            </li>
             <li>
               <a
                 href="#state-rules"
@@ -496,6 +517,19 @@ export default function FMCSACompliance() {
               }}
             />
           </div>
+        </div>
+      </section>
+
+      {/* Weight Calculator (show on click) */}
+      <section className="fmcsa-tools" id="weight-calculator" style={{ display: showWeightCalc ? 'block' : 'none' }}>
+        <div className="container">
+          <WeightCalculator onClose={() => {
+            setShowWeightCalc(false)
+            if (typeof window !== 'undefined') {
+              const { pathname, search } = window.location
+              window.history.replaceState(null, '', pathname + search)
+            }
+          }} />
         </div>
       </section>
 
