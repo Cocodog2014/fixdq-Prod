@@ -28,6 +28,24 @@ function HomePage() {
               </div>
             </Link>
 
+            {/* ELD & Logbook Coach */}
+            <Link to="/eld-coach" className="feature-card orange-border feature-link-card">
+              <div className="feature-header">
+                <span className="icon">📟</span>
+                <h3>ELD & Logbook Coach</h3>
+              </div>
+              <ul>
+                <li>Setup Wizard & Daily Start</li>
+                <li>Duty Controller with PC/YM</li>
+                <li>Risk Scanner (false logs)</li>
+                <li>Transfer & Roadside drill</li>
+                <li>Malfunction steps & paper logs</li>
+              </ul>
+              <div className="feature-footer">
+                <span className="card-cta">Open ELD Coach</span>
+              </div>
+            </Link>
+
             {/* Records of Duty Status (RDS) */}
             <Link to="/records-of-duty" className="feature-card purple-border feature-link-card">
               <div className="feature-header">

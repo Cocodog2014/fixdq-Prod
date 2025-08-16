@@ -1,0 +1,38 @@
+/* ELD & Logbook Coach */
+.eld-hero { padding: var(--spacing-xl) 0; color: var(--color-white); }
+.eld-hero .subtitle { opacity: 0.9; }
+.quick-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top: var(--spacing-md); }
+.quick-actions .btn { background: var(--color-accent-orange); color:#fff; border:none; border-radius: var(--radius-full); padding: 8px 14px; font-weight:600; }
+
+.eld-modules .module-card { background: rgba(255,255,255,0.95); border-radius: var(--radius-xl); padding: var(--spacing-lg); border-left: 4px solid; display:flex; flex-direction:column; }
+.eld-modules .feature-header { display:flex; align-items:center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); }
+.eld-modules .feature-footer { margin-top:auto; display:flex; justify-content:center; }
+
+/* Shared form styles */
+.card { background: rgba(255,255,255,0.95); border-radius: var(--radius-xl); padding: var(--spacing-lg); margin-top: var(--spacing-md); }
+label { display:flex; flex-direction:column; gap:6px; margin-bottom: 12px; font-size: var(--font-size-sm); }
+input, select { padding: 10px 12px; border:1px solid var(--color-gray-200); border-radius: var(--radius-lg); font-size: var(--font-size-base); }
+
+/* Status Pad */
+.status-row { display:flex; gap:12px; margin: 12px 0; }
+.toggle { padding: 6px 12px; border-radius: var(--radius-full); background:#fff3; color:#fff; border:1px solid #fff6; cursor:pointer; }
+.toggle.on { background: var(--color-accent-blue); color:#fff; border-color: transparent; }
+.pad { display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0; }
+.pad-btn { min-height:56px; border:none; border-radius: var(--radius-lg); font-weight:700; color:#fff; }
+.pad-btn.off { background:#64748b; }
+.pad-btn.sb { background:#0ea5e9; }
+.pad-btn.on { background:#10b981; }
+.pad-btn.drive { background:#ef4444; }
+.entry { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--color-gray-200); }
+.entry .badge { padding:2px 8px; border-radius: var(--radius-full); font-size: 12px; color:#fff; }
+.entry .badge.pc { background:#f59e0b; }
+.entry .badge.ym { background:#9333ea; }
+
+/* Risk Panel */
+.risk { padding:8px 12px; border-radius: var(--radius-lg); margin-bottom:8px; }
+.risk.red { background:#fee2e2; color:#991b1b; }
+.risk.amber { background:#fef3c7; color:#92400e; }
+.risk.green { background:#dcfce7; color:#065f46; }
+.good { color:#065f46; }
+
+.preview { max-height: 300px; overflow:auto; background:#111; color:#0f0; padding:12px; border-radius: var(--radius-lg); }
