@@ -1,0 +1,30 @@
+/* State-by-State Rules quick finder */
+
+.state-wrap { position: relative; color: #f5f7fb; background: linear-gradient(180deg,#0b1b3a,#09152d 60%); border-radius: 1rem; padding: 1rem 1rem 1.25rem; box-shadow: var(--shadow-blue); overflow: hidden; }
+.state-header { margin-bottom: .75rem; }
+.state-title { display:flex; align-items:center; gap:.5rem; }
+.state-title h2 { margin:0; font-size: clamp(1.125rem,2.2vw,1.5rem); }
+.state-dot { width:8px; height:8px; border-radius:999px; background:#5aa2ff; box-shadow:0 0 0 4px rgba(90,162,255,.15); }
+.state-sub { color:#c8d1e8; font-size:.9rem; }
+
+.state-controls { display:flex; flex-direction: column; gap:.75rem; }
+.state-input { width:100%; border-radius: .6rem; border:1px solid #24385f; background:#0f244a; color:#fff; padding:.6rem .75rem; }
+.state-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.5rem; }
+@media (min-width: 640px) { .state-grid { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (min-width: 1024px) { .state-grid { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
+.state-pill { padding:.5rem .6rem; border-radius:.6rem; border:1px solid #24385f; background:#102a53; color:#e5e7eb; cursor:pointer; text-align:left; }
+.state-pill.active, .state-pill:hover { border-color:#5aa2ff; background:#143466; }
+
+.state-detail { margin-top: .75rem; background:#0f244a; border:1px solid #24385f; border-radius:.75rem; padding: .9rem; }
+.state-detail h3 { margin: 0 0 .25rem; }
+.state-note { color:#c8d1e8; margin:0 0 .5rem; }
+.state-links { display:grid; grid-template-columns: 1fr; gap:.5rem; }
+.state-links a { color:#d7e9ff; text-decoration: underline; }
+
+.state-tips { list-style: disc inside; color:#c8d1e8; margin:.5rem 0 0; }
+
+.state-empty { color:#c8d1e8; margin:0; }
+
+.state-close { position:absolute; top:8px; right:8px; width:32px; height:32px; border-radius:999px; border:1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); color:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
+.state-close:hover { background: rgba(255,255,255,0.18); }

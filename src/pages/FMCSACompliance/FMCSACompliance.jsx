@@ -1,7 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
+import CdlClassComparison from './CdlClassComparison'
+import StateRules from './StateRules'
+import WeightCalculator from './WeightCalculator'
 
 function StepSelect({ label, options, value, onChange }) {
   return (
@@ -107,12 +110,37 @@ export default function FMCSACompliance() {
   const [placardedHazmat, setPlacardedHazmat] = useState('no')
   const [farmExemption, setFarmExemption] = useState('no')
   const [schoolBus, setSchoolBus] = useState('no')
+  const [showCdlChart, setShowCdlChart] = useState(false)
+  const [showStateRules, setShowStateRules] = useState(false)
+  const [showWeightCalc, setShowWeightCalc] = useState(false)
 
   const result = useMemo(
     () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
     [vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus]
   )
   const cdlRequired = useMemo(() => !/^No CDL Required/i.test(result.cdlClass), [result.cdlClass])
+
+  // If user navigates with #cdl-chart, reveal and scroll to it
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location?.hash === '#cdl-chart') {
+      setShowCdlChart(true)
+      setTimeout(() => {
+        document.getElementById('cdl-chart')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 0)
+    }
+    if (typeof window !== 'undefined' && window.location?.hash === '#state-rules') {
+      setShowStateRules(true)
+      setTimeout(() => {
+        document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 0)
+    }
+    if (typeof window !== 'undefined' && window.location?.hash === '#weight-calculator') {
+      setShowWeightCalc(true)
+      setTimeout(() => {
+        document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 0)
+    }
+  }, [])
 
   return (
     <div className="fmcsa-page">
@@ -433,11 +461,88 @@ export default function FMCSACompliance() {
         <div className="container">
           <h2>Quick Reference</h2>
           <ul className="quick-list">
-            <li><a href="#cdl-chart">CDL Class Comparison Chart (A, B, C)</a></li>
-            <li><a href="#weight-endorsement">Weight & Endorsement Guide</a></li>
-            <li><a href="#state-rules">State-by-State FMCSA Rules</a></li>
+            <li>
+              <a
+                href="#cdl-chart"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowCdlChart(true)
+                  setTimeout(() => {
+                    document.getElementById('cdl-chart')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                CDL Class Comparison Chart (A, B, C)
+              </a>
+            </li>
+            <li>
+              <a
+                href="#weight-calculator"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowWeightCalc(true)
+                  setTimeout(() => {
+                    document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                Weight & Endorsement Guide
+              </a>
+            </li>
+            <li>
+              <a
+                href="#state-rules"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowStateRules(true)
+                  setTimeout(() => {
+                    document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 0)
+                }}
+              >
+                State-by-State FMCSA Rules
+              </a>
+            </li>
             <li><a href="#printable-checklist">Printable Pre-trip Checklist</a></li>
           </ul>
+          <div id="cdl-chart" style={{ marginTop: '1rem', display: showCdlChart ? 'block' : 'none' }}>
+            <CdlClassComparison
+              onClose={() => {
+                setShowCdlChart(false)
+                // Clean hash without reload for a smoother UX
+                if (typeof window !== 'undefined') {
+                  const { pathname, search } = window.location
+                  window.history.replaceState(null, '', pathname + search)
+                }
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Weight Calculator (show on click) */}
+      <section className="fmcsa-tools" id="weight-calculator" style={{ display: showWeightCalc ? 'block' : 'none' }}>
+        <div className="container">
+          <WeightCalculator onClose={() => {
+            setShowWeightCalc(false)
+            if (typeof window !== 'undefined') {
+              const { pathname, search } = window.location
+              window.history.replaceState(null, '', pathname + search)
+            }
+          }} />
+        </div>
+      </section>
+
+      {/* State-by-State Rules (show on click) */}
+      <section className="fmcsa-tools" id="state-rules" style={{ display: showStateRules ? 'block' : 'none' }}>
+        <div className="container">
+          <StateRules onClose={() => {
+            setShowStateRules(false)
+            if (typeof window !== 'undefined') {
+              const { pathname, search } = window.location
+              window.history.replaceState(null, '', pathname + search)
+            }
+          }} />
         </div>
       </section>
 
