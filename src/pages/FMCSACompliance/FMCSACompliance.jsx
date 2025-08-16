@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
+import CdlClassComparison from './CdlClassComparison'
 
 function StepSelect({ label, options, value, onChange }) {
   return (
@@ -438,6 +439,9 @@ export default function FMCSACompliance() {
             <li><a href="#state-rules">State-by-State FMCSA Rules</a></li>
             <li><a href="#printable-checklist">Printable Pre-trip Checklist</a></li>
           </ul>
+          <div id="cdl-chart" style={{ marginTop: '1rem' }}>
+            <CdlClassComparison />
+          </div>
         </div>
       </section>
 

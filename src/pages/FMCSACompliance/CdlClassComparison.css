@@ -1,0 +1,33 @@
+/* CDL Comparison Styles - consistent with site theme */
+
+.cdl-wrap { --bg: #0b1b3a; --ink: #f5f7fb; --muted: #c8d1e8; --card: #0f244a; --line: #24385f; }
+.cdl-wrap { color: var(--ink); background: linear-gradient(180deg, var(--bg), #09152d 60%); border-radius: 1rem; padding: 1rem 1rem 2rem; box-shadow: var(--shadow-blue); overflow: hidden; }
+.cdl-header { display:flex; align-items:center; gap:.75rem; margin:.25rem 0 1rem; }
+.cdl-dot { width:10px; height:10px; border-radius:999px; background:#5aa2ff; box-shadow:0 0 0 4px rgba(90,162,255,.15); }
+.cdl-title { margin:0; font-size: clamp(1.125rem, 2.2vw, 1.5rem); font-weight:700; letter-spacing:.2px; }
+.cdl-sub { color: var(--muted); font-size:.9rem; }
+
+.cdl-table { width:100%; border-collapse: collapse; background: var(--card); border-radius: .75rem; overflow:hidden; }
+.cdl-table th, .cdl-table td { padding: .9rem .9rem; vertical-align: top; }
+.cdl-table thead th { text-align:left; background: rgba(255,255,255,.06); border-bottom: 1px solid var(--line); font-weight:700; }
+.cdl-table tbody tr { border-top: 1px solid var(--line); }
+.cdl-table tbody tr:first-child { border-top: none; }
+.cdl-chip { display:inline-block; font-weight:700; padding:.25rem .6rem; border-radius:999px; background:#183566; }
+.cdl-muted { color: var(--muted); }
+
+/* Hide mobile cards on desktop */
+.cdl-cards { display: none; }
+
+@media (max-width: 760px) {
+  .cdl-table { display:none; }
+  .cdl-cards { display:grid; grid-template-columns: 1fr; gap:.75rem; }
+  .cdl-card { background: var(--card); border:1px solid var(--line); border-radius:.75rem; padding:.9rem; }
+  .cdl-card h3 { margin:0 0 .35rem; font-size:1rem; }
+  .cdl-row { display:grid; grid-template-columns: 9ch 1fr; gap:.5rem; padding:.25rem 0; }
+  .cdl-row .key { color: var(--muted); }
+}
+
+.cdl-notes { margin: .9rem 0 0; border-top: 1px dashed var(--line); padding-top:.75rem; list-style: disc inside; padding-left:.5rem; }
+.cdl-notes li { color: var(--muted); margin:.25rem 0; }
+/* Ensure all bullets line up evenly */
+.cdl-notes li:last-child { padding-left: 0; }
