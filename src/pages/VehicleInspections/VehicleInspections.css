@@ -1,0 +1,171 @@
+/* Vehicle Inspections Landing Page */
+
+.vehicle-inspections-page {
+  background: var(--bg-gradient-primary);
+  min-height: 100vh;
+  color: var(--color-gray-900);
+}
+
+/* Keep header/hero text white; don't override via generic container color */
+.vehicle-inspections-page .hero-banner,
+.vehicle-inspections-page .hero-banner .hero-content,
+.vehicle-inspections-page .hero-banner h2,
+.vehicle-inspections-page .hero-banner p {
+  color: var(--color-white);
+}
+
+.vi-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-blue);
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  border-left: 6px solid var(--color-primary-light);
+}
+
+@media (min-width: 768px) {
+  .vi-card {
+    padding: calc(var(--spacing-xl) + var(--spacing-sm));
+    margin-top: var(--spacing-2xl);
+  }
+}
+
+.vi-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.vi-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: rgba(30, 64, 175, 0.1);
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.vi-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.vi-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.vi-list-item:last-child {
+  border-bottom: none;
+}
+
+.vi-check {
+  color: var(--color-accent-green);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.vi-text {
+  color: var(--color-gray-700);
+}
+
+/* New: Steps grid */
+.vi-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .vi-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .vi-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+.vi-step-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  border-left: 6px solid var(--color-gray-200);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vi-step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.vi-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.vi-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+.vi-step-icon { font-size: 1.25rem; }
+
+.vi-step-title { font-size: var(--font-size-lg); color: var(--color-gray-800); margin-top: var(--spacing-xs); }
+
+.vi-step-footer { margin-top: var(--spacing-md); display: flex; justify-content: flex-end; }
+.vi-step-cta {
+  display: inline-block;
+  background: var(--color-gray-800);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+/* Color accents per step */
+.vi-orange { border-left-color: var(--color-accent-orange); }
+.vi-purple { border-left-color: var(--color-accent-purple); }
+.vi-blue { border-left-color: var(--color-accent-blue); }
+.vi-red { border-left-color: var(--color-accent-red); }
+.vi-green { border-left-color: var(--color-accent-green); }
+
+.vi-orange .vi-step-badge { background: rgba(249, 115, 22, 0.15); color: var(--color-accent-orange); }
+.vi-purple .vi-step-badge { background: rgba(124, 58, 237, 0.15); color: var(--color-accent-purple); }
+.vi-blue .vi-step-badge { background: rgba(14, 165, 233, 0.15); color: var(--color-accent-blue); }
+.vi-red .vi-step-badge { background: rgba(239, 68, 68, 0.15); color: var(--color-accent-red); }
+.vi-green .vi-step-badge { background: rgba(16, 185, 129, 0.15); color: var(--color-accent-green); }
+
+.vi-orange .vi-step-cta { background: var(--color-accent-orange); }
+.vi-purple .vi-step-cta { background: var(--color-accent-purple); }
+.vi-blue .vi-step-cta { background: var(--color-accent-blue); }
+.vi-red .vi-step-cta { background: var(--color-accent-red); }
+.vi-green .vi-step-cta { background: var(--color-accent-green); }

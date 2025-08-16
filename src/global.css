@@ -11,6 +11,7 @@
 @import './pages/FMCSACompliance/CSA.css';
 @import './pages/FMCSACompliance/PreventionManagement.css';
 @import './pages/About/About.css';
+@import './pages/VehicleInspections/VehicleInspections.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';

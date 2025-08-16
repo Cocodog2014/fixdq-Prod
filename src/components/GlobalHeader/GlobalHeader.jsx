@@ -29,6 +29,10 @@ function GlobalHeader() {
     return () => clearInterval(id);
   }, []);
 
+  // Accent color order matches header button palette
+  const accentOrder = ['orange', 'purple', 'blue', 'red', 'green', 'teal'];
+  const currentAccent = accentOrder[slideIndex % accentOrder.length];
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -161,9 +165,9 @@ function GlobalHeader() {
           <div className="hero-content">
             {/* Mobile-only rotating titles/subtitles */}
             <div className="hero-rotator" aria-live="polite">
-              <div className="hero-rotator-slide" key={slideIndex}>
+              <div className={`hero-rotator-slide accent-${currentAccent}`} key={slideIndex}>
                 <h2>{heroSlides[slideIndex].title}</h2>
-                <p>{heroSlides[slideIndex].subtitle}</p>
+                <p className="slide-subtitle">{heroSlides[slideIndex].subtitle}</p>
               </div>
             </div>
           </div>

@@ -29,9 +29,9 @@ function HomePage() {
             </Link>
 
             {/* Vehicle Inspections */}
-            <div className="feature-card blue-border">
+            <Link to="/vehicle-inspections" className="feature-card blue-border feature-link-card">
               <div className="feature-header">
-                <span className="icon">�</span>
+                <span className="icon">❓</span>
                 <h3>Vehicle Inspections</h3>
               </div>
               <ul>
@@ -41,7 +41,10 @@ function HomePage() {
                 <li>Driver Vehicle Inspection Report (DVIR)</li>
                 <li>Maintenance & Repair Documentation</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open Vehicle Inspections</span>
+              </div>
+            </Link>
 
             {/* US Citizenship for Truckers */}
             <div className="feature-card red-border">
