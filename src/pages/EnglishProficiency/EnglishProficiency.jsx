@@ -52,18 +52,18 @@ export default function EnglishProficiency() {
       if (lsLang) setSupportLanguage(lsLang);
       if (lsSize) setTextSize(lsSize);
       if (lsRate) setTtsRate(parseFloat(lsRate) || 1.0);
-    } catch {}
+    } catch (e) { console.debug('Load settings failed', e); }
   }, []);
 
   // Persist settings
   useEffect(() => {
-    try { localStorage.setItem(LS_KEYS.language, supportLanguage); } catch {}
+    try { localStorage.setItem(LS_KEYS.language, supportLanguage); } catch (e) { console.debug('Save lang failed', e); }
   }, [supportLanguage]);
   useEffect(() => {
-    try { localStorage.setItem(LS_KEYS.textSize, textSize); } catch {}
+    try { localStorage.setItem(LS_KEYS.textSize, textSize); } catch (e) { console.debug('Save size failed', e); }
   }, [textSize]);
   useEffect(() => {
-    try { localStorage.setItem(LS_KEYS.ttsRate, String(ttsRate)); } catch {}
+    try { localStorage.setItem(LS_KEYS.ttsRate, String(ttsRate)); } catch (e) { console.debug('Save rate failed', e); }
   }, [ttsRate]);
 
   const wrapperClass = useMemo(() => `ep-page text-${textSize}`, [textSize]);
@@ -191,7 +191,7 @@ export default function EnglishProficiency() {
                   localStorage.removeItem(LS_KEYS.language);
                   localStorage.removeItem(LS_KEYS.textSize);
                   localStorage.removeItem(LS_KEYS.ttsRate);
-                } catch {}
+                } catch (e) { console.debug('Reset failed', e); }
                 setSupportLanguage('none');
                 setTextSize('md');
                 setTtsRate(1.0);

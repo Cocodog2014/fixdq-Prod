@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "question": "Where did you start your trip today?",
+    "paraphrases": ["Where are you coming from?"],
+    "translations": {},
+    "modelAnswers": ["I started in Chicago, Illinois."],
+    "intent": "origin",
+    "keywords": {"include": ["from"], "exclude": []}
+  },
+  {
+    "id": 2,
+    "question": "Where are you driving to today?",
+    "paraphrases": ["Where are you going today?"],
+    "translations": {},
+    "modelAnswers": ["I'm going to Dallas, Texas."],
+    "intent": "destination",
+    "keywords": {"include": ["to", "going"], "exclude": ["load", "cargo", "trailer", "freight", "pallets"]}
+  },
+  {
+    "id": 3,
+    "question": "How long have you been driving today?",
+    "paraphrases": ["What time did you start today?", "What time are you planning to stop driving today?"],
+    "translations": {},
+    "modelAnswers": ["I started at 6:00 AM and have been driving about 3 hours."],
+    "intent": "duration",
+    "keywords": {"include": ["hours", "hour", "minutes", "started", "start"], "exclude": []}
+  },
+  {
+    "id": 4,
+    "question": "What are you hauling today?",
+    "paraphrases": ["What's in your truck/trailer?", "What cargo do you have in your truck/trailer?"],
+    "translations": {},
+    "modelAnswers": ["I'm hauling dry van freight: paper rolls."],
+    "intent": "cargo",
+    "keywords": {"include": ["load", "freight", "cargo", "pallets", "boxes", "steel", "lumber", "produce"], "exclude": ["to", "going", "city", "state"]}
+  },
+  {
+    "id": 5,
+    "question": "Who are you driving for today?",
+    "paraphrases": ["Who are you working for?", "Who is paying you for the load?", "What is the name of your employer?"],
+    "translations": {},
+    "modelAnswers": ["I drive for ABC Logistics."],
+    "intent": "employer",
+    "keywords": {"include": ["for", "company", "employer"], "exclude": []}
+  },
+  {
+    "id": 6,
+    "question": "What is the telephone number for the trucking company you are driving for today?",
+    "paraphrases": ["What telephone number would you call if you had a problem today?", "What telephone number at the company would you call if you had an accident today?"],
+    "translations": {},
+    "modelAnswers": ["The company number is 555-123-4567."],
+    "intent": "phone-company",
+    "keywords": {"include": ["call", "number", "company"], "exclude": []}
+  },
+  {
+    "id": 7,
+    "question": "Show me your driver's license please.",
+    "paraphrases": ["Show me your CDL."],
+    "translations": {},
+    "modelAnswers": ["Here is my CDL."],
+    "intent": "license",
+    "keywords": {"include": ["license", "cdl"], "exclude": []}
+  },
+  {
+    "id": 8,
+    "question": "Show me the proof of insurance for your vehicle(s).",
+    "paraphrases": ["Where is your insurance card?"],
+    "translations": {},
+    "modelAnswers": ["Here is the insurance card."],
+    "intent": "insurance",
+    "keywords": {"include": ["insurance", "card"], "exclude": []}
+  },
+  {
+    "id": 9,
+    "question": "Show me the registration for your vehicle(s).",
+    "paraphrases": ["Where is your cab card?", "Where is your IRP cab card?"],
+    "translations": {},
+    "modelAnswers": ["Here is the registration and IRP cab card."],
+    "intent": "registration",
+    "keywords": {"include": ["registration", "cab", "irp"], "exclude": []}
+  },
+  {
+    "id": 10,
+    "question": "What year was your truck manufactured?",
+    "paraphrases": ["What is the year of your truck?", "What year was your truck made?"],
+    "translations": {},
+    "modelAnswers": ["The truck is a 2019."],
+    "intent": "vehicle-year",
+    "keywords": {"include": ["year", "model"], "exclude": []}
+  },
+  {
+    "id": 11,
+    "question": "Did you perform your pre-trip inspection before you started driving today?",
+    "paraphrases": ["Did you do your pre-trip inspection today?"],
+    "translations": {},
+    "modelAnswers": ["Yes, I completed the pre-trip inspection this morning."],
+    "intent": "pretrip",
+    "keywords": {"include": ["yes", "no", "pre-trip", "inspection"], "exclude": []}
+  },
+  {
+    "id": 12,
+    "question": "Do you use time cards, an ELD, or a log book?",
+    "paraphrases": ["How do you report the time you worked?", "Do you use a time clock at work?"],
+    "translations": {},
+    "modelAnswers": ["I use an ELD."],
+    "intent": "logbook",
+    "keywords": {"include": ["eld", "log", "time"], "exclude": []}
+  },
+  {
+    "id": 13,
+    "question": "What hazardous materials do you have on the truck today?",
+    "paraphrases": ["What hazmat do you have on board today?", "What hazmat do you have in the truck/trailer?"],
+    "translations": {},
+    "modelAnswers": ["I don't have hazmat today.", "I have Class 3 flammable liquid, UN1203 gasoline."],
+    "intent": "hazmat",
+    "keywords": {"include": ["hazmat", "hazardous"], "exclude": []}
+  },
+  {
+    "id": 14,
+    "question": "What telephone number would you call in case of an emergency?",
+    "paraphrases": ["What telephone number would you call if you had a problem today?", "What telephone number at the company would you call if you had an accident today?"],
+    "translations": {},
+    "modelAnswers": ["I would call 911 or my company at 555-123-4567."],
+    "intent": "emergency-phone",
+    "keywords": {"include": ["911", "emergency", "call", "number"], "exclude": []}
+  }
+]

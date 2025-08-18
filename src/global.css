@@ -39,6 +39,7 @@
 @import './pages/ViolationManagement/DriverScore.css';
 @import './pages/ViolationManagement/AppealProcess.css';
 @import './pages/EnglishProficiency/EnglishProficiency.css';
+@import './pages/EnglishProficiency/DriverInterview.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';
