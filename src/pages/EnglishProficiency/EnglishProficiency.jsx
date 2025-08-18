@@ -246,6 +246,18 @@ export default function EnglishProficiency() {
                 <p className="ep-help">Shows an optional translation under English. English TTS/STT only.</p>
               </div>
 
+              {/* Choose a practice area (mobile modal) */}
+              <div className="ep-field">
+                <label htmlFor="ep-category-modal">Choose a practice area</label>
+                <div className="ep-row">
+                  <select id="ep-category-modal" value={category} onChange={(e) => setCategory(e.target.value)}>
+                    {CATEGORIES.map((c) => (
+                      <option key={c.value} value={c.value}>{c.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
               <div className="ep-field">
                 <label htmlFor="ep-text-size">Text size</label>
                 <select id="ep-text-size" value={textSize} onChange={(e) => setTextSize(e.target.value)}>
