@@ -27,6 +27,17 @@
 @import './pages/RDS/RDS.css';
 @import './pages/ELDCoach/ELDCoach.css';
 @import './pages/ELDCoach/ELDDevice.css';
+@import './pages/SafetyTraining/SafetyTraining.css';
+@import './pages/SafetyTraining/DefensiveDriving.css';
+@import './pages/SafetyTraining/Hazmat.css';
+@import './pages/SafetyTraining/WeatherRoad.css';
+@import './pages/SafetyTraining/EmergencyProcedures.css';
+@import './pages/SafetyTraining/AccidentPrevention.css';
+@import url('./pages/ViolationManagement/ViolationManagement.css');
+@import './pages/ViolationManagement/CitationTypes.css';
+@import './pages/ViolationManagement/DataQNavigation.css';
+@import './pages/ViolationManagement/DriverScore.css';
+@import './pages/ViolationManagement/AppealProcess.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';

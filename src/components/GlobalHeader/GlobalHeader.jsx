@@ -41,7 +41,8 @@ function GlobalHeader() {
   const navigationItems = [
     { label: 'Who is FixDQ', href: '/about', color: 'orange', icon: 'ℹ️' },
     { label: 'Home', href: '/', color: 'blue', icon: '🏠' },
-    { label: 'Electronic Logbooks', href: '/eld-coach', color: 'purple', icon: '📖' },
+    // Add ?roadmap=1 so clicking opens modal on /eld-coach
+    { label: 'Electronic Logbooks', href: '/eld-coach?roadmap=1', color: 'purple', icon: '📖' },
     { label: 'Vehicle Inspections', href: '/vehicle-inspections', color: 'blue', icon: '🔍' },
     { label: 'US Citizenship', href: 'https://citizenship360.org', color: 'red', icon: '🇺🇸' },
     { label: 'Safety Training', href: '/safety-training', color: 'green', icon: '🛡️' },

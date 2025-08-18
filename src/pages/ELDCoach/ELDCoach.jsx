@@ -1,7 +1,18 @@
 import GlobalHeader from '../../components/GlobalHeader';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useMemo, useCallback } from 'react';
+import RoadmapModal from './RoadmapModal';
 
 function ELDCoach() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const showRoadmap = useMemo(() => new URLSearchParams(location.search).get('roadmap') === '1', [location.search]);
+  const closeRoadmap = useCallback(() => {
+    const params = new URLSearchParams(location.search);
+    params.delete('roadmap');
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+  }, [location.pathname, location.search, navigate]);
+
   return (
     <div className="eld-coach app">
       <GlobalHeader />
@@ -100,6 +111,7 @@ function ELDCoach() {
           </div>
         </div>
       </section>
+  <RoadmapModal open={showRoadmap} onClose={closeRoadmap} />
     </div>
   );
 }
