@@ -198,7 +198,7 @@ export default function DriverInterview() {
             </div>
 
             <div className="ep-fc-bottom">
-              <button className="btn" onClick={prev} disabled={index === 0}>◀ Prev</button>
+              <button className="btn btn-prev" onClick={prev} disabled={index === 0}>◀ Prev</button>
               <div className="ep-fc-bottom-actions">
                 {supported ? (
                   listening ? (
@@ -210,7 +210,7 @@ export default function DriverInterview() {
                   <span className="ep-help">STT best in Chrome/Edge.</span>
                 )}
               </div>
-              <button className="btn" onClick={next} disabled={index === data.length - 1}>Next ▶</button>
+              <button className="btn btn-next" onClick={next} disabled={index === data.length - 1}>Next ▶</button>
             </div>
           </div>
         </div>

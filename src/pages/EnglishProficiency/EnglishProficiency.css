@@ -70,11 +70,11 @@
 .ep-fc-tts { display: flex; gap: var(--spacing-sm); }
 
 .ep-fc-card {
-  /* Green card background (not the page canvas) */
-  background: rgba(16,185,129,0.14); /* uses emerald-500 tone with transparency */
-  border: 1px solid rgba(16,185,129,0.35);
+  /* Strong green card background (no canvas bleed-through) */
+  background: linear-gradient(160deg, #065f46 0%, #047857 100%); /* emerald-800 -> emerald-700 */
+  border: 1px solid rgba(16,185,129,0.6);
   border-radius: var(--radius-xl);
-  box-shadow: 0 10px 25px -3px rgba(16,185,129,0.28);
+  box-shadow: 0 10px 25px -3px rgba(5,150,105,0.4);
   padding: var(--spacing-lg);
 }
 
@@ -161,6 +161,21 @@
 .ep-fc-bottom > .btn:last-child { justify-self: end; }
 .ep-fc-bottom-actions { display: flex; gap: var(--spacing-sm); justify-content: center; align-items: center; flex-wrap: nowrap; overflow-x: auto; }
 .ep-fc-bottom-actions .btn { white-space: nowrap; }
+
+/* Colorful Prev/Next (avoid green/blue) */
+.btn-prev {
+  background: #a855f7; /* violet-500 */
+  color: var(--color-white);
+}
+.btn-prev:hover { background: #9333ea; }
+.btn-prev:disabled { background: #c4b5fd; color: #f8f7ff; cursor: not-allowed; opacity: 0.8; }
+
+.btn-next {
+  background: #f59e0b; /* amber-500 */
+  color: var(--color-white);
+}
+.btn-next:hover { background: #d97706; }
+.btn-next:disabled { background: #fcd34d; color: #fffdf5; cursor: not-allowed; opacity: 0.85; }
 
 .ep-back { margin-bottom: var(--spacing-md); }
 .ep-back-link { color: var(--color-white); text-decoration: none; opacity: 0.85; }
