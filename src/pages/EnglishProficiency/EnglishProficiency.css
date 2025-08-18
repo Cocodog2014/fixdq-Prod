@@ -34,12 +34,12 @@
   background: linear-gradient(160deg, #065f46 0%, #047857 100%);
   border: 1px solid rgba(16,185,129,0.6);
   box-shadow: 0 10px 25px -3px rgba(5,150,105,0.4);
-  padding: var(--spacing-xl); /* more breathing room */
+  padding: var(--spacing-md); /* ~50% shorter height via less padding */
 }
 
 /* Greener internals for Settings */
-.ep-settings .grid { gap: var(--spacing-lg); }
-.ep-settings .ep-field { gap: 10px; margin-bottom: var(--spacing-lg); }
+.ep-settings .grid { gap: var(--spacing-md); }
+.ep-settings .ep-field { gap: 6px; margin-bottom: var(--spacing-sm); }
 .ep-settings .ep-field label { 
   color: var(--color-white);
   font-weight: 700;
@@ -76,7 +76,7 @@
 
 .ep-settings .ep-range-readout {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 4px;
   padding: 2px 8px;
   border-radius: var(--radius-md);
   background: rgba(34,197,94,0.22); /* greener tint */
@@ -85,7 +85,7 @@
 
 @media (min-width: 1024px) {
   /* On desktop give action row some top spacing as content grows */
-  .ep-settings .ep-actions-row { margin-top: var(--spacing-md); }
+  .ep-settings .ep-actions-row { margin-top: var(--spacing-xs); }
 }
 
 /* Why English Matters (first card in the why section): purple */
@@ -165,6 +165,8 @@
   justify-content: flex-start; /* align under Text size column */
   gap: var(--spacing-md);     /* moderate spacing between buttons */
   grid-column: 3;             /* place in 3rd column */
+  align-self: end;            /* sit at the bottom to align with readout */
+  margin-top: auto;           /* push down within the grid cell */
   }
   /* Make all buttons same size within the actions row */
   .ep-actions-row .btn { 
