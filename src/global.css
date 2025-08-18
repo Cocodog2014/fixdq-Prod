@@ -121,6 +121,10 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --radius-full: 9999px;
+
+  /* English Proficiency - Control Colors */
+  --ep-answer-tts-bg: #0b6fbd; /* high-contrast blue on white */
+  --ep-answer-tts-color: #ffffff;
 }
 
 /* Reset and Base Styles */

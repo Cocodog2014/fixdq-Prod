@@ -91,7 +91,7 @@
   width: 100%;
   border-radius: var(--radius-lg);
   border: none;
-  padding: 12px 14px;
+  padding: 12px 44px 12px 14px; /* extra right padding for speaker button */
   color: var(--color-gray-900);
   background: var(--color-white);
   resize: vertical;
@@ -101,12 +101,39 @@
 .ep-fc-answer { position: relative; }
 .ep-answer-tts {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 4px;
+  right: 4px;
   z-index: 1;
-  min-width: 40px;
-  padding: 6px 8px;
+  min-width: 32px;
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: var(--ep-answer-tts-bg);
+  color: var(--ep-answer-tts-color);
+  box-shadow: var(--shadow-sm);
+  font-size: 14px; /* compact icon size */
 }
+.ep-answer-tts:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.ep-answer-tts:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Definition TTS buttons */
+.ep-def-tts {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  margin-right: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255,255,255,0.14);
+  color: var(--color-white);
+}
+.ep-def-tts:hover { background: rgba(255,255,255,0.22); }
 
 .ep-fc-actions { display: flex; gap: var(--spacing-md); align-items: center; margin-top: var(--spacing-md); flex-wrap: wrap; }
 .ep-feedback { margin-top: var(--spacing-md); padding: 10px 12px; border-radius: var(--radius-md); background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); }

@@ -10,10 +10,10 @@ const SETTINGS = {
   ttsRate: 'ep_ttsRate',
 };
 
-function speak(text, rate = 1) {
+function speak(text, rate = 1, lang = 'en-US') {
   if (!('speechSynthesis' in window)) return;
   const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'en-US';
+  utter.lang = lang || 'en-US';
   utter.rate = rate;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(utter);
@@ -77,6 +77,16 @@ export default function DriverInterview() {
     ru: 'Русский',
     zhCN: '中文（简体）',
     zhTW: '中文（繁體）',
+  };
+
+  // Map support languages to TTS BCP-47 language tags
+  const SUPPORT_LANG_TAGS = {
+    none: 'en-US',
+    es: 'es-US', // fallback; browsers may choose available Spanish voice
+    uk: 'uk-UA',
+    ru: 'ru-RU',
+    zhCN: 'zh-CN',
+    zhTW: 'zh-TW',
   };
 
   // Load settings
@@ -162,9 +172,21 @@ export default function DriverInterview() {
               {/* Definition replaces model answers; show localized definition if available */}
               {item.definition && (
                 <div className="ep-fc-definition">
+                  <button
+                    className="btn btn-ghost ep-def-tts"
+                    onClick={() => speak(item.definition, ttsRate, 'en-US')}
+                    aria-label="Play definition"
+                    title="Play definition"
+                  >🔊</button>
                   <strong>Definition:</strong> {item.definition}
                   {supportLanguage !== 'none' && item.definitionTranslations?.[supportLanguage] && (
                     <div className="ep-fc-translation">
+                      <button
+                        className="btn btn-ghost ep-def-tts"
+                        onClick={() => speak(item.definitionTranslations[supportLanguage], ttsRate, SUPPORT_LANG_TAGS[supportLanguage])}
+                        aria-label="Play translated definition"
+                        title="Play translated definition"
+                      >🔊</button>
                       <span className="ep-support-chip">{SUPPORT_LABELS[supportLanguage]}</span>
                       {item.definitionTranslations[supportLanguage]}
                     </div>
