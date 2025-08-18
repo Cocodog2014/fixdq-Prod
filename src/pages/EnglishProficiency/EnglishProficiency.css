@@ -70,10 +70,11 @@
 .ep-fc-tts { display: flex; gap: var(--spacing-sm); }
 
 .ep-fc-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  /* Green card background (not the page canvas) */
+  background: rgba(16,185,129,0.14); /* uses emerald-500 tone with transparency */
+  border: 1px solid rgba(16,185,129,0.35);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-blue);
+  box-shadow: 0 10px 25px -3px rgba(16,185,129,0.28);
   padding: var(--spacing-lg);
 }
 
