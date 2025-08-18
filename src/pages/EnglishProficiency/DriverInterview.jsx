@@ -10,12 +10,6 @@ const SETTINGS = {
   ttsRate: 'ep_ttsRate',
 };
 
-// Basic keyword groups for rule checks
-const KEYWORDS = {
-  destinationWords: ['to', 'going', 'go', 'destination', 'city', 'state'],
-  cargoWords: ['load', 'cargo', 'freight', 'trailer', 'pallet', 'pallets', 'boxes'],
-};
-
 function speak(text, rate = 1) {
   if (!('speechSynthesis' in window)) return;
   const utter = new SpeechSynthesisUtterance(text);
@@ -68,50 +62,9 @@ function useSTT() {
   return { supported, listening, transcript, start, stop };
 }
 
-function evaluateAnswer(item, text) {
-  const t = (text || '').toLowerCase();
-  const words = t.split(/[^a-z0-9]+/).filter(Boolean);
-  const hasAny = (arr) => arr.some((w) => t.includes(w));
-
-  // Completeness/clarity
-  if (words.length < 3) {
-    return { level: 'hint', message: 'Try a full sentence (3+ words).', offTopic: false };
-  }
-
-  // Off-topic checks per outline
-  if (item.intent === 'destination' && hasAny(KEYWORDS.cargoWords)) {
-    return { level: 'warn', message: 'Off topic: answer the destination (place).', offTopic: true };
-  }
-  if (item.intent === 'cargo' && hasAny(KEYWORDS.destinationWords)) {
-    return { level: 'warn', message: 'Off topic: answer the cargo (what is in the truck).', offTopic: true };
-  }
-
-  // Minimal keyword include check
-  if (item.keywords?.include?.length) {
-    const ok = item.keywords.include.some((k) => t.includes(k));
-    if (!ok) return { level: 'hint', message: 'Add a key detail for this question.', offTopic: false };
-  }
-
-  // Intent-specific gentle nudges
-  switch (item.intent) {
-    case 'destination':
-      return { level: 'ok', message: 'Good. Include city and state if you can.', offTopic: false };
-    case 'origin':
-      return { level: 'ok', message: 'Good. Include where you started today.', offTopic: false };
-    case 'duration':
-      return { level: 'ok', message: 'Good. Include start time or hours driven.', offTopic: false };
-    case 'cargo':
-      return { level: 'ok', message: 'Good. Name the cargo type (e.g., lumber, produce).', offTopic: false };
-    default:
-      return { level: 'ok', message: 'Looks clear.', offTopic: false };
-  }
-}
-
 export default function DriverInterview() {
   const [index, setIndex] = useState(0);
-  const [showBack, setShowBack] = useState(false);
   const [answer, setAnswer] = useState('');
-  const [feedback, setFeedback] = useState(null);
 
   const [ttsRate, setTtsRate] = useState(1);
   const [textSize, setTextSize] = useState('md');
@@ -161,14 +114,8 @@ export default function DriverInterview() {
 
   useEffect(() => { if (transcript) setAnswer(transcript); }, [transcript]);
 
-  const onCheck = () => {
-    const fb = evaluateAnswer(item, answer);
-    setFeedback(fb);
-    setShowBack(true);
-  };
-
-  const next = () => { setIndex((i) => Math.min(i + 1, data.length - 1)); setShowBack(false); setAnswer(''); setFeedback(null); };
-  const prev = () => { setIndex((i) => Math.max(i - 1, 0)); setShowBack(false); setAnswer(''); setFeedback(null); };
+  const next = () => { setIndex((i) => Math.min(i + 1, data.length - 1)); setAnswer(''); };
+  const prev = () => { setIndex((i) => Math.max(i - 1, 0)); setAnswer(''); };
 
   return (
     <div className={wrapperClass}>
@@ -201,28 +148,36 @@ export default function DriverInterview() {
               )}
 
               <div className="ep-fc-answer">
+                <button
+                  className="btn btn-ghost ep-answer-tts"
+                  onClick={() => { if (answer.trim()) speak(answer.trim(), ttsRate); }}
+                  disabled={!answer.trim()}
+                  aria-label="Play back my answer"
+                  title={answer.trim() ? 'Play your answer' : 'Type or speak an answer first'}
+                >🔊</button>
                 <label htmlFor="answer" className="sr-only">Your answer</label>
                 <textarea id="answer" rows={4} value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Type your answer in English..." />
               </div>
 
-              {feedback && (
-                <div className={`ep-feedback level-${feedback.level}`}>
-                  {feedback.message}
+              {/* Definition replaces model answers; show localized definition if available */}
+              {item.definition && (
+                <div className="ep-fc-definition">
+                  <strong>Definition:</strong> {item.definition}
+                  {supportLanguage !== 'none' && item.definitionTranslations?.[supportLanguage] && (
+                    <div className="ep-fc-translation">
+                      <span className="ep-support-chip">{SUPPORT_LABELS[supportLanguage]}</span>
+                      {item.definitionTranslations[supportLanguage]}
+                    </div>
+                  )}
                 </div>
               )}
 
-              {showBack && (
-                <div className="ep-fc-back">
-                  <div className="ep-model-label">Model answer</div>
-                  <p>{item.modelAnswers?.[0]}</p>
-                </div>
-              )}
+              {/* No automated feedback; practicing free response. */}
             </div>
 
             <div className="ep-fc-bottom">
               <button className="btn" onClick={prev} disabled={index === 0}>◀ Prev</button>
               <div className="ep-fc-bottom-actions">
-                <button className="btn" onClick={() => speak(item.modelAnswers?.[0] || '', ttsRate)} aria-label="Play model answer">🔊 Model</button>
                 {supported ? (
                   listening ? (
                     <button className="btn" onClick={stop}>⏹️ Stop</button>
@@ -232,7 +187,6 @@ export default function DriverInterview() {
                 ) : (
                   <span className="ep-help">STT best in Chrome/Edge.</span>
                 )}
-                <button className="btn btn-primary" onClick={onCheck}>✅ Check</button>
               </div>
               <button className="btn" onClick={next} disabled={index === data.length - 1}>Next ▶</button>
             </div>

@@ -97,6 +97,17 @@
   resize: vertical;
 }
 
+/* Answer TTS button overlay */
+.ep-fc-answer { position: relative; }
+.ep-answer-tts {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+  min-width: 40px;
+  padding: 6px 8px;
+}
+
 .ep-fc-actions { display: flex; gap: var(--spacing-md); align-items: center; margin-top: var(--spacing-md); flex-wrap: wrap; }
 .ep-feedback { margin-top: var(--spacing-md); padding: 10px 12px; border-radius: var(--radius-md); background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); }
 .ep-feedback.level-warn { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.35); }
@@ -104,6 +115,9 @@
 
 .ep-fc-back { margin-top: var(--spacing-md); background: rgba(255,255,255,0.06); border: 1px dashed rgba(255,255,255,0.25); border-radius: var(--radius-lg); padding: var(--spacing-md); }
 .ep-model-label { font-size: var(--font-size-sm); color: var(--color-gray-200); margin-bottom: 6px; }
+
+/* Definition block */
+.ep-fc-definition { margin-top: var(--spacing-md); color: var(--color-gray-100); }
 
 .ep-fc-nav { display: flex; justify-content: space-between; gap: var(--spacing-md); margin-top: var(--spacing-md); }
 
