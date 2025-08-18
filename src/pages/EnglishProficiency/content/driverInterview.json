@@ -3,7 +3,13 @@
     "id": 1,
     "question": "Where did you start your trip today?",
     "paraphrases": ["Where are you coming from?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Dónde comenzaste tu viaje hoy?",
+      "uk": "Де ви почали свою поїздку сьогодні?",
+      "ru": "Где вы начали свою поездку сегодня?",
+      "zhCN": "你今天从哪里开始行程？",
+      "zhTW": "你今天從哪裡開始行程？"
+    },
     "modelAnswers": ["I started in Chicago, Illinois."],
     "intent": "origin",
     "keywords": {"include": ["from"], "exclude": []}
@@ -12,7 +18,13 @@
     "id": 2,
     "question": "Where are you driving to today?",
     "paraphrases": ["Where are you going today?"],
-    "translations": {},
+    "translations": {
+      "es": "¿A dónde conduces hoy?",
+      "uk": "Куди ви їдете сьогодні?",
+      "ru": "Куда вы едете сегодня?",
+      "zhCN": "你今天要开往哪里？",
+      "zhTW": "你今天要開往哪裡？"
+    },
     "modelAnswers": ["I'm going to Dallas, Texas."],
     "intent": "destination",
     "keywords": {"include": ["to", "going"], "exclude": ["load", "cargo", "trailer", "freight", "pallets"]}
@@ -21,7 +33,13 @@
     "id": 3,
     "question": "How long have you been driving today?",
     "paraphrases": ["What time did you start today?", "What time are you planning to stop driving today?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Cuánto tiempo has estado conduciendo hoy?",
+      "uk": "Скільки часу ви сьогодні за кермом?",
+      "ru": "Как долго вы сегодня ведёте?",
+      "zhCN": "你今天开车多久了？",
+      "zhTW": "你今天開車多久了？"
+    },
     "modelAnswers": ["I started at 6:00 AM and have been driving about 3 hours."],
     "intent": "duration",
     "keywords": {"include": ["hours", "hour", "minutes", "started", "start"], "exclude": []}
@@ -30,7 +48,13 @@
     "id": 4,
     "question": "What are you hauling today?",
     "paraphrases": ["What's in your truck/trailer?", "What cargo do you have in your truck/trailer?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Qué estás transportando hoy?",
+      "uk": "Що ви сьогодні везете?",
+      "ru": "Что вы сегодня перевозите?",
+      "zhCN": "你今天载什么货物？",
+      "zhTW": "你今天載什麼貨物？"
+    },
     "modelAnswers": ["I'm hauling dry van freight: paper rolls."],
     "intent": "cargo",
     "keywords": {"include": ["load", "freight", "cargo", "pallets", "boxes", "steel", "lumber", "produce"], "exclude": ["to", "going", "city", "state"]}
@@ -39,7 +63,13 @@
     "id": 5,
     "question": "Who are you driving for today?",
     "paraphrases": ["Who are you working for?", "Who is paying you for the load?", "What is the name of your employer?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Para quién conduces hoy?",
+      "uk": "Для кого ви сьогодні працюєте?",
+      "ru": "Для какой компании вы сегодня работаете?",
+      "zhCN": "你今天为哪家公司开车？",
+      "zhTW": "你今天為哪家公司開車？"
+    },
     "modelAnswers": ["I drive for ABC Logistics."],
     "intent": "employer",
     "keywords": {"include": ["for", "company", "employer"], "exclude": []}
@@ -48,7 +78,13 @@
     "id": 6,
     "question": "What is the telephone number for the trucking company you are driving for today?",
     "paraphrases": ["What telephone number would you call if you had a problem today?", "What telephone number at the company would you call if you had an accident today?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Cuál es el número de teléfono de la empresa para la que conduces hoy?",
+      "uk": "Який номер телефону транспортної компанії, для якої ви сьогодні працюєте?",
+      "ru": "Какой номер телефона транспортной компании, для которой вы сегодня работаете?",
+      "zhCN": "你今天所在运输公司的电话号码是多少？",
+      "zhTW": "你今天所屬運輸公司的電話號碼是多少？"
+    },
     "modelAnswers": ["The company number is 555-123-4567."],
     "intent": "phone-company",
     "keywords": {"include": ["call", "number", "company"], "exclude": []}
@@ -57,7 +93,13 @@
     "id": 7,
     "question": "Show me your driver's license please.",
     "paraphrases": ["Show me your CDL."],
-    "translations": {},
+    "translations": {
+      "es": "Muéstrame tu licencia de conducir, por favor.",
+      "uk": "Покажіть, будь ласка, ваше водійське посвідчення.",
+      "ru": "Покажите, пожалуйста, ваши водительские права.",
+      "zhCN": "请出示你的驾驶执照。",
+      "zhTW": "請出示你的駕駛執照。"
+    },
     "modelAnswers": ["Here is my CDL."],
     "intent": "license",
     "keywords": {"include": ["license", "cdl"], "exclude": []}
@@ -66,7 +108,13 @@
     "id": 8,
     "question": "Show me the proof of insurance for your vehicle(s).",
     "paraphrases": ["Where is your insurance card?"],
-    "translations": {},
+    "translations": {
+      "es": "Muéstrame la prueba de seguro de tu(s) vehículo(s).",
+      "uk": "Покажіть страхування на ваш транспортний засіб (засоби).",
+      "ru": "Покажите страховку на ваш(и) автомобиль(и).",
+      "zhCN": "请出示车辆保险证明。",
+      "zhTW": "請出示車輛保險證明。"
+    },
     "modelAnswers": ["Here is the insurance card."],
     "intent": "insurance",
     "keywords": {"include": ["insurance", "card"], "exclude": []}
@@ -75,7 +123,13 @@
     "id": 9,
     "question": "Show me the registration for your vehicle(s).",
     "paraphrases": ["Where is your cab card?", "Where is your IRP cab card?"],
-    "translations": {},
+    "translations": {
+      "es": "Muéstrame el registro de tu(s) vehículo(s).",
+      "uk": "Покажіть реєстрацію на ваш транспортний засіб (засоби).",
+      "ru": "Покажите регистрацию на ваш(и) автомобиль(и).",
+      "zhCN": "请出示车辆登记证/行驶证。",
+      "zhTW": "請出示車輛登記/行照。"
+    },
     "modelAnswers": ["Here is the registration and IRP cab card."],
     "intent": "registration",
     "keywords": {"include": ["registration", "cab", "irp"], "exclude": []}
@@ -84,7 +138,13 @@
     "id": 10,
     "question": "What year was your truck manufactured?",
     "paraphrases": ["What is the year of your truck?", "What year was your truck made?"],
-    "translations": {},
+    "translations": {
+      "es": "¿En qué año se fabricó su camión?",
+      "uk": "У якому році виготовлено ваш вантажний автомобіль?",
+      "ru": "Какого года выпуска ваш грузовик?",
+      "zhCN": "你的卡车是哪一年出厂的？",
+      "zhTW": "你的卡車是哪一年出廠的？"
+    },
     "modelAnswers": ["The truck is a 2019."],
     "intent": "vehicle-year",
     "keywords": {"include": ["year", "model"], "exclude": []}
@@ -93,7 +153,13 @@
     "id": 11,
     "question": "Did you perform your pre-trip inspection before you started driving today?",
     "paraphrases": ["Did you do your pre-trip inspection today?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Hizo la inspección previa al viaje antes de conducir hoy?",
+      "uk": "Чи провели ви передрейсовий огляд перед тим, як сьогодні вирушили?",
+      "ru": "Вы провели предрейсовый осмотр перед началом движения сегодня?",
+      "zhCN": "你今天开车前做了行前检查吗？",
+      "zhTW": "你今天開車前做了行前檢查嗎？"
+    },
     "modelAnswers": ["Yes, I completed the pre-trip inspection this morning."],
     "intent": "pretrip",
     "keywords": {"include": ["yes", "no", "pre-trip", "inspection"], "exclude": []}
@@ -102,7 +168,13 @@
     "id": 12,
     "question": "Do you use time cards, an ELD, or a log book?",
     "paraphrases": ["How do you report the time you worked?", "Do you use a time clock at work?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Usa tarjetas de tiempo, un ELD o un libro de registro?",
+      "uk": "Ви використовуєте табелі часу, ELD чи паперовий журнал?",
+      "ru": "Вы используете табели времени, ELD или бумажный журнал?",
+      "zhCN": "你使用计时卡、ELD还是纸质日志？",
+      "zhTW": "你使用計時卡、ELD 還是紙本日誌？"
+    },
     "modelAnswers": ["I use an ELD."],
     "intent": "logbook",
     "keywords": {"include": ["eld", "log", "time"], "exclude": []}
@@ -111,7 +183,13 @@
     "id": 13,
     "question": "What hazardous materials do you have on the truck today?",
     "paraphrases": ["What hazmat do you have on board today?", "What hazmat do you have in the truck/trailer?"],
-    "translations": {},
+    "translations": {
+      "es": "¿Qué materiales peligrosos tiene hoy en el camión?",
+      "uk": "Які небезпечні матеріали сьогодні в вашій вантажівці?",
+      "ru": "Какие опасные материалы у вас сегодня в грузовике?",
+      "zhCN": "你今天车上有哪些危险品？",
+      "zhTW": "你今天車上有哪些危險品？"
+    },
     "modelAnswers": ["I don't have hazmat today.", "I have Class 3 flammable liquid, UN1203 gasoline."],
     "intent": "hazmat",
     "keywords": {"include": ["hazmat", "hazardous"], "exclude": []}
@@ -120,7 +198,13 @@
     "id": 14,
     "question": "What telephone number would you call in case of an emergency?",
     "paraphrases": ["What telephone number would you call if you had a problem today?", "What telephone number at the company would you call if you had an accident today?"],
-    "translations": {},
+    "translations": {
+      "es": "¿A qué número de teléfono llamaría en caso de emergencia?",
+      "uk": "На який номер ви б подзвонили у разі надзвичайної ситуації?",
+      "ru": "По какому номеру вы бы позвонили в случае чрезвычайной ситуации?",
+      "zhCN": "发生紧急情况时，你会拨打哪个电话号码？",
+      "zhTW": "發生緊急情況時，你會撥打哪個電話號碼？"
+    },
     "modelAnswers": ["I would call 911 or my company at 555-123-4567."],
     "intent": "emergency-phone",
     "keywords": {"include": ["911", "emergency", "call", "number"], "exclude": []}
