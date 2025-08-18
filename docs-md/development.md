@@ -100,17 +100,54 @@ import VehicleInspections from './pages/VehicleInspections';
 - Use `public/**` for truly static files that must preserve their path/filename (served verbatim).
 
 ## Deployment
-- One-liner (Windows PowerShell):
+
+We publish two GitHub Pages sites so dev and prod don’t fight over the same CNAME:
+
+- fixdq-Dev → https://dev.fixdq.org (branch: `development`, folder: `/docs`)
+- fixdq-Prod → https://fixdq.org (branch: `production`, folder: `/docs`)
+
+The deploy script mirrors `dist/` → `docs/`, writes `.nojekyll`, and sets `docs/CNAME` based on the target domain.
+
+### PowerShell commands (this repo)
+
+Development (fixdq-Dev → dev.fixdq.org):
 ```
-npm run deploy; git add -A; git commit -m "Deploy dist to docs"; git push origin development
+npm run deploy:dev
+git add -A
+git commit -m "Deploy dev"
+git push origin HEAD:development
 ```
-- The `deploy` script builds to `dist/` and mirrors to `docs/`, ensures `CNAME` and `.nojekyll`, and creates a `/docs` → `/` redirect.
-- GitHub Pages settings: Branch = `development`, Folder = `/docs`, Custom domain = `dev.fixdq.org`.
+
+Production (fixdq-Prod → fixdq.org):
+```
+npm run deploy:prod
+git add -A
+git commit -m "Deploy prod"
+git push production HEAD:production
+# If rejected because remote has commits:
+git fetch production
+git push --force-with-lease production HEAD:production
+```
+
+### GitHub Pages settings
+- fixdq-Dev repo: Settings → Pages → Source = Branch `development`, Folder `/docs`, Custom Domain `dev.fixdq.org`.
+- fixdq-Prod repo: Settings → Pages → Source = Branch `production`, Folder `/docs`, Custom Domain `fixdq.org`.
+
+### DNS records
+- fixdq.org (apex/root) A records (GitHub Pages):
+  - 185.199.108.153
+  - 185.199.109.153
+  - 185.199.110.153
+  - 185.199.111.153
+- dev.fixdq.org CNAME:
+  - `dev  CNAME  yourgithubusername.github.io`
 
 ## Troubleshooting
-- Blank page on Pages: Ensure you published `docs/` (not `/src/main.jsx`), and that `docs/index.html` + `docs/assets/*` exist on `development`.
-- SPA deep link 404s: `public/404.html` is included to redirect to the SPA entry.
-- Dev server issues: If HMR gets stuck, stop and restart `npm run dev`.
+- White/blank page on Pages: Pages must serve `docs/index.html` (built output). Verify branch + `/docs` settings, and that `docs/index.html` and `docs/assets/*` exist.
+- Assets 404 in DevTools → Network: rebuild and redeploy (`npm run deploy:dev` or `npm run deploy:prod`).
+- Missing domain: confirm `docs/CNAME` matches the repo’s custom domain and that DNS is correct.
+- SPA deep link 404s: `public/404.html` handles redirects to the SPA entry.
+- Dev server issues: if HMR is stuck, restart `npm run dev`.
 
 ## Next steps (suggested)
 - Add Prettier and a basic test setup (Vitest + React Testing Library).
