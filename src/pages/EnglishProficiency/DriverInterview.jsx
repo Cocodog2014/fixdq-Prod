@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GlobalHeader from '../../components/GlobalHeader';
 import data from './content/driverInterview.json';
 
@@ -114,6 +115,16 @@ export default function DriverInterview() {
 
   const [ttsRate, setTtsRate] = useState(1);
   const [textSize, setTextSize] = useState('md');
+  const [supportLanguage, setSupportLanguage] = useState('none');
+
+  const SUPPORT_LABELS = {
+    none: 'None',
+    es: 'Español',
+    uk: 'Українська',
+    ru: 'Русский',
+    zhCN: '中文（简体）',
+    zhTW: '中文（繁體）',
+  };
 
   // Load settings
   useEffect(() => {
@@ -122,6 +133,8 @@ export default function DriverInterview() {
       if (r) setTtsRate(r);
       const s = localStorage.getItem(SETTINGS.textSize);
       if (s) setTextSize(s);
+  const lang = localStorage.getItem(SETTINGS.language);
+  if (lang) setSupportLanguage(lang);
     } catch (e) { console.debug('settings load', e); }
   }, []);
 
@@ -162,24 +175,54 @@ export default function DriverInterview() {
       <GlobalHeader />
       <section className="section-padding">
         <div className="container">
-          <div className="ep-card">
-            <div className="ep-toprow">
-              <div className="ep-progress">Question {index + 1} / {data.length}</div>
-              <div className="ep-controls">
-                <button className="btn" onClick={() => speak(item.question, ttsRate)}>🔊 Question</button>
-                <button className="btn" onClick={() => speak(item.modelAnswers?.[0] || '', ttsRate)}>🔊 Model</button>
-              </div>
+          <div className="ep-flashcard">
+            <div className="ep-back">
+              <Link to="/english-proficiency" className="ep-back-link">← English Proficiency</Link>
             </div>
 
-            <h2 className="ep-question">{item.question}</h2>
-            {item.paraphrases?.length ? (
-              <p className="ep-paraphrase">Possible: {item.paraphrases[0]}</p>
-            ) : null}
+            <div className="ep-fc-card">
+              <div className="ep-fc-toprow">
+                <div className="ep-progress">{index + 1} / {data.length}</div>
+                <div className="ep-top-actions">
+                  <button className="btn btn-ghost" onClick={() => speak(item.question, ttsRate)} aria-label="Play question">🔊</button>
+                </div>
+              </div>
+              <h2 className="ep-fc-question">{item.question}</h2>
+              {item.paraphrases?.length ? (
+                <p className="ep-fc-paraphrase">Possible: {item.paraphrases[0]}</p>
+              ) : null}
 
-            <div className="ep-answerbox">
-              <label htmlFor="answer" className="sr-only">Your answer</label>
-              <textarea id="answer" rows={3} value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Type your answer in English..." />
-              <div className="ep-row">
+              {supportLanguage !== 'none' && (
+                item.translations?.[supportLanguage] ? (
+                  <p className="ep-fc-translation"><span className="ep-support-chip">{SUPPORT_LABELS[supportLanguage]}</span> {item.translations[supportLanguage]}</p>
+                ) : (
+                  <p className="ep-support-chip">Support: {SUPPORT_LABELS[supportLanguage]}</p>
+                )
+              )}
+
+              <div className="ep-fc-answer">
+                <label htmlFor="answer" className="sr-only">Your answer</label>
+                <textarea id="answer" rows={4} value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Type your answer in English..." />
+              </div>
+
+              {feedback && (
+                <div className={`ep-feedback level-${feedback.level}`}>
+                  {feedback.message}
+                </div>
+              )}
+
+              {showBack && (
+                <div className="ep-fc-back">
+                  <div className="ep-model-label">Model answer</div>
+                  <p>{item.modelAnswers?.[0]}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="ep-fc-bottom">
+              <button className="btn" onClick={prev} disabled={index === 0}>◀ Prev</button>
+              <div className="ep-fc-bottom-actions">
+                <button className="btn" onClick={() => speak(item.modelAnswers?.[0] || '', ttsRate)} aria-label="Play model answer">🔊 Model</button>
                 {supported ? (
                   listening ? (
                     <button className="btn" onClick={stop}>⏹️ Stop</button>
@@ -187,27 +230,10 @@ export default function DriverInterview() {
                     <button className="btn" onClick={start}>🎙️ Speak</button>
                   )
                 ) : (
-                  <span className="ep-help">Speech-to-text works best in Chrome/Edge.</span>
+                  <span className="ep-help">STT best in Chrome/Edge.</span>
                 )}
                 <button className="btn btn-primary" onClick={onCheck}>✅ Check</button>
               </div>
-            </div>
-
-            {feedback && (
-              <div className={`ep-feedback level-${feedback.level}`}>
-                {feedback.message}
-              </div>
-            )}
-
-            {showBack && (
-              <div className="ep-model">
-                <div className="ep-model-label">Model answer</div>
-                <p>{item.modelAnswers?.[0]}</p>
-              </div>
-            )}
-
-            <div className="ep-nav">
-              <button className="btn" onClick={prev} disabled={index === 0}>◀ Prev</button>
               <button className="btn" onClick={next} disabled={index === data.length - 1}>Next ▶</button>
             </div>
           </div>
