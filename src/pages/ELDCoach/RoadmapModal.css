@@ -1,0 +1,12 @@
+.roadmap-modal-overlay{position:fixed;inset:0;background:rgba(3,7,18,.6);backdrop-filter:saturate(120%) blur(2px);display:flex;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.roadmap-modal{background:#ede9fe;color:#312e81;border:1px solid rgba(49,46,129,.25);border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.2);width:min(720px,100%);max-height:85vh;overflow:auto;padding:24px}
+.roadmap-close{position:absolute;right:20px;top:14px;background:transparent;border:none;color:#94a3b8;font-size:26px;cursor:pointer}
+.roadmap-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.roadmap-section h3{margin:0 0 8px 0;font-size:16px;color:#1f1c6e}
+.roadmap-section ul{margin:0;padding-left:18px}
+.roadmap-section li{margin:6px 0}
+.roadmap-ctas{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.roadmap-modal .btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.15);cursor:pointer}
+.roadmap-modal .btn-primary{background:#6d28d9;color:#fff}
+.roadmap-modal .btn-secondary{background:transparent;color:#312e81}
+@media (max-width:600px){.roadmap-body{grid-template-columns:1fr}.roadmap-modal{padding:18px}}

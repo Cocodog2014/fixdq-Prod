@@ -7,6 +7,17 @@ import FMCSACompliance from './pages/FMCSACompliance'
 import FMCSARegulations from './pages/FMCSACompliance/FMCSARegulations'
 import HoursOfService from './pages/FMCSACompliance/HoursOfService'
 import SafetyManagement from './pages/FMCSACompliance/SafetyManagement'
+import SafetyTraining from './pages/SafetyTraining/SafetyTraining'
+import DefensiveDriving from './pages/SafetyTraining/DefensiveDriving'
+import Hazmat from './pages/SafetyTraining/Hazmat'
+import WeatherRoad from './pages/SafetyTraining/WeatherRoad'
+import EmergencyProcedures from './pages/SafetyTraining/EmergencyProcedures'
+import AccidentPrevention from './pages/SafetyTraining/AccidentPrevention'
+import ViolationManagement from './pages/ViolationManagement/ViolationManagement'
+import CitationTypes from './pages/ViolationManagement/CitationTypes'
+import DataQNavigation from './pages/ViolationManagement/DataQNavigation'
+import DriverScore from './pages/ViolationManagement/DriverScore'
+import AppealProcess from './pages/ViolationManagement/AppealProcess'
 import CSA from './pages/FMCSACompliance/CSA'
 import PreventionManagement from './pages/FMCSACompliance/PreventionManagement'
 import FarmExemptionChecker from './pages/FarmExemptionChecker'
@@ -39,6 +50,17 @@ createRoot(document.getElementById('root')).render(
   <Route path="/fmcsa-regulations" element={<FMCSARegulations />} />
   <Route path="/hours-of-service" element={<HoursOfService />} />
   <Route path="/safety-management" element={<SafetyManagement />} />
+  <Route path="/safety-training" element={<SafetyTraining />} />
+  <Route path="/safety-training/defensive-driving" element={<DefensiveDriving />} />
+  <Route path="/safety-training/hazmat" element={<Hazmat />} />
+  <Route path="/safety-training/weather-road" element={<WeatherRoad />} />
+  <Route path="/safety-training/emergency-procedures" element={<EmergencyProcedures />} />
+  <Route path="/safety-training/accident-prevention" element={<AccidentPrevention />} />
+  <Route path="/violations-management" element={<ViolationManagement />} />
+  <Route path="/violations-management/citation-types" element={<CitationTypes />} />
+  <Route path="/violations-management/dataq-navigation" element={<DataQNavigation />} />
+  <Route path="/violations-management/driver-score" element={<DriverScore />} />
+  <Route path="/violations-management/appeal-process" element={<AppealProcess />} />
   <Route path="/csa" element={<CSA />} />
   <Route path="/prevention-management" element={<PreventionManagement />} />
   <Route path="/farm-exemption-checker" element={<FarmExemptionChecker />} />

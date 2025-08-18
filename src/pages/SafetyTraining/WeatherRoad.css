@@ -1,0 +1,36 @@
+.weather-road-page{color:var(--color-white)}
+/* Grid of tiles */
+.wr-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:var(--spacing-sm)}
+.wr-card{grid-column:span 12;background:rgba(14,165,233,0.25);border-radius:var(--radius-xl);box-shadow:var(--shadow-blue);display:flex;overflow:hidden;color:var(--color-white)}
+.wr-tile .wr-body{padding:var(--spacing-lg)}
+.wr-rail{width:8px;background:var(--color-accent-blue)}
+.wr-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.wr-icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:999px;background:rgba(14,165,233,.12);font-size:36px;line-height:1}
+.wr-title{font-size:var(--font-size-lg);margin:0 0 6px 0;color:var(--color-white)}
+.wr-sub{color:var(--color-white);margin-bottom:var(--spacing-md)}
+.wr-note{color:var(--color-white);font-size:var(--font-size-sm);font-weight:600}
+.wr-emoji{font-size:40px;line-height:1;margin-bottom:6px}
+.wr-actions{margin-top:var(--spacing-lg)}
+.weather-road-page .btn-link{color:var(--color-white);text-decoration:none}
+.weather-road-page .btn-link:hover{text-decoration:underline;color:var(--color-white)}
+
+/* Color variants */
+.tile-orange{background:rgba(249,115,22,0.25)}
+.tile-purple{background:rgba(124,58,237,0.25)}
+.tile-blue{background:rgba(14,165,233,0.25)}
+.tile-red{background:rgba(239,68,68,0.25)}
+.tile-teal{background:rgba(20,184,166,0.25)}
+.rail-orange{background:var(--color-accent-orange) !important}
+.rail-purple{background:var(--color-accent-purple) !important}
+.rail-blue{background:var(--color-accent-blue) !important}
+.rail-red{background:var(--color-accent-red) !important}
+.rail-teal{background:var(--color-accent-teal) !important}
+.tile-orange .wr-icon{background:rgba(249,115,22,.12)}
+.tile-purple .wr-icon{background:rgba(124,58,237,.12)}
+.tile-blue .wr-icon{background:rgba(14,165,233,.12)}
+.tile-red .wr-icon{background:rgba(239,68,68,.12)}
+.tile-teal .wr-icon{background:rgba(20,184,166,.12)}
+
+/* Responsive */
+@media (min-width:640px){.wr-card{grid-column:span 6}}
+@media (min-width:960px){.wr-card{grid-column:span 4}}

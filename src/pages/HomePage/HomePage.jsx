@@ -29,7 +29,7 @@ function HomePage() {
             </Link>
 
             {/* ELD & Logbook Coach */}
-            <Link to="/eld-coach" className="feature-card orange-border feature-link-card">
+            <Link to="/eld-coach?roadmap=1" className="feature-card orange-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">📟</span>
                 <h3>ELD & Logbook Coach</h3>
@@ -100,10 +100,10 @@ function HomePage() {
               </div>
             </a>
 
-            {/* Safety Training */}
-            <div className="feature-card green-border">
+            {/* Safety Training (full-card link, matches header link) */}
+            <Link to="/safety-training" className="feature-card green-border feature-link-card">
               <div className="feature-header">
-                <span className="icon">�️</span>
+                <span className="icon">🛡️</span>
                 <h3>Safety Training</h3>
               </div>
               <ul>
@@ -113,10 +113,13 @@ function HomePage() {
                 <li>Emergency Procedures</li>
                 <li>Accident Prevention</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open Safety Training</span>
+              </div>
+            </Link>
 
-            {/* Violations Management */}
-            <div className="feature-card teal-border">
+            {/* Violations Management (full-card link + bottom CTA) */}
+            <Link to="/violations-management" className="feature-card teal-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">⚖️</span>
                 <h3>Violations Management</h3>
@@ -128,7 +131,10 @@ function HomePage() {
                 <li>Appeal Process Guidelines</li>
                 <li>Record Maintenance</li>
               </ul>
-            </div>
+              <div className="feature-footer">
+                <span className="card-cta">Open Violations Management</span>
+              </div>
+            </Link>
 
             {/* English Proficiency */}
             <Link to="/vehicle-inspections/english-proficiency" className="feature-card red-border feature-link-card">
