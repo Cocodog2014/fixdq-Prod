@@ -1,0 +1,61 @@
+/* English Proficiency (M1) - Landing skeleton */
+@media (prefers-reduced-motion: no-preference) {
+  .ep-hero { scroll-margin-top: 24px; }
+}
+
+.ep-page { 
+  background: var(--bg-gradient-primary);
+  min-height: 100vh; 
+  color: var(--color-white);
+}
+
+/* text sizes */
+.ep-page.text-sm { font-size: 15px; }
+.ep-page.text-md { font-size: 16px; }
+.ep-page.text-lg { font-size: 18px; }
+
+.ep-hero .ep-tagline { margin-bottom: var(--spacing-sm); }
+.ep-hero .ep-subtext { color: var(--color-gray-200); max-width: 60ch; }
+.ep-actions { margin-top: var(--spacing-md); }
+
+.ep-why .ep-card,
+.ep-category .ep-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-blue);
+  margin-bottom: var(--spacing-lg);
+}
+
+.ep-card h2 { margin-bottom: var(--spacing-md); }
+.ep-card ul { padding-left: 1.25rem; line-height: 1.7; }
+
+.ep-row { display: flex; flex-wrap: wrap; gap: var(--spacing-md); align-items: center; }
+.ep-row select { 
+  appearance: none; 
+  background: var(--color-white); 
+  color: var(--color-gray-900);
+  border-radius: var(--radius-lg);
+  padding: 10px 14px; 
+  min-height: 44px; 
+  border: none;
+}
+
+.ep-lang-reminder { color: var(--color-gray-200); margin-top: var(--spacing-sm); }
+
+.ep-banner { text-align: center; }
+.ep-banner-text { font-weight: 700; margin-bottom: var(--spacing-md); }
+
+/* Modal */
+.ep-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; padding: var(--spacing-md); }
+.ep-modal-content { width: 100%; max-width: 560px; background: var(--color-white); color: var(--color-gray-900); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+.ep-modal-header { display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-md) var(--spacing-lg); border-bottom: 1px solid var(--color-gray-200); }
+.ep-modal-body { padding: var(--spacing-lg); }
+.ep-close { background: transparent; border: none; font-size: 20px; cursor: pointer; }
+.ep-field { display: grid; gap: 6px; margin-bottom: var(--spacing-md); }
+.ep-field select { min-height: 44px; }
+.ep-help { color: var(--color-gray-600); font-size: var(--font-size-sm); }
+.ep-divider { height: 1px; background: var(--color-gray-200); margin: var(--spacing-md) 0; }
+
+/* Responsive containers inherit from global .container */
