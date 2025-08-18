@@ -28,6 +28,80 @@
   margin-bottom: var(--spacing-lg);
 }
 
+/* Landing page container color themes */
+/* Settings card: green */
+.ep-settings .ep-card {
+  background: linear-gradient(160deg, #065f46 0%, #047857 100%);
+  border: 1px solid rgba(16,185,129,0.6);
+  box-shadow: 0 10px 25px -3px rgba(5,150,105,0.4);
+  padding: var(--spacing-xl); /* more breathing room */
+}
+
+/* Greener internals for Settings */
+.ep-settings .grid { gap: var(--spacing-lg); }
+.ep-settings .ep-field { gap: 10px; margin-bottom: var(--spacing-lg); }
+.ep-settings .ep-field label { 
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.2vw, 2rem); /* ~2x larger labels */
+  line-height: 1.2;
+}
+.ep-settings .ep-field select,
+.ep-settings .ep-row select {
+  background: #bbf7d0; /* green-200, greener fluorescent */
+  color: #14532d;      /* green-900 */
+  border: 1px solid rgba(34,197,94,0.65); /* green-500 */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  min-height: 44px; /* consistent height */
+  padding: 8px 12px;
+  max-width: 320px; /* consistent, not overly long */
+}
+
+/* Force the first three fields to align on the same row and match widths */
+@media (min-width: 768px) {
+  .ep-settings .grid { 
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+  .ep-settings .grid > .ep-field:nth-of-type(-n+3) select { width: 100%; margin-top: 8px; }
+}
+
+.ep-settings input[type="range"] {
+  accent-color: #22c55e; /* green-500 */
+}
+
+.ep-settings .ep-help {
+  color: #dcfce7; /* green-50/100 for readable mint */
+}
+
+.ep-settings .ep-range-readout {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 8px;
+  border-radius: var(--radius-md);
+  background: rgba(34,197,94,0.22); /* greener tint */
+  color: #f0fdf4; /* green-50 */
+}
+
+@media (min-width: 1024px) {
+  /* On desktop give action row some top spacing as content grows */
+  .ep-settings .ep-actions-row { margin-top: var(--spacing-md); }
+}
+
+/* Why English Matters (first card in the why section): purple */
+.ep-why .ep-card:nth-of-type(1) {
+  background: linear-gradient(160deg, #4c1d95 0%, #7c3aed 100%);
+  border: 1px solid rgba(124,58,237,0.5);
+  box-shadow: 0 10px 25px -3px rgba(124,58,237,0.35);
+}
+
+/* Drivers Keep America Rolling (second card in the why section): orange */
+.ep-why .ep-card:nth-of-type(2) {
+  background: linear-gradient(160deg, #9a3412 0%, #ea580c 100%);
+  border: 1px solid rgba(234,88,12,0.5);
+  box-shadow: 0 10px 25px -3px rgba(234,88,12,0.35);
+}
+
 .ep-card h2 { margin-bottom: var(--spacing-md); }
 .ep-card ul { padding-left: 1.25rem; line-height: 1.7; }
 
@@ -45,11 +119,35 @@
 .ep-lang-reminder { color: var(--color-gray-200); margin-top: var(--spacing-sm); }
 
 .ep-banner { text-align: center; }
-.ep-banner-text { font-weight: 700; margin-bottom: var(--spacing-md); }
+.ep-banner-text { 
+  font-weight: 800; 
+  margin-bottom: var(--spacing-md);
+  font-size: 3rem; /* ~3x base for strong emphasis */
+  color: var(--color-accent-red); /* standout red */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25); /* subtle lift on gradient */
+}
+@media (min-width: 768px) {
+  .ep-banner-text { font-size: 3.5rem; }
+}
+@media (min-width: 1024px) {
+  .ep-banner-text { font-size: 4rem; }
+}
+
+/* Visibility helpers for landing */
+.tablet-desktop { display: none; }
+@media (min-width: 768px) {
+  .tablet-desktop { display: block; }
+}
 
 /* Modal */
 .ep-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; padding: var(--spacing-md); }
 .ep-modal-content { width: 100%; max-width: 560px; background: var(--color-white); color: var(--color-gray-900); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+/* Mobile: offset modal content from sticky ribbons/banners */
+@media (max-width: 767px) {
+  /* Push modal further down on small screens to clear ribbons/banners */
+  .ep-modal { align-items: flex-start; padding-top: clamp(128px, 25vh, 200px); }
+  .ep-modal-content { margin-bottom: var(--spacing-md); }
+}
 .ep-modal-header { display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-md) var(--spacing-lg); border-bottom: 1px solid var(--color-gray-200); }
 .ep-modal-body { padding: var(--spacing-lg); }
 .ep-close { background: transparent; border: none; font-size: 20px; cursor: pointer; }
@@ -57,6 +155,40 @@
 .ep-field select { min-height: 44px; }
 .ep-help { color: var(--color-gray-600); font-size: var(--font-size-sm); }
 .ep-divider { height: 1px; background: var(--color-gray-200); margin: var(--spacing-md) 0; }
+
+/* Actions row for settings */
+.ep-actions-row { display: flex; gap: var(--spacing-sm); align-items: center; flex-wrap: wrap; }
+/* Tablet/Desktop: keep actions in one row */
+@media (min-width: 768px) {
+  .ep-actions-row { 
+  flex-wrap: nowrap; 
+  justify-content: flex-start; /* align under Text size column */
+  gap: var(--spacing-md);     /* moderate spacing between buttons */
+  grid-column: 3;             /* place in 3rd column */
+  }
+  /* Make all buttons same size within the actions row */
+  .ep-actions-row .btn { 
+  width: 128px;             /* equal width that fits column */
+    min-height: 44px;         /* consistent height */
+    padding: 10px 16px;       /* uniform padding */
+  }
+}
+.ep-settings .ep-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+.ep-settings .ep-field label { color: var(--color-white); font-weight: 600; }
+.ep-settings .ep-help { color: var(--color-white); opacity: 0.85; font-size: var(--font-size-base); }
+
+/* Small button utility and reset style */
+.btn-sm { padding: 8px 12px; font-size: var(--font-size-sm); min-height: 36px; border-radius: var(--radius-md); }
+/* Make reset button clearly visible on light/dark backgrounds */
+.btn-reset { 
+  background: var(--color-primary-light); /* blue */
+  color: var(--color-white);
+  border: 1px solid var(--color-primary-dark);
+}
+.btn-reset:hover { 
+  background: var(--color-primary); /* darker blue on hover */
+  border-color: var(--color-primary-dark);
+}
 
 /* Responsive containers inherit from global .container */
 

@@ -83,13 +83,98 @@ export default function EnglishProficiency() {
           <h1 className="ep-tagline">Safe Drivers. Clear English. Strong America.</h1>
           <p className="ep-subtext">Prepare for CVSA inspections with English you can understand and speak confidently.</p>
 
-          <div className="ep-actions">
+          <div className="ep-actions mobile-only">
             <button className="btn btn-primary" onClick={() => setSettingsOpen(true)} aria-haspopup="dialog">
               ⚙️ Settings
             </button>
           </div>
         </div>
       </header>
+
+      {/* Inline settings for tablet/desktop */}
+      <section className="ep-settings section-padding tablet-desktop">
+        <div className="container">
+          <div className="ep-card">
+            <div className="grid">
+              <div className="ep-field">
+                <label htmlFor="ep-language-inline">Support language</label>
+                <select id="ep-language-inline" value={supportLanguage} onChange={(e) => setSupportLanguage(e.target.value)}>
+                  {LANGUAGES.map((l) => (
+                    <option key={l.value} value={l.value}>{l.label}</option>
+                  ))}
+                </select>
+                <p className="ep-help">Shows a translation under English when available.</p>
+              </div>
+
+              {/* Move Choose a practice area up between Support language and Text size */}
+              <div className="ep-field">
+                <label htmlFor="ep-category-inline">Choose a practice area</label>
+                <div className="ep-row">
+                  <select id="ep-category-inline" value={category} onChange={(e) => setCategory(e.target.value)}>
+                    {CATEGORIES.map((c) => (
+                      <option key={c.value} value={c.value}>{c.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="ep-field">
+                <label htmlFor="ep-text-size-inline">Text size</label>
+                <select id="ep-text-size-inline" value={textSize} onChange={(e) => setTextSize(e.target.value)}>
+                  {TEXT_SIZES.map((s) => (
+                    <option key={s.value} value={s.value}>{s.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="ep-field">
+                <label htmlFor="ep-tts-rate-inline">Speech rate (English TTS)</label>
+                <input
+                  id="ep-tts-rate-inline"
+                  type="range"
+                  min={0.6}
+                  max={1.4}
+                  step={0.05}
+                  value={ttsRate}
+                  onChange={(e) => setTtsRate(parseFloat(e.target.value))}
+                />
+                <div className="ep-range-readout">{ttsRate.toFixed(2)}×</div>
+              </div>
+
+              {/* Category field moved above; keep remaining fields below */}
+
+              <div className="ep-field ep-actions-row">
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={handleStart}
+                >▶ Start Training</button>
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => {
+                    try {
+                      localStorage.setItem(LS_KEYS.language, supportLanguage);
+                      localStorage.setItem(LS_KEYS.textSize, textSize);
+                      localStorage.setItem(LS_KEYS.ttsRate, String(ttsRate));
+                    } catch (e) { console.debug('Save failed', e); }
+                    // After saving settings, jump straight to flashcards
+                    handleStart();
+                  }}
+                >Save</button>
+                <button className="btn btn-reset btn-sm" onClick={() => {
+                  try {
+                    localStorage.removeItem(LS_KEYS.language);
+                    localStorage.removeItem(LS_KEYS.textSize);
+                    localStorage.removeItem(LS_KEYS.ttsRate);
+                  } catch (e) { console.debug('Reset failed', e); }
+                  setSupportLanguage('none');
+                  setTextSize('md');
+                  setTtsRate(1.0);
+                }}>Reset settings</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Why sections */}
       <section className="ep-why section-padding">
@@ -115,7 +200,7 @@ export default function EnglishProficiency() {
       </section>
 
       {/* Category + CTA */}
-      <section className="ep-category section-padding">
+  <section className="ep-category section-padding mobile-only">
         <div className="container">
           <div className="ep-card">
             <h2>Choose a Practice Area</h2>
@@ -139,7 +224,6 @@ export default function EnglishProficiency() {
       <section className="ep-banner section-padding">
         <div className="container">
           <p className="ep-banner-text">You’re not just driving a truck—you’re driving America forward.</p>
-          <button className="btn btn-primary" onClick={handleStart}>🚚 Begin Practice</button>
         </div>
       </section>
 
@@ -186,16 +270,30 @@ export default function EnglishProficiency() {
               </div>
 
               <div className="ep-divider" />
-              <button className="btn" onClick={() => {
-                try {
-                  localStorage.removeItem(LS_KEYS.language);
-                  localStorage.removeItem(LS_KEYS.textSize);
-                  localStorage.removeItem(LS_KEYS.ttsRate);
-                } catch (e) { console.debug('Reset failed', e); }
-                setSupportLanguage('none');
-                setTextSize('md');
-                setTtsRate(1.0);
-              }}>Reset settings</button>
+              <div className="ep-actions-row">
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => {
+                    try {
+                      localStorage.setItem(LS_KEYS.language, supportLanguage);
+                      localStorage.setItem(LS_KEYS.textSize, textSize);
+                      localStorage.setItem(LS_KEYS.ttsRate, String(ttsRate));
+                    } catch (e) { console.debug('Save failed', e); }
+                    // Navigate directly into flashcards after saving
+                    handleStart();
+                  }}
+                >Save</button>
+                <button className="btn btn-reset btn-sm" onClick={() => {
+                  try {
+                    localStorage.removeItem(LS_KEYS.language);
+                    localStorage.removeItem(LS_KEYS.textSize);
+                    localStorage.removeItem(LS_KEYS.ttsRate);
+                  } catch (e) { console.debug('Reset failed', e); }
+                  setSupportLanguage('none');
+                  setTextSize('md');
+                  setTtsRate(1.0);
+                }}>Reset settings</button>
+              </div>
             </div>
           </div>
         </div>
