@@ -1,0 +1,36 @@
+/* ================================
+   HEADER RIBBON (moving marquee at bottom of header)
+   ================================ */
+.header-ribbon {
+  position: relative;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, var(--color-accent-red) 0%, var(--color-accent-yellow) 50%, var(--color-accent-blue) 100%);
+  border-top: 2px solid rgba(255,255,255,0.25);
+  pointer-events: none; /* do not block clicks on nav above */
+  z-index: 1; /* keep below nav buttons (z-index:3) */
+}
+
+.header-ribbon .ribbon-viewport {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-ribbon .ribbon-track {
+  display: inline-flex;
+  gap: var(--spacing-lg);
+  padding: 4px 0; /* slimmer ribbon to reduce separation */
+  animation: hero-ribbon-scroll 28s linear infinite;
+}
+
+.header-ribbon .ribbon-item { font-weight: 600; color: #fff; }
+.header-ribbon .ribbon-sep { opacity: 0.6; color: #fff; }
+
+@keyframes hero-ribbon-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-ribbon .ribbon-track { animation: none; }
+}

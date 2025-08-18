@@ -5,6 +5,8 @@
 
 /* Import all component styles */
 @import './components/GlobalHeader/GlobalHeader.css';
+@import './components/GlobalHeader/Banner.css';
+@import './components/GlobalHeader/Ribbon.css';
 @import './pages/HomePage/HomePage.css';
 @import './pages/FMCSACompliance/FMCSACompliance.css';
 @import './pages/FMCSACompliance/SafetyManagement.css';

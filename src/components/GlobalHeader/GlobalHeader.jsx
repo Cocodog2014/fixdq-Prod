@@ -164,8 +164,7 @@ function GlobalHeader() {
           </div>
         </div>
       </div>
-
-      // Header bottom moving ribbon
+  {/* Header bottom moving ribbon */}
           <div className="header-ribbon" aria-label="Site topics marquee">
             <div className="ribbon-viewport">
               <div className="ribbon-track" aria-hidden="true">

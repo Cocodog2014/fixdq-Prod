@@ -1,0 +1,148 @@
+/* ================================
+   HERO BANNER (rotating titles/subtitles)
+   ================================ */
+.hero-banner {
+  background: var(--bg-gradient-primary);
+  color: var(--color-white);
+  padding: calc(var(--spacing-lg) * 0.5) 0; /* tighter spacing to reduce gap under header */
+  text-align: center;
+  position: relative;
+}
+
+/* Mobile-only controls inside hero */
+.hero-mobile-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: calc(var(--spacing-lg) * 0.8); /* -20% */
+}
+
+.hero-logo-link { text-decoration: none; }
+.hero-logo-image { height: 32px; width: auto; display: block; }
+
+.hero-mobile-menu-toggle {
+  background: none;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+}
+
+.hero-content h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+}
+
+.hero-content p {
+  font-size: var(--font-size-base);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+/* Rotating hero copy (mobile-first) */
+.hero-rotator { position: relative; height: 72px; overflow: hidden; }
+.hero-rotator-slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: hero-fade-in 500ms ease both; }
+.hero-rotator-slide h2 { margin: 0 0 4px; font-size: var(--font-size-lg); font-weight: 800; text-shadow: 0 1px 2px rgba(0,0,0,0.45); }
+.hero-rotator-slide p { margin: 0; font-size: var(--font-size-sm); opacity: 0.98; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+
+/* Per-slide accent colors matching nav button palette */
+.hero-rotator-slide.accent-orange h2 { color: var(--color-accent-orange); }
+.hero-rotator-slide.accent-purple h2 { color: var(--color-accent-purple); }
+.hero-rotator-slide.accent-blue h2 { color: var(--color-accent-blue); }
+.hero-rotator-slide.accent-red h2 { color: var(--color-accent-red); }
+.hero-rotator-slide.accent-green h2 { color: var(--color-accent-green); }
+.hero-rotator-slide.accent-teal h2 { color: var(--color-accent-teal); }
+.hero-rotator-slide .slide-subtitle { color: #f3f4f6; }
+
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.cta-primary,
+.cta-secondary {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  min-height: 50px;
+  min-width: 160px;
+}
+
+.cta-primary {
+  background: var(--color-accent-orange);
+  color: var(--color-white);
+  border-color: var(--color-accent-orange);
+}
+
+.cta-primary:hover {
+  background: var(--color-accent-yellow);
+  border-color: var(--color-accent-yellow);
+  transform: translateY(-2px);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.cta-secondary:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* ================================
+   TABLET STYLES (768px+)
+   ================================ */
+@media (min-width: 768px) {
+  /* Keep the hero area visible on tablet+ */
+  .hero-banner { min-height: 56px; }
+
+  /* Show rotating titles on tablet+ as well */
+  .hero-rotator { display: block; }
+
+  .hero-content h2 { font-size: var(--font-size-2xl); }
+  .hero-content p { font-size: var(--font-size-lg); }
+
+  /* Hide mobile-only controls in tablet+ */
+  .hero-mobile-controls { display: none; }
+
+  /* Lay out CTAs inline on larger screens */
+  .hero-cta { flex-direction: row; justify-content: center; }
+}
+
+/* ================================
+   DESKTOP STYLES (1024px+)
+   ================================ */
+@media (min-width: 1024px) {
+  /* Slightly taller hero on desktop for presence */
+  .hero-banner { min-height: 64px; }
+
+  .hero-content h2 { font-size: var(--font-size-3xl); }
+  .hero-content p { font-size: var(--font-size-xl); }
+}
+
+/* Mobile layout overrides */
+@media (max-width: 767.98px) {
+  .hero-banner { padding: 12px 0; }
+  .hero-banner { min-height: 120px; }
+  /* Increase mobile logo size by 50% (32px -> 48px) */
+  .hero-logo-image { height: 48px; }
+  .hero-mobile-controls { margin-top: -6px; margin-bottom: var(--spacing-sm); }
+  .hero-content h1 { margin-bottom: var(--spacing-xs); font-size: var(--font-size-xl); }
+  .hero-content p { margin-bottom: var(--spacing-sm); font-size: var(--font-size-sm); }
+  .hero-cta { display: none; }
+}

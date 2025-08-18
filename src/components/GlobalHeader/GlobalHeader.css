@@ -198,146 +198,9 @@
 .mobile-nav-button.nav-green:hover { border-left-color: var(--color-accent-green); background: rgba(16, 185, 129, 0.1); }
 .mobile-nav-button.nav-teal:hover { border-left-color: var(--color-accent-teal); background: rgba(20, 184, 166, 0.1); }
 
-/* ================================
-   HERO BANNER
-   ================================ */
-.hero-banner {
-  background: var(--bg-gradient-primary);
-  color: var(--color-white);
-  padding: calc(var(--spacing-lg) * 0.5) 0; /* tighter spacing to reduce gap under header */
-  text-align: center;
-  position: relative;
-}
+/* banner styles moved to Banner.css */
 
-/* Mobile-only controls inside hero */
-.hero-mobile-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: calc(var(--spacing-lg) * 0.8); /* -20% */
-}
-
-.hero-logo-link { text-decoration: none; }
-.hero-logo-image { height: 32px; width: auto; display: block; }
-
-.hero-mobile-menu-toggle {
-  background: none;
-  border: 2px solid rgba(255,255,255,0.6);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-sm);
-}
-
-.hero-content h2 {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-md);
-  line-height: 1.3;
-}
-
-.hero-content p {
-  font-size: var(--font-size-base);
-  opacity: 0.9;
-  margin-bottom: var(--spacing-lg);
-  line-height: 1.6;
-}
-
-/* Rotating hero copy (mobile-first) */
-.hero-rotator { position: relative; height: 72px; overflow: hidden; }
-.hero-rotator-slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: hero-fade-in 500ms ease both; }
-.hero-rotator-slide h2 { margin: 0 0 4px; font-size: var(--font-size-lg); font-weight: 800; text-shadow: 0 1px 2px rgba(0,0,0,0.45); }
-.hero-rotator-slide p { margin: 0; font-size: var(--font-size-sm); opacity: 0.98; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
-
-/* Per-slide accent colors matching nav button palette */
-.hero-rotator-slide.accent-orange h2 { color: var(--color-accent-orange); }
-.hero-rotator-slide.accent-purple h2 { color: var(--color-accent-purple); }
-.hero-rotator-slide.accent-blue h2 { color: var(--color-accent-blue); }
-.hero-rotator-slide.accent-red h2 { color: var(--color-accent-red); }
-.hero-rotator-slide.accent-green h2 { color: var(--color-accent-green); }
-.hero-rotator-slide.accent-teal h2 { color: var(--color-accent-teal); }
-.hero-rotator-slide .slide-subtitle { color: #f3f4f6; }
-
-@keyframes hero-fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-cta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  align-items: center;
-}
-
-.cta-primary,
-.cta-secondary {
-  padding: var(--spacing-md) var(--spacing-xl);
-  border-radius: var(--radius-lg);
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  min-height: 50px;
-  min-width: 160px;
-}
-
-.cta-primary {
-  background: var(--color-accent-orange);
-  color: var(--color-white);
-  border-color: var(--color-accent-orange);
-}
-
-.cta-primary:hover {
-  background: var(--color-accent-yellow);
-  border-color: var(--color-accent-yellow);
-  transform: translateY(-2px);
-}
-
-.cta-secondary {
-  background: transparent;
-  color: var(--color-white);
-  border-color: var(--color-white);
-}
-
-.cta-secondary:hover {
-  background: var(--color-white);
-  color: var(--color-primary);
-}
-
-/* Moving ribbon at bottom of header */
-.header-ribbon {
-  position: relative;
-  left: 0;
-  right: 0;
-  background: linear-gradient(90deg, var(--color-accent-red) 0%, var(--color-accent-yellow) 50%, var(--color-accent-blue) 100%);
-  border-top: 2px solid rgba(255,255,255,0.25);
-  pointer-events: none; /* do not block clicks on nav above */
-  z-index: 1; /* keep below nav buttons (z-index:3) */
-}
-
-.header-ribbon .ribbon-viewport {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.header-ribbon .ribbon-track {
-  display: inline-flex;
-  gap: var(--spacing-lg);
-  padding: 4px 0; /* slimmer ribbon to reduce separation */
-  animation: hero-ribbon-scroll 28s linear infinite;
-}
-
-.header-ribbon .ribbon-item { font-weight: 600; color: #fff; }
-.header-ribbon .ribbon-sep { opacity: 0.6; color: #fff; }
-
-@keyframes hero-ribbon-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .header-ribbon .ribbon-track { animation: none; }
-}
+/* ribbon styles moved to Ribbon.css */
 
 /* ================================
    TABLET STYLES (768px+)
@@ -350,12 +213,9 @@
   min-height: 88px; /* -20% */
   }
 
-  /* Keep the hero area visible on tablet+ */
-  .hero-banner {
-  min-height: 56px; /* tighter */
-  }
+  /* banner responsive styles moved to Banner.css */
 
-  .hero-mobile-controls { display: none; }
+  /* banner responsive styles moved to Banner.css */
 
   .logo-icon {
     font-size: 3rem;
@@ -449,21 +309,7 @@
   .nav-button.nav-green:hover { background: #34d399; }
   .nav-button.nav-teal:hover { background: #2dd4bf; }
 
-  .hero-content h2 {
-    font-size: var(--font-size-2xl);
-  }
-
-  .hero-content p {
-    font-size: var(--font-size-lg);
-  }
-
-  /* Show rotating titles on tablet+ as well */
-  .hero-rotator { display: block; }
-
-  .hero-cta {
-    flex-direction: row;
-    justify-content: center;
-  }
+  /* banner responsive styles moved to Banner.css */
 }
 
 /* ================================
@@ -473,8 +319,7 @@
   .header-content {
   min-height: 78px; /* ~25% reduction */
   }
-  /* Slightly taller hero on desktop for presence */
-  .hero-banner { min-height: 64px; } /* tighter */
+  /* banner responsive styles moved to Banner.css */
   .nav-grid {
   grid-template-columns: repeat(8, 1fr);
   max-width: 100%;
@@ -498,13 +343,7 @@
     font-size: 0.7rem;
   }
 
-  .hero-content h2 {
-    font-size: var(--font-size-3xl);
-  }
-
-  .hero-content p {
-    font-size: var(--font-size-xl);
-  }
+  /* banner responsive styles moved to Banner.css */
 
   .logo-image { height: 85px; }
 }
@@ -515,12 +354,5 @@
   .header-content .logo-section { display: none; }
   .header-content .mobile-menu-toggle { display: none; }
 
-  .hero-banner { padding: 12px 0; }
-  .hero-banner { min-height: 120px; }
-  /* Increase mobile logo size by 50% (32px -> 48px) */
-  .hero-logo-image { height: 48px; }
-  .hero-mobile-controls { margin-top: -6px; margin-bottom: var(--spacing-sm); }
-  .hero-content h1 { margin-bottom: var(--spacing-xs); font-size: var(--font-size-xl); }
-  .hero-content p { margin-bottom: var(--spacing-sm); font-size: var(--font-size-sm); }
-  .hero-cta { display: none; }
+  /* banner mobile styles moved to Banner.css */
 }
