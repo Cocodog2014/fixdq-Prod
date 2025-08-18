@@ -199,26 +199,7 @@ export default function EnglishProficiency() {
         </div>
       </section>
 
-      {/* Category + CTA */}
-  <section className="ep-category section-padding mobile-only">
-        <div className="container">
-          <div className="ep-card">
-            <h2>Choose a Practice Area</h2>
-            <div className="ep-row">
-              <label className="sr-only" htmlFor="ep-category">Category</label>
-              <select id="ep-category" value={category} onChange={(e) => setCategory(e.target.value)}>
-                {CATEGORIES.map((c) => (
-                  <option key={c.value} value={c.value}>{c.label}</option>
-                ))}
-              </select>
-              <button className="btn btn-primary" onClick={handleStart}>▶ Start Training</button>
-            </div>
-            {supportLanguage !== 'none' && (
-              <p className="ep-lang-reminder">Support language: {LANGUAGES.find(l => l.value === supportLanguage)?.label}</p>
-            )}
-          </div>
-        </div>
-      </section>
+  {/* Mobile-only category card removed; selection now lives inside Settings modal */}
 
       {/* Closing banner */}
       <section className="ep-banner section-padding">
