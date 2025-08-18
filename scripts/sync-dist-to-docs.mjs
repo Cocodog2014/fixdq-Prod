@@ -47,6 +47,17 @@ async function ensureFile(filePath, content) {
   await fs.writeFile(filePath, content);
 }
 
+function parseDomainArg(argv) {
+  // supports: --domain fixdq.org OR --domain=fixdq.org
+  const i = argv.indexOf('--domain');
+  if (i !== -1 && argv[i + 1] && !argv[i + 1].startsWith('--')) {
+    return argv[i + 1];
+  }
+  const eq = argv.find((a) => a.startsWith('--domain='));
+  if (eq) return eq.split('=')[1];
+  return process.env.DEPLOY_DOMAIN || undefined;
+}
+
 async function main() {
   if (!(await exists(distDir))) {
     console.error('dist/ not found. Run "npm run build" first or use "npm run deploy".');
@@ -62,11 +73,14 @@ async function main() {
   // Ensure CNAME and .nojekyll in docs root
   const cnameSrc = path.join(root, 'CNAME');
   const cnameDest = path.join(docsDir, 'CNAME');
-  if (await exists(cnameSrc)) {
+  const overrideDomain = parseDomainArg(process.argv);
+  if (overrideDomain) {
+    await ensureFile(cnameDest, overrideDomain.trim() + '\n');
+  } else if (await exists(cnameSrc)) {
     const cname = await fs.readFile(cnameSrc, 'utf8');
     await ensureFile(cnameDest, cname.trim() + '\n');
   } else {
-    // Fallback: write known dev domain if CNAME missing
+    // Default to the dev domain if nothing provided
     await ensureFile(cnameDest, 'dev.fixdq.org\n');
   }
   await ensureFile(path.join(docsDir, '.nojekyll'), '');
