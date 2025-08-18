@@ -122,15 +122,25 @@
 .ep-banner-text { 
   font-weight: 800; 
   margin-bottom: var(--spacing-md);
-  font-size: 3rem; /* ~3x base for strong emphasis */
+  /* Mobile-first sizing: responsive but capped for small screens */
+  font-size: clamp(1.25rem, 5.5vw + 0.1rem, 2rem);
+  line-height: 1.25;
+  max-width: 38ch; /* keep readable line length */
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance; /* better multi-line balance on modern browsers */
   color: var(--color-accent-red); /* standout red */
   text-shadow: 0 2px 8px rgba(0,0,0,0.25); /* subtle lift on gradient */
 }
 @media (min-width: 768px) {
-  .ep-banner-text { font-size: 3.5rem; }
+  .ep-banner-text { 
+    font-size: clamp(2rem, 4vw + 0.25rem, 3.25rem);
+    line-height: 1.2;
+    max-width: 40ch;
+  }
 }
 @media (min-width: 1024px) {
-  .ep-banner-text { font-size: 4rem; }
+  .ep-banner-text { font-size: clamp(2.5rem, 3vw + 0.25rem, 4rem); }
 }
 
 /* Visibility helpers for landing */
