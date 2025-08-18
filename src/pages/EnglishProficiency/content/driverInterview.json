@@ -1,0 +1,310 @@
+[
+  {
+    "id": 1,
+    "question": "Where did you start your trip today?",
+    "paraphrases": ["Where are you coming from?"],
+    "translations": {
+      "es": "¿Dónde comenzaste tu viaje hoy?",
+      "uk": "Де ви почали свою поїздку сьогодні?",
+      "ru": "Где вы начали свою поездку сегодня?",
+      "zhCN": "你今天从哪里开始行程？",
+      "zhTW": "你今天從哪裡開始行程？"
+    },
+    "definition": "Tell the officer the city and state where you began driving today.",
+    "definitionTranslations": {
+      "es": "Diga al oficial la ciudad y el estado donde comenzó a conducir hoy.",
+      "uk": "Скажіть інспектору місто і штат, де ви сьогодні почали рух.",
+      "ru": "Скажите инспектору город и штат, где вы сегодня начали движение.",
+      "zhCN": "告诉执法人员你今天开始行驶的城市和州。",
+      "zhTW": "告訴執法人員你今天開始行駛的城市和州。"
+    },
+    "intent": "origin",
+    "keywords": {"include": ["from"], "exclude": []}
+  },
+  {
+    "id": 2,
+    "question": "Where are you driving to today?",
+    "paraphrases": ["Where are you going today?"],
+    "translations": {
+      "es": "¿A dónde conduces hoy?",
+      "uk": "Куди ви їдете сьогодні?",
+      "ru": "Куда вы едете сегодня?",
+      "zhCN": "你今天要开往哪里？",
+      "zhTW": "你今天要開往哪裡？"
+    },
+    "definition": "Say the city and state (destination) you are driving to today.",
+    "definitionTranslations": {
+      "es": "Diga la ciudad y el estado (destino) a donde conduce hoy.",
+      "uk": "Назвіть місто і штат (пункт призначення), куди ви сьогодні їдете.",
+      "ru": "Назовите город и штат (пункт назначения), куда вы сегодня едете.",
+      "zhCN": "说出你今天要去的城市和州（目的地）。",
+      "zhTW": "說出你今天要去的城市和州（目的地）。"
+    },
+    "intent": "destination",
+    "keywords": {"include": ["to", "going"], "exclude": ["load", "cargo", "trailer", "freight", "pallets"]}
+  },
+  {
+    "id": 3,
+    "question": "How long have you been driving today?",
+    "paraphrases": ["What time did you start today?", "What time are you planning to stop driving today?"],
+    "translations": {
+      "es": "¿Cuánto tiempo has estado conduciendo hoy?",
+      "uk": "Скільки часу ви сьогодні за кермом?",
+      "ru": "Как долго вы сегодня ведёте?",
+      "zhCN": "你今天开车多久了？",
+      "zhTW": "你今天開車多久了？"
+    },
+    "definition": "Explain how long you have been driving and/or the start time today.",
+    "definitionTranslations": {
+      "es": "Explique cuánto tiempo ha estado conduciendo y/o a qué hora comenzó hoy.",
+      "uk": "Поясніть, як довго ви сьогодні за кермом та/або о котрій годині почали.",
+      "ru": "Объясните, как долго вы сегодня ведёте и/или во сколько начали.",
+      "zhCN": "说明你今天驾驶了多久和/或你开始驾驶的时间。",
+      "zhTW": "說明你今天駕駛了多久，及/或你開始駕駛的時間。"
+    },
+    "intent": "duration",
+    "keywords": {"include": ["hours", "hour", "minutes", "started", "start"], "exclude": []}
+  },
+  {
+    "id": 4,
+    "question": "What are you hauling today?",
+    "paraphrases": ["What's in your truck/trailer?", "What cargo do you have in your truck/trailer?"],
+    "translations": {
+      "es": "¿Qué estás transportando hoy?",
+      "uk": "Що ви сьогодні везете?",
+      "ru": "Что вы сегодня перевозите?",
+      "zhCN": "你今天载什么货物？",
+      "zhTW": "你今天載什麼貨物？"
+    },
+    "definition": "Describe what is in your truck or trailer (type of cargo).",
+    "definitionTranslations": {
+      "es": "Describa qué hay en su camión o remolque (tipo de carga).",
+      "uk": "Опишіть, що знаходиться у вашій вантажівці або причепі (тип вантажу).",
+      "ru": "Опишите, что находится в вашем грузовике или прицепе (тип груза).",
+      "zhCN": "说明你的卡车或挂车里装的是什么（货物类型）。",
+      "zhTW": "說明你的卡車或掛車裡裝的是什麼（貨物類型）。"
+    },
+    "intent": "cargo",
+    "keywords": {"include": ["load", "freight", "cargo", "pallets", "boxes", "steel", "lumber", "produce"], "exclude": ["to", "going", "city", "state"]}
+  },
+  {
+    "id": 5,
+    "question": "Who are you driving for today?",
+    "paraphrases": ["Who are you working for?", "Who is paying you for the load?", "What is the name of your employer?"],
+    "translations": {
+      "es": "¿Para quién conduces hoy?",
+      "uk": "Для кого ви сьогодні працюєте?",
+      "ru": "Для какой компании вы сегодня работаете?",
+      "zhCN": "你今天为哪家公司开车？",
+      "zhTW": "你今天為哪家公司開車？"
+    },
+    "definition": "Say the company or person you work for today (employer or carrier).",
+    "definitionTranslations": {
+      "es": "Diga la empresa o persona para la que trabaja hoy (empleador o transportista).",
+      "uk": "Скажіть, на яку компанію або особу ви сьогодні працюєте (роботодавець чи перевізник).",
+      "ru": "Скажите, на какую компанию или на кого вы сегодня работаете (работодатель или перевозчик).",
+      "zhCN": "说出你今天为哪家公司或个人工作（雇主或承运人）。",
+      "zhTW": "說出你今天為哪家公司或個人工作（雇主或承運人）。"
+    },
+    "intent": "employer",
+    "keywords": {"include": ["for", "company", "employer"], "exclude": []}
+  },
+  {
+    "id": 6,
+    "question": "What is the telephone number for the trucking company you are driving for today?",
+    "paraphrases": ["What telephone number would you call if you had a problem today?", "What telephone number at the company would you call if you had an accident today?"],
+    "translations": {
+      "es": "¿Cuál es el número de teléfono de la empresa para la que conduces hoy?",
+      "uk": "Який номер телефону транспортної компанії, для якої ви сьогодні працюєте?",
+      "ru": "Какой номер телефона транспортной компании, для которой вы сегодня работаете?",
+      "zhCN": "你今天所在运输公司的电话号码是多少？",
+      "zhTW": "你今天所屬運輸公司的電話號碼是多少？"
+    },
+    "definition": "Provide the company’s telephone number to reach dispatch or safety.",
+    "definitionTranslations": {
+      "es": "Proporcione el número de teléfono de la empresa para contactar con despacho o seguridad.",
+      "uk": "Надайте номер телефону компанії для зв’язку з диспетчером або відділом безпеки.",
+      "ru": "Сообщите номер телефона компании для связи с диспетчером или службой безопасности.",
+      "zhCN": "提供公司联系电话以联系调度或安全部门。",
+      "zhTW": "提供公司聯絡電話以聯絡調度或安全部門。"
+    },
+    "intent": "phone-company",
+    "keywords": {"include": ["call", "number", "company"], "exclude": []}
+  },
+  {
+    "id": 7,
+    "question": "Show me your driver's license please.",
+    "paraphrases": ["Show me your CDL."],
+    "translations": {
+      "es": "Muéstrame tu licencia de conducir, por favor.",
+      "uk": "Покажіть, будь ласка, ваше водійське посвідчення.",
+      "ru": "Покажите, пожалуйста, ваши водительские права.",
+      "zhCN": "请出示你的驾驶执照。",
+      "zhTW": "請出示你的駕駛執照。"
+    },
+    "definition": "Show your driver’s license (CDL).",
+    "definitionTranslations": {
+      "es": "Muestre su licencia de conducir (CDL).",
+      "uk": "Покажіть ваше водійське посвідчення (CDL).",
+      "ru": "Покажите ваше водительское удостоверение (CDL).",
+      "zhCN": "出示你的驾驶执照（CDL）。",
+      "zhTW": "出示你的駕駛執照（CDL）。"
+    },
+    "intent": "license",
+    "keywords": {"include": ["license", "cdl"], "exclude": []}
+  },
+  {
+    "id": 8,
+    "question": "Show me the proof of insurance for your vehicle(s).",
+    "paraphrases": ["Where is your insurance card?"],
+    "translations": {
+      "es": "Muéstrame la prueba de seguro de tu(s) vehículo(s).",
+      "uk": "Покажіть страхування на ваш транспортний засіб (засоби).",
+      "ru": "Покажите страховку на ваш(и) автомобиль(и).",
+      "zhCN": "请出示车辆保险证明。",
+      "zhTW": "請出示車輛保險證明。"
+    },
+    "definition": "Show the insurance card or digital proof of insurance.",
+    "definitionTranslations": {
+      "es": "Muestre la tarjeta de seguro o el comprobante digital de seguro.",
+      "uk": "Покажіть страховий поліс або електронне підтвердження страхування.",
+      "ru": "Покажите страховую карточку или электронное подтверждение страховки.",
+      "zhCN": "出示保险卡或电子保险证明。",
+      "zhTW": "出示保險卡或電子保險證明。"
+    },
+    "intent": "insurance",
+    "keywords": {"include": ["insurance", "card"], "exclude": []}
+  },
+  {
+    "id": 9,
+    "question": "Show me the registration for your vehicle(s).",
+    "paraphrases": ["Where is your cab card?", "Where is your IRP cab card?"],
+    "translations": {
+      "es": "Muéstrame el registro de tu(s) vehículo(s).",
+      "uk": "Покажіть реєстрацію на ваш транспортний засіб (засоби).",
+      "ru": "Покажите регистрацию на ваш(и) автомобиль(и).",
+      "zhCN": "请出示车辆登记证/行驶证。",
+      "zhTW": "請出示車輛登記/行照。"
+    },
+    "definition": "Show the vehicle registration and IRP cab card (if applicable).",
+    "definitionTranslations": {
+      "es": "Muestre el registro del vehículo y la tarjeta IRP (si corresponde).",
+      "uk": "Покажіть реєстрацію транспортного засобу та IRP cab card (за наявності).",
+      "ru": "Покажите свидетельство о регистрации и IRP cab card (если применимо).",
+      "zhCN": "出示车辆登记证和 IRP 驾驶室卡（如适用）。",
+      "zhTW": "出示車輛登記證與 IRP 駕駛室卡（如適用）。"
+    },
+    "intent": "registration",
+    "keywords": {"include": ["registration", "cab", "irp"], "exclude": []}
+  },
+  {
+    "id": 10,
+    "question": "What year was your truck manufactured?",
+    "paraphrases": ["What is the year of your truck?", "What year was your truck made?"],
+    "translations": {
+      "es": "¿En qué año se fabricó su camión?",
+      "uk": "У якому році виготовлено ваш вантажний автомобіль?",
+      "ru": "Какого года выпуска ваш грузовик?",
+      "zhCN": "你的卡车是哪一年出厂的？",
+      "zhTW": "你的卡車是哪一年出廠的？"
+    },
+    "definition": "Say the model year (the year the truck was manufactured).",
+    "definitionTranslations": {
+      "es": "Diga el año del modelo (el año en que se fabricó el camión).",
+      "uk": "Назвіть модельний рік (рік, коли вантажівку виготовлено).",
+      "ru": "Назовите модельный год (год, когда грузовик был произведён).",
+      "zhCN": "说出车型年份（卡车的出厂年份）。",
+      "zhTW": "說出車型年份（卡車的出廠年份）。"
+    },
+    "intent": "vehicle-year",
+    "keywords": {"include": ["year", "model"], "exclude": []}
+  },
+  {
+    "id": 11,
+    "question": "Did you perform your pre-trip inspection before you started driving today?",
+    "paraphrases": ["Did you do your pre-trip inspection today?"],
+    "translations": {
+      "es": "¿Hizo la inspección previa al viaje antes de conducir hoy?",
+      "uk": "Чи провели ви передрейсовий огляд перед тим, як сьогодні вирушили?",
+      "ru": "Вы провели предрейсовый осмотр перед началом движения сегодня?",
+      "zhCN": "你今天开车前做了行前检查吗？",
+      "zhTW": "你今天開車前做了行前檢查嗎？"
+    },
+    "definition": "Answer if you performed your pre-trip inspection today.",
+    "definitionTranslations": {
+      "es": "Responda si realizó su inspección previa al viaje hoy.",
+      "uk": "Відповідайте, чи виконали ви сьогодні передрейсовий огляд.",
+      "ru": "Ответьте, проводили ли вы сегодня предрейсовый осмотр.",
+      "zhCN": "回答你今天是否进行了行前检查。",
+      "zhTW": "回答你今天是否已完成行前檢查。"
+    },
+    "intent": "pretrip",
+    "keywords": {"include": ["yes", "no", "pre-trip", "inspection"], "exclude": []}
+  },
+  {
+    "id": 12,
+    "question": "Do you use time cards, an ELD, or a log book?",
+    "paraphrases": ["How do you report the time you worked?", "Do you use a time clock at work?"],
+    "translations": {
+      "es": "¿Usa tarjetas de tiempo, un ELD o un libro de registro?",
+      "uk": "Ви використовуєте табелі часу, ELD чи паперовий журнал?",
+      "ru": "Вы используете табели времени, ELD или бумажный журнал?",
+      "zhCN": "你使用计时卡、ELD还是纸质日志？",
+      "zhTW": "你使用計時卡、ELD 還是紙本日誌？"
+    },
+    "definition": "Tell how you record hours: time cards, ELD, or a paper log book.",
+    "definitionTranslations": {
+      "es": "Diga cómo registra sus horas: tarjetas de tiempo, ELD o libro de registro en papel.",
+      "uk": "Скажіть, як ви обліковуєте години: табелі, ELD чи паперовий журнал.",
+      "ru": "Скажите, как вы учитываете часы: карточки, ELD или бумажный журнал.",
+      "zhCN": "说明你如何记录工时：工时卡、ELD 或纸质日志。",
+      "zhTW": "說明你如何記錄工時：工時卡、ELD 或紙本日誌。"
+    },
+    "intent": "logbook",
+    "keywords": {"include": ["eld", "log", "time"], "exclude": []}
+  },
+  {
+    "id": 13,
+    "question": "What hazardous materials do you have on the truck today?",
+    "paraphrases": ["What hazmat do you have on board today?", "What hazmat do you have in the truck/trailer?"],
+    "translations": {
+      "es": "¿Qué materiales peligrosos tiene hoy en el camión?",
+      "uk": "Які небезпечні матеріали сьогодні в вашій вантажівці?",
+      "ru": "Какие опасные материалы у вас сегодня в грузовике?",
+      "zhCN": "你今天车上有哪些危险品？",
+      "zhTW": "你今天車上有哪些危險品？"
+    },
+    "definition": "Say which hazardous materials (if any) are on the vehicle today.",
+    "definitionTranslations": {
+      "es": "Diga qué materiales peligrosos (si los hay) lleva hoy el vehículo.",
+      "uk": "Скажіть, які небезпечні матеріали (якщо є) сьогодні у транспортному засобі.",
+      "ru": "Скажите, какие опасные материалы (если есть) сегодня в транспортном средстве.",
+      "zhCN": "说明车辆今天是否载有危险品，以及具体种类。",
+      "zhTW": "說明車輛今天是否載有危險品，以及具體種類。"
+    },
+    "intent": "hazmat",
+    "keywords": {"include": ["hazmat", "hazardous"], "exclude": []}
+  },
+  {
+    "id": 14,
+    "question": "What telephone number would you call in case of an emergency?",
+    "paraphrases": ["What telephone number would you call if you had a problem today?", "What telephone number at the company would you call if you had an accident today?"],
+    "translations": {
+      "es": "¿A qué número de teléfono llamaría en caso de emergencia?",
+      "uk": "На який номер ви б подзвонили у разі надзвичайної ситуації?",
+      "ru": "По какому номеру вы бы позвонили в случае чрезвычайной ситуации?",
+      "zhCN": "发生紧急情况时，你会拨打哪个电话号码？",
+      "zhTW": "發生緊急情況時，你會撥打哪個電話號碼？"
+    },
+    "definition": "Say the number you would call in an emergency (e.g., 911, company).",
+    "definitionTranslations": {
+      "es": "Diga el número al que llamaría en una emergencia (por ejemplo, 911 o su empresa).",
+      "uk": "Назвіть номер, за яким ви зателефонували б у разі надзвичайної ситуації (наприклад, 911 чи компанія).",
+      "ru": "Назовите номер, по которому вы бы позвонили в чрезвычайной ситуации (например, 911 или компания).",
+      "zhCN": "说出遇到紧急情况时你会拨打的号码（例如 911 或公司）。",
+      "zhTW": "說出遇到緊急情況時你會撥打的號碼（例如 911 或公司）。"
+    },
+    "intent": "emergency-phone",
+    "keywords": {"include": ["911", "emergency", "call", "number"], "exclude": []}
+  }
+]

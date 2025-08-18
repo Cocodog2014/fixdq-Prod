@@ -26,7 +26,8 @@ import PreTrip from './pages/VehicleInspections/PreTrip'
 import PostTrip from './pages/VehicleInspections/PostTrip'
 import DotRoadside from './pages/VehicleInspections/DotRoadside'
 import MaintenanceRepair from './pages/VehicleInspections/MaintenanceRepair'
-import EnglishProficiency from './pages/VehicleInspections/EnglishProficiency'
+import EnglishProficiency from './pages/EnglishProficiency'
+import DriverInterviewPlaceholder from './pages/EnglishProficiency/DriverInterview'
 import RDS from './pages/RDS/RDS'
 import ELDCoach from './pages/ELDCoach/ELDCoach'
 import ELDSetup from './pages/ELDCoach/ELDSetup'
@@ -69,6 +70,8 @@ createRoot(document.getElementById('root')).render(
   <Route path="/vehicle-inspections/post-trip" element={<PostTrip />} />
   <Route path="/vehicle-inspections/dot-roadside" element={<DotRoadside />} />
   <Route path="/vehicle-inspections/english-proficiency" element={<EnglishProficiency />} />
+  <Route path="/english-proficiency" element={<EnglishProficiency />} />
+  <Route path="/english-proficiency/driver-interview" element={<DriverInterviewPlaceholder />} />
   <Route path="/vehicle-inspections/dvir" element={<PostTrip />} />
   <Route path="/vehicle-inspections/maintenance-repair" element={<MaintenanceRepair />} />
   <Route path="/records-of-duty" element={<RDS />} />

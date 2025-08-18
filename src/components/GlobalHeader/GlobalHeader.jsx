@@ -1,25 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import fixdqLogo from '../../assets/logos/fixdq.png';
 import { Link, useLocation } from 'react-router-dom';
+import heroSlides from './data/banner/slides.js';
+import ribbonItems from './data/ribbon/items.js';
 
 function GlobalHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const location = useLocation();
 
-  // Ten rotating mobile hero title/subtitle pairs
-  const heroSlides = [
-    { title: 'Keep Your Fleet Compliant', subtitle: 'Stay audit‑ready with proactive FMCSA monitoring.' },
-    { title: 'Pass Every DOT Inspection', subtitle: 'Tight records, clean vehicles, confident drivers.' },
-    { title: 'ELD Made Easy', subtitle: 'Simple, accurate electronic logs with zero guesswork.' },
-    { title: 'Prevent Costly Violations', subtitle: 'Spot risks early and fix issues before they escalate.' },
-    { title: 'Safer Drivers, Safer Roads', subtitle: 'Training and tools that build everyday safety habits.' },
-    { title: 'Manage DVIRs in Minutes', subtitle: 'Fast, consistent vehicle checks—no paperwork pileups.' },
-    { title: 'Roadside Ready, Anytime', subtitle: 'Organized docs and processes when it matters most.' },
-    { title: 'Build a Safety Culture', subtitle: 'Make compliance part of how your team operates.' },
-    { title: 'Navigate USCIS Confidently', subtitle: 'Guidance for forms, timelines, and approvals.' },
-    { title: 'FixDQ: Compliance, Simplified', subtitle: 'One place to manage people, paperwork, and policies.' }
-  ];
+  // heroSlides imported from ./data/banner/slides.js
 
   // Rotate slide every 6 seconds (mobile-first content)
   useEffect(() => {
@@ -174,25 +164,19 @@ function GlobalHeader() {
           </div>
         </div>
       </div>
-
-      {/* Header bottom moving ribbon */}
-      <div className="header-ribbon" aria-label="Site topics marquee">
-        <div className="ribbon-viewport">
-          <div className="ribbon-track" aria-hidden="true">
-            <span className="ribbon-item">FMCSA Compliance</span>
-            <span className="ribbon-sep">•</span>
-            <span className="ribbon-item">Electronic Logbooks</span>
-            <span className="ribbon-sep">•</span>
-            <span className="ribbon-item">Vehicle Inspections</span>
-            <span className="ribbon-sep">•</span>
-            <span className="ribbon-item">US Citizenship</span>
-            <span className="ribbon-sep">•</span>
-            <span className="ribbon-item">Safety Training</span>
-            <span className="ribbon-sep">•</span>
-            <span className="ribbon-item">Violations Management</span>
+  {/* Header bottom moving ribbon */}
+          <div className="header-ribbon" aria-label="Site topics marquee">
+            <div className="ribbon-viewport">
+              <div className="ribbon-track" aria-hidden="true">
+                {ribbonItems.map((label, idx) => (
+                  <Fragment key={idx}>
+                    <span className="ribbon-item">{label}</span>
+                    {idx < ribbonItems.length - 1 && <span className="ribbon-sep">•</span>}
+                  </Fragment>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
     </header>
   );
 }

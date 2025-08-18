@@ -137,7 +137,7 @@ function HomePage() {
             </Link>
 
             {/* English Proficiency */}
-            <Link to="/vehicle-inspections/english-proficiency" className="feature-card red-border feature-link-card">
+            <Link to="/english-proficiency" className="feature-card red-border feature-link-card">
               <div className="feature-header">
                 <span className="icon">🗣️</span>
                 <h3>English Proficiency</h3>

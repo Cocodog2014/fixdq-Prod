@@ -5,6 +5,8 @@
 
 /* Import all component styles */
 @import './components/GlobalHeader/GlobalHeader.css';
+@import './components/GlobalHeader/Banner.css';
+@import './components/GlobalHeader/Ribbon.css';
 @import './pages/HomePage/HomePage.css';
 @import './pages/FMCSACompliance/FMCSACompliance.css';
 @import './pages/FMCSACompliance/SafetyManagement.css';
@@ -38,6 +40,8 @@
 @import './pages/ViolationManagement/DataQNavigation.css';
 @import './pages/ViolationManagement/DriverScore.css';
 @import './pages/ViolationManagement/AppealProcess.css';
+@import './pages/EnglishProficiency/EnglishProficiency.css';
+@import './pages/EnglishProficiency/DriverInterview.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';
@@ -119,6 +123,10 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --radius-full: 9999px;
+
+  /* English Proficiency - Control Colors */
+  --ep-answer-tts-bg: #0b6fbd; /* high-contrast blue on white */
+  --ep-answer-tts-color: #ffffff;
 }
 
 /* Reset and Base Styles */
