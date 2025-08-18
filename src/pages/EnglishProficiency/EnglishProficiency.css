@@ -156,7 +156,7 @@
 @media (max-width: 767px) {
   /* Offset modal below the moving ribbon and respect safe-area inset, but higher to reveal more content */
   .ep-modal { align-items: flex-start; padding-top: calc(env(safe-area-inset-top, 0px) + clamp(60px, 10vh, 108px)); }
-  .ep-modal-content { margin-bottom: var(--spacing-md); max-height: 78vh; display: flex; flex-direction: column; }
+  .ep-modal-content { margin-bottom: var(--spacing-md); max-height: 90vh; display: flex; flex-direction: column; }
   .ep-modal-body { overflow-y: auto; padding-bottom: calc(var(--spacing-lg) + 50px); }
   /* Make actions stick to bottom of the modal content */
   .ep-actions-row { position: sticky; bottom: 0; background: var(--color-white); padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
