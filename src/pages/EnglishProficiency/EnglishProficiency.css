@@ -314,6 +314,27 @@
 .ep-fc-bottom-actions { display: flex; gap: var(--spacing-sm); justify-content: center; align-items: center; flex-wrap: nowrap; overflow-x: auto; }
 .ep-fc-bottom-actions .btn { white-space: nowrap; }
 
+/* Mobile: make flashcard controls more compact so all 4 fit */
+@media (max-width: 420px) {
+  .ep-fc-bottom { gap: var(--spacing-sm); }
+  .ep-fc-bottom .btn { 
+    font-size: 0.9rem; 
+    padding: 8px 10px; 
+    min-height: 36px !important; 
+  }
+  .ep-fc-bottom-actions { gap: 6px; }
+  .ep-fc-bottom-actions .btn { padding: 6px 10px; font-size: 0.9rem; }
+}
+
+@media (max-width: 360px) {
+  .ep-fc-bottom .btn { 
+    font-size: 0.85rem; 
+    padding: 6px 8px; 
+    min-height: 32px !important; 
+  }
+  .ep-fc-bottom-actions { gap: 4px; }
+}
+
 /* Colorful Prev/Next (avoid green/blue) */
 .btn-prev {
   background: #a855f7; /* violet-500 */
