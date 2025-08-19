@@ -223,20 +223,17 @@ export default function FmcsaFlashCards() {
                           style={{maxWidth: '200px', width: '100%', height: 'auto', display: 'block', margin: '0 auto 8px'}}
                         />
                       )}
-                      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
-                        <h3 style={{textAlign: 'center', margin: 0}}>{item.answer || 'Sign'}</h3>
-                        <button
-                          className="btn btn-ghost"
-                          onClick={() => {
-                            const backText = [item?.answer, definition].filter(Boolean).join('. ');
-                            if (backText) speak(backText, ttsRate, 'en-US');
-                          }}
-                          aria-label="Play sign name and definition"
-                          title="Play sign name and definition"
-                        >🔊</button>
-                      </div>
+                      <h3 style={{textAlign: 'center', marginBottom: '8px'}}>{item.answer || 'Sign'}</h3>
                       {definition && (
-                        <p className="ep-fc-translation" style={{textAlign: 'center'}}>{definition}</p>
+                        <div className="ep-fc-translation" style={{textAlign: 'center'}}>
+                          <button
+                            className="btn btn-ghost ep-def-tts"
+                            onClick={() => speak(definition, ttsRate, 'en-US')}
+                            aria-label="Play definition"
+                            title="Play definition"
+                          >🔊</button>
+                          {definition}
+                        </div>
                       )}
                       {supportLanguage !== 'none' && item.translations?.[supportLanguage] && (
                         <div className="ep-fc-translation" style={{textAlign: 'center', marginTop: '6px'}}>
