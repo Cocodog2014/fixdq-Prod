@@ -33,6 +33,7 @@ const CATEGORIES = [
   { value: 'violations', label: 'Common Violations (Simple English)' },
   { value: 'safety', label: 'Safety & Score Impact (CSA basics)' },
   { value: 'dataqs', label: 'DataQs / Appeal Process (6-step English)' },
+  { value: 'traffic-signs', label: 'Traffic Signs' },
 ];
 
 export default function EnglishProficiency() {
@@ -49,9 +50,11 @@ export default function EnglishProficiency() {
       const lsLang = localStorage.getItem(LS_KEYS.language);
       const lsSize = localStorage.getItem(LS_KEYS.textSize);
       const lsRate = localStorage.getItem(LS_KEYS.ttsRate);
+  const lsCat = localStorage.getItem('ep_category');
       if (lsLang) setSupportLanguage(lsLang);
       if (lsSize) setTextSize(lsSize);
       if (lsRate) setTtsRate(parseFloat(lsRate) || 1.0);
+  if (lsCat) setCategory(lsCat);
     } catch (e) { console.debug('Load settings failed', e); }
   }, []);
 
@@ -69,8 +72,9 @@ export default function EnglishProficiency() {
   const wrapperClass = useMemo(() => `ep-page text-${textSize}`, [textSize]);
 
   const handleStart = () => {
-    // For M1 preview, lead to Driver Interview placeholder route
-    navigate('/english-proficiency/driver-interview');
+    try { localStorage.setItem('ep_category', category); } catch {}
+    // Navigate to generic flashcards, passing selected category
+    navigate(`/english-proficiency/flashcards?category=${encodeURIComponent(category)}`);
   };
 
   return (

@@ -28,6 +28,7 @@ import DotRoadside from './pages/VehicleInspections/DotRoadside'
 import MaintenanceRepair from './pages/VehicleInspections/MaintenanceRepair'
 import EnglishProficiency from './pages/EnglishProficiency'
 import DriverInterviewPlaceholder from './pages/EnglishProficiency/DriverInterview'
+import FmcsaFlashCards from './pages/EnglishProficiency/fmcsa/FmcsaFlashCards'
 import RDS from './pages/RDS/RDS'
 import ELDCoach from './pages/ELDCoach/ELDCoach'
 import ELDSetup from './pages/ELDCoach/ELDSetup'
@@ -72,6 +73,7 @@ createRoot(document.getElementById('root')).render(
   <Route path="/vehicle-inspections/english-proficiency" element={<EnglishProficiency />} />
   <Route path="/english-proficiency" element={<EnglishProficiency />} />
   <Route path="/english-proficiency/driver-interview" element={<DriverInterviewPlaceholder />} />
+  <Route path="/english-proficiency/flashcards" element={<FmcsaFlashCards />} />
   <Route path="/vehicle-inspections/dvir" element={<PostTrip />} />
   <Route path="/vehicle-inspections/maintenance-repair" element={<MaintenanceRepair />} />
   <Route path="/records-of-duty" element={<RDS />} />

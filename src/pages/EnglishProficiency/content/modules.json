@@ -6,6 +6,13 @@
       "type": "qa",
       "source": "driverInterview.json",
       "count": 14
+    },
+    {
+      "id": "traffic-signs",
+      "title": "Traffic Signs",
+      "type": "concept",
+      "source": "trafficSigns.json",
+      "count": 3
     }
   ]
 }

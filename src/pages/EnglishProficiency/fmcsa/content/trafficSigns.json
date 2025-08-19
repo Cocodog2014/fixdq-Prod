@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "STOP",
+    "definition": "Come to a complete stop at the line or before entering the intersection.",
+    "translations": {
+      "es": "Deténgase completamente en la línea o antes de entrar en la intersección.",
+      "uk": "Повністю зупиніться на лінії або перед в’їздом на перехрестя.",
+      "ru": "Полностью остановитесь на линии или перед въездом на перекрёсток.",
+      "zhCN": "在停止线或进入路口前完全停下。",
+      "zhTW": "在停止線或進入路口前完全停下。"
+    }
+  },
+  {
+    "id": 2,
+    "title": "YIELD",
+    "definition": "Slow down and give the right of way to traffic and pedestrians.",
+    "translations": {
+      "es": "Reduzca la velocidad y ceda el paso al tráfico y a los peatones.",
+      "uk": "Зменште швидкість і надайте перевагу транспорту та пішоходам.",
+      "ru": "Снизьте скорость и уступите дорогу транспорту и пешеходам.",
+      "zhCN": "减速并让行车辆和行人。",
+      "zhTW": "減速並讓行車輛與行人。"
+    }
+  },
+  {
+    "id": 3,
+    "title": "SPEED LIMIT 55",
+    "definition": "Maximum legal speed is 55 miles per hour, unless otherwise posted.",
+    "translations": {
+      "es": "La velocidad máxima legal es 55 mph, salvo que se indique lo contrario.",
+      "uk": "Максимально дозволена швидкість — 55 миль/год, якщо не зазначено інше.",
+      "ru": "Максимально допустимая скорость — 55 миль/ч, если не указано иное.",
+      "zhCN": "最高法定时速为55英里，除非另有标示。",
+      "zhTW": "最高法定時速為55英里，除非另有標示。"
+    }
+  }
+]
