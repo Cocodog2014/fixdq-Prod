@@ -137,6 +137,25 @@ function RDSFlashcards() {
   const [i, setI] = useState(0);
   const [show, setShow] = useState(false);
   const item = flashcards[i] || {};
+  const [supportLanguage, setSupportLanguage] = useState('none');
+  const [ttsRate, setTtsRate] = useState(1);
+
+  const SUPPORT_LABELS = {
+    none: 'None', es: 'Español', uk: 'Українська', ru: 'Русский', zhCN: '中文（简体）', zhTW: '中文（繁體）',
+  };
+  const SUPPORT_LANG_TAGS = {
+    none: 'en-US', es: 'es-US', uk: 'uk-UA', ru: 'ru-RU', zhCN: 'zh-CN', zhTW: 'zh-TW',
+  };
+
+  // Load saved preferences from English Proficiency if present
+  useEffect(() => {
+    try {
+      const lang = localStorage.getItem('ep_supportLanguage');
+      if (lang) setSupportLanguage(lang);
+      const rate = parseFloat(localStorage.getItem('ep_ttsRate'));
+      if (rate) setTtsRate(rate);
+    } catch {}
+  }, []);
   const next = () => { setI((v)=> (v+1) % flashcards.length); setShow(false); };
   const prev = () => { setI((v)=> (v-1+flashcards.length) % flashcards.length); setShow(false); };
   return (
@@ -144,12 +163,40 @@ function RDSFlashcards() {
       <div className="rds-fc-top">
         <div className="rds-fc-progress">{i+1} / {flashcards.length}</div>
         <div className="rds-fc-actions">
-          <button className="btn btn-ghost" onClick={()=> speak(show ? item.answer : item.question)}>🔊</button>
+          <button className="btn btn-ghost" onClick={()=> speak(show ? item.answer : item.question, ttsRate)}>🔊</button>
           <button className="btn" onClick={()=> setShow(s=>!s)}>{show?'Hide answer':'Show answer'}</button>
         </div>
       </div>
       <h4 className="rds-fc-q">{item.question}</h4>
-      {show && <p className="rds-fc-a">{item.answer}</p>}
+      {show && (
+        <>
+          <div className="rds-fc-a">
+            <button
+              className="btn btn-ghost ep-def-tts"
+              onClick={() => speak(item.answer, ttsRate, 'en-US')}
+              aria-label="Play answer"
+              title="Play answer"
+            >🔊</button>
+            {item.answer}
+          </div>
+          {supportLanguage !== 'none' && (
+            item.translations?.[supportLanguage] ? (
+              <div className="ep-fc-translation" style={{marginTop: '6px'}}>
+                <button
+                  className="btn btn-ghost ep-def-tts"
+                  onClick={() => speak(item.translations[supportLanguage], ttsRate, SUPPORT_LANG_TAGS[supportLanguage])}
+                  aria-label="Play translated answer"
+                  title="Play translated answer"
+                >🔊</button>
+                <span className="ep-support-chip">{SUPPORT_LABELS[supportLanguage]}</span>
+                {item.translations[supportLanguage]}
+              </div>
+            ) : (
+              <div className="ep-fc-translation"><span className="ep-support-chip">{SUPPORT_LABELS[supportLanguage]}</span></div>
+            )
+          )}
+        </>
+      )}
       <div className="rds-fc-bottom">
         <button className="btn btn-prev" onClick={prev}>◀ Prev</button>
         <button className="btn btn-next" onClick={next}>Next ▶</button>

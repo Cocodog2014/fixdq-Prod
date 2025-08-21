@@ -4,6 +4,7 @@ import GlobalHeader from '../../../components/GlobalHeader';
 // Statically import known datasets for reliability with Vite
 import driverInterview from '../content/driverInterview.json';
 import trafficSigns from '../content/trafficSigns.json';
+import farmAg from '../content/farmAg.json';
 // Import sign images from src so bundler resolves URLs reliably
 import stopSign from '../../../assets/images/traffic-signs/stop.svg';
 import yieldSign from '../../../assets/images/traffic-signs/yield.svg';
@@ -20,6 +21,7 @@ const CATEGORY_DATA = {
   interview: { title: 'Driver Interview (CVSA)', items: driverInterview, type: 'qa' },
   cvsa: { title: 'CVSA Inspection (Q&A)', items: driverInterview, type: 'qa' },
   'traffic-signs': { title: 'Traffic Signs', items: trafficSigns, type: 'concept' },
+  'farm-ag': { title: 'Farm/Agriculture Exemptions', items: farmAg, type: 'qa' },
 };
 
 function speak(text, rate = 1, lang = 'en-US') {

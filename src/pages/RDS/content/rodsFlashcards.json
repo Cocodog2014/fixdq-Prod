@@ -1,26 +1,32 @@
 [
   {
     "question": "When can a driver use paper logs instead of ELDs?",
-    "answer": "Short-haul exemptions (≤150 air miles), driveaway–towaway, vehicles with model year < 2000, or temporary use during an ELD malfunction (≤8 days)."
+  "answer": "Short-haul exemptions (≤150 air miles), driveaway–towaway, vehicles with model year < 2000, or temporary use during an ELD malfunction (≤8 days).",
+  "translations": { "es": "Exenciones de viajes cortos (≤150 millas aéreas), operación driveaway–towaway, vehículos con año modelo < 2000, o uso temporal durante una falla del ELD (≤8 días)." }
   },
   {
     "question": "How many days can a driver use paper after an ELD malfunction?",
-    "answer": "Up to 8 days in any 30-day period unless FMCSA grants an extension."
+  "answer": "Up to 8 days in any 30-day period unless FMCSA grants an extension.",
+  "translations": { "es": "Hasta 8 días en cualquier período de 30 días, a menos que la FMCSA otorgue una extensión." }
   },
   {
     "question": "What is the short-haul air-mile radius in the U.S.?",
-    "answer": "150 air miles." 
+  "answer": "150 air miles.",
+  "translations": { "es": "150 millas aéreas." }
   },
   {
     "question": "Name two operations that allow paper RODS without an ELD.",
-    "answer": "Driveaway–towaway operations and vehicles manufactured before model year 2000."
+  "answer": "Driveaway–towaway operations and vehicles manufactured before model year 2000.",
+  "translations": { "es": "Operaciones driveaway–towaway y vehículos fabricados antes del año modelo 2000." }
   },
   {
     "question": "What is the U.S. farm plate (CFV) exemption for ELDs?",
-    "answer": "Covered Farm Vehicles with farm plates are exempt from HOS and ELD within 150 air miles of the farm; outside the radius, normal rules apply."
+  "answer": "Covered Farm Vehicles with farm plates are exempt from HOS and ELD within 150 air miles of the farm; outside the radius, normal rules apply.",
+  "translations": { "es": "Los Vehículos Agrícolas Cubiertos con placas de granja están exentos de HOS y ELD dentro de 150 millas aéreas de la granja; fuera de ese radio, aplican las reglas normales." }
   },
   {
     "question": "Do Canadian farm vehicles require ELDs within the local area?",
-    "answer": "Under agriculture exemptions, vehicles within 160 km of the home terminal may be exempt from daily log/ELD; beyond that, ELD/paper applies."
+  "answer": "Under agriculture exemptions, vehicles within 160 km of the home terminal may be exempt from daily log/ELD; beyond that, ELD/paper applies.",
+  "translations": { "es": "Bajo exenciones agrícolas, los vehículos dentro de 160 km de la base pueden estar exentos del registro diario/ELD; más allá de eso, aplica ELD o papel." }
   }
 ]

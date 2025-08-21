@@ -1,0 +1,61 @@
+[
+  {
+    "question": "What is the U.S. farm plate (Covered Farm Vehicle) exemption for ELDs?",
+    "answer": "Covered Farm Vehicles with farm plates are exempt from HOS and ELD within 150 air miles of the farm; outside that radius, normal rules apply.",
+    "translations": {
+      "es": "Los Vehículos Agrícolas Cubiertos con placas de granja están exentos de HOS y ELD dentro de 150 millas aéreas de la granja; fuera de ese radio, aplican las reglas normales.",
+      "uk": "Покриті сільськогосподарські транспортні засоби (CFV) з фермерськими номерами звільнені від HOS і ELD у межах 150 авіамиль від ферми; за межами радіуса діють звичайні правила.",
+      "ru": "Покрытые сельскохозяйственные транспортные средства (CFV) с фермерскими номерами освобождены от HOS и ELD в пределах 150 авиамиль от фермы; вне этого радиуса действуют обычные правила.",
+      "zhCN": "持农用牌照的受保农用车辆（CFV）在距农场150空英里内可豁免HOS和ELD；超出该半径适用常规规定。",
+      "zhTW": "持農用牌照之受保農用車輛（CFV）在距農場150空英里內可豁免 HOS 與 ELD；超過該半徑則適用一般規定。"
+    }
+  },
+  {
+    "question": "How far can a U.S. CFV operate under the exemption?",
+    "answer": "Within 150 air miles of the farm.",
+    "translations": {
+      "es": "Dentro de 150 millas aéreas de la granja.",
+      "uk": "У межах 150 авіамиль від ферми.",
+      "ru": "В пределах 150 авиамиль от фермы.",
+      "zhCN": "在距离农场150空英里内。",
+      "zhTW": "在距離農場150空英里內。"
+    }
+  },
+  {
+    "question": "Do Canadian farm vehicles require ELDs within the local area?",
+    "answer": "Under agriculture exemptions, vehicles within 160 km of the home terminal may be exempt from daily log/ELD; beyond that, ELD or paper applies.",
+    "translations": {
+      "es": "Bajo exenciones agrícolas, los vehículos dentro de 160 km de la base pueden estar exentos del registro diario/ELD; más allá de eso, aplica ELD o papel.",
+      "uk": "За сільськогосподарськими винятками транспортні засоби в межах 160 км від бази можуть бути звільнені від щоденного журналу/ELD; далі застосовується ELD або паперові записи.",
+      "ru": "По сельскохозяйственным исключениям транспортные средства в пределах 160 км от базы могут быть освобождены от суточного журнала/ELD; дальше требуется ELD или бумага.",
+      "zhCN": "依据农业豁免，距离运营基地160公里内的车辆可豁免每日日志/ELD；超过该范围需使用ELD或纸质记录。",
+      "zhTW": "依農業豁免，距離營運據點160公里內之車輛可免每日日誌/ELD；超過該範圍須使用 ELD 或紙本。"
+    }
+  },
+  {
+    "question": "When can a driver use paper logs instead of ELDs?",
+    "answer": "Short-haul exemption (≤150 air miles), driveaway–towaway, vehicles manufactured before model year 2000, or temporary use during an ELD malfunction (≤8 days)."
+  },
+  {
+    "question": "How many days can a driver use paper after an ELD malfunction?",
+    "answer": "Up to 8 days in any 30-day period unless FMCSA grants an extension.",
+    "translations": {
+      "es": "Hasta 8 días en cualquier período de 30 días, a menos que la FMCSA otorgue una extensión.",
+      "uk": "До 8 днів протягом будь‑якого 30‑денного періоду, якщо FMCSA не надасть продовження.",
+      "ru": "До 8 дней в любой 30‑дневный период, если FMCSA не предоставит продление.",
+      "zhCN": "在任意30天内最多可用纸质记录8天，除非FMCSA批准延长期。",
+      "zhTW": "在任意30天內最多可用紙本記錄8天，除非 FMCSA 核准延長。"
+    }
+  },
+  {
+    "question": "Which vehicles are exempt from ELD due to model year?",
+    "answer": "Vehicles manufactured before model year 2000.",
+    "translations": {
+      "es": "Vehículos fabricados antes del año modelo 2000.",
+      "uk": "Транспортні засоби, виготовлені до модельного року 2000.",
+      "ru": "Транспортные средства, выпущенные до модельного года 2000.",
+      "zhCN": "2000年款之前制造的车辆。",
+      "zhTW": "2000年式以前製造的車輛。"
+    }
+  }
+]

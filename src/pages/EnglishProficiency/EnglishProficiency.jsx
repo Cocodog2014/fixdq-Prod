@@ -34,6 +34,7 @@ const CATEGORIES = [
   { value: 'safety', label: 'Safety & Score Impact (CSA basics)' },
   { value: 'dataqs', label: 'DataQs / Appeal Process (6-step English)' },
   { value: 'traffic-signs', label: 'Traffic Signs' },
+  { value: 'farm-ag', label: 'Farm/Agriculture Exemptions' },
 ];
 
 export default function EnglishProficiency() {
