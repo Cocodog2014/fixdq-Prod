@@ -1,0 +1,18 @@
+[
+  {
+    "question": "When can a driver use paper logs instead of ELDs?",
+    "answer": "Short-haul exemptions (≤150 air miles), driveaway–towaway, vehicles with model year < 2000, or temporary use during an ELD malfunction (≤8 days)."
+  },
+  {
+    "question": "How many days can a driver use paper after an ELD malfunction?",
+    "answer": "Up to 8 days in any 30-day period unless FMCSA grants an extension."
+  },
+  {
+    "question": "What is the short-haul air-mile radius in the U.S.?",
+    "answer": "150 air miles." 
+  },
+  {
+    "question": "Name two operations that allow paper RODS without an ELD.",
+    "answer": "Driveaway–towaway operations and vehicles manufactured before model year 2000."
+  }
+]

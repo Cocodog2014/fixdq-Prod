@@ -43,3 +43,25 @@
 
 .rds-content .notes { margin-top: var(--spacing-lg); color: var(--color-white); }
 .rds-content .disclaimer { opacity: 0.9; font-size: var(--font-size-sm); }
+
+/* Decision Flow */
+.rds-flow { margin-top: var(--spacing-lg); }
+.rds-field { margin-top: var(--spacing-md); }
+.rds-field label { font-weight: 700; color: var(--color-gray-800); display: block; margin-bottom: 6px; }
+.rds-options { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.rds-checks label { font-weight: 500; }
+.rds-result { margin-top: 10px; padding: 10px 12px; border-radius: var(--radius-md); }
+.rds-result.good { background: rgba(16,185,129,0.12); color: #065f46; border: 1px solid rgba(16,185,129,0.35); }
+.rds-result.info { background: rgba(59,130,246,0.12); color: #1e3a8a; border: 1px solid rgba(59,130,246,0.35); }
+.rds-result.warn { background: rgba(234,179,8,0.12); color: #78350f; border: 1px solid rgba(234,179,8,0.35); }
+.rds-steps { margin-top: 8px; padding-left: 1rem; color: var(--color-gray-700); }
+.rds-summary { margin-top: var(--spacing-md); font-weight: 600; color: var(--color-gray-800); }
+.rds-actions { margin-top: var(--spacing-sm); }
+
+/* Mini Flashcards */
+.rds-fc { margin-top: var(--spacing-lg); }
+.rds-fc-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.rds-fc-actions .btn { min-width: 44px; }
+.rds-fc-q { margin-top: var(--spacing-md); color: var(--color-gray-800); }
+.rds-fc-a { margin-top: var(--spacing-sm); color: var(--color-gray-700); background: rgba(2,6,23,0.04); padding: 10px 12px; border-radius: var(--radius-md); }
+.rds-fc-bottom { display: flex; justify-content: space-between; gap: var(--spacing-sm); margin-top: var(--spacing-md); }
