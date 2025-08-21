@@ -14,5 +14,13 @@
   {
     "question": "Name two operations that allow paper RODS without an ELD.",
     "answer": "Driveaway–towaway operations and vehicles manufactured before model year 2000."
+  },
+  {
+    "question": "What is the U.S. farm plate (CFV) exemption for ELDs?",
+    "answer": "Covered Farm Vehicles with farm plates are exempt from HOS and ELD within 150 air miles of the farm; outside the radius, normal rules apply."
+  },
+  {
+    "question": "Do Canadian farm vehicles require ELDs within the local area?",
+    "answer": "Under agriculture exemptions, vehicles within 160 km of the home terminal may be exempt from daily log/ELD; beyond that, ELD/paper applies."
   }
 ]

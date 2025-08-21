@@ -16,11 +16,14 @@ function DecisionFlow() {
   const [needRods, setNeedRods] = useState(null); // true | false | null
   const [paperReasons, setPaperReasons] = useState({ tow: false, pre2000: false, malfunction: false });
   const [hadMalfunction, setHadMalfunction] = useState(false);
+  const [usFarmCFV, setUsFarmCFV] = useState(false); // U.S. CFV within 150 air miles
+  const [caAg160, setCaAg160] = useState(false); // Canada agriculture within 160 km
 
   const anyPaper = paperReasons.tow || paperReasons.pre2000 || paperReasons.malfunction;
 
   const summary = useMemo(() => {
     if (region === 'us') {
+      if (usFarmCFV) return 'U.S. Covered Farm Vehicle within 150 air miles: exempt from HOS/CDL/ELD. No RODS/ELD required.';
       if (needRods === false) return 'Short-haul exemption (≤150 air miles, return to terminal). No RODS/ELD.';
       if (needRods === true) {
         if (anyPaper) return 'Paper allowed: driveaway-towaway, pre-2000 vehicle, or ELD malfunction (≤8 days).';
@@ -28,10 +31,13 @@ function DecisionFlow() {
       }
       return 'Answer the questions to see what applies.';
     }
-    if (region === 'ca') return 'Canada: 160 km short-haul; malfunction period up to 14 days (with conditions).';
+    if (region === 'ca') {
+      if (caAg160) return 'Canada agriculture exemption: within 160 km of home terminal. No daily log/ELD required.';
+      return 'Canada: 160 km short-haul; malfunction period up to 14 days (with conditions).';
+    }
     if (region === 'mx') return 'Mexico: Paper domestically; follow U.S./Canada rules upon cross-border operations.';
     return '';
-  }, [region, needRods, anyPaper]);
+  }, [region, needRods, anyPaper, usFarmCFV, caAg160]);
 
   return (
     <div className="rds-flow card">
@@ -54,6 +60,18 @@ function DecisionFlow() {
               <button className={`btn ${needRods===false?'btn-primary':''}`} onClick={() => setNeedRods(false)}>No</button>
             </div>
           </div>
+
+          <div className="rds-field">
+            <label>Are you operating a farm-plated Covered Farm Vehicle (CFV) within 150 air miles of the farm?</label>
+            <div className="rds-options">
+              <button className={`btn ${usFarmCFV?'btn-primary':''}`} onClick={()=> setUsFarmCFV(true)}>Yes</button>
+              <button className={`btn ${!usFarmCFV?'btn-primary':''}`} onClick={()=> setUsFarmCFV(false)}>No</button>
+            </div>
+          </div>
+
+          {usFarmCFV && (
+            <div className="rds-result good">CFV within 150 air miles: exempt from HOS/CDL/ELD. No RODS/ELD required.</div>
+          )}
 
           {needRods === false && (
             <div className="rds-result good">Short-haul exemption (≤150 air miles, return to terminal).</div>
@@ -93,11 +111,24 @@ function DecisionFlow() {
       )}
 
       {region !== 'us' && (
-        <div className="rds-result info">{summary}</div>
+        region === 'ca' ? (
+          <div className="rds-block">
+            <div className="rds-field">
+              <label>Canada: Agriculture operations within 160 km of home terminal?</label>
+              <div className="rds-options">
+                <button className={`btn ${caAg160?'btn-primary':''}`} onClick={()=> setCaAg160(true)}>Yes</button>
+                <button className={`btn ${!caAg160?'btn-primary':''}`} onClick={()=> setCaAg160(false)}>No</button>
+              </div>
+            </div>
+            <div className={`rds-result ${caAg160?'good':'info'}`}>{summary}</div>
+          </div>
+        ) : (
+          <div className="rds-result info">{summary}</div>
+        )
       )}
 
-      <div className="rds-summary">{summary}</div>
-      <div className="rds-actions"><button className="btn btn-reset" onClick={() => { setNeedRods(null); setPaperReasons({tow:false,pre2000:false,malfunction:false}); setHadMalfunction(false); }}>Reset</button></div>
+  <div className="rds-summary">{summary}</div>
+  <div className="rds-actions"><button className="btn btn-reset" onClick={() => { setNeedRods(null); setPaperReasons({tow:false,pre2000:false,malfunction:false}); setHadMalfunction(false); setUsFarmCFV(false); setCaAg160(false); }}>Reset</button></div>
     </div>
   );
 }
