@@ -6,7 +6,7 @@ export default function ViolationManagement() {
     { key: 'citation-types', title: 'Understanding Citation Types', emoji: '⚖️', accent: 'teal' },
     { key: 'dataq-navigation', title: 'DataQ System Navigation', emoji: '🧭', accent: 'purple' },
     { key: 'driver-score', title: 'Driver Score Improvement', emoji: '📈', accent: 'orange' },
-    { key: 'most-common', title: 'Most Common Violations', emoji: '📌', accent: 'green', note: 'Impact on safety score + how to fix (bullets)' },
+  { key: 'most-common', title: 'Most Common Violations', emoji: '📌', accent: 'green', note: 'Full violation lookup + sound‑alike search' },
     { key: 'appeal-process', title: 'Appeal Process Guidelines', emoji: '📑', accent: 'blue' },
     { key: 'record-maintenance', title: 'Record Maintenance', emoji: '🗂️', accent: 'red' },
   ];
