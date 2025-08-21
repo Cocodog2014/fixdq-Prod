@@ -40,6 +40,7 @@
 @import './pages/ViolationManagement/DataQNavigation.css';
 @import './pages/ViolationManagement/DriverScore.css';
 @import './pages/ViolationManagement/AppealProcess.css';
+/* Most Common uses the shared VM CSS; no separate file needed */
 @import './pages/EnglishProficiency/EnglishProficiency.css';
 @import './pages/EnglishProficiency/DriverInterview.css';
 /* Add future page imports here:

@@ -22,16 +22,25 @@
 .tile-blue{background:rgba(14,165,233,0.25)}
 .tile-red{background:rgba(239,68,68,0.25)}
 .tile-teal{background:rgba(20,184,166,0.25)}
+.tile-green{background:rgba(16,185,129,0.25)}
 .rail-orange{background:var(--color-accent-orange) !important}
 .rail-purple{background:var(--color-accent-purple) !important}
 .rail-blue{background:var(--color-accent-blue) !important}
 .rail-red{background:var(--color-accent-red) !important}
 .rail-teal{background:var(--color-accent-teal) !important}
+.rail-green{background:var(--color-accent-green) !important}
 .tile-orange .vm-icon{background:rgba(249,115,22,.12)}
 .tile-purple .vm-icon{background:rgba(124,58,237,.12)}
 .tile-blue .vm-icon{background:rgba(14,165,233,.12)}
 .tile-red .vm-icon{background:rgba(239,68,68,.12)}
 .tile-teal .vm-icon{background:rgba(20,184,166,.12)}
+.tile-green .vm-icon{background:rgba(16,185,129,.12)}
+
+/* Most Common page */
+.most-common-page .mc-list{list-style:disc;padding-left:1.25rem;}
+.most-common-page .mc-item{margin-bottom:12px}
+.most-common-page .mc-item-title{color:var(--color-white);margin:0 0 4px 0}
+.most-common-page .mc-item-impact,.most-common-page .mc-item-fix{color:var(--color-white)}
 
 /* Responsive */
 @media (min-width:640px){.vm-card{grid-column:span 6}}

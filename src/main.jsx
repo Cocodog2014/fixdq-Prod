@@ -18,6 +18,7 @@ import CitationTypes from './pages/ViolationManagement/CitationTypes'
 import DataQNavigation from './pages/ViolationManagement/DataQNavigation'
 import DriverScore from './pages/ViolationManagement/DriverScore'
 import AppealProcess from './pages/ViolationManagement/AppealProcess'
+import MostCommonViolations from './pages/ViolationManagement/MostCommon'
 import CSA from './pages/FMCSACompliance/CSA'
 import PreventionManagement from './pages/FMCSACompliance/PreventionManagement'
 import FarmExemptionChecker from './pages/FarmExemptionChecker'
@@ -62,6 +63,7 @@ createRoot(document.getElementById('root')).render(
   <Route path="/violations-management/citation-types" element={<CitationTypes />} />
   <Route path="/violations-management/dataq-navigation" element={<DataQNavigation />} />
   <Route path="/violations-management/driver-score" element={<DriverScore />} />
+  <Route path="/violations-management/most-common" element={<MostCommonViolations />} />
   <Route path="/violations-management/appeal-process" element={<AppealProcess />} />
   <Route path="/csa" element={<CSA />} />
   <Route path="/prevention-management" element={<PreventionManagement />} />

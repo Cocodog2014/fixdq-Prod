@@ -1,0 +1,46 @@
+{
+  "MostCommon": [
+    {
+      "category": "ELD / HOS",
+      "code": "395.8/395.22",
+      "description": "Log not current, missing docs, misuse of PC/Yard Move",
+      "severity": 5,
+      "recommendedAction": "Weekly log audits, driver coaching on recap planning, mount and visibility check for portable ELDs"
+    },
+    {
+      "category": "Lighting",
+      "code": "393.9/393.11",
+      "description": "Inoperative/missing required lamps or reflectors",
+      "severity": 4,
+      "recommendedAction": "Add 10‑minute light walkaround at each stop; carry spare bulbs/fuses"
+    },
+    {
+      "category": "Tires",
+      "code": "393.75",
+      "description": "Tread below minimum, audible leak, bulge/knot",
+      "severity": 7,
+      "recommendedAction": "Daily air/tread checks; retire tires with exposed ply; fix leaks before dispatch"
+    },
+    {
+      "category": "Brakes",
+      "code": "393.48/396.3",
+      "description": "Inoperative or obvious defects including air leaks",
+      "severity": 10,
+      "recommendedAction": "Do not operate; repair and verify during DVIR before return to service"
+    },
+    {
+      "category": "Cargo Securement",
+      "code": "393.100+",
+      "description": "Insufficient tiedowns, knots in straps, failure to re-examine",
+      "severity": 8,
+      "recommendedAction": "Use rated tiedowns; no knots; re-check at 150 miles and at each duty status change"
+    },
+    {
+      "category": "Driver Qualifications",
+      "code": "391.*",
+      "description": "Expired/invalid med certificate or license; missing endorsements",
+      "severity": 10,
+      "recommendedAction": "Monthly DQ file audit; automated reminders for expirations; no dispatch while invalid"
+    }
+  ]
+}

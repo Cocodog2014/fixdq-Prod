@@ -6,6 +6,7 @@ export default function ViolationManagement() {
     { key: 'citation-types', title: 'Understanding Citation Types', emoji: '⚖️', accent: 'teal' },
     { key: 'dataq-navigation', title: 'DataQ System Navigation', emoji: '🧭', accent: 'purple' },
     { key: 'driver-score', title: 'Driver Score Improvement', emoji: '📈', accent: 'orange' },
+    { key: 'most-common', title: 'Most Common Violations', emoji: '📌', accent: 'green', note: 'Impact on safety score + how to fix (bullets)' },
     { key: 'appeal-process', title: 'Appeal Process Guidelines', emoji: '📑', accent: 'blue' },
     { key: 'record-maintenance', title: 'Record Maintenance', emoji: '🗂️', accent: 'red' },
   ];
@@ -31,7 +32,7 @@ export default function ViolationManagement() {
                   <div className="vm-body">
                     <div className="vm-emoji" aria-hidden>{m.emoji}</div>
                     <h2 className="vm-title">{m.title}</h2>
-                    <p className="vm-note">Coming soon</p>
+                    <p className="vm-note">{m.note || 'Coming soon'}</p>
                   </div>
                 </>
               );
