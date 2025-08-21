@@ -1,0 +1,12 @@
+{
+  "SafeLoading": [
+    {"code": "392.9a1", "description": "Failure to secure cargo", "severity": 7, "recommendedAction": "Secure load with straps/chains before moving."},
+    {"code": "393.100b", "description": "Prevent against loss of load (blowing/falling)", "severity": 8, "recommendedAction": "Resecure/tarp load to prevent falling debris."},
+    {"code": "393.104f", "description": "Tiedowns cannot have knots", "severity": 5, "recommendedAction": "Replace tiedowns with approved devices."},
+    {"code": "393.114", "description": "Logs not secured properly", "severity": 8, "recommendedAction": "Apply proper tiedowns and contact requirements."},
+    {"code": "393.118", "description": "Metal coils not secured", "severity": 10, "recommendedAction": "Secure coils with blocking/chains per FMCSA rules."},
+    {"code": "393.128", "description": "Automobiles/light trucks not secured", "severity": 7, "recommendedAction": "Use 4 tiedowns minimum to secure vehicle."},
+    {"code": "393.130", "description": "Heavy equipment not secured", "severity": 9, "recommendedAction": "Use min. 4 tiedowns and prevent articulation."},
+    {"code": "393.134", "description": "Large boulders not secured", "severity": 10, "recommendedAction": "Secure boulders with chains and cribbing."}
+  ]
+}

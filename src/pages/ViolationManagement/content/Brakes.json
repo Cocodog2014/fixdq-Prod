@@ -1,0 +1,14 @@
+{
+  "Brakes": [
+    {"code": "393.40a", "description": "Vehicle must have service/parking/emergency brakes", "severity": 7, "recommendedAction": "Inspect entire brake system; ensure all brakes function properly."},
+    {"code": "393.42a", "description": "Brakes required on all wheels (except 7-25-80)", "severity": 7, "recommendedAction": "Install/repair brakes on all wheels unless exempt."},
+    {"code": "393.43b", "description": "Tractor protection valve below 20psi", "severity": 6, "recommendedAction": "Repair/replace tractor protection valve."},
+    {"code": "393.43d", "description": "Missing/inoperable breakaway", "severity": 6, "recommendedAction": "Replace breakaway device for trailers."},
+    {"code": "393.43e", "description": "Emergency no-bleed-back valve", "severity": 6, "recommendedAction": "Repair or replace malfunctioning valve."},
+    {"code": "393.45b2", "description": "Brake hose chafing/bulging", "severity": 7, "recommendedAction": "Replace damaged brake hoses immediately."},
+    {"code": "393.48a", "description": "Inoperative brakes", "severity": 10, "recommendedAction": "Take vehicle out of service; repair before use."},
+    {"code": "393.75f", "description": "Steer axle pad < 4/32 in or disc < 1/16 in", "severity": 8, "recommendedAction": "Replace steer axle brake pads/discs before operating."},
+    {"code": "393.76", "description": "Low air warning device not working", "severity": 7, "recommendedAction": "Repair or replace low air pressure warning device."},
+    {"code": "393.55e", "description": "ABS malfunction indicator not working", "severity": 4, "recommendedAction": "Repair ABS sensors/lights so indicator cycles properly."}
+  ]
+}

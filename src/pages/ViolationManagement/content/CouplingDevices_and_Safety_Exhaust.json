@@ -1,0 +1,33 @@
+{
+  "CouplingDevices": [
+    {"code": "393.70b1i", "description": "Fifth-wheel lower—missing/ineffective fasteners", "severity": 8, "recommendedAction": "Replace fasteners; torque to spec."},
+    {"code": "393.70b1i-CRK", "description": "Fifth-wheel lower cracked/broken angle iron", "severity": 8, "recommendedAction": "Repair or replace damaged structure."},
+    {"code": "393.70b1i-PIN", "description": "Pivot pin missing or not secured", "severity": 8, "recommendedAction": "Install/secure pivot pin with proper retainer."},
+    {"code": "393.70b1i-SLD", "description": "Slider pins not latched", "severity": 7, "recommendedAction": "Lock slider pins; verify with tug test."},
+    {"code": "393.70b2-HND", "description": "Operating handle not closed or locked", "severity": 7, "recommendedAction": "Close and lock handle; verify jaw engagement."},
+    {"code": "393.70b1-LOCK", "description": "Locking mechanism parts missing/broken/deformed", "severity": 10, "recommendedAction": "Repair/replace locking parts; do not tow until fixed."},
+    {"code": "393.70b2-KP", "description": "Kingpin not properly engaged", "severity": 10, "recommendedAction": "Re-couple and inspect jaws/kingpin."},
+    {"code": "393.70b1-UPR", "description": "Upper coupler not secure (bolts)", "severity": 8, "recommendedAction": "Replace/retorque upper coupler bolts."},
+    {"code": "393.70c2", "description": "Pintle hooks—loose/missing/ineffective fasteners", "severity": 8, "recommendedAction": "Repair pintle hook and mounting hardware."},
+    {"code": "393.70c1", "description": "Cracks in pintle hook assembly", "severity": 9, "recommendedAction": "Replace cracked pintle assembly immediately."},
+    {"code": "393.71n", "description": "Cracks or welds in drawbar eye", "severity": 9, "recommendedAction": "Replace drawbar eye; do not tow until replaced."}
+  ],
+  "CouplingDevices_DriveAwayTowAway": [
+    {"code": "393.71a1", "description": "Drive-away: no more than 3 saddle mounts", "severity": 6, "recommendedAction": "Reduce to max three saddle mounts."},
+    {"code": "393.71a2", "description": "No more than one tow-bar/ball-socket coupler", "severity": 6, "recommendedAction": "Remove extra tow connection; comply with single connector rule."},
+    {"code": "393.71a3", "description": "If 3 saddle mounts, all wheels need brakes", "severity": 7, "recommendedAction": "Equip with operational service brakes on all wheels."}
+  ],
+  "SafetyDevices": [
+    {"code": "393.70d", "description": "Safety chains/cables—missing, unattached, improper repair", "severity": 8, "recommendedAction": "Install approved safety devices; attach correctly."},
+    {"code": "393.70d2", "description": "Excessive slack in chain", "severity": 6, "recommendedAction": "Shorten/adjust chain to manufacturer spec."},
+    {"code": "393.70d3", "description": "Chains do not meet required strength", "severity": 7, "recommendedAction": "Use chains with adequate WLL/rating."},
+    {"code": "393.70d4", "description": "Must prevent tow-bar from hitting ground", "severity": 5, "recommendedAction": "Add crisscrossed chains or device to keep bar off ground."}
+  ],
+  "Exhaust": [
+    {"code": "393.83e", "description": "Exhaust must exit rear of cab", "severity": 4, "recommendedAction": "Extend/route exhaust to rear of cab."},
+    {"code": "393.83f", "description": "No temporary wraps or patches", "severity": 3, "recommendedAction": "Replace damaged components; no tape/temporary repairs."},
+    {"code": "393.83h-LEAK", "description": "Exhaust leaks forward of sleeper/cab", "severity": 7, "recommendedAction": "Repair leaks to prevent fumes entering cab."},
+    {"code": "393.83h-SEC", "description": "Exhaust not securely fastened", "severity": 4, "recommendedAction": "Install clamps/hangers; secure system."},
+    {"code": "393.83a", "description": "Exhaust located to burn wires/fuel/combustibles", "severity": 7, "recommendedAction": "Reroute/guard to prevent heat damage."}
+  ]
+}

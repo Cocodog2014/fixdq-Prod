@@ -1,0 +1,8 @@
+{
+  "Wheels": [
+    {"code": "393.205a", "description": "Wheel/rim cracks", "severity": 7, "recommendedAction": "Replace cracked rim before operation."},
+    {"code": "393.205b", "description": "Stud or bolt holes elongated", "severity": 7, "recommendedAction": "Replace damaged rim or hub."},
+    {"code": "393.205c", "description": "Fasteners loose/missing", "severity": 7, "recommendedAction": "Tighten or replace lug nuts immediately."},
+    {"code": "396.5b", "description": "Oil/grease leak or missing cap/plug", "severity": 5, "recommendedAction": "Repair seal or replace plug/cap before operating."}
+  ]
+}

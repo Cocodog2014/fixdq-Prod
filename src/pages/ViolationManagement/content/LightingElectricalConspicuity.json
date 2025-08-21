@@ -1,0 +1,11 @@
+{
+  "LightingElectricalConspicuity": [
+    {"code": "393.9", "description": "Inoperative lamps", "severity": 4, "recommendedAction": "Replace bulbs/fuses; ensure all lights function."},
+    {"code": "393.11a1", "description": "Missing lamps/reflectors", "severity": 3, "recommendedAction": "Install missing reflectors/lights."},
+    {"code": "393.17a", "description": "Stop lamp violation", "severity": 4, "recommendedAction": "Repair stop lamp wiring or bulb."},
+    {"code": "393.25a", "description": "All lamps required to be mounted securely", "severity": 3, "recommendedAction": "Tighten or replace loose lamp assemblies."},
+    {"code": "393.25f", "description": "Inoperative trailer lamps", "severity": 4, "recommendedAction": "Repair or replace trailer light system."},
+    {"code": "393.28", "description": "Bare/duct taped electrical wire", "severity": 5, "recommendedAction": "Repair wiring with proper insulation connectors."},
+    {"code": "393.30", "description": "Battery not covered/enclosed", "severity": 3, "recommendedAction": "Install a proper battery box or cover."}
+  ]
+}

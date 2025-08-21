@@ -1,0 +1,23 @@
+{
+  "DriverQualifications": [
+    {"code": "28-2321", "description": "Fail to have AZ or apportioned plates", "severity": 4, "recommendedAction": "Obtain proper apportioned/IRP plates; keep registration current."},
+    {"code": "28-4033A1", "description": "Non-hazardous property insurance (proof required)", "severity": 2, "recommendedAction": "Carry valid insurance card or certificate covering CMV operations."},
+    {"code": "28-4033A3", "description": "Hazardous transport insurance (proof required)", "severity": 5, "recommendedAction": "Maintain required hazmat financial responsibility; keep proof in cab."},
+    {"code": "391.11b4", "description": "Operation without required corrective lenses/hearing aid", "severity": 5, "recommendedAction": "Comply with license restrictions; wear corrective lenses/hearing aid while driving."},
+    {"code": "391.11b4-EN", "description": "Unable to communicate in English", "severity": 5, "recommendedAction": "Driver must demonstrate ability to converse/read traffic control signs in English or be reassigned."},
+    {"code": "391.41a", "description": "No valid medical certificate in possession", "severity": 5, "recommendedAction": "Obtain and carry a current DOT medical card; upload to MVR if required."},
+    {"code": "391.49g", "description": "No skills performance evaluation certificate (if required)", "severity": 4, "recommendedAction": "Carry SPE certificate for limb impairment waivers."},
+    {"code": "391.15b5", "description": "Operating without proper CDL/endorsement", "severity": 10, "recommendedAction": "Do not operate until licensed with correct class/endorsements."},
+    {"code": "391.15b5-DQ", "description": "Driver disqualified (suspension/revocation)", "severity": 10, "recommendedAction": "Remove from safety-sensitive duty until reinstated; document return-to-duty."},
+    {"code": "392.3", "description": "Ill or fatigued driver", "severity": 10, "recommendedAction": "Cease operation; rest or obtain medical clearance before returning to duty."},
+    {"code": "392.4a", "description": "Use/possession of drugs", "severity": 10, "recommendedAction": "Immediate removal from duty; follow DOT drug/alcohol policy."},
+    {"code": "392.5a2", "description": "Influence of alcohol", "severity": 10, "recommendedAction": "Immediate removal from duty; comply with DOT alcohol policy."},
+    {"code": "392.5a3", "description": "Possession of alcohol", "severity": 10, "recommendedAction": "Remove from duty; secure/return alcohol; coach and document."},
+    {"code": "395.13d1", "description": "Driving after being declared OOS (hours)", "severity": 10, "recommendedAction": "Do not move vehicle until OOS condition corrected and cleared."},
+    {"code": "392.5e2", "description": "Driving after OOS for alcohol", "severity": 10, "recommendedAction": "Cease operation; follow company/DOT return-to-duty process."},
+    {"code": "396.9c2", "description": "Driving after vehicle declared OOS", "severity": 10, "recommendedAction": "Repair defects; obtain re-inspection/clearance before operating."},
+    {"code": "396.9d2", "description": "Failure to correct defects from previous inspection", "severity": 7, "recommendedAction": "Complete repairs; document with work order/receipts and DVIR."},
+    {"code": "28-5241.1", "description": "Driving after vehicle OOS (civil)", "severity": 10, "recommendedAction": "Same as 396.9c2—do not operate until cleared."},
+    {"code": "28-5241.2b", "description": "Driving after driver OOS (civil)", "severity": 10, "recommendedAction": "Do not dispatch/drive until OOS status resolved."}
+  ]
+}

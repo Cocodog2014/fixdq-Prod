@@ -1,0 +1,19 @@
+{
+  "Frame": [
+    {"code": "393.201a", "description": "Frame—no cracks, loose, sagging, missing members", "severity": 7, "recommendedAction": "Repair/replace damaged frame components."},
+    {"code": "393.201b", "description": "Broken, loose, or missing frame bolts", "severity": 6, "recommendedAction": "Replace/retorque fasteners to spec."},
+    {"code": "393.201c", "description": "Unauthorized holes in frame flange/web", "severity": 5, "recommendedAction": "Stop drilling; repair per manufacturer guidance."}
+  ],
+  "FuelSystem": [
+    {"code": "393.65c", "description": "Fuel tank not secure / improper mounting", "severity": 7, "recommendedAction": "Secure tank with proper straps/brackets."},
+    {"code": "393.67c", "description": "Fuel line chafing or kinking", "severity": 6, "recommendedAction": "Reroute/replace lines; install anti-chafe."},
+    {"code": "393.67d", "description": "Fuel tank extends more than 2 in. below tank/sump", "severity": 5, "recommendedAction": "Repair/replace mounting to OEM height clearance."},
+    {"code": "393.67e1", "description": "Fuel tank required markings missing", "severity": 2, "recommendedAction": "Affix correct capacity/approval markings."},
+    {"code": "393.67a", "description": "Fuel leak", "severity": 10, "recommendedAction": "Stop operation and repair leak before driving."},
+    {"code": "393.67e7", "description": "Fuel pipe must have cap", "severity": 5, "recommendedAction": "Install proper sealing cap."},
+    {"code": "393.65h", "description": "Fuel cannot spill on exhaust", "severity": 7, "recommendedAction": "Repair routing/seals so exhaust is isolated."},
+    {"code": "28-6547B", "description": "Dyed diesel fuel (state violation)", "severity": 5, "recommendedAction": "Purge/replace fuel; maintain tax-paid fuel records."},
+    {"code": "28-5742A", "description": "Use Fuel License must be in cab at all times", "severity": 2, "recommendedAction": "Carry IFTA/use-fuel credentials in vehicle."},
+    {"code": "28-5623A", "description": "Buying use fuel at light-class tax rate", "severity": 3, "recommendedAction": "Purchase at correct tax rate; keep receipts."}
+  ]
+}

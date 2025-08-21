@@ -1,0 +1,7 @@
+{
+  "AOBRDLogBookViolations": [
+    {"code": "395.15f", "description": "Driver must reconstruct log if device fails", "severity": 3, "recommendedAction": "Use paper logs to reconstruct driving and on-duty time."},
+    {"code": "395.15g1", "description": "Instruction sheet must be in cab", "severity": 2, "recommendedAction": "Carry AOBRD instructions with the unit."},
+    {"code": "395.15g2", "description": "Supply of blank log sheets for trip", "severity": 2, "recommendedAction": "Keep at least 8 days of blank paper logs available."}
+  ]
+}

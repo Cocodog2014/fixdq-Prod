@@ -1,0 +1,13 @@
+{
+  "ELDLogBookViolations": [
+    {"code": "395.22a", "description": "Failure to use authorized ELD", "severity": 7, "recommendedAction": "Install and use a registered ELD for required operations."},
+    {"code": "395.22a-SC", "description": "Using special category incorrectly (false log)", "severity": 7, "recommendedAction": "Correct misuse of personal conveyance/yard moves; retrain driver."},
+    {"code": "395.22h", "description": "Manual for ELD not available", "severity": 2, "recommendedAction": "Carry user manual (paper or electronic) in cab."},
+    {"code": "395.22h-XFER", "description": "Instruction sheet for data transfer missing", "severity": 2, "recommendedAction": "Provide FMCSA transfer instructions and malfunction sheet."},
+    {"code": "395.22h-RODS", "description": "Backup supply of RODS for 8 days not available", "severity": 2, "recommendedAction": "Keep 8 days of blank paper logs."},
+    {"code": "395.24c1ii", "description": "Shipping document number not entered (if applicable)", "severity": 2, "recommendedAction": "Enter BOL/manifest number in ELD notes/fields."},
+    {"code": "395.24c1vi", "description": "Driver fails to enter power unit/trailer number", "severity": 3, "recommendedAction": "Update tractor and trailer numbers each day."},
+    {"code": "395.20", "description": "ELD display screen cannot be viewed by officer", "severity": 4, "recommendedAction": "Provide display or printout; fix screen/cable or use alternate method."},
+    {"code": "395.22g", "description": "Portable ELD not mounted in fixed, visible position", "severity": 3, "recommendedAction": "Mount device securely within driver’s normal view."}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "PaperLogBookViolations": [
+    {"code": "395.3a1", "description": "11-Hour rule violation", "severity": 7, "recommendedAction": "Schedule/rest to comply; provide coaching and corrective action."},
+    {"code": "395.3a2", "description": "14-Hour rule violation", "severity": 7, "recommendedAction": "Adjust dispatch to keep driving within 14-hour window."},
+    {"code": "395.3a1-30", "description": "30-minute break before 8 hours driving", "severity": 5, "recommendedAction": "Insert required off-duty/sleeper break and document."},
+    {"code": "395.3b2", "description": "60/70-hour limit violation", "severity": 7, "recommendedAction": "Stop driving until reset or hours available; review recap planning."},
+    {"code": "395.8a", "description": "No log book / no RODS", "severity": 5, "recommendedAction": "Maintain daily RODS; keep prior 7 days available."},
+    {"code": "395.8f5", "description": "Duty status changes must show city/state", "severity": 3, "recommendedAction": "Enter city and state for each status change."},
+    {"code": "395.8e", "description": "False record of duty status", "severity": 7, "recommendedAction": "Correct the record; retrain and document coaching/discipline."},
+    {"code": "395.8f1", "description": "RODS not current to last change of status", "severity": 3, "recommendedAction": "Bring log current to last duty status change."},
+    {"code": "395.8-LEG", "description": "Entries not legible", "severity": 2, "recommendedAction": "Rewrite clearly; use block printing or ELD."},
+    {"code": "395.8-DATE", "description": "Log sheet missing date", "severity": 2, "recommendedAction": "Enter date on each daily log."},
+    {"code": "395.8-MILES", "description": "Total miles driven today missing", "severity": 3, "recommendedAction": "Enter daily total miles."},
+    {"code": "395.8-UNIT", "description": "Truck/tractor and trailer number missing", "severity": 3, "recommendedAction": "Enter unit and trailer numbers."},
+    {"code": "395.8-CARRIER", "description": "Carrier name missing on log", "severity": 2, "recommendedAction": "Enter carrier name and USDOT number if required."},
+    {"code": "395.8-SIGN", "description": "Driver signature missing", "severity": 2, "recommendedAction": "Sign each daily log certifying accuracy."},
+    {"code": "395.8-ADDR", "description": "Home terminal address/city/state missing", "severity": 2, "recommendedAction": "Enter home terminal information."},
+    {"code": "395.8f11", "description": "Totals for sleeper/on-duty/driving not on right side", "severity": 2, "recommendedAction": "Add column totals in correct location."},
+    {"code": "395.8f12", "description": "Shipping document # / commodity missing", "severity": 2, "recommendedAction": "Enter bill lading/manifest or commodity."},
+    {"code": "395.8-PRIOR7", "description": "Missing parts of previous 7 days", "severity": 3, "recommendedAction": "Keep prior 7 days of logs available in cab."}
+  ]
+}
