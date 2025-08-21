@@ -1,0 +1,44 @@
+{
+  "Suspension": [
+    {"code": "393.207a", "description": "Axle positioning part cracked/broken/loose/missing", "severity": 8, "recommendedAction": "Repair/replace torque arms, radius rods, hangers."},
+    {"code": "393.207b", "description": "Axle locking pins missing/disengaged", "severity": 8, "recommendedAction": "Install/lock pins; verify engagement."},
+    {"code": "393.207c", "description": "Leaf springs cracked/broken/missing/out of position", "severity": 8, "recommendedAction": "Replace broken leaves/spring packs; realign."},
+    {"code": "393.207d", "description": "Coil springs cracked or broken", "severity": 7, "recommendedAction": "Replace damaged coils."}
+  ],
+  "Steering": [
+    {"code": "393.209a", "description": "Steering wheel secured—no spoke cracks", "severity": 7, "recommendedAction": "Replace cracked/damaged wheel."},
+    {"code": "393.209c", "description": "Steering lash exceeds chart", "severity": 7, "recommendedAction": "Adjust/repair steering gear and linkages."},
+    {"code": "393.209e", "description": "Steering column not securely attached", "severity": 7, "recommendedAction": "Tighten/repair mounting hardware."},
+    {"code": "393.209f", "description": "Steering parts loose/cracked; missing boots", "severity": 8, "recommendedAction": "Replace worn tie-rod ends/drag links/boots."},
+    {"code": "393.209g", "description": "Steering parts loose/cracked/fluid leaks", "severity": 8, "recommendedAction": "Repair hydraulic components and seals."}
+  ],
+  "Tires": [
+    {"code": "393.75a1", "description": "Exposed ply or belt in tread or sidewall", "severity": 8, "recommendedAction": "Replace tire immediately."},
+    {"code": "393.75a2", "description": "Tread or sidewall separation", "severity": 8, "recommendedAction": "Remove and replace tire."},
+    {"code": "393.75a3", "description": "Flat or audible leak", "severity": 8, "recommendedAction": "Repair or replace flat tire before operation."},
+    {"code": "393.75d", "description": "Cut exposing ply or belt material", "severity": 7, "recommendedAction": "Remove from service; replace tire."},
+    {"code": "393.75b", "description": "Front tires with tread depth < 4/32 in", "severity": 7, "recommendedAction": "Replace steer tires to meet minimum depth."},
+    {"code": "393.75c", "description": "Other tires tread depth < 2/32 in", "severity": 6, "recommendedAction": "Replace tires to meet minimum depth."},
+    {"code": "393.75h1", "description": "Under-inflated tires", "severity": 4, "recommendedAction": "Inflate to manufacturer spec; check for leaks."},
+    {"code": "396.3a1-CONTACT", "description": "Tire in contact with dual/vehicle parts", "severity": 7, "recommendedAction": "Correct spacing/alignment; replace damaged tire."},
+    {"code": "396.3a1-BULGE", "description": "Visible bump or knot on tread/sidewall", "severity": 7, "recommendedAction": "Replace tire—structural damage likely."}
+  ],
+  "InspectionOtherDriverViolations": [
+    {"code": "392.7", "description": "No proper pre-trip inspection", "severity": 5, "recommendedAction": "Complete DVIR and verify defects corrected."},
+    {"code": "392.8", "description": "Fail to inspect/use emergency equipment", "severity": 4, "recommendedAction": "Carry and check triangles/fuses/fire extinguisher; replace missing items."},
+    {"code": "392.10", "description": "Fail to stop at railroad crossing (certain HM)", "severity": 10, "recommendedAction": "Stop, look, and listen at all required crossings."},
+    {"code": "396.17", "description": "Annual inspection deficiencies/document not available", "severity": 5, "recommendedAction": "Perform/obtain current annual inspection and keep proof in vehicle."},
+    {"code": "392.9d3", "description": "Fail to re-examine load securement at each duty status change", "severity": 5, "recommendedAction": "Recheck tiedowns/chains upon duty changes and at intervals."},
+    {"code": "392.2-LOCAL", "description": "Local law violation (per DVER citation)", "severity": 3, "recommendedAction": "Comply with local ordinances; pay/contest citation as required."},
+    {"code": "392.16", "description": "Seat belt not in use", "severity": 7, "recommendedAction": "Wear seat belt at all times; enforce policy."},
+    {"code": "392.22a", "description": "Use of hazard warning flashers (when required) – not used", "severity": 3, "recommendedAction": "Activate hazards during roadside stops/disabled CMV."},
+    {"code": "392.22b", "description": "Place warning devices within 10 minutes", "severity": 3, "recommendedAction": "Deploy triangles/flares at proper distances promptly."},
+    {"code": "392.60a", "description": "Transporting unauthorized passenger", "severity": 5, "recommendedAction": "Remove unauthorized riders; follow company policy."},
+    {"code": "392.71a", "description": "Radar detector in CMV", "severity": 5, "recommendedAction": "Remove radar detector from vehicle."},
+    {"code": "392.2-SPD", "description": "Scheduled run not conforming to speed limits", "severity": 4, "recommendedAction": "Plan routes/times to comply with legal speeds."},
+    {"code": "393.??-SEC", "description": "Equipment not secured to vehicle", "severity": 4, "recommendedAction": "Secure loose equipment/tools; use brackets/straps."},
+    {"code": "392.9a3", "description": "Objects cannot prevent exit from vehicle", "severity": 3, "recommendedAction": "Keep aisles and exits clear."},
+    {"code": "392.9a-AUTH", "description": "Operating authority issues", "severity": 4, "recommendedAction": "Maintain active USDOT/MC authority; carry proof."},
+    {"code": "392.82a1", "description": "Use of non-hands-free phone while driving", "severity": 8, "recommendedAction": "Use hands-free only; no hand-held calls/texting."}
+  ]
+}

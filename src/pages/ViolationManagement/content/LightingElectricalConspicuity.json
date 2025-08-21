@@ -1,11 +1,16 @@
 {
   "LightingElectricalConspicuity": [
-    {"code": "393.9", "description": "Inoperative lamps", "severity": 4, "recommendedAction": "Replace bulbs/fuses; ensure all lights function."},
-    {"code": "393.11a1", "description": "Missing lamps/reflectors", "severity": 3, "recommendedAction": "Install missing reflectors/lights."},
-    {"code": "393.17a", "description": "Stop lamp violation", "severity": 4, "recommendedAction": "Repair stop lamp wiring or bulb."},
-    {"code": "393.25a", "description": "All lamps required to be mounted securely", "severity": 3, "recommendedAction": "Tighten or replace loose lamp assemblies."},
-    {"code": "393.25f", "description": "Inoperative trailer lamps", "severity": 4, "recommendedAction": "Repair or replace trailer light system."},
-    {"code": "393.28", "description": "Bare/duct taped electrical wire", "severity": 5, "recommendedAction": "Repair wiring with proper insulation connectors."},
-    {"code": "393.30", "description": "Battery not covered/enclosed", "severity": 3, "recommendedAction": "Install a proper battery box or cover."}
+    {"code": "393.9", "description": "Inoperable lamps required by 393.11", "severity": 4, "recommendedAction": "Replace bulbs/fuses; repair wiring; verify operation."},
+    {"code": "393.11a1", "description": "Missing lamps/reflectors; Section 108 conspicuity (post-Dec 1993)", "severity": 3, "recommendedAction": "Install required lamps/reflectors per FMVSS 108."},
+    {"code": "393.13c1", "description": "Retroreflective sheeting—sides (older than 12/93 standard)", "severity": 3, "recommendedAction": "Add/replace side conspicuity tape per standard."},
+    {"code": "393.13c2", "description": "Retroreflective sheeting—lower rear (older than 12/94 standard)", "severity": 3, "recommendedAction": "Add/replace rear conspicuity tape per standard."},
+    {"code": "393.19", "description": "Hazard lamps must flash simultaneously", "severity": 2, "recommendedAction": "Repair flasher or switch so both sides flash."},
+    {"code": "393.24a", "description": "Headlamps working and properly aimed", "severity": 3, "recommendedAction": "Aim/replace headlamps; restore operation."},
+    {"code": "393.25a", "description": "All lamps securely mounted", "severity": 3, "recommendedAction": "Tighten/replace loose lamp assemblies."},
+    {"code": "393.25e", "description": "Lamps required to be steady-burning", "severity": 3, "recommendedAction": "Repair circuits so markers/tails burn steady."},
+    {"code": "393.25f", "description": "Stop lamps not working", "severity": 4, "recommendedAction": "Repair brake light switch/wiring/bulbs."},
+    {"code": "393.33a", "description": "Reflective devices/lamps/conspicuity obscured", "severity": 3, "recommendedAction": "Clean/repair to maintain visibility."},
+    {"code": "393.28", "description": "Electrical wire bare or duct-taped", "severity": 5, "recommendedAction": "Rewire with proper insulation/connectors."},
+    {"code": "393.30", "description": "Battery must be covered or enclosed", "severity": 3, "recommendedAction": "Install proper battery box/cover."}
   ]
 }
