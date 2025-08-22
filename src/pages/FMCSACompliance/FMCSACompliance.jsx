@@ -9,7 +9,7 @@ const WeightCalculator = lazy(() => import('./WeightCalculator'))
 const ComplianceQuiz = lazy(() => import('./ComplianceQuiz'))
 import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'
-import NewReg from './HeroButton/NewReg'
+import NewReg, { NewRegPanel } from './HeroButton/NewReg'
 import ManageReg from './HeroButton/ManageReg'
 import Insurance from './HeroButton/Insurance'
 import { LicensePanel } from './HeroButton/License'
@@ -18,6 +18,7 @@ import { LicensePanel } from './HeroButton/License'
 
 export default function FMCSACompliance() {
   const navigate = useNavigate()
+  const [heroMenuOpen, setHeroMenuOpen] = useState(false)
   const [licenseState, setLicenseState] = useState({
     vehicleType: 'truck',
     gvwr: 'over_26001',
@@ -66,6 +67,10 @@ export default function FMCSACompliance() {
 
   const openPanel = useCallback((panel) => {
     setActivePanel((curr) => (curr === panel ? null : panel))
+    // Auto-close the mobile hero menu after selecting an item
+    if (typeof window !== 'undefined' && window.innerWidth < 600) {
+      setHeroMenuOpen(false)
+    }
   }, [])
 
   return (
@@ -75,7 +80,19 @@ export default function FMCSACompliance() {
       <section className="fmcsa-hero">
         <div className="container">
           <div className="hero-inner">
-            <div className="hero-top-actions">
+            <button
+              className="hero-menu-toggle"
+              aria-label={heroMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={heroMenuOpen}
+              aria-controls="hero-top-actions"
+              onClick={() => setHeroMenuOpen(o => !o)}
+            >
+              <span className="hamburger" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span className="hero-menu-label">FMCSA Tools</span>
+            </button>
+            <div id="hero-top-actions" className={`hero-top-actions ${heroMenuOpen ? 'open' : ''}`}>
               <License active={activePanel==='license'} onClick={() => openPanel('license')} />
               <Usdot active={activePanel==='usdot'} onClick={() => openPanel('usdot')} />
               <NewReg active={activePanel==='newReg'} onClick={() => openPanel('newReg')} />
@@ -129,17 +146,7 @@ export default function FMCSACompliance() {
               </div>
             )}
             {activePanel === 'newReg' && (
-              <div className="info-panel" role="region" aria-label="New Registration Guide">
-                <h2 style={{marginTop:0}}>New Registration Made Easy</h2>
-                <ol>
-                  <li>Determine need for USDOT & MC (for-hire) authority.</li>
-                  <li>Gather EIN, company structure, driver & equipment data.</li>
-                  <li>Apply via Unified Registration System (URS).</li>
-                  <li>File BOC-3 & obtain insurance certificates.</li>
-                  <li>Monitor status & complete any corrective actions.</li>
-                </ol>
-                <p><a href="https://www.fmcsa.dot.gov/registration" target="_blank" rel="noopener noreferrer">Unified Registration System</a></p>
-              </div>
+              <NewRegPanel onClose={() => setActivePanel(null)} />
             )}
             {activePanel === 'manageReg' && (
               <div className="info-panel" role="region" aria-label="Manage Registration">

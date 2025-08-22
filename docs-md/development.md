@@ -52,10 +52,25 @@ README.md              # root handbook (overview + deploy)
 
 ### Page background convention (blue)
 - Most feature pages use our primary blue gradient background for continuity.
-- Apply a top-level wrapper with `background: var(--bg-gradient-primary); min-height: 100vh;` and set foreground colors for readability.
+- Apply a top-level wrapper with `background: var(--bg-gradient-primary); min-height: 100vh;` and set foreground/text colors for readability (see contrast rules below).
 - Examples:
   - FMCSA Compliance: `.fmcsa-page { background: var(--bg-gradient-primary); min-height: 100vh; }`
   - FMCSA Regulations detail: `.fmcsa-regulations-page { background: var(--bg-gradient-primary); min-height: 100vh; } .fmcsa-regulations-page .container { color: var(--color-white); }`
+  - Getting Started: `.getting-started-page { background: var(--bg-gradient-primary); min-height:100vh; color: var(--color-white); }`
+
+#### Contrast & accessibility on gradient pages
+- Default body text on a dark gradient MUST be light (`color: var(--color-white)` or rgba white ≥ 0.85 opacity).
+- Headings can use pure white plus a subtle text-shadow for legibility (`text-shadow: 0 1px 2px rgba(0,0,0,0.35)`).
+- Interactive elements (buttons/links) should maintain a 4.5:1 contrast ratio against their immediate background; prefer bordered light surfaces OR high‑chroma accent fills.
+- Content cards/panels placed on the gradient should remain light surfaces (white / very light) with dark text to reduce eye strain for dense reading.
+- Minimum contrast targets: 4.5:1 for normal text, 3:1 for large headings (WCAG AA). Run a quick check when introducing a new color pairing.
+
+Example pattern:
+```css
+.my-feature-page { background: var(--bg-gradient-primary); min-height:100vh; color: var(--color-white); }
+.my-feature-page h1 { color: var(--color-white); text-shadow:0 1px 2px rgba(0,0,0,.35); }
+.my-feature-page .card { background:#fff; color: var(--color-gray-800); }
+```
 
 ## Routing
 - Router is declared in `src/main.jsx` using React Router v6.
@@ -67,6 +82,13 @@ README.md              # root handbook (overview + deploy)
 ## Shared UI
 - `GlobalHeader` is a shared component in `src/components/GlobalHeader`. It renders the hero, logo, and nav.
 - To add a new top-nav item, update `navigationItems` in `GlobalHeader.jsx`. External links should use `<a>` with `rel="noopener noreferrer"`.
+- `GlobalFooter` is appended automatically to every route via a helper `withFooter()` in `src/main.jsx`. Do NOT manually import it inside individual page components (unless you purposefully want a second footer for a special landing page). If you add a *very* custom page that must hide the footer, create a dedicated route element without `withFooter()` and document the exception.
+
+### GlobalFooter content
+- Columns: Brand, Explore (internal nav), FMCSA Official (authoritative links), Connect (social), Legal (terms, privacy, policies).
+- Styling: `src/components/GlobalFooter/GlobalFooter.css` imported through `global.css` like other component CSS.
+- Legal pages use a single shared stylesheet `src/pages/Legal/Legal.css` (includes Terms rules). Remove or avoid creating per‑page CSS files unless a page has highly unique layout.
+- Current legal routes: `/terms`, `/privacy`, `/data-handling`, `/acceptable-use`, `/cookies`, `/disclaimer` (all draft text—replace before production).
 
 ## Feature modules (when a domain grows)
 - Create `src/features/<domain>/` with internal `pages/`, `components/`, and `styles/` as it scales.
@@ -154,3 +176,67 @@ git push --force-with-lease production HEAD:production
 - Add Prettier and a basic test setup (Vitest + React Testing Library).
 - Consider CSS Modules for component-scoped styles if the CSS grows complex.
 - Add a GitHub Actions workflow later if you want to automate `dist` → `docs` publishing.
+ - Configure global analytics (see section below) once a real GA ID is available.
+
+## Analytics (GA4)
+We support optional Google Analytics 4.
+
+Setup:
+1. Create a GA4 property → copy Measurement ID (format `G-XXXXXXXXXX`).
+2. Create a `.env` (if it doesn't exist) and add:
+  `VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX`
+3. Restart the dev server (Vite only reads env vars at startup).
+4. Deployment: ensure the environment variable is present during build (you can keep `.env` committed here since this repo is already public and the ID is not secret, but rotate if needed).
+
+Implementation details:
+* `src/analytics/initGA.js` injects GA script once (IP anonymized) and exposes helpers: `trackPageView`, `trackEvent`, `enableAutoClickTracking`.
+* Auto page view + delegated click tracking provided by `RouteTracker.jsx` (mounted in `main.jsx`). On every route change it:
+  - Derives a human readable title from the path (or uses a map) and sets `document.title` (`FixDQ | <Page>` except home)
+  - Fires a `page_view` with `page_path`, `page_title`, and `page_location`
+* All custom events (`trackEvent` & auto click events) now include `page_title` automatically for easier funnel / content reports.
+* Add `data-track="Custom Label"` to any element for a cleaner click label; otherwise inner text / aria-label is used.
+* For custom events: `trackEvent({ action: 'download_pdf', category: 'resource', label: 'PreTrip Checklist' })`.
+* Cookies page shows active/disabled status.
+
+### Maintaining page titles
+Human‑readable page titles are defined in a map inside `RouteTracker.jsx` (constant `TITLE_MAP`). When you add a new route:
+1. Add the `<Route ... />` entry in `main.jsx`.
+2. Add a key → value in `TITLE_MAP` (path → descriptive title). If omitted, a fallback will attempt to humanize the last URL segment.
+3. (Optional) Add meta description later when an SEO solution is introduced.
+4. Update `public/sitemap.xml` so crawlers can discover the new page.
+
+### Event naming guidelines
+Keep `action` verbs concise and lowercase with underscores if multi-word:
+* click (auto)
+* download_pdf
+* start_quiz / finish_quiz
+* open_modal / close_modal
+Category suggestions: `interaction`, `resource`, `quiz`, `navigation`, `form`.
+Labels: Short human description (<= 80 chars recommended) – avoid PII.
+
+### Verifying analytics
+Local dev: Open GA4 DebugView (configure a debug device automatically when using gtag + dev, or append `?gtm_debug=x`). You should see:
+* page_view events containing page_path + page_title
+* click events as you interact with navigational elements
+Production: Use Realtime → View event stream; confirm page titles are populated.
+
+### Adding custom tracked elements
+Add `data-track="Meaningful Label"` to any `<button>`, `<a>`, or clickable wrapper. The delegated listener will fire automatically with action `click` and category `click`.
+If you need a different action/category, call:
+```
+import { trackEvent } from '../analytics/initGA';
+trackEvent({ action: 'start_quiz', category: 'quiz', label: 'Hours of Service Basics' });
+```
+
+### Privacy considerations
+Never include names, emails, phone numbers, VINs, DOT numbers, or other identifiers in `label` or custom parameters. Keep labels generic ("PreTrip Checklist PDF" not user-specific).
+
+## SEO / Sitemap
+* Static `public/sitemap.xml` & `public/robots.txt` included. Update sitemap when adding new top-level routes.
+* Consider adding meta description tags per page (add a lightweight `<Helmet>` alternative or manual tags in `index.html`).
+* GitHub Pages caches aggressively; after updating sitemap allow time for search engines to re-crawl.
+
+Privacy notes:
+* IP anonymization enabled.
+* No custom events added yet—only default GA4 page_view events.
+* Do not add personally identifiable information (PII) to event parameters.

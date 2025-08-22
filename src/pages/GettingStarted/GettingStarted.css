@@ -1,0 +1,94 @@
+.gs-flow { display:grid; grid-template-columns:1fr 1.3fr; gap:18px; align-items:start; }
+.getting-started-page.gradient-page { background: var(--bg-gradient-primary); min-height:100vh; color: var(--color-white); }
+/* Keep card content dark on light surface for readability */
+.getting-started-page .gs-card { box-shadow: var(--shadow-sm); color: var(--color-gray-800); }
+/* Override gradient heading color inside light cards */
+.gradient-page .gs-card h1,
+.gradient-page .gs-card h2,
+.gradient-page .gs-card h3 { color: var(--color-gray-800); text-shadow:none; }
+/* Heading contrast on gradient */
+.getting-started-page.gradient-page h1 { color: var(--color-white); text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.getting-started-page.gradient-page .gs-intro { color: rgba(255,255,255,0.85); }
+.gs-container { padding-top:32px; }
+.gs-intro { max-width:760px; }
+.gs-left { background:#f2f7ff; border:1px solid #dbe9ff; border-radius:14px; padding:16px; position:sticky; top:8px; height:fit-content; }
+.gs-right { background:#f0f6ff; border:1px solid #c7ddff; border-radius:14px; padding:16px; }
+.gs-h2 { margin:0; font-size:20px; }
+.gs-h3 { margin:4px 0 8px 0; font-size:19px; }
+.gs-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.gs-back { border:1px solid #0f2f6b; background:#1e3a8a; color:#fff; border-radius:9px; padding:8px 14px; font-weight:700; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,0.25); transition:background .18s, transform .15s; }
+.gs-back:hover { background:#26479e; }
+.gs-back:active { background:#17316d; transform:translateY(1px); }
+.gs-back.disabled { opacity:.5; cursor:not-allowed; }
+.gs-crumbs { font-weight:700; font-size:13px; color:#555; white-space:nowrap; overflow:auto; }
+.gs-card { background:#fff; border:1px solid #ffe2a9; border-radius:12px; padding:14px; }
+.gs-choice-col { display:flex; flex-direction:column; gap:10px; }
+.gs-choice-btn { border:1px solid #c9dbf8; background:linear-gradient(#ffffff,#f5f9ff); border-radius:12px; padding:12px 14px; cursor:pointer; font-weight:700; text-align:left; transition:background .18s, box-shadow .18s, transform .15s; box-shadow:0 1px 2px rgba(0,0,0,0.05); }
+.gs-choice-btn:hover { background:linear-gradient(#ffffff,#eef5ff); }
+.gs-choice-btn:active { transform:scale(.97); }
+.gs-choice-btn.active { outline:2px solid #6ca3ff; background:linear-gradient(#f5faff,#e6f1ff); box-shadow:0 0 0 3px rgba(108,163,255,0.25); }
+.gs-tag-row { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px; }
+.gs-tag { font-size:12px; border:1px solid #e6e6e6; border-radius:999px; padding:4px 8px; background:#fff; }
+.path-driver .gs-tag { background:#fff7eb; border-color:#ffd7ae; }
+.path-carrier .gs-tag { background:#e9fff3; border-color:#bcefd3; }
+.path-broker .gs-tag { background:#f3efff; border-color:#d6ccf5; }
+.gs-steps { margin:0; padding-left:0; }
+.gs-step { list-style:none; border:1px solid #c2d8fb; background:linear-gradient(135deg,#f9fbff,#ecf3ff); border-radius:14px; padding:14px 14px 16px; margin:14px 0; position:relative; overflow:hidden; }
+.gs-step:before { content:""; position:absolute; inset:0; background:linear-gradient(120deg,rgba(120,170,255,.25),rgba(255,255,255,0)); pointer-events:none; }
+.gs-step-top { display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:start; }
+.gs-step-num { width:32px; height:32px; border-radius:16px; border:2px solid #6ca3ff; display:flex; align-items:center; justify-content:center; font-weight:700; background:#ffffff; color:#0f3f91; box-shadow:0 1px 2px rgba(0,0,0,.08); }
+.gs-step-text { font-weight:600; }
+.gs-hint { font-size:12px; color:#666; margin-top:4px; }
+.gs-action-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.gs-inline-helper { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.gs-label { font-size:13px; }
+.gs-select { padding:6px 8px; border-radius:8px; border:1px solid #ddd; }
+.gs-details { margin-left:0; margin-top:6px; }
+.gs-detail-text { font-size:13px; color:#444; padding-top:6px; }
+.gs-bullets { margin:6px 0 10px 16px; }
+.gs-note { font-size:13px; color:#666; }
+.gs-cta-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.gs-link-btn { border:1px solid #cedbfd; background:linear-gradient(#ffffff,#f0f6ff); padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:4px; box-shadow:0 1px 2px rgba(0,0,0,.05); transition:background .18s, transform .15s; }
+.gs-link-btn:hover { background:linear-gradient(#ffffff,#e8f2ff); }
+.gs-link-btn:active { transform:translateY(1px); }
+.gs-links { margin-top:14px; display:flex; flex-direction:column; gap:6px; }
+.gs-def-box { margin-top:8px; padding:12px 14px; border:1px dashed #9cc4ff; border-radius:10px; background:#f5faff; min-height:40px; font-size:14px; line-height:1.4; }
+
+/* Responsive tweak */
+@media (max-width: 900px) {
+  .gs-flow { grid-template-columns:1fr; }
+  .gs-left { position:relative; top:auto; }
+}
+
+/* PATH ACCENT VARIANTS --------------------------------------------------- */
+/* Unify panel background across paths so base light blue isn't overridden */
+.path-driver .gs-right,
+.path-carrier .gs-right,
+.path-broker .gs-right { background:#f0f6ff; border-color:#c7ddff; }
+
+/* Path step variants now subtle blue tints to avoid conflicting palettes */
+.path-driver .gs-step,
+.path-carrier .gs-step,
+.path-broker .gs-step { background:linear-gradient(135deg,#f9fbff,#e8f1ff); border-color:#c2d8fb; }
+.path-driver .gs-step-num,
+.path-carrier .gs-step-num,
+.path-broker .gs-step-num { border-color:#6ca3ff; color:#0f3f91; }
+
+/* Focus ring unification */
+.gs-choice-btn:focus, .gs-link-btn:focus, .gs-back:focus { outline:2px solid #2563eb; outline-offset:2px; }
+
+/* Left heading styling */
+.gs-left .gs-h2 { font-size:18px; font-weight:700; margin-bottom:8px; color:#1e3a8a; text-shadow:0 1px 1px rgba(255,255,255,0.6); }
+
+/* Slightly more room above steps header region */
+.gs-head { margin-bottom:14px; }
+
+/* READABILITY OVERRIDES ON LIGHT PANELS ---------------------------------- */
+/* Ensure panel and link text inside right column use dark accessible colors
+  (gradient-page sets all text white, so we raise specificity) */
+.gradient-page .gs-right { color: var(--color-gray-800); }
+.gradient-page .gs-right a { color:#0f3f91; }
+.gradient-page .gs-links a { color:#0f3f91; font-weight:600; text-decoration:underline; }
+.gradient-page .gs-links a:hover { color:#1e4fad; }
+.gradient-page .gs-links a:active { color:#0c3678; }
+.gradient-page .gs-right .gs-def-box { color:#0f3f91; }

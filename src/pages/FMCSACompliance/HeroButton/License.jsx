@@ -30,7 +30,7 @@ export function computeLicenseResult({ vehicleType, gvwr, operatingArea, cargoTy
   if (farmExemption === 'yes' && operatingArea === 'intrastate' && !wantsHazmat && passengerCount !== '16_plus' && schoolBus !== 'yes') notes.push('Farm Vehicle Driver (FVD) exemption may apply within 150 air-miles; CDL may not be required. Confirm with your state DMV.')
   return { cdlClass, endorsements: Array.from(endorsements), notes, references: [
     { label: 'FMCSA: Do I Need a CDL?', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license' },
-    { label: 'FMCSA: Medical Requirements', href: 'https://www.fmcsa.dot.gov/medical/driver-medical-requirements/medical-requirements' },
+  { label: 'Medical Requirements (Guide)', href: '/medical-requirements' },
     { label: 'FMCSA: Tank Vehicle (N) & HazMat (H/X)', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/endorsements' },
     { label: 'FMCSA: Farm Vehicle Driver Exemptions', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/farm-vehicle-driver-exemptions' },
   ] }
@@ -106,7 +106,16 @@ export function LicensePanel({ state, setState, onClose }) {
             </ul>
           )}
           <div className="result-links">
-            {result.references.map(r => (<a key={r.href} href={r.href} target="_blank" rel="noopener noreferrer">{r.label}</a>))}
+            {result.references.map(r => {
+              const isInternal = r.href.startsWith('/')
+              return (
+                <a
+                  key={r.href}
+                  href={r.href}
+                  {...(isInternal ? { onClick: e => { e.preventDefault(); navigate(r.href) } } : { target: '_blank', rel: 'noopener noreferrer' })}
+                >{r.label}</a>
+              )
+            })}
           </div>
         </div>
       </div>
