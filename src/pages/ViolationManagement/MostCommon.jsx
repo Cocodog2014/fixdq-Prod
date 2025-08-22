@@ -42,24 +42,23 @@ export default function MostCommonViolations() {
 
   const categories = useMemo(() => {
     const set = new Set(items.map((i) => i.category));
-    return ['All', ...Array.from(set).sort((a, b) => a.localeCompare(b))];
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
   }, [items]);
 
-  const [category, setCategory] = useState(''); // empty = none selected
+  // Start with no category selected so nothing displays until user chooses one
+  const [category, setCategory] = useState('');
   const [query, setQuery] = useState('');
 
   const querySX = useMemo(() => soundex(query), [query]);
 
   const filtered = useMemo(() => {
-    // When no category is chosen and no query, hide all results
-    if (!query.trim() && category === '') return [];
-    const base = category === '' || category === 'All' ? items : items.filter((i) => i.category === category);
+    if (!category) return []; // nothing until selection
+    const base = category === 'All' ? items : items.filter((i) => i.category === category);
     if (!query.trim()) return base;
     const q = query.trim().toLowerCase();
     return base.filter((i) => {
       const hay = `${i.category} ${i.code} ${i.description} ${i.recommendedAction}`.toLowerCase();
       if (hay.includes(q)) return true;
-      // sound-alike compare on words
       const hx = new Set(hay.split(/\s+/).map(soundex));
       return q.split(/\s+/).some((tok) => hx.has(soundex(tok)) || (querySX && hx.has(querySX)));
     });
@@ -82,7 +81,8 @@ export default function MostCommonViolations() {
               <div className="mc-controls" role="group" aria-label="Filters and search">
                 <label className="sr-only" htmlFor="mc-category">Category</label>
                 <select id="mc-category" value={category} onChange={(e) => setCategory(e.target.value)} aria-label="Category" className="mc-select">
-                  <option value="" disabled>Select a category</option>
+                  <option value="" disabled>Choose a category…</option>
+                  <option value="All">All</option>
                   {categories.map((c) => (
                     <option key={c} value={c}>{c}</option>
                   ))}
@@ -92,21 +92,21 @@ export default function MostCommonViolations() {
                 <input
                   id="mc-search"
                   type="search"
-                  placeholder="Search (includes sound‑alike)"
+                  placeholder={category ? 'Search (includes sound‑alike)' : 'Select a category first'}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="mc-search"
                   aria-label="Search violations"
+                  disabled={!category}
                 />
               </div>
 
               <ul className="mc-list" aria-live="polite">
-                {filtered.length === 0 && (
-                  <li className="mc-item">
-                    <p className="vm-note">
-                      {category === '' && !query.trim() ? 'Select a category or start typing to search.' : 'No matches. Try a different term.'}
-                    </p>
-                  </li>
+                {!category && (
+                  <li className="mc-item"><p className="vm-note">Choose a category to view violations.</p></li>
+                )}
+                {category && filtered.length === 0 && (
+                  <li className="mc-item"><p className="vm-note">No matches. Try a different term.</p></li>
                 )}
                 {filtered.map((b, i) => (
                   <li key={`${b.code}-${i}`} className="mc-item">

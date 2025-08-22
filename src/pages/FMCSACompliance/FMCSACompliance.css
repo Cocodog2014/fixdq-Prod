@@ -4,6 +4,38 @@
 
 .fmcsa-hero { background: var(--bg-gradient-primary); color: var(--color-white); padding: var(--spacing-2xl) 0; text-align: center; }
 .fmcsa-hero .hero-inner { max-width: 800px; margin: 0 auto; }
+.hero-top-btn { display:inline-flex; align-items:center; gap:0.5rem; font-weight:600; background:rgba(255,255,255,0.15); color:#fff; padding:0.55rem 1rem; border-radius:var(--radius-full); text-decoration:none; box-shadow:var(--shadow-sm); margin:0 auto var(--spacing-md); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.25); font-size:0.9rem; }
+.hero-top-btn:hover { background:rgba(255,255,255,0.25); }
+.hero-top-btn.active { background:var(--color-accent-orange); border-color:var(--color-accent-orange); box-shadow:var(--shadow-md); }
+.hero-top-emoji { font-size:1.15rem; line-height:1; }
+.hero-top-actions { display:flex; flex-direction:column; gap:0.75rem; justify-content:center; align-items:center; margin-bottom:var(--spacing-md); flex-wrap:wrap; }
+.hero-top-btn--outline { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.4); }
+.hero-top-btn--outline:hover { background:rgba(255,255,255,0.18); }
+@media (min-width:600px){ .hero-top-actions { flex-direction:row; flex-wrap:wrap; } .hero-top-btn { margin:0; } }
+
+/* Dynamic hero content */
+.hero-dynamic { margin-top:var(--spacing-lg); position:relative; overflow:hidden; }
+.slideshow { position:relative; }
+.slides-track { display:flex; transition:transform 600ms cubic-bezier(.4,.0,.2,1); width:100%; }
+.slide { min-width:100%; padding:1rem 0.5rem; animation:fadeIn 400ms ease; }
+.slide h3 { margin:0 0 .5rem; font-size:1.25rem; }
+.slide-dots { display:flex; justify-content:center; gap:.5rem; margin-top:.75rem; }
+.dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.35); border:none; cursor:pointer; padding:0; }
+.dot.active { background:var(--color-accent-orange); }
+@keyframes fadeIn { from { opacity:0; transform:translateX(20px);} to { opacity:1; transform:translateX(0);} }
+
+/* Inline license tool inside hero */
+.fc-grid--inline { margin-top:var(--spacing-md); }
+.fmcsa-panels { padding: var(--spacing-xl) 0 var(--spacing-2xl); }
+.fmcsa-panels .container { max-width: 1000px; }
+.info-panel { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:var(--radius-xl); padding:var(--spacing-lg); backdrop-filter:blur(6px); box-shadow:var(--shadow-sm); }
+.info-panel h2 { color:#fff; }
+.license-tool { background:#e0f2fe; /* light blue */ border:1px solid #bae6fd; border-radius:var(--radius-xl); padding:var(--spacing-lg); box-shadow:var(--shadow-sm); color:#0f172a; }
+.license-tool h2 { color:#0f172a; }
+.license-tool .fc-label { color:#0f172a; }
+.license-tool .result-links a { color:#0369a1; }
+.info-panel p, .info-panel li { color:#eef; }
+
 .hero-icon { font-size: 3rem; display: block; margin-bottom: var(--spacing-md); }
 .quick-start-btn { display: inline-block; margin-top: var(--spacing-md); padding: 0.75rem 1.25rem; background: var(--color-accent-orange); color: #fff; border-radius: var(--radius-full); box-shadow: var(--shadow-md); text-decoration: none; }
 .quick-start-btn:hover { filter: brightness(1.05); }
