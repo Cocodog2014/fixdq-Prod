@@ -45,15 +45,13 @@ export default function MostCommonViolations() {
     return ['All', ...Array.from(set).sort((a, b) => a.localeCompare(b))];
   }, [items]);
 
-  const [category, setCategory] = useState(''); // empty = none selected
+  const [category, setCategory] = useState('All');
   const [query, setQuery] = useState('');
 
   const querySX = useMemo(() => soundex(query), [query]);
 
   const filtered = useMemo(() => {
-    // When no category is chosen and no query, hide all results
-    if (!query.trim() && category === '') return [];
-    const base = category === '' || category === 'All' ? items : items.filter((i) => i.category === category);
+    const base = category === 'All' ? items : items.filter((i) => i.category === category);
     if (!query.trim()) return base;
     const q = query.trim().toLowerCase();
     return base.filter((i) => {
@@ -82,7 +80,6 @@ export default function MostCommonViolations() {
               <div className="mc-controls" role="group" aria-label="Filters and search">
                 <label className="sr-only" htmlFor="mc-category">Category</label>
                 <select id="mc-category" value={category} onChange={(e) => setCategory(e.target.value)} aria-label="Category" className="mc-select">
-                  <option value="" disabled>Select a category</option>
                   {categories.map((c) => (
                     <option key={c} value={c}>{c}</option>
                   ))}
@@ -102,11 +99,7 @@ export default function MostCommonViolations() {
 
               <ul className="mc-list" aria-live="polite">
                 {filtered.length === 0 && (
-                  <li className="mc-item">
-                    <p className="vm-note">
-                      {category === '' && !query.trim() ? 'Select a category or start typing to search.' : 'No matches. Try a different term.'}
-                    </p>
-                  </li>
+                  <li className="mc-item"><p className="vm-note">No matches. Try a different term.</p></li>
                 )}
                 {filtered.map((b, i) => (
                   <li key={`${b.code}-${i}`} className="mc-item">
