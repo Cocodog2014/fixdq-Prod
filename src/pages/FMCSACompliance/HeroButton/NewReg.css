@@ -1,4 +1,4 @@
-.hero-btn--newreg { box-shadow:0 0 0 0 transparent; }
+.hero-btn--newreg { box-shadow:0 0 0 0 transparent; font-size:115%; }
 
 /* New Registration Panel Styles */
 .newreg-panel { position:relative; background:#f8fafc; color:#0f172a; }
