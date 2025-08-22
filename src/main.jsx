@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import FMCSACompliance from './pages/FMCSACompliance'
 import FMCSARegulations from './pages/FMCSACompliance/FMCSARegulations'
 import HoursOfService from './pages/FMCSACompliance/HoursOfService'
+import MedicalRequirements from './pages/FMCSACompliance/MedicalRequirements'
 import SafetyManagement from './pages/FMCSACompliance/SafetyManagement'
 import SafetyTraining from './pages/SafetyTraining/SafetyTraining'
 import DefensiveDriving from './pages/SafetyTraining/DefensiveDriving'
@@ -52,6 +53,7 @@ createRoot(document.getElementById('root')).render(
   <Route path="/fmcsa-compliance" element={<FMCSACompliance />} />
   <Route path="/fmcsa-regulations" element={<FMCSARegulations />} />
   <Route path="/hours-of-service" element={<HoursOfService />} />
+  <Route path="/medical-requirements" element={<MedicalRequirements />} />
   <Route path="/safety-management" element={<SafetyManagement />} />
   <Route path="/safety-training" element={<SafetyTraining />} />
   <Route path="/safety-training/defensive-driving" element={<DefensiveDriving />} />
