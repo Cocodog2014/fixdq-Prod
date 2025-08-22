@@ -128,6 +128,14 @@
   /* English Proficiency - Control Colors */
   --ep-answer-tts-bg: #0b6fbd; /* high-contrast blue on white */
   --ep-answer-tts-color: #ffffff;
+
+  /* Panel Surface Tokens */
+  --surface-glass-dark-bg: rgba(255,255,255,0.08);
+  --surface-glass-dark-border: rgba(255,255,255,0.15);
+  --surface-solid-light-bg: #f8fafc;
+  --surface-solid-light-border: #e2e8f0;
+  --text-on-dark: #ffffff;
+  --text-on-light: var(--color-gray-800);
 }
 
 /* Reset and Base Styles */
@@ -390,3 +398,15 @@ h6 { font-size: var(--font-size-xs); font-weight: 600; line-height: 1.4; }
 /* --- Vehicle Inspections: Maintenance & Repair button layout override --- */
 .vehicle-inspections-page .mr-wrap .btns { display: flex !important; justify-content: center !important; flex-wrap: wrap !important; gap: 12px !important; padding: 8px 0 !important; margin-top: 12px !important; }
 .vehicle-inspections-page .mr-wrap .btns .btn { margin: 4px !important; }
+
+/* =================================
+  PANEL SYSTEM (Neutral Base + Mods)
+  ================================= */
+.panel { position:relative; border-radius: var(--radius-xl); padding: var(--spacing-lg); box-shadow: var(--shadow-sm); border:1px solid transparent; }
+.panel--glass-dark { background: var(--surface-glass-dark-bg); border-color: var(--surface-glass-dark-border); backdrop-filter: blur(6px); color: var(--text-on-dark); }
+.panel--glass-dark h1, .panel--glass-dark h2, .panel--glass-dark h3, .panel--glass-dark h4, .panel--glass-dark h5, .panel--glass-dark h6 { color: var(--text-on-dark); }
+.panel--solid-light { background: var(--surface-solid-light-bg); border-color: var(--surface-solid-light-border); color: var(--text-on-light); }
+.panel--solid-light h1, .panel--solid-light h2, .panel--solid-light h3, .panel--solid-light h4, .panel--solid-light h5, .panel--solid-light h6 { color: var(--color-gray-900); }
+
+/* Transitional alias: legacy .info-panel mapped to dark glass panel */
+.info-panel { background: var(--surface-glass-dark-bg); border:1px solid var(--surface-glass-dark-border); border-radius: var(--radius-xl); padding: var(--spacing-lg); backdrop-filter: blur(6px); box-shadow: var(--shadow-sm); color: var(--text-on-dark); }

@@ -43,13 +43,11 @@
 .fc-grid--inline { margin-top:var(--spacing-md); }
 .fmcsa-panels { padding: var(--spacing-xl) 0 var(--spacing-2xl); }
 .fmcsa-panels .container { max-width: 1000px; }
-.info-panel { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:var(--radius-xl); padding:var(--spacing-lg); backdrop-filter:blur(6px); box-shadow:var(--shadow-sm); }
-.info-panel h2 { color:#fff; }
+/* legacy info-panel now defined via global .info-panel (dark glass variant) */
 .license-tool { background:#e0f2fe; /* light blue */ border:1px solid #bae6fd; border-radius:var(--radius-xl); padding:var(--spacing-lg); box-shadow:var(--shadow-sm); color:#0f172a; }
 .license-tool h2 { color:#0f172a; }
 .license-tool .fc-label { color:#0f172a; }
 .license-tool .result-links a { color:#0369a1; }
-.info-panel p, .info-panel li { color:#eef; }
 
 .hero-icon { font-size: 3rem; display: block; margin-bottom: var(--spacing-md); }
 .quick-start-btn { display: inline-block; margin-top: var(--spacing-md); padding: 0.75rem 1.25rem; background: var(--color-accent-orange); color: #fff; border-radius: var(--radius-full); box-shadow: var(--shadow-md); text-decoration: none; }
