@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import GlobalHeader from '../../components/GlobalHeader';
 
 /**
@@ -7,23 +6,8 @@ import GlobalHeader from '../../components/GlobalHeader';
  * - Describes minimal storage usage
  * - Uses shared legal CSS (no inline style objects beyond minimal wrapper)
  */
-export default function Cookies({ lastUpdated = '2025-08-22', gaId = 'G-XXXXXXX' }) {
-  useEffect(() => {
-    if (!gaId || gaId === 'G-XXXXXXX') return; // skip if placeholder
-    const src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
-    if (!document.querySelector(`script[src="${src}"]`)) {
-      const s = document.createElement('script');
-      s.src = src;
-      s.async = true;
-      document.head.appendChild(s);
-    }
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ window.dataLayer.push(arguments); }
-    // store globally once
-    if (!window.gtag) window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', gaId, { anonymize_ip: true, transport_type: 'beacon' });
-  }, [gaId]);
+export default function Cookies({ lastUpdated = '2025-08-22' }) {
+  const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
   return (
     <div className="cookies-page gradient-page">
@@ -39,8 +23,10 @@ export default function Cookies({ lastUpdated = '2025-08-22', gaId = 'G-XXXXXXX'
         <h2>Your Choices</h2>
         <p>You can block or clear cookies / site storage in your browser settings. The core site remains functional without analytics enabled.</p>
         <p className="legal-note">Last updated {lastUpdated}</p>
-        {gaId === 'G-XXXXXXX' && (
-          <p className="legal-note">Analytics placeholder ID in use. Provide a real GA4 ID via the component prop to enable tracking.</p>
+        {!gaId || /XXXX/.test(gaId) ? (
+          <p className="legal-note">Analytics is currently disabled (no GA ID configured).</p>
+        ) : (
+          <p className="legal-note">Analytics active (GA4 ID {gaId}).</p>
         )}
       </main>
     </div>

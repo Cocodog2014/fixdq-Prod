@@ -176,3 +176,67 @@ git push --force-with-lease production HEAD:production
 - Add Prettier and a basic test setup (Vitest + React Testing Library).
 - Consider CSS Modules for component-scoped styles if the CSS grows complex.
 - Add a GitHub Actions workflow later if you want to automate `dist` → `docs` publishing.
+ - Configure global analytics (see section below) once a real GA ID is available.
+
+## Analytics (GA4)
+We support optional Google Analytics 4.
+
+Setup:
+1. Create a GA4 property → copy Measurement ID (format `G-XXXXXXXXXX`).
+2. Create a `.env` (if it doesn't exist) and add:
+  `VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX`
+3. Restart the dev server (Vite only reads env vars at startup).
+4. Deployment: ensure the environment variable is present during build (you can keep `.env` committed here since this repo is already public and the ID is not secret, but rotate if needed).
+
+Implementation details:
+* `src/analytics/initGA.js` injects GA script once (IP anonymized) and exposes helpers: `trackPageView`, `trackEvent`, `enableAutoClickTracking`.
+* Auto page view + delegated click tracking provided by `RouteTracker.jsx` (mounted in `main.jsx`). On every route change it:
+  - Derives a human readable title from the path (or uses a map) and sets `document.title` (`FixDQ | <Page>` except home)
+  - Fires a `page_view` with `page_path`, `page_title`, and `page_location`
+* All custom events (`trackEvent` & auto click events) now include `page_title` automatically for easier funnel / content reports.
+* Add `data-track="Custom Label"` to any element for a cleaner click label; otherwise inner text / aria-label is used.
+* For custom events: `trackEvent({ action: 'download_pdf', category: 'resource', label: 'PreTrip Checklist' })`.
+* Cookies page shows active/disabled status.
+
+### Maintaining page titles
+Human‑readable page titles are defined in a map inside `RouteTracker.jsx` (constant `TITLE_MAP`). When you add a new route:
+1. Add the `<Route ... />` entry in `main.jsx`.
+2. Add a key → value in `TITLE_MAP` (path → descriptive title). If omitted, a fallback will attempt to humanize the last URL segment.
+3. (Optional) Add meta description later when an SEO solution is introduced.
+4. Update `public/sitemap.xml` so crawlers can discover the new page.
+
+### Event naming guidelines
+Keep `action` verbs concise and lowercase with underscores if multi-word:
+* click (auto)
+* download_pdf
+* start_quiz / finish_quiz
+* open_modal / close_modal
+Category suggestions: `interaction`, `resource`, `quiz`, `navigation`, `form`.
+Labels: Short human description (<= 80 chars recommended) – avoid PII.
+
+### Verifying analytics
+Local dev: Open GA4 DebugView (configure a debug device automatically when using gtag + dev, or append `?gtm_debug=x`). You should see:
+* page_view events containing page_path + page_title
+* click events as you interact with navigational elements
+Production: Use Realtime → View event stream; confirm page titles are populated.
+
+### Adding custom tracked elements
+Add `data-track="Meaningful Label"` to any `<button>`, `<a>`, or clickable wrapper. The delegated listener will fire automatically with action `click` and category `click`.
+If you need a different action/category, call:
+```
+import { trackEvent } from '../analytics/initGA';
+trackEvent({ action: 'start_quiz', category: 'quiz', label: 'Hours of Service Basics' });
+```
+
+### Privacy considerations
+Never include names, emails, phone numbers, VINs, DOT numbers, or other identifiers in `label` or custom parameters. Keep labels generic ("PreTrip Checklist PDF" not user-specific).
+
+## SEO / Sitemap
+* Static `public/sitemap.xml` & `public/robots.txt` included. Update sitemap when adding new top-level routes.
+* Consider adding meta description tags per page (add a lightweight `<Helmet>` alternative or manual tags in `index.html`).
+* GitHub Pages caches aggressively; after updating sitemap allow time for search engines to re-crawl.
+
+Privacy notes:
+* IP anonymization enabled.
+* No custom events added yet—only default GA4 page_view events.
+* Do not add personally identifiable information (PII) to event parameters.

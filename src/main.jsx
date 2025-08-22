@@ -52,6 +52,8 @@ import AcceptableUse from './pages/Legal/AcceptableUse'
 import Cookies from './pages/Legal/Cookies'
 import Disclaimer from './pages/Legal/Disclaimer'
 import GlobalFooter from './components/GlobalFooter/GlobalFooter'
+import { initGA } from './analytics/initGA'
+import RouteTracker from './components/Analytics/RouteTracker'
 
 // Small helper to append the GlobalFooter to any page component without editing each file.
 const withFooter = (Component) => (
@@ -61,9 +63,18 @@ const withFooter = (Component) => (
   </>
 );
 
+// Initialize GA early (non-blocking)
+initGA(import.meta.env.VITE_GA_MEASUREMENT_ID);
+
+// Optional: basic page view tracking on route changes via history listener
+// React Router v6 doesn't expose a global history object directly here; a more
+// robust solution would use a Layout component with useLocation(). For now,
+// developers can call trackPageView() manually inside pages if needed.
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <RouteTracker />
       <Routes>
         <Route path="/" element={withFooter(HomePage)} />
         <Route path="/fmcsa-compliance" element={withFooter(FMCSACompliance)} />
