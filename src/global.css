@@ -43,6 +43,7 @@
 @import './pages/ViolationManagement/MostCommon.css'; /* Most Common Violations */
 @import './pages/EnglishProficiency/EnglishProficiency.css';
 @import './pages/EnglishProficiency/DriverInterview.css';
+@import './pages/GettingStarted/GettingStarted.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';

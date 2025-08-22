@@ -10,6 +10,23 @@ function HomePage() {
       <section className="features-grid">
         <div className="container">
           <div className="grid">
+            {/* Getting Started (new) */}
+            <Link to="/getting-started" className="feature-card orange-border feature-link-card">
+              <div className="feature-header">
+                <span className="icon">🚀</span>
+                <h3>Getting Started</h3>
+              </div>
+              <ul>
+                <li>Pick Driver / Carrier / Broker</li>
+                <li>Step-by-step action list</li>
+                <li>CDL & ELDT helpers</li>
+                <li>Medical & endorsement links</li>
+                <li>Fast path overview</li>
+              </ul>
+              <div className="feature-footer">
+                <span className="card-cta">Open Getting Started</span>
+              </div>
+            </Link>
             {/* FMCSA Compliance (card is fully clickable) */}
             <Link to="/fmcsa-compliance" className="feature-card orange-border feature-link-card">
               <div className="feature-header">

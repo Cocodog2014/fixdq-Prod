@@ -44,6 +44,7 @@ import ELDDevice from './pages/ELDCoach/ELDDevice'
 import About from './pages/About/About'
 import FAQ from './pages/FAQ/FAQ'
 import Consultation from './pages/Consultation/Consultation'
+import GettingStarted from './pages/GettingStarted/GettingStarted'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -94,6 +95,7 @@ createRoot(document.getElementById('root')).render(
   <Route path="/faq" element={<FAQ />} />
   <Route path="/about" element={<About />} />
   <Route path="/consultation" element={<Consultation />} />
+  <Route path="/getting-started" element={<GettingStarted />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
