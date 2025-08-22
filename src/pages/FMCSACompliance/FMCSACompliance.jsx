@@ -9,7 +9,7 @@ const WeightCalculator = lazy(() => import('./WeightCalculator'))
 const ComplianceQuiz = lazy(() => import('./ComplianceQuiz'))
 import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'
-import NewReg from './HeroButton/NewReg'
+import NewReg, { NewRegPanel } from './HeroButton/NewReg'
 import ManageReg from './HeroButton/ManageReg'
 import Insurance from './HeroButton/Insurance'
 import { LicensePanel } from './HeroButton/License'
@@ -146,17 +146,7 @@ export default function FMCSACompliance() {
               </div>
             )}
             {activePanel === 'newReg' && (
-              <div className="info-panel" role="region" aria-label="New Registration Guide">
-                <h2 style={{marginTop:0}}>New Registration Made Easy</h2>
-                <ol>
-                  <li>Determine need for USDOT & MC (for-hire) authority.</li>
-                  <li>Gather EIN, company structure, driver & equipment data.</li>
-                  <li>Apply via Unified Registration System (URS).</li>
-                  <li>File BOC-3 & obtain insurance certificates.</li>
-                  <li>Monitor status & complete any corrective actions.</li>
-                </ol>
-                <p><a href="https://www.fmcsa.dot.gov/registration" target="_blank" rel="noopener noreferrer">Unified Registration System</a></p>
-              </div>
+              <NewRegPanel onClose={() => setActivePanel(null)} />
             )}
             {activePanel === 'manageReg' && (
               <div className="info-panel" role="region" aria-label="Manage Registration">
