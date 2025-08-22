@@ -75,6 +75,6 @@
 
  /* Desktop */
  @media (min-width: 960px) {
-  .footer-grid { grid-template-columns: 1.1fr 1fr 1fr 1fr; align-items: start; }
+  .footer-grid { grid-template-columns: 1.1fr 1fr 1fr 1fr 1fr; align-items: start; }
   .global-footer { padding-top: var(--spacing-3xl); }
  }

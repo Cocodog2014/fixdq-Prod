@@ -46,6 +46,11 @@ import FAQ from './pages/FAQ/FAQ'
 import Consultation from './pages/Consultation/Consultation'
 import GettingStarted from './pages/GettingStarted/GettingStarted'
 import Terms from './pages/Legal/Terms'
+import Privacy from './pages/Legal/Privacy'
+import DataHandling from './pages/Legal/DataHandling'
+import AcceptableUse from './pages/Legal/AcceptableUse'
+import Cookies from './pages/Legal/Cookies'
+import Disclaimer from './pages/Legal/Disclaimer'
 import GlobalFooter from './components/GlobalFooter/GlobalFooter'
 
 // Small helper to append the GlobalFooter to any page component without editing each file.
@@ -107,6 +112,11 @@ createRoot(document.getElementById('root')).render(
         <Route path="/consultation" element={withFooter(Consultation)} />
         <Route path="/getting-started" element={withFooter(GettingStarted)} />
         <Route path="/terms" element={withFooter(Terms)} />
+  <Route path="/privacy" element={withFooter(Privacy)} />
+  <Route path="/data-handling" element={withFooter(DataHandling)} />
+  <Route path="/acceptable-use" element={withFooter(AcceptableUse)} />
+  <Route path="/cookies" element={withFooter(Cookies)} />
+  <Route path="/disclaimer" element={withFooter(Disclaimer)} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

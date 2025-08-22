@@ -4,7 +4,7 @@ function Terms() {
   return (
     <div className="terms-page gradient-page">
       <GlobalHeader />
-      <main className="terms-content container" aria-labelledby="terms-heading">
+  <main className="terms-content legal-generic container" aria-labelledby="terms-heading">
         <h1 id="terms-heading">Terms & Conditions</h1>
         <p className="intro">These Terms & Conditions ("Terms") govern your use of the FixDQ application and related content. By accessing or using the site you agree to these Terms.</p>
         <section>

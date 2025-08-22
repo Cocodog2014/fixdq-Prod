@@ -85,9 +85,10 @@ Example pattern:
 - `GlobalFooter` is appended automatically to every route via a helper `withFooter()` in `src/main.jsx`. Do NOT manually import it inside individual page components (unless you purposefully want a second footer for a special landing page). If you add a *very* custom page that must hide the footer, create a dedicated route element without `withFooter()` and document the exception.
 
 ### GlobalFooter content
-- Columns: Brand, Explore (internal nav), FMCSA Official (authoritative links), Connect (social + legal).
+- Columns: Brand, Explore (internal nav), FMCSA Official (authoritative links), Connect (social), Legal (terms, privacy, policies).
 - Styling: `src/components/GlobalFooter/GlobalFooter.css` imported through `global.css` like other component CSS.
-- Legal / Terms page at `/terms` lives in `src/pages/Legal/Terms.jsx` (add future privacy policy there).
+- Legal pages use a single shared stylesheet `src/pages/Legal/Legal.css` (includes Terms rules). Remove or avoid creating per‑page CSS files unless a page has highly unique layout.
+- Current legal routes: `/terms`, `/privacy`, `/data-handling`, `/acceptable-use`, `/cookies`, `/disclaimer` (all draft text—replace before production).
 
 ## Feature modules (when a domain grows)
 - Create `src/features/<domain>/` with internal `pages/`, `components/`, and `styles/` as it scales.

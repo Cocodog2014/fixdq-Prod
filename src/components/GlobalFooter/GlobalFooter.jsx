@@ -6,7 +6,7 @@ const fmcsaLinks = [
   { label: 'FMCSA Home', href: 'https://www.fmcsa.dot.gov' },
   { label: 'Registration', href: 'https://www.fmcsa.dot.gov/registration' },
   { label: 'Regulations', href: 'https://www.fmcsa.dot.gov/regulations' },
-  { label: 'Hours of Service', href: 'https://www.fmcsa.dot.gov/regulations/hours-service' },
+  { label: 'Hours of Service', href: 'https://www.fmcsa.dot.gov/regulations/hours-of-service' },
   { label: 'Medical Requirements', href: 'https://www.fmcsa.dot.gov/regulations/medical' },
   { label: 'DataQs Portal', href: 'https://dataqs.fmcsa.dot.gov/' },
   { label: 'Safety Measurement System', href: 'https://ai.fmcsa.dot.gov/sms/' },
@@ -78,11 +78,20 @@ function GlobalFooter() {
                 </li>
               ))}
             </ul>
-            <div className="legal-links">
-              <Link to="/terms">Terms & Conditions</Link>
-              {/* Placeholder for future privacy policy */}
-            </div>
           </div>
+
+          {/* Legal / Policies */}
+          <nav className="footer-col legal-col" aria-label="Legal and policies">
+            <h3 className="footer-heading">Legal</h3>
+            <ul className="footer-links">
+              <li><Link to="/terms">Terms & Conditions</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/data-handling">Data Handling</Link></li>
+              <li><Link to="/acceptable-use">Acceptable Use</Link></li>
+              <li><Link to="/cookies">Cookies Notice</Link></li>
+              <li><Link to="/disclaimer">Disclaimer</Link></li>
+            </ul>
+          </nav>
         </div>
         <div className="footer-bottom">
           <p className="copyright">© {year} FixDQ. All rights reserved.</p>
