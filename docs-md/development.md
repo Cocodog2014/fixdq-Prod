@@ -52,10 +52,25 @@ README.md              # root handbook (overview + deploy)
 
 ### Page background convention (blue)
 - Most feature pages use our primary blue gradient background for continuity.
-- Apply a top-level wrapper with `background: var(--bg-gradient-primary); min-height: 100vh;` and set foreground colors for readability.
+- Apply a top-level wrapper with `background: var(--bg-gradient-primary); min-height: 100vh;` and set foreground/text colors for readability (see contrast rules below).
 - Examples:
   - FMCSA Compliance: `.fmcsa-page { background: var(--bg-gradient-primary); min-height: 100vh; }`
   - FMCSA Regulations detail: `.fmcsa-regulations-page { background: var(--bg-gradient-primary); min-height: 100vh; } .fmcsa-regulations-page .container { color: var(--color-white); }`
+  - Getting Started: `.getting-started-page { background: var(--bg-gradient-primary); min-height:100vh; color: var(--color-white); }`
+
+#### Contrast & accessibility on gradient pages
+- Default body text on a dark gradient MUST be light (`color: var(--color-white)` or rgba white ≥ 0.85 opacity).
+- Headings can use pure white plus a subtle text-shadow for legibility (`text-shadow: 0 1px 2px rgba(0,0,0,0.35)`).
+- Interactive elements (buttons/links) should maintain a 4.5:1 contrast ratio against their immediate background; prefer bordered light surfaces OR high‑chroma accent fills.
+- Content cards/panels placed on the gradient should remain light surfaces (white / very light) with dark text to reduce eye strain for dense reading.
+- Minimum contrast targets: 4.5:1 for normal text, 3:1 for large headings (WCAG AA). Run a quick check when introducing a new color pairing.
+
+Example pattern:
+```css
+.my-feature-page { background: var(--bg-gradient-primary); min-height:100vh; color: var(--color-white); }
+.my-feature-page h1 { color: var(--color-white); text-shadow:0 1px 2px rgba(0,0,0,.35); }
+.my-feature-page .card { background:#fff; color: var(--color-gray-800); }
+```
 
 ## Routing
 - Router is declared in `src/main.jsx` using React Router v6.

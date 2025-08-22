@@ -170,6 +170,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Utility: dark gradient page wrapper (enforces readable light text) */
+.gradient-page { background: var(--bg-gradient-primary); min-height: 100vh; color: var(--color-white); }
+.gradient-page h1, .gradient-page h2, .gradient-page h3 { color: var(--color-white); text-shadow:0 1px 2px rgba(0,0,0,0.35); }
+.gradient-page a { color: #fff; text-decoration: underline; }
+
 /* Touch-friendly sizing for mobile */
 button,
 input,

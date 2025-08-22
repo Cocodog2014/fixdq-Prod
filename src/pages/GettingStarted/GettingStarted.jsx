@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react'
 import GlobalHeader from '../../components/GlobalHeader'
-import './GettingStarted.css'
 
 // Getting Started page integrating the CMVFlowchart (Driver / Carrier / Broker)
 
@@ -22,7 +21,7 @@ function CMVFlowchart({ cdlLink = '#' }) {
         {
           text: 'Study and schedule the knowledge test.',
           hint: 'You’ll take general knowledge + any endorsement tests you need.',
-          actions: [ { label: 'Do I need a CDL?', href: cdlLink, defKey: 'cdl' } ]
+          actions: [ { label: 'Do I Need a Commercial License?', href: '/fmcsa-compliance#flowchart', defKey: 'cdl' } ]
         },
         {
           text: 'Complete ELDT (Entry‑Level Driver Training) if required.',
@@ -50,8 +49,8 @@ function CMVFlowchart({ cdlLink = '#' }) {
       ],
       tags: ['USDOT', 'MC #', 'BOC‑3', 'IRP/IFTA', 'ELD'],
       extraActions: [
-        { label: 'FMCSA: Do I Need a CDL?', href: fmcsaLinks.cdl, defKey: 'cdl' },
-        { label: 'FMCSA: Medical Requirements', href: fmcsaLinks.medical, defKey: 'medical' }
+  { label: 'Do I Need a Commercial License?', href: '/fmcsa-compliance#flowchart', defKey: 'cdl' },
+  { label: 'Medical Requirements (Guide)', href: '/medical-requirements', defKey: 'medical' }
       ]
     },
     broker: {
@@ -65,7 +64,7 @@ function CMVFlowchart({ cdlLink = '#' }) {
       ],
       tags: ['MC #', '$75k Bond/Trust', 'BOC‑3'],
       extraActions: [
-        { label: 'FMCSA: Medical Requirements', href: fmcsaLinks.medical, defKey: 'medical' }
+  { label: 'Medical Requirements (Guide)', href: '/medical-requirements', defKey: 'medical' }
       ]
     }
   }
@@ -147,7 +146,7 @@ function CMVFlowchart({ cdlLink = '#' }) {
   }
 
   return (
-    <section className="gs-flow">
+    <section className={`gs-flow path-${currentId}`}>
       <div className="gs-left">
         <h2 className="gs-h2">Where are you starting?</h2>
         <div className="gs-choice-col">
@@ -198,10 +197,10 @@ function CMVFlowchart({ cdlLink = '#' }) {
           )}
         </article>
         <div className="gs-links">
-          <a href={fmcsaLinks.cdl} target="_blank" rel="noreferrer" onClick={e => { e.preventDefault(); openAndDefine(fmcsaLinks.cdl, 'cdl') }}>FMCSA: Do I Need a CDL?</a>
-          <a href={fmcsaLinks.medical} target="_blank" rel="noreferrer" onClick={e => { e.preventDefault(); openAndDefine(fmcsaLinks.medical, 'medical') }}>FMCSA: Medical Requirements</a>
-          <a href={fmcsaLinks.endorsements} target="_blank" rel="noreferrer" onClick={e => { e.preventDefault(); openAndDefine(fmcsaLinks.endorsements, 'endorsements') }}>FMCSA: Tank (N) & HazMat (H/X)</a>
-          <a href={fmcsaLinks.farm} target="_blank" rel="noreferrer" onClick={e => { e.preventDefault(); openAndDefine(fmcsaLinks.farm, 'farm') }}>FMCSA: Farm Vehicle Driver Exemptions</a>
+          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>{'Do I Need a Commercial License?'}</a>
+          <a href="/medical-requirements" onClick={e => { e.preventDefault(); window.location.href='/medical-requirements'; }}>Medical Requirements (Guide)</a>
+          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>Tank / HazMat (N / H / X) Endorsements</a>
+          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>Farm Vehicle Driver Exemptions (CDL?)</a>
           <div className="gs-def-box" aria-live="polite">{definition}</div>
         </div>
       </div>
@@ -214,7 +213,7 @@ const definitions = {
   cdlManual: 'Choose your state and open the official CDL manual (or the state’s latest PDF).',
   medical: 'Most CDL drivers must pass a DOT physical with a certified medical examiner and carry a valid Medical Examiner’s Certificate.',
   eldt: 'ELDT (Entry‑Level Driver Training) is federally required instruction (theory + behind‑the‑wheel) for new CDL A/B applicants and certain upgrades/endorsements, tracked in FMCSA’s Training Provider Registry.',
-  endorsements: 'Endorsements add privileges to your CDL—for example Tank (N) for bulk liquids and HazMat (H/X) for placarded hazardous materials after TSA and knowledge testing.',
+  endorsements: 'Endorsements add privileges to your CDL—Tank (N) for bulk liquids; HazMat (H) for placarded hazardous materials; X combines Tank + HazMat (after TSA background + knowledge tests).',
   farm: 'Some farm vehicle drivers are exempt from CDL if operating within limited radius and conditions; rules vary—verify details before relying on an exemption.'
 }
 
