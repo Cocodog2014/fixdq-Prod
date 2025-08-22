@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
-import StateRules from './StateRules'
-import WeightCalculator from './WeightCalculator'
-import ComplianceQuiz from './ComplianceQuiz'
+import { lazy, Suspense } from 'react'
+const StateRules = lazy(() => import('./StateRules'))
+const WeightCalculator = lazy(() => import('./WeightCalculator'))
+const ComplianceQuiz = lazy(() => import('./ComplianceQuiz'))
 import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'
 import NewReg from './HeroButton/NewReg'
@@ -392,6 +393,7 @@ export default function FMCSACompliance() {
       {/* Compliance Quiz (show on click) */}
       <section className="fmcsa-tools" id="compliance-quiz" style={{ display: showQuiz ? 'block' : 'none' }}>
         <div className="container">
+          <Suspense fallback={<div style={{color:'#fff'}}>Loading quiz…</div>}>
           <ComplianceQuiz
             companyName="FixDQ"
             includeHazmat={true}
@@ -403,12 +405,14 @@ export default function FMCSACompliance() {
               }
             }}
           />
+          </Suspense>
         </div>
       </section>
 
       {/* Weight Calculator (show on click) */}
       <section className="fmcsa-tools" id="weight-calculator" style={{ display: showWeightCalc ? 'block' : 'none' }}>
         <div className="container">
+          <Suspense fallback={<div style={{color:'#fff'}}>Loading weight calculator…</div>}>
           <WeightCalculator onClose={() => {
             setShowWeightCalc(false)
             if (typeof window !== 'undefined') {
@@ -416,12 +420,14 @@ export default function FMCSACompliance() {
               window.history.replaceState(null, '', pathname + search)
             }
           }} />
+          </Suspense>
         </div>
       </section>
 
       {/* State-by-State Rules (show on click) */}
       <section className="fmcsa-tools" id="state-rules" style={{ display: showStateRules ? 'block' : 'none' }}>
         <div className="container">
+          <Suspense fallback={<div style={{color:'#fff'}}>Loading state rules…</div>}>
           <StateRules onClose={() => {
             setShowStateRules(false)
             if (typeof window !== 'undefined') {
@@ -429,6 +435,7 @@ export default function FMCSACompliance() {
               window.history.replaceState(null, '', pathname + search)
             }
           }} />
+          </Suspense>
         </div>
       </section>
 
