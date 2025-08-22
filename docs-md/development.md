@@ -82,6 +82,12 @@ Example pattern:
 ## Shared UI
 - `GlobalHeader` is a shared component in `src/components/GlobalHeader`. It renders the hero, logo, and nav.
 - To add a new top-nav item, update `navigationItems` in `GlobalHeader.jsx`. External links should use `<a>` with `rel="noopener noreferrer"`.
+- `GlobalFooter` is appended automatically to every route via a helper `withFooter()` in `src/main.jsx`. Do NOT manually import it inside individual page components (unless you purposefully want a second footer for a special landing page). If you add a *very* custom page that must hide the footer, create a dedicated route element without `withFooter()` and document the exception.
+
+### GlobalFooter content
+- Columns: Brand, Explore (internal nav), FMCSA Official (authoritative links), Connect (social + legal).
+- Styling: `src/components/GlobalFooter/GlobalFooter.css` imported through `global.css` like other component CSS.
+- Legal / Terms page at `/terms` lives in `src/pages/Legal/Terms.jsx` (add future privacy policy there).
 
 ## Feature modules (when a domain grows)
 - Create `src/features/<domain>/` with internal `pages/`, `components/`, and `styles/` as it scales.

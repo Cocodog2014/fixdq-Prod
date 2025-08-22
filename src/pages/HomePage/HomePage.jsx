@@ -315,21 +315,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="truck-icons">
-              <span>🚛</span>
-              <span>🚚</span>
-              <span>🚛</span>
-            </div>
-            <h3>Built for the Road Warriors</h3>
-            <p>Professional drivers keep America moving. We're building tools to keep you compliant, safe, and successful on the road.</p>
-            <div className="tagline">"Keep on truckin' - we've got your back!"</div>
-          </div>
-        </div>
-      </footer>
+  {/* GlobalFooter is injected at route-level wrapper (see main.jsx) */}
     </div>
   )
 }

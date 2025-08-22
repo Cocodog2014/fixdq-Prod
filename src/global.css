@@ -7,6 +7,7 @@
 @import './components/GlobalHeader/GlobalHeader.css';
 @import './components/GlobalHeader/Banner.css';
 @import './components/GlobalHeader/Ribbon.css';
+@import './components/GlobalFooter/GlobalFooter.css';
 @import './pages/HomePage/HomePage.css';
 @import './pages/FMCSACompliance/FMCSACompliance.css';
 @import './pages/FMCSACompliance/SafetyManagement.css';
@@ -44,6 +45,7 @@
 @import './pages/EnglishProficiency/EnglishProficiency.css';
 @import './pages/EnglishProficiency/DriverInterview.css';
 @import './pages/GettingStarted/GettingStarted.css';
+@import './pages/Legal/Terms.css';
 /* Add future page imports here:
    @import './AboutPage.css';
    @import './ContactPage.css';

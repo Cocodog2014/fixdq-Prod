@@ -45,57 +45,68 @@ import About from './pages/About/About'
 import FAQ from './pages/FAQ/FAQ'
 import Consultation from './pages/Consultation/Consultation'
 import GettingStarted from './pages/GettingStarted/GettingStarted'
+import Terms from './pages/Legal/Terms'
+import GlobalFooter from './components/GlobalFooter/GlobalFooter'
+
+// Small helper to append the GlobalFooter to any page component without editing each file.
+const withFooter = (Component) => (
+  <>
+    <Component />
+    <GlobalFooter />
+  </>
+);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-  <Route path="/fmcsa-compliance" element={<FMCSACompliance />} />
-  <Route path="/fmcsa-regulations" element={<FMCSARegulations />} />
-  <Route path="/hours-of-service" element={<HoursOfService />} />
-  <Route path="/medical-requirements" element={<MedicalRequirements />} />
-  <Route path="/safety-management" element={<SafetyManagement />} />
-  <Route path="/safety-training" element={<SafetyTraining />} />
-  <Route path="/safety-training/defensive-driving" element={<DefensiveDriving />} />
-  <Route path="/safety-training/hazmat" element={<Hazmat />} />
-  <Route path="/safety-training/weather-road" element={<WeatherRoad />} />
-  <Route path="/safety-training/emergency-procedures" element={<EmergencyProcedures />} />
-  <Route path="/safety-training/accident-prevention" element={<AccidentPrevention />} />
-  <Route path="/violations-management" element={<ViolationManagement />} />
-  <Route path="/violations-management/citation-types" element={<CitationTypes />} />
-  <Route path="/violations-management/dataq-navigation" element={<DataQNavigation />} />
-  <Route path="/violations-management/driver-score" element={<DriverScore />} />
-  <Route path="/violations-management/most-common" element={<MostCommonViolations />} />
-  <Route path="/violations-management/appeal-process" element={<AppealProcess />} />
-  <Route path="/csa" element={<CSA />} />
-  <Route path="/prevention-management" element={<PreventionManagement />} />
-  <Route path="/farm-exemption-checker" element={<FarmExemptionChecker />} />
-  <Route path="/vehicle-inspections" element={<VehicleInspections />} />
-  <Route path="/vehicle-inspections/pre-trip" element={<PreTrip />} />
-  <Route path="/vehicle-inspections/post-trip" element={<PostTrip />} />
-  <Route path="/vehicle-inspections/dot-roadside" element={<DotRoadside />} />
-  <Route path="/vehicle-inspections/english-proficiency" element={<EnglishProficiency />} />
-  <Route path="/english-proficiency" element={<EnglishProficiency />} />
-  <Route path="/english-proficiency/driver-interview" element={<DriverInterviewPlaceholder />} />
-  <Route path="/english-proficiency/flashcards" element={<FmcsaFlashCards />} />
-  <Route path="/vehicle-inspections/dvir" element={<PostTrip />} />
-  <Route path="/vehicle-inspections/maintenance-repair" element={<MaintenanceRepair />} />
-  <Route path="/records-of-duty" element={<RDS />} />
-  <Route path="/rds" element={<RDS />} />
-  <Route path="/eld-coach" element={<ELDCoach />} />
-  <Route path="/eld-coach/setup" element={<ELDSetup />} />
-  <Route path="/eld-coach/day-start" element={<ELDDayStart />} />
-  <Route path="/eld-coach/status" element={<ELDStatusPad />} />
-  <Route path="/eld-coach/risk" element={<ELDRiskPanel />} />
-  <Route path="/eld-coach/transfer" element={<ELDTransfer />} />
-  <Route path="/eld-coach/malfunction" element={<ELDMalfunction />} />
-  <Route path="/eld-coach/lessons" element={<ELDLessons />} />
-  <Route path="/eld-coach/device" element={<ELDDevice />} />
-  <Route path="/faq" element={<FAQ />} />
-  <Route path="/about" element={<About />} />
-  <Route path="/consultation" element={<Consultation />} />
-  <Route path="/getting-started" element={<GettingStarted />} />
+        <Route path="/" element={withFooter(HomePage)} />
+        <Route path="/fmcsa-compliance" element={withFooter(FMCSACompliance)} />
+        <Route path="/fmcsa-regulations" element={withFooter(FMCSARegulations)} />
+        <Route path="/hours-of-service" element={withFooter(HoursOfService)} />
+        <Route path="/medical-requirements" element={withFooter(MedicalRequirements)} />
+        <Route path="/safety-management" element={withFooter(SafetyManagement)} />
+        <Route path="/safety-training" element={withFooter(SafetyTraining)} />
+        <Route path="/safety-training/defensive-driving" element={withFooter(DefensiveDriving)} />
+        <Route path="/safety-training/hazmat" element={withFooter(Hazmat)} />
+        <Route path="/safety-training/weather-road" element={withFooter(WeatherRoad)} />
+        <Route path="/safety-training/emergency-procedures" element={withFooter(EmergencyProcedures)} />
+        <Route path="/safety-training/accident-prevention" element={withFooter(AccidentPrevention)} />
+        <Route path="/violations-management" element={withFooter(ViolationManagement)} />
+        <Route path="/violations-management/citation-types" element={withFooter(CitationTypes)} />
+        <Route path="/violations-management/dataq-navigation" element={withFooter(DataQNavigation)} />
+        <Route path="/violations-management/driver-score" element={withFooter(DriverScore)} />
+        <Route path="/violations-management/most-common" element={withFooter(MostCommonViolations)} />
+        <Route path="/violations-management/appeal-process" element={withFooter(AppealProcess)} />
+        <Route path="/csa" element={withFooter(CSA)} />
+        <Route path="/prevention-management" element={withFooter(PreventionManagement)} />
+        <Route path="/farm-exemption-checker" element={withFooter(FarmExemptionChecker)} />
+        <Route path="/vehicle-inspections" element={withFooter(VehicleInspections)} />
+        <Route path="/vehicle-inspections/pre-trip" element={withFooter(PreTrip)} />
+        <Route path="/vehicle-inspections/post-trip" element={withFooter(PostTrip)} />
+        <Route path="/vehicle-inspections/dot-roadside" element={withFooter(DotRoadside)} />
+        <Route path="/vehicle-inspections/english-proficiency" element={withFooter(EnglishProficiency)} />
+        <Route path="/english-proficiency" element={withFooter(EnglishProficiency)} />
+        <Route path="/english-proficiency/driver-interview" element={withFooter(DriverInterviewPlaceholder)} />
+        <Route path="/english-proficiency/flashcards" element={withFooter(FmcsaFlashCards)} />
+        <Route path="/vehicle-inspections/dvir" element={withFooter(PostTrip)} />
+        <Route path="/vehicle-inspections/maintenance-repair" element={withFooter(MaintenanceRepair)} />
+        <Route path="/records-of-duty" element={withFooter(RDS)} />
+        <Route path="/rds" element={withFooter(RDS)} />
+        <Route path="/eld-coach" element={withFooter(ELDCoach)} />
+        <Route path="/eld-coach/setup" element={withFooter(ELDSetup)} />
+        <Route path="/eld-coach/day-start" element={withFooter(ELDDayStart)} />
+        <Route path="/eld-coach/status" element={withFooter(ELDStatusPad)} />
+        <Route path="/eld-coach/risk" element={withFooter(ELDRiskPanel)} />
+        <Route path="/eld-coach/transfer" element={withFooter(ELDTransfer)} />
+        <Route path="/eld-coach/malfunction" element={withFooter(ELDMalfunction)} />
+        <Route path="/eld-coach/lessons" element={withFooter(ELDLessons)} />
+        <Route path="/eld-coach/device" element={withFooter(ELDDevice)} />
+        <Route path="/faq" element={withFooter(FAQ)} />
+        <Route path="/about" element={withFooter(About)} />
+        <Route path="/consultation" element={withFooter(Consultation)} />
+        <Route path="/getting-started" element={withFooter(GettingStarted)} />
+        <Route path="/terms" element={withFooter(Terms)} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
