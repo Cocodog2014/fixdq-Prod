@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
@@ -6,148 +6,65 @@ import CdlClassComparison from './CdlClassComparison'
 import StateRules from './StateRules'
 import WeightCalculator from './WeightCalculator'
 import ComplianceQuiz from './ComplianceQuiz'
+import License from './HeroButton/License'
+import Usdot from './HeroButton/Usdot'
+import NewReg from './HeroButton/NewReg'
+import ManageReg from './HeroButton/ManageReg'
+import Insurance from './HeroButton/Insurance'
+import LicensePanel from './LicensePanel'
 
-function StepSelect({ label, options, value, onChange }) {
-  return (
-    <div className="fc-field">
-      <label className="fc-label">{label}</label>
-      <div className="fc-options">
-        {options.map((opt) => (
-          <button
-            key={opt.value}
-            type="button"
-            className={`fc-option ${value === opt.value ? 'selected' : ''}`}
-            onClick={() => onChange(opt.value)}
-            aria-pressed={value === opt.value}
-          >
-            <span className="fc-option-label">{opt.label}</span>
-          </button>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }) {
-  // Very simplified, informational-only logic. Always verify with official FMCSA rules.
-  let cdlClass = 'No CDL Required'
-  let endorsements = new Set()
-
-  // Endorsements by cargo/vehicle
-  const isPassengerScenario = vehicleType === 'bus' || vehicleType === 'passenger' || passengerCount === '16_plus'
-  if (isPassengerScenario) endorsements.add('Passenger (P)')
-  if (schoolBus === 'yes') endorsements.add('School Bus (S)')
-
-  // Hazmat / Tank endorsement combos
-  const wantsHazmat = placardedHazmat === 'yes' || cargoType === 'hazmat'
-  const wantsTank = tankLiquids === 'yes'
-  if (wantsTank && wantsHazmat) {
-    endorsements.add('Tank + HazMat (X)')
-  } else if (wantsHazmat) {
-    endorsements.add('HazMat (H)')
-  } else if (wantsTank) {
-    endorsements.add('Tank (N)')
-  }
-
-  // CDL Class by GVWR and special cases
-  if (gvwr === 'over_26001') {
-    // Heavy power unit. Trailer >10k makes this Class A; otherwise Class B.
-    cdlClass = trailer === 'trailer_over_10000' ? 'Class A' : 'Class B'
-  } else if (gvwr === '10001_26000') {
-    // Mid-weight. Trailer >10k likely bumps to Class A if GCWR ≥ 26,001.
-    if (trailer === 'trailer_over_10000') {
-      cdlClass = 'Class A (likely; verify GCWR ≥ 26,001)'
-    } else if (endorsements.size > 0) {
-      cdlClass = 'Class C'
-    } else {
-      cdlClass = 'No CDL Required'
-    }
-  } else if (gvwr === 'under_10000') {
-    // Under 10k generally non‑CDL; passenger/hazmat/tank scenarios may require Class C in some states.
-    if (isPassengerScenario || wantsHazmat || wantsTank) {
-      cdlClass = 'Class C (check state-specific thresholds)'
-    } else {
-      cdlClass = 'No CDL Required'
-    }
-  }
-
-  const notes = []
-  if (operatingArea === 'interstate') {
-    notes.push('Interstate operations may require USDOT number and Medical Examiner’s Certificate.')
-  } else if (operatingArea === 'intrastate') {
-    notes.push('Intrastate rules vary by state; verify additional state requirements.')
-  }
-
-  if (trailer === 'trailer_over_10000' && gvwr !== 'over_26001') {
-    notes.push('If GCWR ≥ 26,001 and trailer > 10,000 lbs, Class A applies.')
-  }
-
-  if (farmExemption === 'yes' && operatingArea === 'intrastate' && !wantsHazmat && passengerCount !== '16_plus' && schoolBus !== 'yes') {
-    notes.push('Farm Vehicle Driver (FVD) exemption may apply within 150 air-miles; CDL may not be required. Confirm with your state DMV.')
-  }
-
-  return {
-    cdlClass,
-    endorsements: Array.from(endorsements),
-    notes,
-    references: [
-      { label: 'FMCSA: Do I Need a CDL?', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license' },
-      { label: 'FMCSA: Medical Requirements', href: 'https://www.fmcsa.dot.gov/medical/driver-medical-requirements/medical-requirements' },
-      { label: 'FMCSA: Tank Vehicle (N) & HazMat (H/X)', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/endorsements' },
-      { label: 'FMCSA: Farm Vehicle Driver Exemptions', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/farm-vehicle-driver-exemptions' },
-    ],
-  }
-}
+// License tool state packaged for WhatLicense component
 
 export default function FMCSACompliance() {
   const navigate = useNavigate()
-  const [vehicleType, setVehicleType] = useState('truck')
-  const [gvwr, setGvwr] = useState('over_26001')
-  const [operatingArea, setOperatingArea] = useState('interstate')
-  const [cargoType, setCargoType] = useState('general')
-  const [trailer, setTrailer] = useState('trailer_10000_or_less')
-  const [passengerCount, setPassengerCount] = useState('under16')
-  const [tankLiquids, setTankLiquids] = useState('no')
-  const [placardedHazmat, setPlacardedHazmat] = useState('no')
-  const [farmExemption, setFarmExemption] = useState('no')
-  const [schoolBus, setSchoolBus] = useState('no')
+  const [licenseState, setLicenseState] = useState({
+    vehicleType: 'truck',
+    gvwr: 'over_26001',
+    operatingArea: 'interstate',
+    cargoType: 'general',
+    trailer: 'trailer_10000_or_less',
+    passengerCount: 'under16',
+    tankLiquids: 'no',
+    placardedHazmat: 'no',
+    farmExemption: 'no',
+    schoolBus: 'no'
+  })
   const [showCdlChart, setShowCdlChart] = useState(false)
   const [showStateRules, setShowStateRules] = useState(false)
   const [showWeightCalc, setShowWeightCalc] = useState(false)
   const [showQuiz, setShowQuiz] = useState(false)
+  // Dynamic hero panel selection
+  const [activePanel, setActivePanel] = useState(null) // null = slideshow default
+  const [slideIndex, setSlideIndex] = useState(0)
 
-  const result = useMemo(
-    () => computeResult({ vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus }),
-    [vehicleType, gvwr, operatingArea, cargoType, trailer, passengerCount, tankLiquids, placardedHazmat, farmExemption, schoolBus]
-  )
-  const cdlRequired = useMemo(() => !/^No CDL Required/i.test(result.cdlClass), [result.cdlClass])
 
   // If user navigates with #cdl-chart, reveal and scroll to it
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.location?.hash === '#cdl-chart') {
-      setShowCdlChart(true)
-      setTimeout(() => {
-        document.getElementById('cdl-chart')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 0)
+    // legacy hash support: license tool
+    if (typeof window !== 'undefined' && window.location?.hash === '#flowchart') {
+      setActivePanel('license')
     }
-    if (typeof window !== 'undefined' && window.location?.hash === '#state-rules') {
-      setShowStateRules(true)
-      setTimeout(() => {
-        document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 0)
-    }
-    if (typeof window !== 'undefined' && window.location?.hash === '#weight-calculator') {
-      setShowWeightCalc(true)
-      setTimeout(() => {
-        document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 0)
-    }
-    if (typeof window !== 'undefined' && window.location?.hash === '#compliance-quiz') {
-      setShowQuiz(true)
-      setTimeout(() => {
-        document.getElementById('compliance-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 0)
-    }
+  }, [])
+
+  // Slideshow auto-rotate only when no activePanel selected
+  useEffect(() => {
+    if (activePanel !== null) return
+    const id = setInterval(() => {
+      setSlideIndex((i) => (i + 1) % slideshowSlides.length)
+    }, 5000)
+    return () => clearInterval(id)
+  }, [activePanel])
+
+  const slideshowSlides = useMemo(() => ([
+    { title: 'Start Your USDOT / MC Registration', body: 'Understand core FMCSA registration steps before you begin.' },
+    { title: 'Do You Need a USDOT Number?', body: 'Know thresholds: interstate commerce, vehicle weight, passengers, hazmat.' },
+    { title: 'MC Authority vs USDOT', body: 'MC = for-hire authority. USDOT = safety tracking identifier.' },
+    { title: 'Insurance & BOC-3', body: 'File Form BOC-3 and meet minimum insurance to activate authority.' },
+    { title: 'Maintain Compliance', body: 'Update MCS-150, maintain driver qualification, hours-of-service, inspections.' },
+  ]), [])
+
+  const openPanel = useCallback((panel) => {
+    setActivePanel((curr) => (curr === panel ? null : panel))
   }, [])
 
   return (
@@ -158,214 +75,100 @@ export default function FMCSACompliance() {
         <div className="container">
           <div className="hero-inner">
             <div className="hero-top-actions">
-              <a className="hero-top-btn" href="#flowchart" aria-label="Jump to license decision tool">
-                <span className="hero-top-emoji" aria-hidden="true">🧭</span>
-                <span>What License Do I Need?</span>
-              </a>
-              <a
-                className="hero-top-btn hero-top-btn--outline"
-                href="https://www.fmcsa.dot.gov/registration/do-i-need-usdot-number"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open FMCSA resource to determine if you need a USDOT number (opens in new tab)"
-              >
-                <span className="hero-top-emoji" aria-hidden="true">🚚</span>
-                <span>Do I Need a USDOT Number?</span>
-              </a>
-              <a
-                className="hero-top-btn hero-top-btn--outline"
-                href="https://www.fmcsa.dot.gov/registration"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open FMCSA new registration guide (opens in new tab)"
-              >
-                <span className="hero-top-emoji" aria-hidden="true">📝</span>
-                <span>New Registration Made Easy</span>
-              </a>
-              <a
-                className="hero-top-btn hero-top-btn--outline"
-                href="https://www.fmcsa.dot.gov/registration/updating-your-registration"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open FMCSA manage / update registration page (opens in new tab)"
-              >
-                <span className="hero-top-emoji" aria-hidden="true">🗂️</span>
-                <span>Manage Registration</span>
-              </a>
-              <a
-                className="hero-top-btn hero-top-btn--outline"
-                href="https://www.fmcsa.dot.gov/registration/insurance-requirements"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open FMCSA insurance requirements page (opens in new tab)"
-              >
-                <span className="hero-top-emoji" aria-hidden="true">🛡️</span>
-                <span>Insurance Requirements</span>
-              </a>
+              <License active={activePanel==='license'} onClick={() => openPanel('license')} />
+              <Usdot active={activePanel==='usdot'} onClick={() => openPanel('usdot')} />
+              <NewReg active={activePanel==='newReg'} onClick={() => openPanel('newReg')} />
+              <ManageReg active={activePanel==='manageReg'} onClick={() => openPanel('manageReg')} />
+              <Insurance active={activePanel==='insurance'} onClick={() => openPanel('insurance')} />
             </div>
             <h1>FMCSA Compliance Made Simple</h1>
             <p>
               FMCSA compliance helps keep drivers and roads safe, avoids costly fines, and protects your CDL.
               Use this page to understand your requirements and get up to speed fast.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 2) Interactive Flowchart / Decision Tool */}
-      <section id="flowchart" className="fmcsa-flowchart">
-        <div className="container">
-          <h2>What License Do I Need?</h2>
-          <p className="fc-disclaimer">This is a simplified guide. Always confirm with FMCSA and your state DMV.</p>
-
-          <div className="fc-grid">
-            <div className="fc-panel">
-              <StepSelect
-                label="Operating Area"
-                value={operatingArea}
-                onChange={setOperatingArea}
-                options={[
-                  { label: 'Interstate', value: 'interstate' },
-                  { label: 'Intrastate', value: 'intrastate' },
-                ]}
-              />
-
-              <StepSelect
-                label="Type of Vehicle"
-                value={vehicleType}
-                onChange={setVehicleType}
-                options={[
-                  { label: 'Commercial Truck', value: 'truck' },
-                  { label: 'Bus', value: 'bus' },
-                  { label: 'Passenger Van', value: 'passenger' },
-                  { label: 'Specialty Vehicle', value: 'specialty' },
-                ]}
-              />
-
-              <StepSelect
-                label="Is the Vehicle(s) GVW, GVWR, and GCWR"
-                value={gvwr}
-                onChange={setGvwr}
-                options={[
-                  { label: 'Under 10,001 lbs', value: 'under_10000' },
-                  { label: '10,001 – 26,000 lbs', value: '10001_26000' },
-                  { label: 'Over 26,000 lbs', value: 'over_26001' },
-                ]}
-              />
-
-              <StepSelect
-                label="Towing / Trailer"
-                value={trailer}
-                onChange={setTrailer}
-                options={[
-                  { label: 'No trailer or ≤ 10,000 lbs', value: 'trailer_10000_or_less' },
-                  { label: 'Trailer > 10,000 lbs', value: 'trailer_over_10000' },
-                ]}
-              />
-
-              <StepSelect
-                label="Cargo Type"
-                value={cargoType}
-                onChange={setCargoType}
-                options={[
-                  { label: 'General Freight', value: 'general' },
-                  { label: 'Hazardous Materials', value: 'hazmat' },
-                  { label: 'Passenger Transport', value: 'passenger' },
-                ]}
-              />
-
-              {/* Passengers & Special Cases */}
-              <StepSelect
-                label="Passenger Count"
-                value={passengerCount}
-                onChange={setPassengerCount}
-                options={[
-                  { label: 'Under 16 (including driver)', value: 'under16' },
-                  { label: '16 or more (including driver)', value: '16_plus' },
-                ]}
-              />
-
-              {/* Endorsement detail toggles */}
-              <StepSelect
-                label="Bulk Liquids / Tank Vehicle"
-                value={tankLiquids}
-                onChange={setTankLiquids}
-                options={[
-                  { label: 'No', value: 'no' },
-                  { label: 'Yes', value: 'yes' },
-                ]}
-              />
-
-              <StepSelect
-                label="Placarded Hazardous Materials"
-                value={placardedHazmat}
-                onChange={setPlacardedHazmat}
-                options={[
-                  { label: 'No', value: 'no' },
-                  { label: 'Yes', value: 'yes' },
-                ]}
-              />
-
-              <StepSelect
-                label="School Bus"
-                value={schoolBus}
-                onChange={setSchoolBus}
-                options={[
-                  { label: 'No', value: 'no' },
-                  { label: 'Yes', value: 'yes' },
-                ]}
-              />
-
-              <StepSelect
-                label="Farm Exemption (FVD)"
-                value={farmExemption}
-                onChange={(val) => {
-                  if (val === 'unknown') {
-                    navigate('/farm-exemption-checker')
-                  } else {
-                    setFarmExemption(val)
-                  }
-                }}
-                options={[
-                  { label: 'No', value: 'no' },
-                  { label: 'Yes', value: 'yes' },
-                  { label: 'Unknown', value: 'unknown' },
-                ]}
-              />
-            </div>
-
-            <div className="fc-panel fc-result">
-              <h3>Your Result</h3>
-              <div className={`result-callout ${cdlRequired ? 'cdl-required' : ''}`}>
-                <div className="result-item">
-                  <span className="result-label">CDL Class</span>
-                  <span className="result-value">{result.cdlClass}</span>
+            <div className="hero-dynamic" aria-live="polite">
+              {activePanel === null && (
+                <div className="slideshow" role="region" aria-label="FMCSA Registration Highlights">
+                  <div className="slides-track" style={{ transform: `translateX(-${slideIndex * 100}%)` }}>
+                    {slideshowSlides.map((s, i) => (
+                      <div className="slide" key={i} aria-hidden={slideIndex!==i}>
+                        <h3>{s.title}</h3>
+                        <p>{s.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="slide-dots" role="tablist">
+                    {slideshowSlides.map((_, i) => (
+                      <button key={i} className={`dot ${slideIndex===i?'active':''}`} aria-label={`Show slide ${i+1}`} onClick={() => setSlideIndex(i)} />
+                    ))}
+                  </div>
                 </div>
-                <div className="result-item">
-                  <span className="result-label">Endorsements</span>
-                  <span className="result-value">
-                    {result.endorsements.length ? result.endorsements.join(', ') : 'None'}
-                  </span>
-                </div>
-              </div>
-              {!!result.notes.length && (
-                <ul className="result-notes">
-                  {result.notes.map((n, i) => (
-                    <li key={i}>{n}</li>
-                  ))}
-                </ul>
               )}
-              <div className="result-links">
-                {result.references.map((r) => (
-                  <a key={r.href} href={r.href} target="_blank" rel="noopener noreferrer">
-                    {r.label}
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>
       </section>
+      {/* External panels block (below hero) */}
+      {activePanel && (
+        <section className="fmcsa-panels" aria-label="FMCSA Detailed Panel">
+          <div className="container">
+            {activePanel === 'license' && (
+              <LicensePanel state={licenseState} setState={setLicenseState} />
+            )}
+            {activePanel === 'usdot' && (
+              <div className="info-panel" role="region" aria-label="USDOT Requirements">
+                <h2 style={{marginTop:0}}>Do I Need a USDOT Number?</h2>
+                <ul>
+                  <li>Operate in interstate commerce OR transport passengers / property across state lines.</li>
+                  <li>Operate a vehicle with GVWR/GCWR/Actual weight ≥ 10,001 lbs.</li>
+                  <li>Transport 9+ passengers (compensated) or 16+ (not for compensation).</li>
+                  <li>Transport placarded hazardous materials.</li>
+                </ul>
+                <p><a href="https://www.fmcsa.dot.gov/registration/do-i-need-usdot-number" target="_blank" rel="noopener noreferrer">Official FMCSA Guidance</a></p>
+              </div>
+            )}
+            {activePanel === 'newReg' && (
+              <div className="info-panel" role="region" aria-label="New Registration Guide">
+                <h2 style={{marginTop:0}}>New Registration Made Easy</h2>
+                <ol>
+                  <li>Determine need for USDOT & MC (for-hire) authority.</li>
+                  <li>Gather EIN, company structure, driver & equipment data.</li>
+                  <li>Apply via Unified Registration System (URS).</li>
+                  <li>File BOC-3 & obtain insurance certificates.</li>
+                  <li>Monitor status & complete any corrective actions.</li>
+                </ol>
+                <p><a href="https://www.fmcsa.dot.gov/registration" target="_blank" rel="noopener noreferrer">Unified Registration System</a></p>
+              </div>
+            )}
+            {activePanel === 'manageReg' && (
+              <div className="info-panel" role="region" aria-label="Manage Registration">
+                <h2 style={{marginTop:0}}>Manage / Update Registration</h2>
+                <ul>
+                  <li>Update MCS-150 (USDOT) every 24 months or when data changes.</li>
+                  <li>File name/address changes promptly.</li>
+                  <li>Maintain process agent (BOC-3) & insurance filings.</li>
+                  <li>Deactivate unused authority to reduce fees & exposure.</li>
+                </ul>
+                <p><a href="https://www.fmcsa.dot.gov/registration/updating-your-registration" target="_blank" rel="noopener noreferrer">Updating Your Registration</a></p>
+              </div>
+            )}
+            {activePanel === 'insurance' && (
+              <div className="info-panel" role="region" aria-label="Insurance Requirements">
+                <h2 style={{marginTop:0}}>Insurance Requirements</h2>
+                <p>Minimum public liability (BI & PD) depends on commodity & radius:</p>
+                <ul>
+                  <li>$300K: Non-hazardous property under 10,001 lbs.</li>
+                  <li>$750K: General freight ≥ 10,001 lbs.</li>
+                  <li>$1M: Oil listed in 49 CFR 172.101.</li>
+                  <li>$5M: Certain hazmat / explosives.</li>
+                </ul>
+                <p>Cargo insurance federally required only for household goods carriers (some states add more).</p>
+                <p><a href="https://www.fmcsa.dot.gov/registration/insurance-requirements" target="_blank" rel="noopener noreferrer">FMCSA Insurance Details</a></p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* 3) Subsection Cards */}
       <section className="fmcsa-cards">
