@@ -157,13 +157,57 @@ export default function FMCSACompliance() {
       <section className="fmcsa-hero">
         <div className="container">
           <div className="hero-inner">
-            <span className="hero-icon" role="img" aria-label="clipboard">📋</span>
+            <div className="hero-top-actions">
+              <a className="hero-top-btn" href="#flowchart" aria-label="Jump to license decision tool">
+                <span className="hero-top-emoji" aria-hidden="true">🧭</span>
+                <span>What License Do I Need?</span>
+              </a>
+              <a
+                className="hero-top-btn hero-top-btn--outline"
+                href="https://www.fmcsa.dot.gov/registration/do-i-need-usdot-number"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open FMCSA resource to determine if you need a USDOT number (opens in new tab)"
+              >
+                <span className="hero-top-emoji" aria-hidden="true">🚚</span>
+                <span>Do I Need a USDOT Number?</span>
+              </a>
+              <a
+                className="hero-top-btn hero-top-btn--outline"
+                href="https://www.fmcsa.dot.gov/registration"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open FMCSA new registration guide (opens in new tab)"
+              >
+                <span className="hero-top-emoji" aria-hidden="true">📝</span>
+                <span>New Registration Made Easy</span>
+              </a>
+              <a
+                className="hero-top-btn hero-top-btn--outline"
+                href="https://www.fmcsa.dot.gov/registration/updating-your-registration"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open FMCSA manage / update registration page (opens in new tab)"
+              >
+                <span className="hero-top-emoji" aria-hidden="true">🗂️</span>
+                <span>Manage Registration</span>
+              </a>
+              <a
+                className="hero-top-btn hero-top-btn--outline"
+                href="https://www.fmcsa.dot.gov/registration/insurance-requirements"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open FMCSA insurance requirements page (opens in new tab)"
+              >
+                <span className="hero-top-emoji" aria-hidden="true">🛡️</span>
+                <span>Insurance Requirements</span>
+              </a>
+            </div>
             <h1>FMCSA Compliance Made Simple</h1>
             <p>
               FMCSA compliance helps keep drivers and roads safe, avoids costly fines, and protects your CDL.
               Use this page to understand your requirements and get up to speed fast.
             </p>
-            <a className="quick-start-btn" href="#flowchart">Find Out What You Need</a>
           </div>
         </div>
       </section>

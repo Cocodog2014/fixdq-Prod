@@ -4,6 +4,13 @@
 
 .fmcsa-hero { background: var(--bg-gradient-primary); color: var(--color-white); padding: var(--spacing-2xl) 0; text-align: center; }
 .fmcsa-hero .hero-inner { max-width: 800px; margin: 0 auto; }
+.hero-top-btn { display:inline-flex; align-items:center; gap:0.5rem; font-weight:600; background:rgba(255,255,255,0.15); color:#fff; padding:0.55rem 1rem; border-radius:var(--radius-full); text-decoration:none; box-shadow:var(--shadow-sm); margin:0 auto var(--spacing-md); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.25); font-size:0.9rem; }
+.hero-top-btn:hover { background:rgba(255,255,255,0.25); }
+.hero-top-emoji { font-size:1.15rem; line-height:1; }
+.hero-top-actions { display:flex; flex-direction:column; gap:0.75rem; justify-content:center; align-items:center; margin-bottom:var(--spacing-md); flex-wrap:wrap; }
+.hero-top-btn--outline { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.4); }
+.hero-top-btn--outline:hover { background:rgba(255,255,255,0.18); }
+@media (min-width:600px){ .hero-top-actions { flex-direction:row; flex-wrap:wrap; } .hero-top-btn { margin:0; } }
 .hero-icon { font-size: 3rem; display: block; margin-bottom: var(--spacing-md); }
 .quick-start-btn { display: inline-block; margin-top: var(--spacing-md); padding: 0.75rem 1.25rem; background: var(--color-accent-orange); color: #fff; border-radius: var(--radius-full); box-shadow: var(--shadow-md); text-decoration: none; }
 .quick-start-btn:hover { filter: brightness(1.05); }
