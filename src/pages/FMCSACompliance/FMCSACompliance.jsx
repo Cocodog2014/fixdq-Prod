@@ -11,7 +11,7 @@ import Usdot from './HeroButton/Usdot'
 import NewReg from './HeroButton/NewReg'
 import ManageReg from './HeroButton/ManageReg'
 import Insurance from './HeroButton/Insurance'
-import LicensePanel from './LicensePanel'
+import { LicensePanel } from './HeroButton/License'
 
 // License tool state packaged for WhatLicense component
 
@@ -113,7 +113,7 @@ export default function FMCSACompliance() {
         <section className="fmcsa-panels" aria-label="FMCSA Detailed Panel">
           <div className="container">
             {activePanel === 'license' && (
-              <LicensePanel state={licenseState} setState={setLicenseState} />
+              <LicensePanel state={licenseState} setState={setLicenseState} onClose={() => setActivePanel(null)} />
             )}
             {activePanel === 'usdot' && (
               <div className="info-panel" role="region" aria-label="USDOT Requirements">
