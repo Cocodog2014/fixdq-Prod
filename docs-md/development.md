@@ -189,11 +189,12 @@ Setup:
 4. Deployment: ensure the environment variable is present during build (you can keep `.env` committed here since this repo is already public and the ID is not secret, but rotate if needed).
 
 Implementation details:
-* `src/analytics/initGA.js` injects GA script once (IP anonymized) and exposes helpers: `trackPageView`, `trackEvent`, `enableAutoClickTracking`.
+* `src/analytics/initGA.js` injects GA script once (IP anonymized, `send_page_view:false` to avoid double counting) and exposes helpers: `trackPageView`, `trackEvent`, `enableAutoClickTracking`.
 * Auto page view + delegated click tracking provided by `RouteTracker.jsx` (mounted in `main.jsx`). On every route change it:
   - Derives a human readable title from the path (or uses a map) and sets `document.title` (`FixDQ | <Page>` except home)
   - Fires a `page_view` with `page_path`, `page_title`, and `page_location`
 * All custom events (`trackEvent` & auto click events) now include `page_title` automatically for easier funnel / content reports.
+* Because we manually manage `page_view` events, the initial `gtag('config')` call is set with `send_page_view:false` to prevent a duplicate first page view.
 * Add `data-track="Custom Label"` to any element for a cleaner click label; otherwise inner text / aria-label is used.
 * For custom events: `trackEvent({ action: 'download_pdf', category: 'resource', label: 'PreTrip Checklist' })`.
 * Cookies page shows active/disabled status.
