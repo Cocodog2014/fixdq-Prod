@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import GlobalHeader from '../../../components/GlobalHeader'
 import './MedicalRequirements.css'
 
@@ -22,8 +22,8 @@ export default function MedicalRequirements() {
       <section className="med-summary-grid features-grid" aria-label="Medical Requirements Overview">
         <div className="container">
           <div className="grid">
-            <a href="#who-needs" className="feature-card blue-border feature-link-card" aria-describedby="who-desc">
-              <div className="feature-header"><span className="icon">❓</span><h3>Who Needs It?</h3></div>
+            <Link to="/medical-requirements/who-needs" className="feature-card blue-border feature-link-card" aria-describedby="who-desc">
+              <div className="feature-header"><span className="icon">❓</span><h3>Who Needs A Medical Certificate</h3></div>
               <ul id="who-desc">
                 <li>CDL CMVs (A/B/C)</li>
                 <li>Some ≥10,001 lb non-CDL</li>
@@ -32,8 +32,8 @@ export default function MedicalRequirements() {
                 <li>Limited exemptions</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">View Detail</span></div>
-            </a>
-            <a href="#process" className="feature-card orange-border feature-link-card" aria-describedby="proc-desc">
+            </Link>
+            <Link to="/medical-requirements/certification-flow" className="feature-card orange-border feature-link-card" aria-describedby="proc-desc">
               <div className="feature-header"><span className="icon">🩺</span><h3>Certification Flow</h3></div>
               <ul id="proc-desc">
                 <li>NRCME examiner only</li>
@@ -43,8 +43,8 @@ export default function MedicalRequirements() {
                 <li>Track expiration</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">View Steps</span></div>
-            </a>
-            <a href="#standards" className="feature-card green-border feature-link-card" aria-describedby="std-desc">
+            </Link>
+            <Link to="/medical-requirements/key-standards" className="feature-card green-border feature-link-card" aria-describedby="std-desc">
               <div className="feature-header"><span className="icon">📋</span><h3>Key Standards</h3></div>
               <ul id="std-desc">
                 <li>Vision 20/40 each eye</li>
@@ -54,7 +54,7 @@ export default function MedicalRequirements() {
                 <li>Cardiac clearance</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">Review</span></div>
-            </a>
+            </Link>
             <a href="#conditions" className="feature-card red-border feature-link-card" aria-describedby="cond-desc">
               <div className="feature-header"><span className="icon">⚠️</span><h3>Risk Conditions</h3></div>
               <ul id="cond-desc">
@@ -104,55 +104,8 @@ export default function MedicalRequirements() {
       </section>
       {/* Detailed sections */}
       <div className="med-detail-wrapper" aria-label="Detailed Medical Guidance">
-        <section className="container med-section" aria-labelledby="who-needs">
-          <h2 id="who-needs">Who Needs a DOT Medical Exam?</h2>
-          <ul className="med-bullets">
-            <li>Drivers operating a <strong>commercial motor vehicle (CMV) in interstate commerce</strong> that requires a CDL (Class A, B, or C with endorsements).</li>
-            <li>Certain <strong>non‑CDL CMVs ≥ 10,001 lbs. GVWR/GCWR</strong> engaged in interstate commerce (state adoption varies).</li>
-            <li>School bus, passenger, or hazmat drivers subject to Part 391 qualification rules.</li>
-            <li>Intrastate only: follow state adoption of FMCSR—many mirror federal medical standards.</li>
-          </ul>
-          <p className="note">Farm or occasional use exemptions may apply in limited cases; always confirm with state DMV + carrier policy.</p>
-        </section>
-        <section className="container med-section" aria-labelledby="process">
-          <h2 id="process">Certification Process</h2>
-          <ol className="med-steps">
-            <li>Schedule with a <strong>FMCSA National Registry (NRCME) Certified Medical Examiner</strong>.</li>
-            <li>Bring photo ID, medication list (dosages), vision correction, CPAP compliance data (if applicable), and prior MEC if renewing.</li>
-            <li>Exam evaluates history, vitals, vision, hearing, urinalysis (not drug screen), and condition management documentation.</li>
-            <li>If qualified, examiner issues a Medical Examiner's Certificate (MEC) with validity period (up to 24 months).</li>
-            <li>Carrier (or state licensing agency) must retain / record status; CDL downgrade can occur if certificate lapses.</li>
-          </ol>
-        </section>
-        <section className="container med-section" aria-labelledby="standards">
-          <h2 id="standards">Key Qualification Standards</h2>
-          <div className="med-grid">
-            <div className="med-card">
-              <h3>Vision</h3>
-              <p>At least <strong>20/40</strong> in each eye (corrected okay) and field of vision ≥ 70° in each eye; ability to recognize standard traffic signal colors (red, green, amber). Vision exemption / alternative standard possible.</p>
-            </div>
-            <div className="med-card">
-              <h3>Hearing</h3>
-              <p>Forced whisper test at &le;5 feet in one ear OR audiometric average &le;40 dB. Hearing aids permissible—carry spare batteries.</p>
-            </div>
-            <div className="med-card">
-              <h3>Blood Pressure</h3>
-              <p>&lt;140/90: up to 24-month cert. Stage 1 (140–159/90–99): 1-year. Stage 2 (160–179/100–109): one-time 3-month to reduce. Stage 3 (≥180/110): disqualified until controlled.</p>
-            </div>
-            <div className="med-card">
-              <h3>Diabetes (Insulin)</h3>
-              <p>Insulin-treated allowed with treating clinician form + stability; monitor for severe hypoglycemia episodes. Provide A1C & logs as requested.</p>
-            </div>
-            <div className="med-card">
-              <h3>Sleep Apnea</h3>
-              <p>Moderate/severe OSA must show effective treatment (CPAP usage &gt;4 hrs/night on ≥70% nights). Non‑compliance risks disqualification.</p>
-            </div>
-            <div className="med-card">
-              <h3>Cardiac</h3>
-              <p>Post MI, stent, CABG, or arrhythmia requires waiting periods, cardiologist clearance, stress testing intervals as per guidance.</p>
-            </div>
-          </div>
-        </section>
+  {/* Removed inline 'Who Needs' section now its own dedicated page */}
+  {/* Certification Process & Key Standards moved to dedicated pages */}
         <section className="container med-section" aria-labelledby="conditions">
           <h2 id="conditions">Disqualifying / Conditional Conditions</h2>
           <ul className="med-bullets">

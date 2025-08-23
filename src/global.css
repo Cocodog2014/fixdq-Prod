@@ -21,6 +21,7 @@
 @import './pages/FMCSACompliance/ComplianceQuiz.css';
 @import './pages/FMCSACompliance/FarmVehicleDriverExemptions/FarmVehicleDriverExemptions.css';
 @import './pages/FMCSACompliance/MedicalRequirements/MedicalRequirements.css';
+@import './pages/FMCSACompliance/MedicalRequirements/WhoNeedsIt.css';
 @import './pages/About/About.css';
 @import './pages/FAQ/FAQ.css';
 @import './pages/Consultation/Consultation.css';

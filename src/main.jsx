@@ -7,6 +7,9 @@ import FMCSACompliance from './pages/FMCSACompliance'
 import FMCSARegulations from './pages/FMCSACompliance/FMCSARegulations'
 import HoursOfService from './pages/FMCSACompliance/HoursOfService'
 import MedicalRequirements from './pages/FMCSACompliance/MedicalRequirements/MedicalRequirements'
+import WhoNeedsIt from './pages/FMCSACompliance/MedicalRequirements/WhoNeedsIt'
+import CertificationFlow from './pages/FMCSACompliance/MedicalRequirements/CertificationFlow'
+import KeyStandards from './pages/FMCSACompliance/MedicalRequirements/KeyStandards'
 import FarmVehicleDriverExemptions from './pages/FMCSACompliance/FarmVehicleDriverExemptions/FarmVehicleDriverExemptions'
 import SafetyManagement from './pages/FMCSACompliance/SafetyManagement'
 import SafetyTraining from './pages/SafetyTraining/SafetyTraining'
@@ -82,7 +85,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/fmcsa-regulations" element={withFooter(FMCSARegulations)} />
         <Route path="/hours-of-service" element={withFooter(HoursOfService)} />
         <Route path="/medical-requirements" element={withFooter(MedicalRequirements)} />
-  <Route path="/farm-vehicle-driver-exemptions" element={withFooter(FarmVehicleDriverExemptions)} />
+        <Route path="/medical-requirements/who-needs" element={withFooter(WhoNeedsIt)} />
+  <Route path="/medical-requirements/certification-flow" element={withFooter(CertificationFlow)} />
+  <Route path="/medical-requirements/key-standards" element={withFooter(KeyStandards)} />
+        <Route path="/farm-vehicle-driver-exemptions" element={withFooter(FarmVehicleDriverExemptions)} />
         <Route path="/safety-management" element={withFooter(SafetyManagement)} />
         <Route path="/safety-training" element={withFooter(SafetyTraining)} />
         <Route path="/safety-training/defensive-driving" element={withFooter(DefensiveDriving)} />

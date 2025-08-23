@@ -1,6 +1,7 @@
 .med-hero{padding-top:2.25rem;padding-bottom:1.25rem}
 .med-hero-inner{max-width:760px}
 .med-hero .lead{margin-top:.75rem;line-height:1.5;font-size:1rem;max-width:720px}
+.med-hero-inner h1{font-size:clamp(2.25rem,4vw,3.25rem);line-height:1.05}
 .med-summary-grid{padding-top:.25rem;padding-bottom:1.5rem}
 .med-summary-grid .grid{margin-top:1.25rem}
 .med-section{padding:1.25rem 0;border-top:1px solid var(--color-gray-200)}
@@ -18,6 +19,31 @@
 .med-page a{color:#e0f2fe}
 .med-card h3{margin-top:0;font-size:1.1rem}
 .med-card p{margin:.25rem 0 0;font-size:.9rem;line-height:1.5}
+/* Certification Flow Grid & Checklist */
+.cert-grid-section{padding:0 0 1.5rem}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.25rem}
+.cert-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:1rem;border-radius:var(--radius-lg);position:relative;display:flex;flex-direction:column;backdrop-filter:blur(4px)}
+.cert-card.is-done{outline:2px solid var(--color-accent-green,#16a34a);background:rgba(34,197,94,.12)}
+.cert-step-num{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#1e3a8a;font-weight:600;margin-bottom:.35rem;font-size:.85rem}
+.cert-card h3{margin:.25rem 0 .25rem;font-size:1rem}
+.cert-short{font-size:.8rem;opacity:.85;margin:0 0 .35rem}
+.cert-detail{font-size:.75rem;line-height:1.35;margin:0 0 .75rem}
+.cert-check-toggle{align-self:flex-start;background:#0ea5e9;color:#fff;border:none;border-radius:999px;padding:.4rem .85rem;font-size:.7rem;cursor:pointer;box-shadow:var(--shadow-sm)}
+.cert-check-toggle:hover{filter:brightness(1.08)}
+.cert-checklist-section{padding-top:1rem}
+.cert-checklist-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.75rem}
+.cert-progress{font-size:.8rem;background:rgba(255,255,255,.08);padding:.3rem .6rem;border-radius:999px}
+.cert-checklist{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.cert-checklist li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);padding:.75rem .85rem;border-radius:var(--radius-md)}
+.cert-checklist li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);padding:.85rem 1rem;border-radius:var(--radius-md);display:flex;align-items:flex-start}
+.cert-checklist li.done{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.5)}
+.cert-checklist label.cert-chk-label{display:flex;gap:.75rem;font-size:.95rem;line-height:1.45;cursor:pointer;font-weight:500;width:100%}
+.cert-checklist input[type=checkbox]{width:22px;height:22px;margin-top:.15rem;flex-shrink:0}
+.cert-chk-text{flex:1}
+.cert-actions{margin-top:.5rem}
+.cert-reset{background:#475569;color:#fff;border:none;border-radius:999px;padding:.4rem .9rem;font-size:.7rem;cursor:pointer}
+.cert-reset:hover{filter:brightness(1.1)}
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);border:0}
 @media (min-width:900px){
   .med-card p{font-size:.95rem}
 }
@@ -25,6 +51,7 @@
   .med-hero{padding-top:3rem;padding-bottom:2rem}
   .med-hero .lead{font-size:1.05rem}
   .med-summary-grid{padding-bottom:2.25rem}
+  .cert-checklist label.cert-chk-label{font-size:1rem}
 }
 @media (min-width:1024px){
   .med-hero{padding-top:3.5rem;padding-bottom:2.25rem}
