@@ -29,10 +29,9 @@ export function computeLicenseResult({ vehicleType, gvwr, operatingArea, cargoTy
   if (trailer === 'trailer_over_10000' && gvwr !== 'over_26001') notes.push('If GCWR ≥ 26,001 and trailer > 10,000 lbs, Class A applies.')
   if (farmExemption === 'yes' && operatingArea === 'intrastate' && !wantsHazmat && passengerCount !== '16_plus' && schoolBus !== 'yes') notes.push('Farm Vehicle Driver (FVD) exemption may apply within 150 air-miles; CDL may not be required. Confirm with your state DMV.')
   return { cdlClass, endorsements: Array.from(endorsements), notes, references: [
-    { label: 'FMCSA: Do I Need a CDL?', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license' },
   { label: 'Medical Requirements (Guide)', href: '/medical-requirements' },
-    { label: 'FMCSA: Tank Vehicle (N) & HazMat (H/X)', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/endorsements' },
-    { label: 'FMCSA: Farm Vehicle Driver Exemptions', href: 'https://www.fmcsa.dot.gov/registration/commercial-drivers-license/farm-vehicle-driver-exemptions' },
+  { label: 'License Endorsements', href: 'https://www.fmcsa.dot.gov/sites/fmcsa.dot.gov/files/docs/Commercial_Drivers_License_Endorcements_508CLN.pdf' },
+  { label: 'Farm Vehicle Driver Exemptions', href: '/farm-vehicle-driver-exemptions' },
   ] }
 }
 export default function License({ active, onClick }) {
