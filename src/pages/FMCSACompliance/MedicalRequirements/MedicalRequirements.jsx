@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import GlobalHeader from '../../components/GlobalHeader'
+import GlobalHeader from '../../../components/GlobalHeader'
 import './MedicalRequirements.css'
 
 export default function MedicalRequirements() {
@@ -8,7 +8,6 @@ export default function MedicalRequirements() {
   return (
     <div className="med-page" data-page="medical-requirements">
       <GlobalHeader />
-
       {/* Hero */}
       <header className="container med-hero" aria-labelledby="med-title">
         <div className="med-hero-inner">
@@ -19,7 +18,6 @@ export default function MedicalRequirements() {
           </div>
         </div>
       </header>
-
       {/* Summary Grid (landing style similar to HomePage feature grid) */}
       <section className="med-summary-grid features-grid" aria-label="Medical Requirements Overview">
         <div className="container">
@@ -35,7 +33,6 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">View Detail</span></div>
             </a>
-
             <a href="#process" className="feature-card orange-border feature-link-card" aria-describedby="proc-desc">
               <div className="feature-header"><span className="icon">🩺</span><h3>Certification Flow</h3></div>
               <ul id="proc-desc">
@@ -47,7 +44,6 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">View Steps</span></div>
             </a>
-
             <a href="#standards" className="feature-card green-border feature-link-card" aria-describedby="std-desc">
               <div className="feature-header"><span className="icon">📋</span><h3>Key Standards</h3></div>
               <ul id="std-desc">
@@ -59,7 +55,6 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">Review</span></div>
             </a>
-
             <a href="#conditions" className="feature-card red-border feature-link-card" aria-describedby="cond-desc">
               <div className="feature-header"><span className="icon">⚠️</span><h3>Risk Conditions</h3></div>
               <ul id="cond-desc">
@@ -71,7 +66,6 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">See List</span></div>
             </a>
-
             <a href="#monitoring" className="feature-card teal-border feature-link-card" aria-describedby="mon-desc">
               <div className="feature-header"><span className="icon">⏱️</span><h3>Monitoring</h3></div>
               <ul id="mon-desc">
@@ -83,7 +77,6 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">Learn</span></div>
             </a>
-
             <a href="#violations" className="feature-card purple-border feature-link-card" aria-describedby="vio-desc">
               <div className="feature-header"><span className="icon">🔍</span><h3>Violations</h3></div>
               <ul id="vio-desc">
@@ -95,7 +88,6 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">Prevent</span></div>
             </a>
-
             <a href="#links" className="feature-card blue-border feature-link-card" aria-describedby="link-desc">
               <div className="feature-header"><span className="icon">🔗</span><h3>Official Links</h3></div>
               <ul id="link-desc">
@@ -110,8 +102,7 @@ export default function MedicalRequirements() {
           </div>
         </div>
       </section>
-
-      {/* Detailed sections (retained for depth + anchors) */}
+      {/* Detailed sections */}
       <div className="med-detail-wrapper" aria-label="Detailed Medical Guidance">
         <section className="container med-section" aria-labelledby="who-needs">
           <h2 id="who-needs">Who Needs a DOT Medical Exam?</h2>
@@ -123,7 +114,6 @@ export default function MedicalRequirements() {
           </ul>
           <p className="note">Farm or occasional use exemptions may apply in limited cases; always confirm with state DMV + carrier policy.</p>
         </section>
-
         <section className="container med-section" aria-labelledby="process">
           <h2 id="process">Certification Process</h2>
           <ol className="med-steps">
@@ -134,7 +124,6 @@ export default function MedicalRequirements() {
             <li>Carrier (or state licensing agency) must retain / record status; CDL downgrade can occur if certificate lapses.</li>
           </ol>
         </section>
-
         <section className="container med-section" aria-labelledby="standards">
           <h2 id="standards">Key Qualification Standards</h2>
           <div className="med-grid">
@@ -164,7 +153,6 @@ export default function MedicalRequirements() {
             </div>
           </div>
         </section>
-
         <section className="container med-section" aria-labelledby="conditions">
           <h2 id="conditions">Disqualifying / Conditional Conditions</h2>
           <ul className="med-bullets">
@@ -174,9 +162,8 @@ export default function MedicalRequirements() {
             <li><strong>Unmanaged cardiovascular disease</strong> (recent MI without clearance, uncontrolled arrhythmias).</li>
             <li><strong>Substance abuse / positive tests</strong> without successful treatment & follow-up program.</li>
           </ul>
-          <p className="note">Exemptions exist for certain drivers meeting alternative criteria (vision, diabetes). Maintain documentation onboard if required.</p>
+            <p className="note">Exemptions exist for certain drivers meeting alternative criteria (vision, diabetes). Maintain documentation onboard if required.</p>
         </section>
-
         <section className="container med-section" aria-labelledby="monitoring">
           <h2 id="monitoring">Monitoring & Expiration</h2>
           <ul className="med-bullets">
@@ -186,7 +173,6 @@ export default function MedicalRequirements() {
             <li>Upload status to state (if state requires) to prevent CDL downgrade notices.</li>
           </ul>
         </section>
-
         <section className="container med-section" aria-labelledby="violations">
           <h2 id="violations">Common Violations & Prevention</h2>
           <ul className="med-bullets">
@@ -196,7 +182,6 @@ export default function MedicalRequirements() {
             <li><strong>Operating with disqualifying untreated condition:</strong> Report changes (syncope, chest pain) immediately.</li>
           </ul>
         </section>
-
         <section className="container med-section" aria-labelledby="links">
           <h2 id="links">Helpful Links</h2>
           <ul className="med-links">
