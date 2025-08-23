@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../../components/GlobalHeader'
+// Styles for this page are split between the shared MedicalRequirements.css and CertificationFlow.css (imported via global.css)
 import './MedicalRequirements.css'
 
 export default function CertificationFlow(){
@@ -10,43 +11,50 @@ export default function CertificationFlow(){
       id: 'schedule',
       title: 'Schedule Exam',
       short: 'Book with NRCME certified examiner.',
-      detail: 'Schedule with a FMCSA National Registry (NRCME) Certified Medical Examiner. Verify they are active on the registry.'
+      detail: 'Schedule with a FMCSA National Registry (NRCME) Certified Medical Examiner. Verify they are active on the registry.',
+      color: 'blue'
     },
     {
       id: 'prepare',
       title: 'Prepare Docs',
       short: 'Gather ID, meds, prior MEC, corrections.',
-      detail: 'Photo ID, full medication list (name / dose / frequency), prior MEC, vision correction, CPAP compliance data (if applicable), specialist clearances.'
+      detail: 'Photo ID, full medication list (name / dose / frequency), prior MEC, vision correction, CPAP compliance data (if applicable), specialist clearances.',
+      color: 'orange'
     },
     {
       id: 'exam',
       title: 'Exam Day',
       short: 'History, vitals, vision & hearing, urine.',
-      detail: 'History interview, vitals (BP / pulse), vision & hearing tests, urinalysis (not drug test), focused assessments for conditions.'
+      detail: 'History interview, vitals (BP / pulse), vision & hearing tests, urinalysis (not drug test), focused assessments for conditions.',
+      color: 'teal'
     },
     {
       id: 'conditional',
       title: 'Conditional Card?',
       short: 'May shorten for monitored conditions.',
-      detail: 'Examiner may issue shorter-term card (3 / 6 / 12 mo) if monitoring required (hypertension, diabetes, OSA, cardiac).'
+      detail: 'Examiner may issue shorter-term card (3 / 6 / 12 mo) if monitoring required (hypertension, diabetes, OSA, cardiac).',
+      color: 'purple'
     },
     {
       id: 'issuance',
       title: 'Certificate Issued',
       short: 'MEC up to 24 months (or limited).',
-      detail: 'Qualified drivers receive Medical Examiner\'s Certificate (MEC) valid up to 24 months unless limited by condition.'
+      detail: 'Qualified drivers receive Medical Examiner\'s Certificate (MEC) valid up to 24 months unless limited by condition.',
+      color: 'green'
     },
     {
       id: 'carrier',
       title: 'Carrier / State File',
       short: 'Record & update status reminders.',
-      detail: 'Upload / submit status per state rules; update driver qualification file; configure 90 / 60 / 30 day automated reminders.'
+      detail: 'Upload / submit status per state rules; update driver qualification file; configure 90 / 60 / 30 day automated reminders.',
+      color: 'amber'
     },
     {
       id: 'follow',
       title: 'Follow-Up',
       short: 'Track labs, compliance data.',
-      detail: 'Track pending specialty reports, CPAP usage, A1C results and set next renewal planning earlier if monitored.'
+      detail: 'Track pending specialty reports, CPAP usage, A1C results and set next renewal planning earlier if monitored.',
+      color: 'slate'
     }
   ]
 
@@ -75,7 +83,7 @@ export default function CertificationFlow(){
           <h2 id="grid-head" className="visually-hidden">Flow Overview</h2>
           <div className="cert-grid">
             {steps.map((s,i)=>(
-              <div key={s.id} className={`cert-card ${done[s.id] ? 'is-done': ''}`}> 
+              <div key={s.id} className={`cert-card theme-${s.color} ${done[s.id] ? 'is-done': ''}`}> 
                 <div className="cert-step-num">{i+1}</div>
                 <h3>{s.title}</h3>
                 <p className="cert-short">{s.short}</p>
@@ -88,7 +96,7 @@ export default function CertificationFlow(){
           </div>
         </section>
         {/* Interactive Checklist */}
-        <section className="cert-checklist-section med-section" aria-labelledby="check-head">
+  <section className={`cert-checklist-section med-section ${completed ? 'is-active':''}`} aria-labelledby="check-head">
           <div className="cert-checklist-head">
             <h2 id="check-head">Interactive Checklist</h2>
             <div className="cert-progress" aria-live="polite">{completed} / {steps.length} complete</div>

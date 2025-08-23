@@ -1,0 +1,20 @@
+/* Key Standards Page Specific Styles */
+.key-standards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:.75rem}
+.key-standards-grid .standard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:var(--color-white);padding:1rem;border-radius:var(--radius-lg);backdrop-filter:blur(4px);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.key-standards-grid .standard:before{content:"";position:absolute;inset:0;opacity:.6;pointer-events:none}
+.key-standards-grid .standard.ks-vision{background:linear-gradient(135deg,#1e3a8a,#2563eb)!important}
+.key-standards-grid .standard.ks-hearing{background:linear-gradient(135deg,#581c87,#7e22ce)!important}
+.key-standards-grid .standard.ks-bp{background:linear-gradient(135deg,#7f1d1d,#dc2626)!important}
+.key-standards-grid .standard.ks-diabetes{background:linear-gradient(135deg,#065f46,#059669)!important}
+.key-standards-grid .standard.ks-osa{background:linear-gradient(135deg,#0f766e,#14b8a6)!important}
+.key-standards-grid .standard.ks-cardio{background:linear-gradient(135deg,#1e293b,#334155)!important}
+.key-standards-grid .standard.ks-neuro{background:linear-gradient(135deg,#4c1d95,#6d28d9)!important}
+.key-standards-grid .standard.ks-substance{background:linear-gradient(135deg,#92400e,#f97316)!important}
+.key-standards-grid .standard.ks-psych{background:linear-gradient(135deg,#1d4ed8,#3b82f6)!important}
+.key-standards-grid .standard.ks-exempt{background:linear-gradient(135deg,#365314,#65a30d)!important}
+.key-standards-grid .standard h2{color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.4)}
+.key-standards-grid .standard h2{margin:.15rem 0 .35rem;font-size:1.05rem;color:var(--color-white)}
+.key-standards-grid .standard p{font-size:.8rem;line-height:1.45;margin:0}
+@media (min-width:900px){
+  .key-standards-grid .standard p{font-size:.85rem}
+}
