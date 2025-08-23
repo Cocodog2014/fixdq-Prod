@@ -7,6 +7,7 @@ import FMCSACompliance from './pages/FMCSACompliance'
 import FMCSARegulations from './pages/FMCSACompliance/FMCSARegulations'
 import HoursOfService from './pages/FMCSACompliance/HoursOfService'
 import MedicalRequirements from './pages/FMCSACompliance/MedicalRequirements'
+import FarmVehicleDriverExemptions from './pages/FMCSACompliance/FarmVehicleDriverExemptions/FarmVehicleDriverExemptions'
 import SafetyManagement from './pages/FMCSACompliance/SafetyManagement'
 import SafetyTraining from './pages/SafetyTraining/SafetyTraining'
 import DefensiveDriving from './pages/SafetyTraining/DefensiveDriving'
@@ -81,6 +82,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/fmcsa-regulations" element={withFooter(FMCSARegulations)} />
         <Route path="/hours-of-service" element={withFooter(HoursOfService)} />
         <Route path="/medical-requirements" element={withFooter(MedicalRequirements)} />
+  <Route path="/farm-vehicle-driver-exemptions" element={withFooter(FarmVehicleDriverExemptions)} />
         <Route path="/safety-management" element={withFooter(SafetyManagement)} />
         <Route path="/safety-training" element={withFooter(SafetyTraining)} />
         <Route path="/safety-training/defensive-driving" element={withFooter(DefensiveDriving)} />

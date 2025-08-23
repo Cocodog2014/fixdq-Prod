@@ -1,0 +1,17 @@
+.fvdx-hero { padding: 2.5rem 0 1rem; }
+.fvdx-hero h1 { font-size: clamp(1.8rem, 2.3vw, 2.6rem); margin: 0 0 0.75rem; }
+.fvdx-hero .lead { max-width: 850px; font-size: 1.05rem; line-height: 1.5; margin: 0 0 1rem; }
+.fvdx-backbar { margin-top: .5rem; }
+.fvdx-back-btn { background:#065f46; color:#fff; border:none; padding:.55rem 1rem; border-radius:999px; cursor:pointer; font-size:.85rem; }
+
+.fvdx-section { padding: 2rem 0 1.5rem; border-top:1px solid #e2e8f0; }
+.fvdx-section h2 { font-size:1.4rem; margin:0 0 .75rem; }
+.fvdx-bullets { list-style:disc; margin:0 0 1rem 1.25rem; padding:0; display:grid; gap:.4rem; }
+.fvdx-bullets li { line-height:1.45; }
+.fvdx-bullets strong { color:#0f172a; }
+
+.fvdx-links { list-style: none; margin:0 0 1rem; padding:0; display:flex; flex-direction:column; gap:.4rem; }
+.fvdx-links a { color:#0369a1; text-decoration:underline; text-underline-offset:2px; }
+.fvdx-links a:focus, .fvdx-links a:hover { color:#0c4a6e; }
+
+.fvdx-section .note { font-size:.85rem; color:#475569; background:#f1f5f9; padding:.6rem .75rem; border-left:4px solid #0369a1; border-radius:4px; }
