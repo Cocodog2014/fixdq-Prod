@@ -20,18 +20,18 @@ export default function OfficialLinks(){
       id:'conditions',
       title:'Condition-Specific Standards & Forms',
       links:[
-        {label:'Diabetes Standard & Forms', url:'https://www.fmcsa.dot.gov/regulations/medical/diabetes'},
-        {label:'Vision Evaluation Report (Form MCSA-5871)', url:'https://www.fmcsa.dot.gov/regulations/medical/vision-program'},
-        {label:'Seizure / Epilepsy Guidance', url:'https://www.fmcsa.dot.gov/regulations/medical/epi'},
-        {label:'Cardiovascular Guidance', url:'https://www.fmcsa.dot.gov/regulations/medical/cardiovascular'}
+        {label:'Diabetes Standard & Forms', url:'https://www.fmcsa.dot.gov/medical/driver-medical-requirements/qualifications-drivers-diabetes-standard-83-fr-47486-sept-19'},
+        {label:'Vision Evaluation Report (Form MCSA-5871)', url:'https://www.fmcsa.dot.gov/regulations/medical/vision-evaluation-report-form-mcsa-5871'},
+        {label:'Seizure / Epilepsy Guidance', url:'https://www.fmcsa.dot.gov/medical/driver-medical-requirements/new-seizure-applicant-doc-email-version'},
+        {label:'Cardiovascular Guidance', url:'https://www.fmcsa.dot.gov/regulations/medical/cardiovascular-advisory-panel-guidelines-medical-examination-commercial-motor'}
       ]
     },
     {
       id:'forms',
       title:'Common Medical Forms',
       links:[
-        {label:'Medical Examination Report (MCSA-5875)', url:'https://www.fmcsa.dot.gov/regulations/medical/medical-examination-report-form-commercial-driver-medical'},
-        {label:'Medical Examiner Certificate (MEC) (MCSA-5876)', url:'https://www.fmcsa.dot.gov/regulations/medical/medical-examiners-certificate-form-meca-5876'},
+        {label:'Medical Examination Report (MCSA-5875)', url:'https://www.fmcsa.dot.gov/regulations/medical/medical-examination-report-form-commercial-driver-medical-certification'},
+        {label:'Medical Examiner Certificate (MEC) (MCSA-5876)', url:'https://www.fmcsa.dot.gov/regulations/medical/medical-examiners-certificate-commercial-driver-medical-certification'},
         {label:'Insulin-Treated Diabetes Mellitus Assessment (MCSA-5870)', url:'https://www.fmcsa.dot.gov/regulations/medical/insulin-treated-diabetes-mellitus-assessment-form-mcsa-5870'},
         {label:'Skill Performance Evaluation (SPE) Program', url:'https://www.fmcsa.dot.gov/medical/driver-medical-requirements/skill-performance-evaluation-certificate-program'}
       ]
