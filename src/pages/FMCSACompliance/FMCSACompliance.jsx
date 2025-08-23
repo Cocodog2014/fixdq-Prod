@@ -380,7 +380,6 @@ export default function FMCSACompliance() {
                 State-by-State FMCSA Rules
               </a>
             </li>
-            <li><a href="#printable-checklist">Printable Pre-trip Checklist</a></li>
           </ul>
           <div id="cdl-chart" style={{ marginTop: '1rem', display: showCdlChart ? 'block' : 'none' }}>
             <CdlClassComparison
