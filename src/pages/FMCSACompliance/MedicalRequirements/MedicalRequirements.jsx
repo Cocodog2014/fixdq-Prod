@@ -77,7 +77,7 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">Learn</span></div>
             </Link>
-            <a href="#violations" className="feature-card purple-border feature-link-card" aria-describedby="vio-desc">
+            <Link to="/medical-requirements/violations" className="feature-card purple-border feature-link-card" aria-describedby="vio-desc">
               <div className="feature-header"><span className="icon">🔍</span><h3>Violations</h3></div>
               <ul id="vio-desc">
                 <li>Expired MEC</li>
@@ -87,8 +87,8 @@ export default function MedicalRequirements() {
                 <li>Poor documentation</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">Prevent</span></div>
-            </a>
-            <a href="#links" className="feature-card blue-border feature-link-card" aria-describedby="link-desc">
+            </Link>
+            <Link to="/medical-requirements/official-links" className="feature-card blue-border feature-link-card" aria-describedby="link-desc">
               <div className="feature-header"><span className="icon">🔗</span><h3>Official Links</h3></div>
               <ul id="link-desc">
                 <li>NRCME Lookup</li>
@@ -98,32 +98,10 @@ export default function MedicalRequirements() {
                 <li>Reference docs</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">Open</span></div>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-  {/* Remaining inline sections (others moved to dedicated pages) */}
-  <div className="med-detail-wrapper" aria-label="Detailed Medical Guidance">
-        <section className="container med-section" aria-labelledby="violations">
-          <h2 id="violations">Common Violations & Prevention</h2>
-          <ul className="med-bullets">
-            <li><strong>No valid MEC on file:</strong> Keep digital + wallet card; verify DMV record reflects status.</li>
-            <li><strong>Expired hypertension short-term card:</strong> Set calendar alerts + carrier dashboard monitoring.</li>
-            <li><strong>Failure to carry corrective lenses / hearing aids:</strong> Follow restriction codes.</li>
-            <li><strong>Operating with disqualifying untreated condition:</strong> Report changes (syncope, chest pain) immediately.</li>
-          </ul>
-        </section>
-        <section className="container med-section" aria-labelledby="links">
-          <h2 id="links">Helpful Links</h2>
-          <ul className="med-links">
-            <li><a href="https://nationalregistry.fmcsa.dot.gov/NRPublicUI/home.seam" target="_blank" rel="noopener noreferrer">National Registry (Find Examiner)</a></li>
-            <li><a href="https://www.fmcsa.dot.gov/medical/driver-medical-requirements/medical-requirements" target="_blank" rel="noopener noreferrer">FMCSA: Medical Requirements</a></li>
-            <li><a href="https://www.fmcsa.dot.gov/regulations/medical" target="_blank" rel="noopener noreferrer">FMCSA Medical Programs</a></li>
-            <li><a href="https://www.fmcsa.dot.gov/regulations/medical/diabetes" target="_blank" rel="noopener noreferrer">Diabetes Standard / Forms</a></li>
-          </ul>
-          <p className="note">This guide is informational and not a substitute for official FMCSR or medical professional judgment.</p>
-        </section>
-      </div>
     </div>
   )
 }

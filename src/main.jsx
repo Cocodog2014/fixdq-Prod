@@ -60,6 +60,8 @@ import GlobalFooter from './components/GlobalFooter/GlobalFooter'
 import { initGA } from './analytics/initGA'
 import RouteTracker from './components/Analytics/RouteTracker'
 import Monitoring from './pages/FMCSACompliance/MedicalRequirements/Monitoring'
+import Violations from './pages/FMCSACompliance/MedicalRequirements/Violations'
+import OfficialLinks from './pages/FMCSACompliance/MedicalRequirements/OfficialLinks'
 
 // Small helper to append the GlobalFooter to any page component without editing each file.
 const withFooter = (Component) => (
@@ -92,6 +94,8 @@ createRoot(document.getElementById('root')).render(
   <Route path="/medical-requirements/key-standards" element={withFooter(KeyStandards)} />
   <Route path="/medical-requirements/risk-conditions" element={withFooter(RiskConditions)} />
         <Route path="/medical-requirements/monitoring" element={withFooter(Monitoring)} />
+        <Route path="/medical-requirements/violations" element={withFooter(Violations)} />
+        <Route path="/medical-requirements/official-links" element={withFooter(OfficialLinks)} />
         <Route path="/farm-vehicle-driver-exemptions" element={withFooter(FarmVehicleDriverExemptions)} />
         <Route path="/safety-management" element={withFooter(SafetyManagement)} />
         <Route path="/safety-training" element={withFooter(SafetyTraining)} />
