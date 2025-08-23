@@ -1,12 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalHeader from '../../../components/GlobalHeader'
-import './FarmVehicleDriverExemptions.css'
 
 export default function FarmVehicleDriverExemptions() {
   const navigate = useNavigate()
   return (
-    <div className="fvdx-page" data-page="farm-vehicle-driver-exemptions">
+  <div className="fvdx-page bg-gradient-primary" data-page="farm-vehicle-driver-exemptions">
       <GlobalHeader />
       <section className="container fvdx-hero" aria-labelledby="fvdx-title">
         <h1 id="fvdx-title">Farm Vehicle Driver Exemptions (FVD)</h1>
@@ -18,8 +17,8 @@ export default function FarmVehicleDriverExemptions() {
 
       <section className="container fvdx-section" aria-labelledby="grid-title">
         <h2 id="grid-title">Key Exemption Areas</h2>
-        <div className="fvdx-grid">
-          <div className="fvdx-card" aria-labelledby="def-cfv">
+        <div className="landing-grid">
+          <div className="landing-card theme-orange" aria-labelledby="def-cfv">
             <h3 id="def-cfv">Definitions & Covered Farm Vehicles</h3>
             <p>FMCSA (49 CFR § 390.5) defines a Covered Farm Vehicle (CFV). A vehicle qualifies if ALL apply:</p>
             <ul className="fvdx-bullets">
@@ -30,7 +29,7 @@ export default function FarmVehicleDriverExemptions() {
               <li>EITHER weighs ≤ 26,001 lbs (any distance) OR if heavier, operates within 150 air‑miles of the farm (when out of state).</li>
             </ul>
           </div>
-          <div className="fvdx-card" aria-labelledby="hos-eld">
+          <div className="landing-card theme-sky" aria-labelledby="hos-eld">
             <h3 id="hos-eld">Hours of Service (HOS) & ELD</h3>
             <ul className="fvdx-bullets">
               <li>49 CFR § 395.1(k)(4): Ag commodity transport within 150 air‑miles of the source is exempt from HOS (incl. ELD & logbooks).</li>
@@ -38,7 +37,7 @@ export default function FarmVehicleDriverExemptions() {
               <li>Other ELD exemptions: pre‑2000 engines; driving ≤ 8 days outside radius in 30‑day period (paper logs those days).</li>
             </ul>
           </div>
-          <div className="fvdx-card" aria-labelledby="cdl-qual">
+          <div className="landing-card theme-purple" aria-labelledby="cdl-qual">
             <h3 id="cdl-qual">CDL & Driver Qualification</h3>
             <ul className="fvdx-bullets">
               <li>49 CFR § 383.3(d): Farmers / family / employees within 150 air‑miles (not for‑hire) may be CDL‑exempt.</li>
@@ -46,7 +45,7 @@ export default function FarmVehicleDriverExemptions() {
               <li>49 CFR § 391.2: Straight trucks—most Part 391 qualification rules waived (except distracted driving prohibitions). Articulated CMVs: limited waiver only.</li>
             </ul>
           </div>
-            <div className="fvdx-card" aria-labelledby="quick-ref">
+            <div className="landing-card theme-green" aria-labelledby="quick-ref">
               <h3 id="quick-ref">Quick Reference</h3>
               <table className="fvdx-table" aria-label="Quick Reference Table">
                 <thead>
@@ -76,7 +75,7 @@ export default function FarmVehicleDriverExemptions() {
       <section className="container fvdx-section" aria-labelledby="links">
         <h2 id="links">Helpful Links</h2>
         <ul className="fvdx-links">
-          <li><a href="https://www.fmcsa.dot.gov/registration/commercial-drivers-license/farm-vehicle-driver-exemptions" target="_blank" rel="noopener noreferrer">FMCSA: Farm Vehicle Driver Exemptions</a></li>
+          <li><a href="https://www.fmcsa.dot.gov/faq/what-covered-farm-vehicle-cfv" target="_blank" rel="noopener noreferrer">FMCSA: Farm Vehicle Driver Exemptions</a></li>
           <li><a href="https://www.fmcsa.dot.gov/regulations/hours-service/summary-hours-service-regulations" target="_blank" rel="noopener noreferrer">FMCSA: Summary of HOS</a></li>
           <li><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-390" target="_blank" rel="noopener noreferrer">49 CFR Part 390 (Scope & Definitions)</a></li>
         </ul>
