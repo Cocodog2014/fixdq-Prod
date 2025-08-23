@@ -16,65 +16,61 @@ export default function FarmVehicleDriverExemptions() {
         </div>
       </section>
 
-      <section className="container fvdx-section" aria-labelledby="definition">
-        <h2 id="definition">What is a Covered Farm Vehicle?</h2>
-        <ul className="fvdx-bullets">
-          <li>Registered in a state with a special farm plate or similar designation.</li>
-          <li>Operated by the owner or operator of a farm or ranch (or a family member / employee).</li>
-          <li>Transporting agricultural commodities, livestock, machinery, or supplies to or from a farm/ranch.</li>
-          <li>Not for-hire (except certain limited exceptions for livestock transport between farm and market).</li>
-          <li>Not transporting hazardous materials requiring placarding (limited diesel / ag chemicals may be allowed under other exemptions).</li>
-        </ul>
+      <section className="container fvdx-section" aria-labelledby="grid-title">
+        <h2 id="grid-title">Key Exemption Areas</h2>
+        <div className="fvdx-grid">
+          <div className="fvdx-card" aria-labelledby="def-cfv">
+            <h3 id="def-cfv">Definitions & Covered Farm Vehicles</h3>
+            <p>FMCSA (49 CFR § 390.5) defines a Covered Farm Vehicle (CFV). A vehicle qualifies if ALL apply:</p>
+            <ul className="fvdx-bullets">
+              <li>Operated by a farmer, rancher, or their family member / employee.</li>
+              <li>Transports ag commodities, livestock, machinery, or supplies to / from a farm or ranch.</li>
+              <li>Displays a license/plate identifying it as a farm vehicle.</li>
+              <li>Not used for for‑hire operations.</li>
+              <li>EITHER weighs ≤ 26,001 lbs (any distance) OR if heavier, operates within 150 air‑miles of the farm (when out of state).</li>
+            </ul>
+          </div>
+          <div className="fvdx-card" aria-labelledby="hos-eld">
+            <h3 id="hos-eld">Hours of Service (HOS) & ELD</h3>
+            <ul className="fvdx-bullets">
+              <li>49 CFR § 395.1(k)(4): Ag commodity transport within 150 air‑miles of the source is exempt from HOS (incl. ELD & logbooks).</li>
+              <li>Livestock haulers: 30‑minute break exemption; ELD relief inside radius.</li>
+              <li>Other ELD exemptions: pre‑2000 engines; driving ≤ 8 days outside radius in 30‑day period (paper logs those days).</li>
+            </ul>
+          </div>
+          <div className="fvdx-card" aria-labelledby="cdl-qual">
+            <h3 id="cdl-qual">CDL & Driver Qualification</h3>
+            <ul className="fvdx-bullets">
+              <li>49 CFR § 383.3(d): Farmers / family / employees within 150 air‑miles (not for‑hire) may be CDL‑exempt.</li>
+              <li>CDL exemption often also removes Part 382 drug & alcohol testing applicability.</li>
+              <li>49 CFR § 391.2: Straight trucks—most Part 391 qualification rules waived (except distracted driving prohibitions). Articulated CMVs: limited waiver only.</li>
+            </ul>
+          </div>
+            <div className="fvdx-card" aria-labelledby="quick-ref">
+              <h3 id="quick-ref">Quick Reference</h3>
+              <table className="fvdx-table" aria-label="Quick Reference Table">
+                <thead>
+                  <tr><th>Regulation Area</th><th>CFV Exemption Summary</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>HOS & ELD</td><td>Inside 150 air‑miles: HOS & ELD not required; certain break rules waived.</td></tr>
+                  <tr><td>CDL</td><td>Waived for qualifying farm operators within 150 air‑miles (non for‑hire).</td></tr>
+                  <tr><td>Driver Qualification</td><td>Straight trucks: broad Part 391 waiver; Articulated: limited elements waived.</td></tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
       </section>
 
-      <section className="container fvdx-section" aria-labelledby="distance-limits">
-        <h2 id="distance-limits">Distance Limits</h2>
-        <p>Federal FVD exemptions commonly apply within <strong>150 air-miles</strong> (approx. 172 land miles) of the farm/ranch. Some provisions differ when crossing state lines or exceeding weight thresholds.</p>
+      <section className="container fvdx-section" aria-labelledby="addl-notes">
+        <h2 id="addl-notes">Additional Notes</h2>
         <ul className="fvdx-bullets">
-          <li><strong>Intrastate:</strong> Usually honored statewide subject to state adoption.</li>
-          <li><strong>Interstate within 150 air-miles:</strong> CDL not required for covered farm vehicle (depending on weight class).</li>
-          <li>Beyond 150 air-miles: standard CDL / HOS rules generally resume.</li>
+          <li>Exemptions generally apply only to U.S.-registered farm vehicles (not Canada/Mexico).</li>
+          <li>State-declared planting & harvest periods may extend certain HOS flexibilities.</li>
+          <li>Placarded hazardous materials transportation voids CFV exemptions.</li>
+          <li>Maintain documentation: farm registration, commodity proof, distance tracking near 150 air‑mile limit.</li>
         </ul>
-      </section>
-
-      <section className="container fvdx-section" aria-labelledby="cdl-impact">
-        <h2 id="cdl-impact">Impact on CDL Requirements</h2>
-        <p>Drivers of qualifying covered farm vehicles may be exempt from holding a CDL when:</p>
-        <ul className="fvdx-bullets">
-          <li>The vehicle is a straight truck or combination used strictly for farm operations.</li>
-          <li>Operation stays within the authorized air-mile radius.</li>
-          <li>No placarded hazardous materials are transported.</li>
-        </ul>
-        <p className="note">States can narrow or expand conditions; some require a Class D with farm designation. Always document applicability.</p>
-      </section>
-
-      <section className="container fvdx-section" aria-labelledby="hos-impact">
-        <h2 id="hos-impact">Impact on Hours of Service (HOS)</h2>
-        <ul className="fvdx-bullets">
-          <li>Covered farm vehicles may have relief from certain HOS provisions during planting & harvest seasons as declared by the state.</li>
-          <li>Short-haul (150 air-mile) exceptions can layer with agricultural commodity exemptions.</li>
-          <li>Maintain records showing commodity type, origin, destination, and qualifying dates.</li>
-        </ul>
-      </section>
-
-      <section className="container fvdx-section" aria-labelledby="documentation">
-        <h2 id="documentation">Documentation & Best Practices</h2>
-        <ul className="fvdx-bullets">
-          <li>Carry state-issued farm registration / plate documentation.</li>
-          <li>Keep evidence of commodity purpose (invoices, bills of lading, coop receipts).</li>
-          <li>Log distance traveled when near boundary of 150 air-miles.</li>
-          <li>Train seasonal drivers on limitations (no placarded hazmat, non for-hire).</li>
-        </ul>
-      </section>
-
-      <section className="container fvdx-section" aria-labelledby="limitations">
-        <h2 id="limitations">Key Limitations</h2>
-        <ul className="fvdx-bullets">
-          <li>Does not exempt from drug/alcohol testing if otherwise required by carrier operations.</li>
-          <li>Does not waive vehicle maintenance / inspection requirements (Parts 393/396).</li>
-          <li>Weight limits, bridge formulas, and state size restrictions still apply.</li>
-          <li>Placarded hazmat breaks the exemption.</li>
-        </ul>
+        <p className="note">Informational only—verify specifics with FMCSA regulations & state enforcement.</p>
       </section>
 
       <section className="container fvdx-section" aria-labelledby="links">
