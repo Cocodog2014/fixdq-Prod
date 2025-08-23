@@ -1,4 +1,4 @@
-import fixdqLogo from '../../assets/logos/fixdq.png';
+import fixdqLogo from '../../assets/logos/fixdqb.png';
 import { Link } from 'react-router-dom';
 
 // Data: FMCSA official links & social links (could be externalized later if needed)

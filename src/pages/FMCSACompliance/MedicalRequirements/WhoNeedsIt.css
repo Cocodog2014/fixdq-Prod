@@ -1,0 +1,31 @@
+.who-hero{padding-top:2.5rem;padding-bottom:1.25rem}
+.who-hero .lead{margin-top:.75rem;line-height:1.5;max-width:760px}
+.who-section{padding:1rem 0 2.5rem}
+.who-callouts{display:grid;gap:1rem;margin-top:1.25rem}
+@media (min-width:800px){.who-callouts{grid-template-columns:1fr 1fr}}
+.who-misunderstandings{margin:.5rem 0 0;padding-left:1.1rem;line-height:1.55}
+.who-misunderstandings li{margin:.3rem 0}
+.inline-link{background:none;border:none;color:var(--color-accent-orange);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+.inline-link:hover{filter:brightness(1.1)}
+/* Interactive flow styles */
+.flow{margin-top:.5rem;display:flex;flex-direction:column;gap:.75rem}
+.flow-q{margin:0;font-size:.95rem;line-height:1.45}
+.flow-help{margin:0;color:var(--color-gray-300);font-size:.75rem;letter-spacing:.3px}
+.flow-actions{display:flex;gap:.75rem}
+.flow-btn{flex:1;background:var(--color-accent-blue);color:#fff;border:none;border-radius:var(--radius-lg);padding:.65rem .9rem;font-weight:600;cursor:pointer;box-shadow:var(--shadow-sm);font-size:.9rem}
+.flow-btn.no{background:var(--color-accent-purple)}
+.flow-btn:hover{filter:brightness(1.07)}
+.flow-result{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:.9rem 1rem;border-radius:var(--radius-xl)}
+.flow-result.need{border-color:var(--color-accent-green)}
+.flow-result.maybe{border-color:var(--color-accent-orange)}
+.flow-result h3{margin:.25rem 0 .5rem;font-size:1.05rem}
+.flow-result ul{margin:.25rem 0 0;padding-left:1.1rem;line-height:1.5}
+.flow-nav{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.25rem}
+.flow-small{background:var(--color-gray-600);color:#fff;border:none;border-radius:var(--radius-md);padding:.45rem .75rem;font-size:.7rem;letter-spacing:.5px;text-transform:uppercase;font-weight:600;cursor:pointer}
+.flow-small:disabled{opacity:.4;cursor:not-allowed}
+.flow-small:hover:not(:disabled){filter:brightness(1.15)}
+@media (min-width:700px){
+	.flow-q{font-size:1rem}
+	.flow-btn{font-size:.95rem}
+	.flow-small{font-size:.65rem}
+}
