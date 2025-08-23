@@ -55,7 +55,7 @@ export default function MedicalRequirements() {
               </ul>
               <div className="feature-footer"><span className="card-cta">Review</span></div>
             </Link>
-            <a href="#conditions" className="feature-card red-border feature-link-card" aria-describedby="cond-desc">
+            <Link to="/medical-requirements/risk-conditions" className="feature-card red-border feature-link-card" aria-describedby="cond-desc">
               <div className="feature-header"><span className="icon">⚠️</span><h3>Risk Conditions</h3></div>
               <ul id="cond-desc">
                 <li>Epilepsy</li>
@@ -65,8 +65,8 @@ export default function MedicalRequirements() {
                 <li>Substance abuse</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">See List</span></div>
-            </a>
-            <a href="#monitoring" className="feature-card teal-border feature-link-card" aria-describedby="mon-desc">
+            </Link>
+            <Link to="/medical-requirements/monitoring" className="feature-card teal-border feature-link-card" aria-describedby="mon-desc">
               <div className="feature-header"><span className="icon">⏱️</span><h3>Monitoring</h3></div>
               <ul id="mon-desc">
                 <li>24 mo max</li>
@@ -76,7 +76,7 @@ export default function MedicalRequirements() {
                 <li>Carrier dashboard</li>
               </ul>
               <div className="feature-footer"><span className="card-cta">Learn</span></div>
-            </a>
+            </Link>
             <a href="#violations" className="feature-card purple-border feature-link-card" aria-describedby="vio-desc">
               <div className="feature-header"><span className="icon">🔍</span><h3>Violations</h3></div>
               <ul id="vio-desc">
@@ -102,30 +102,8 @@ export default function MedicalRequirements() {
           </div>
         </div>
       </section>
-      {/* Detailed sections */}
-      <div className="med-detail-wrapper" aria-label="Detailed Medical Guidance">
-  {/* Removed inline 'Who Needs' section now its own dedicated page */}
-  {/* Certification Process & Key Standards moved to dedicated pages */}
-        <section className="container med-section" aria-labelledby="conditions">
-          <h2 id="conditions">Disqualifying / Conditional Conditions</h2>
-          <ul className="med-bullets">
-            <li><strong>Epilepsy (uncontrolled seizures):</strong> Generally disqualifying without an exemption.</li>
-            <li><strong>Insulin shock / severe hypoglycemic episodes:</strong> Needs evaluation and stability period.</li>
-            <li><strong>Vision / hearing below standards</strong> without exemption or corrective measures.</li>
-            <li><strong>Unmanaged cardiovascular disease</strong> (recent MI without clearance, uncontrolled arrhythmias).</li>
-            <li><strong>Substance abuse / positive tests</strong> without successful treatment & follow-up program.</li>
-          </ul>
-            <p className="note">Exemptions exist for certain drivers meeting alternative criteria (vision, diabetes). Maintain documentation onboard if required.</p>
-        </section>
-        <section className="container med-section" aria-labelledby="monitoring">
-          <h2 id="monitoring">Monitoring & Expiration</h2>
-          <ul className="med-bullets">
-            <li><strong>Standard maximum validity:</strong> 24 months.</li>
-            <li><strong>More frequent (3, 6, or 12 months)</strong> if condition requires monitoring (hypertension, diabetes, OSA, cardiac recovery).</li>
-            <li>Carrier best practice: track expirations at <strong>90 / 60 / 30 days</strong> out; remove from dispatch if expired.</li>
-            <li>Upload status to state (if state requires) to prevent CDL downgrade notices.</li>
-          </ul>
-        </section>
+  {/* Remaining inline sections (others moved to dedicated pages) */}
+  <div className="med-detail-wrapper" aria-label="Detailed Medical Guidance">
         <section className="container med-section" aria-labelledby="violations">
           <h2 id="violations">Common Violations & Prevention</h2>
           <ul className="med-bullets">

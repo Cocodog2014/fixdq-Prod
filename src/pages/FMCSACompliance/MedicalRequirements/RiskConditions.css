@@ -1,0 +1,11 @@
+/* Risk Conditions Page Styles */
+.risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:.75rem}
+.risk-card{background:linear-gradient(135deg,#1e293b,#334155);border:1px solid rgba(255,255,255,.15);padding:1rem;border-radius:var(--radius-lg);color:#fff;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.risk-card h2{margin:.15rem 0 .4rem;font-size:1rem;color:#fff}
+.risk-card p{margin:0;font-size:.75rem;line-height:1.45}
+.risk-card:nth-child(3n){background:linear-gradient(135deg,#7f1d1d,#dc2626)}
+.risk-card:nth-child(3n+1){background:linear-gradient(135deg,#1e3a8a,#2563eb)}
+.risk-card:nth-child(3n+2){background:linear-gradient(135deg,#065f46,#059669)}
+@media (min-width:900px){
+  .risk-card p{font-size:.8rem}
+}

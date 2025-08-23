@@ -24,6 +24,8 @@
 @import './pages/FMCSACompliance/MedicalRequirements/WhoNeedsIt.css';
 @import './pages/FMCSACompliance/MedicalRequirements/CertificationFlow.css';
 @import './pages/FMCSACompliance/MedicalRequirements/KeyStandards.css';
+@import './pages/FMCSACompliance/MedicalRequirements/RiskConditions.css';
+@import './pages/FMCSACompliance/MedicalRequirements/Monitoring.css';
 @import './pages/About/About.css';
 @import './pages/FAQ/FAQ.css';
 @import './pages/Consultation/Consultation.css';
