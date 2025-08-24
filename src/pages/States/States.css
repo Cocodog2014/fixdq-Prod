@@ -11,20 +11,58 @@
   /* Force 3x3 layout on large screens */
   .states-section .landing-grid { grid-template-columns:repeat(3,1fr); }
 }
-.states-card-permits { border-left:8px solid var(--color-accent-orange); background:#fff7ed; }
-.states-card-trip { border-left:8px solid var(--color-accent-blue); background:#eff6ff; }
-.states-card-ifta { border-left:8px solid var(--color-accent-purple); background:#f5f3ff; }
-.states-card-irp { border-left:8px solid var(--color-accent-green); background:#ecfdf5; }
-.states-card-research { border-left:8px solid var(--color-accent-yellow); background:#fef9c3; }
-.states-card-weight { border-left:8px solid var(--color-accent-red); background:#ffe4e6; }
-.states-card-tolling { border-left:8px solid var(--color-accent-blue); background:#e0f2fe; }
-.states-card-ports { border-left:8px solid var(--color-accent-purple); background:#ede9fe; }
-.states-card-escort { border-left:8px solid var(--color-accent-yellow); background:#fefce8; }
+.states-page .landing-grid .states-card-permits { background:#fff7ed; border:2px solid var(--color-accent-orange); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-trip { background:#eff6ff; border:2px solid var(--color-accent-blue); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-ifta { background:#f5f3ff; border:2px solid var(--color-accent-purple); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-irp { background:#ecfdf5; border:2px solid var(--color-accent-green); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-research { background:#fef9c3; border:2px solid var(--color-accent-yellow); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-weight { background:#ffe4e6; border:2px solid var(--color-accent-red); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-tolling { background:#e0f2fe; border:2px solid var(--color-accent-blue); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-ports { background:#ede9fe; border:2px solid var(--color-accent-purple); border-left-width:10px; border-right-width:10px; }
+.states-page .landing-grid .states-card-escort { background:#fefce8; border:2px solid var(--color-accent-yellow); border-left-width:10px; border-right-width:10px; }
+
+/* Heading color inside splash (overview) cards */
+.states-page .states-card-permits h3 { color:var(--color-accent-orange); text-shadow:none; }
+.states-page .states-card-trip h3 { color:var(--color-accent-blue); text-shadow:none; }
+.states-page .states-card-ifta h3 { color:var(--color-accent-purple); text-shadow:none; }
+.states-page .states-card-irp h3 { color:var(--color-accent-green); text-shadow:none; }
+.states-page .states-card-research h3 { color:var(--color-accent-yellow); text-shadow:none; }
+.states-page .states-card-weight h3 { color:var(--color-accent-red); text-shadow:none; }
+.states-page .states-card-tolling h3 { color:var(--color-accent-blue); text-shadow:none; }
+.states-page .states-card-ports h3 { color:var(--color-accent-purple); text-shadow:none; }
+.states-page .states-card-escort h3 { color:var(--color-accent-yellow); text-shadow:none; }
+
+/* Stronger specificity for backgrounds to win over any generic .landing-card background */
+.states-page .landing-grid .states-card-permits { background:#fff7ed; }
+.states-page .landing-grid .states-card-trip { background:#eff6ff; }
+.states-page .landing-grid .states-card-ifta { background:#f5f3ff; }
+.states-page .landing-grid .states-card-irp { background:#ecfdf5; }
+.states-page .landing-grid .states-card-research { background:#fef9c3; }
+.states-page .landing-grid .states-card-weight { background:#ffe4e6; }
+.states-page .landing-grid .states-card-tolling { background:#e0f2fe; }
+.states-page .landing-grid .states-card-ports { background:#ede9fe; }
+.states-page .landing-grid .states-card-escort { background:#fefce8; }
+
+/* Apply same pastel accents to article variants */
+.states-article.states-card-permits { background:#fff7ed; }
+.states-article.states-card-trip { background:#eff6ff; }
+.states-article.states-card-ifta { background:#f5f3ff; }
+.states-article.states-card-irp { background:#ecfdf5; }
+.states-article.states-card-tolling { background:#e0f2fe; }
+.states-article.states-card-ports { background:#ede9fe; }
+.states-article.states-card-escort { background:#fefce8; }
+.states-article.states-card-permits { border-left:8px solid var(--color-accent-orange); border-right:8px solid var(--color-accent-orange); }
+.states-article.states-card-trip { border-left:8px solid var(--color-accent-blue); border-right:8px solid var(--color-accent-blue); }
+.states-article.states-card-ifta { border-left:8px solid var(--color-accent-purple); border-right:8px solid var(--color-accent-purple); }
+.states-article.states-card-irp { border-left:8px solid var(--color-accent-green); border-right:8px solid var(--color-accent-green); }
+.states-article.states-card-tolling { border-left:8px solid var(--color-accent-blue); border-right:8px solid var(--color-accent-blue); }
+.states-article.states-card-ports { border-left:8px solid var(--color-accent-purple); border-right:8px solid var(--color-accent-purple); }
+.states-article.states-card-escort { border-left:8px solid var(--color-accent-yellow); border-right:8px solid var(--color-accent-yellow); }
 .states-section .landing-card h3 { margin-top:.2rem; }
 .landing-card .mini-link { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.5px; color:#1e3a8a; margin-top:auto; }
 
 /* Detail sections */
-.states-detail { margin-top:3.5rem; color:#fff; display:flex; flex-direction:column; gap:1rem; }
+.states-detail { margin-top:3.5rem; display:flex; flex-direction:column; gap:1rem; }
 .states-detail h2 { margin:0; font-size:clamp(1.6rem,3.2vw,2.4rem); }
 .states-detail .lead { font-weight:500; }
 .dash-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.55rem; }
@@ -39,19 +77,27 @@
 .states-footer { margin:4rem auto 3rem; text-align:center; color:#cbd5e1; font-size:.85rem; max-width:860px; }
 
 /* Article card styling (adapted from BOC-3 deep dive) */
-.states-article { border-radius:14px; padding:1rem .95rem .95rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); box-shadow:0 3px 10px -2px rgba(0,0,0,.25); }
+.states-article { border-radius:14px; padding:1rem .95rem .95rem; background:transparent; border:none; border-top:1px solid rgba(0,0,0,.08); border-bottom:1px solid rgba(0,0,0,.08); /* keep colored left/right from variant classes */ box-shadow:0 3px 10px -2px rgba(0,0,0,.18); color:#0f172a; }
 .states-article + .states-article { margin-top:2.5rem; }
 .states-article h2 { font-size:1.9rem; line-height:1.25; }
 .states-article:hover, .states-article:focus-visible { box-shadow:0 4px 16px -3px rgba(0,0,0,.35); transform:translateY(-2px); transition:box-shadow .25s, transform .25s; }
 
 /* Accent heading colors to match left border pastel set */
-.states-card-permits h2 { color:var(--color-accent-orange); }
-.states-card-trip h2 { color:var(--color-accent-blue); }
-.states-card-ifta h2 { color:var(--color-accent-purple); }
-.states-card-irp h2 { color:var(--color-accent-green); }
-.states-card-tolling h2 { color:var(--color-accent-blue); }
-.states-card-ports h2 { color:var(--color-accent-purple); }
-.states-card-escort h2 { color:var(--color-accent-yellow); }
+.states-page .states-card-permits h2 { color:var(--color-accent-orange); text-shadow:none; }
+.states-page .states-card-trip h2 { color:var(--color-accent-blue); text-shadow:none; }
+.states-page .states-card-ifta h2 { color:var(--color-accent-purple); text-shadow:none; }
+.states-page .states-card-irp h2 { color:var(--color-accent-green); text-shadow:none; }
+.states-page .states-card-tolling h2 { color:var(--color-accent-blue); text-shadow:none; }
+.states-page .states-card-ports h2 { color:var(--color-accent-purple); text-shadow:none; }
+.states-page .states-card-escort h2 { color:var(--color-accent-yellow); text-shadow:none; }
+
+/* Variant dash colors */
+.states-card-trip .dash-list li:before { color:var(--color-accent-blue); }
+.states-card-ifta .dash-list li:before { color:var(--color-accent-purple); }
+.states-card-irp .dash-list li:before { color:var(--color-accent-green); }
+.states-card-tolling .dash-list li:before { color:var(--color-accent-blue); }
+.states-card-ports .dash-list li:before { color:var(--color-accent-purple); }
+.states-card-escort .dash-list li:before { color:var(--color-accent-yellow); }
 
 /* Responsive adjustments */
 @media (min-width:900px){
