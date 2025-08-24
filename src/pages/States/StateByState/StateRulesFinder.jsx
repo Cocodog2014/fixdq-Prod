@@ -62,8 +62,7 @@ export default function StateRulesFinder({ onClose }) {
 							onClick={() => select(st)}
 							aria-pressed={selected?.code === st.code}
 						>
-							<span className="sr-code">{st.code}</span>
-							<span className="sr-name" style={{ fontSize:'.6rem' }}>{st.name}</span>
+							<span className="sr-name">{st.name}</span>
 						</button>
 					))}
 				</div>
