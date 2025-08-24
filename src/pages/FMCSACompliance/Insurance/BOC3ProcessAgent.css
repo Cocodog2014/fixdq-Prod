@@ -13,12 +13,12 @@
 .boc3-btn--fmcsa:hover { background:#dc2626; }
 
 /* Card color accents */
-.boc3-card-def { border-left:8px solid var(--color-accent-blue); }
-.boc3-card-who { border-left:8px solid var(--color-accent-purple); }
-.boc3-card-why { border-left:8px solid var(--color-accent-orange); }
-.boc3-card-how { border-left:8px solid var(--color-accent-green); }
-.boc3-card-special { border-left:8px solid var(--color-accent-yellow); }
-.boc3-card-updates { border-left:8px solid var(--color-accent-red); }
+.boc3-card-def { border-left:8px solid var(--color-accent-blue); background:#e0f2fe; }
+.boc3-card-who { border-left:8px solid var(--color-accent-purple); background:#ede9fe; }
+.boc3-card-why { border-left:8px solid var(--color-accent-orange); background:#fef3c7; }
+.boc3-card-how { border-left:8px solid var(--color-accent-green); background:#ecfdf5; }
+.boc3-card-special { border-left:8px solid var(--color-accent-yellow); background:#fef9c3; }
+.boc3-card-updates { border-left:8px solid var(--color-accent-red); background:#ffe4e6; }
 .boc3-page .landing-card { min-height:105px; padding:.75rem .75rem .7rem; }
 .boc3-page .landing-card h3 { font-size:1.6rem; margin-top:.15rem; }
 .boc3-page .landing-card p { font-size:1.2rem; }
