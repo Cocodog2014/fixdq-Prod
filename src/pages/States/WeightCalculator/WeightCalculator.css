@@ -57,3 +57,10 @@
 @media (min-width:600px){ .wc-overlay{align-items:center;} .wc-drawer{height:85vh; width:92vw; border-radius:14px;} }
 @media (min-width:1024px){ .wc-drawer{height:80vh; width:min(1100px,92vw);} }
 
+/* Axle diagram styles */
+.wc-axle-diagram { width:100%; }
+.wc-axle-svg { width:100%; height:auto; display:block; }
+.wc-axle-legend { font-size:.75rem; color:#c8d1e8; opacity:.9; margin-top:.4rem; display:flex; align-items:center; gap:.4rem; }
+.wc-axle-dot { width:10px; height:10px; border-radius:50%; background:#ffd84d; display:inline-block; }
+@media (max-width:599px){ .wc-axle-diagram text { font-size:11px !important; } }
+

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import AxleDiagram from './AxleDiagram'
 
 // Federal baseline limits (informational; verify with posted limits/permits)
 const FEDERAL_LIMITS = { singleAxle: 20000, tandemAxle: 34000, gross: 80000 }
@@ -79,6 +80,17 @@ export default function WeightCalculator({ onClose }) {
   }, [spacings])
 
   const gvw = useMemo(() => axleWeights.reduce((a, b) => a + (Number(b) || 0), 0), [axleWeights])
+
+  // Segment definitions for diagram (tractor = unit1, optional jeep, trailer = unit2, booster, flip)
+  const diagramSegments = useMemo(() => {
+    const segs = []
+    if (unit1Axles) segs.push({ label: 'Unit 1 (Tractor)', count: unit1Axles, color: '#5ab2ff18' })
+    if (equipment === 'jeep' && jeepAxles) segs.push({ label: 'Jeep', count: jeepAxles, color: '#34d39918' })
+    if (unit2Axles) segs.push({ label: 'Unit 2 (Trailer)', count: unit2Axles, color: '#ffd84d18' })
+    if (equipment === 'booster' && boosterAxles) segs.push({ label: 'Booster', count: boosterAxles, color: '#ff8ab718' })
+    if (equipment === 'flip' && flipAxles) segs.push({ label: 'Flip', count: flipAxles, color: '#c084fc18' })
+    return segs
+  }, [unit1Axles, unit2Axles, equipment, jeepAxles, boosterAxles, flipAxles])
 
   const spacingLabel = (i) => {
     const left = i + 1, right = i + 2
@@ -204,6 +216,10 @@ export default function WeightCalculator({ onClose }) {
             </div>
           )}
         </div>
+      </div>
+      <div className="wc-card">
+        <h3>Axle Diagram (live)</h3>
+        <AxleDiagram spacings={spacings} totalAxles={axles} segments={diagramSegments} />
       </div>
   <div className="wc-section"><div className="wc-h3">Measure between axles (center of hub to center of hub)</div><div className="wc-grid-3 wc-spacing-grid">{spacings.map((s, i) => (<div className="ctrl" key={i}><label>{spacingLabel(i)}</label><div className="wc-duo"><input type="number" min={0} step={1} value={s.ft} placeholder="ft" aria-label={`${spacingLabel(i)} feet`} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], ft:Number(e.target.value)||0}; setSpacings(v)}} /><input type="number" min={0} max={11} step={1} value={s.in} placeholder="in" aria-label={`${spacingLabel(i)} inches`} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], in:Number(e.target.value)||0}; setSpacings(v)}} /></div></div>))}</div></div>
       <div className="wc-section"><div className="wc-h3">Per-axle weights (lb)</div><div className="wc-grid-5">{axleWeights.map((w, i) => (<div className="ctrl" key={i}><label>Axle {i+1}</label><input type="number" min={0} step={100} value={w} onChange={(e)=>{const v=[...axleWeights]; v[i]=Number(e.target.value)||0; setAxleWeights(v)}} /></div>))}</div></div>
