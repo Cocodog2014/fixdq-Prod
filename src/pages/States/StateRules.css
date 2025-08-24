@@ -1,4 +1,6 @@
-/* State-by-State Rules quick finder */
+/* Moved State-by-State Rules quick finder styles */
+
+@import '../FMCSACompliance/FMCSACompliance.css'; /* if variables needed */
 
 .state-wrap { position: relative; color: #f5f7fb; background: linear-gradient(180deg,#0b1b3a,#09152d 60%); border-radius: 1rem; padding: 1rem 1rem 1.25rem; box-shadow: var(--shadow-blue); overflow: hidden; }
 .state-header { margin-bottom: .75rem; }

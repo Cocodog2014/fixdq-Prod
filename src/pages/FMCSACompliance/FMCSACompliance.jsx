@@ -4,8 +4,8 @@ import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
 import { lazy, Suspense } from 'react'
-const StateRules = lazy(() => import('./StateRules'))
-const WeightCalculator = lazy(() => import('./WeightCalculator'))
+const StateRules = lazy(() => import('../States/StateRules'))
+const WeightCalculator = lazy(() => import('../States/WeightCalculator'))
 const ComplianceQuiz = lazy(() => import('./ComplianceQuiz'))
 import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'

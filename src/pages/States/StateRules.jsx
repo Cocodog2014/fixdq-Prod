@@ -1,3 +1,4 @@
+// Moved from FMCSACompliance folder to States folder
 import React, { useMemo, useState, useEffect } from 'react'
 
 const STATES = [
@@ -20,7 +21,6 @@ export default function StateRules({ onClose }) {
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState(null)
 
-  // Preselect from hash like #state-rules=TX
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash || ''
