@@ -4,8 +4,9 @@ import GlobalHeader from '../../../components/GlobalHeader';
 
 function IFTA() {
   return (
-    <div className="ifta-page bg-gradient-primary">
+    <>
       <GlobalHeader />
+      <div className="ifta-page bg-gradient-primary">
       <div className="ifta-head">
         <h1>IFTA (International Fuel Tax Agreement)</h1>
         <p className="ifta-intro">
@@ -18,7 +19,7 @@ function IFTA() {
       <div className="ifta-grid">
         <div className="ifta-card ifta-card-register">
           <h3>Who Must Register?</h3>
-          <ul>
+          <ul>c:\Users\sutto\AppData\Local\Packages\MicrosoftWindows.Client.Core_cw5n1h2txyewy\TempState\ScreenClip\{2A27B507-F842-492C-9899-1A21C2511FED}.png
             <li>Interstate carriers with a qualified motor vehicle</li>
             <li>GVW or registered weight &gt; 26,000 lbs (11,797 kg) OR</li>
             <li>3+ axles regardless of weight OR</li>
@@ -105,7 +106,8 @@ function IFTA() {
       <footer className="ifta-local-footer" aria-label="IFTA page note">
         <p><strong>Note:</strong> Always verify current tax rates & filing instructions with your base jurisdiction before submission. This summary is for planning & training only.</p>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
 

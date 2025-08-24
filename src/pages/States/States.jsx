@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useRef } from 'react'
 import GlobalHeader from '../../components/GlobalHeader'
+import { Link } from 'react-router-dom'
 const StateRulesDrawer = lazy(()=>import('./StateByState/StateRulesDrawer'))
 const WeightCalculatorDrawer = lazy(()=>import('./WeightCalculator/WeightCalculatorDrawer.jsx'))
 
@@ -33,11 +34,11 @@ export default function States() {
             <p>Short-term operating and fuel permits when IRP/IFTA are not yet active.</p>
             <a className="mini-link" href="#trip-fuel">Learn More</a>
           </div>
-          <div className="landing-card states-card-ifta">
+          <Link className="landing-card states-card-ifta" to="/states/ifta" data-track="open_ifta_page" aria-label="Open IFTA detailed page">
             <h3>IFTA Basics</h3>
             <p>Quarterly filings, distance & fuel records, common audit triggers.</p>
-            <a className="mini-link" href="#ifta">Learn More</a>
-          </div>
+            <span className="mini-link" aria-hidden>Open IFTA Page</span>
+          </Link>
           <div className="landing-card states-card-irp">
             <h3>IRP Registration</h3>
             <p>Fleet apportionment, cab cards, adding units, and recordkeeping.</p>
