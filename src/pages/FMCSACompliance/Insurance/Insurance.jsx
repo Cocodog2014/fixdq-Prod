@@ -1,4 +1,4 @@
-import './Insurance.css'
+// Styles now imported globally via global.css (@import pages/FMCSACompliance/Insurance/Insurance.css)
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 

@@ -16,6 +16,7 @@
 @import './pages/FMCSACompliance/FMCSARegulations.css';
 @import './pages/FMCSACompliance/HoursOfService.css';
 @import './pages/FMCSACompliance/StateRules.css';
+@import './pages/FMCSACompliance/Insurance/Insurance.css';
 @import './pages/FMCSACompliance/Insurance/BOC3ProcessAgent.css';
 @import './pages/FMCSACompliance/CdlClassComparison.css';
 @import './pages/FMCSACompliance/WeightCalculator.css';
