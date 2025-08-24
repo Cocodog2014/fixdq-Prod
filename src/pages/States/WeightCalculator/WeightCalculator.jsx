@@ -10,20 +10,14 @@ function bridgeLimitW(Lft, N) {
   return Math.floor(raw / 500) * 500 // round down to nearest 500 lb
 }
 
-// Common configuration presets (lengths in feet)
-const PRESETS = {
-  '5-axle semi': { axles: 5, spacings: [12, 4, 33, 4], weights: [12000, 17000, 17000, 10000, 10000], length: { ft: 72, in: 0 }, width: 8.5 },
-  '7-axle': { axles: 7, spacings: [12, 4, 10, 10, 10, 4], weights: [12000, 16000, 16000, 9000, 9000, 9000, 9000], length: { ft: 80, in: 0 }, width: 8.5 },
-  '10-axle': { axles: 10, spacings: [12, 4, 8, 8, 8, 8, 8, 8, 4], weights: [12000, 15000, 15000, 9000, 9000, 9000, 9000, 9000, 9000, 9000], length: { ft: 95, in: 0 }, width: 8.5 },
-}
+// Presets removed per request; users now input all data manually.
 
 export default function WeightCalculator({ onClose }) {
   const [axles, setAxles] = useState(5)
-  const [preset, setPreset] = useState('')
   const [spacings, setSpacings] = useState([12, 4, 33, 4].map(ft => ({ ft, in: 0 })))
   const [axleWeights, setAxleWeights] = useState([12000, 17000, 17000, 10000, 10000])
   const [overallLength, setOverallLength] = useState({ ft: 72, in: 0 })
-  const [loadWidth, setLoadWidth] = useState(8.5)
+  const [loadWidth, setLoadWidth] = useState({ ft: 8, in: 6 }) // 8'6" typical max legal width
 
   // Maintain array sizes when axle count changes
   useEffect(() => {
@@ -40,15 +34,7 @@ export default function WeightCalculator({ onClose }) {
     })
   }, [axles])
 
-  const applyPreset = (key) => {
-    const p = PRESETS[key]; if (!p) return
-    setPreset(key)
-    setAxles(p.axles)
-    setSpacings(p.spacings.map(ft => ({ ft, in: 0 })))
-    setAxleWeights(p.weights)
-    setOverallLength(p.length)
-    setLoadWidth(p.width)
-  }
+  // Preset application removed.
 
   // Axle positions from front, in feet
   const positions = useMemo(() => {
@@ -110,15 +96,15 @@ export default function WeightCalculator({ onClose }) {
         <button type="button" className="wc-close" aria-label="Close weight calculator" onClick={onClose}>✕</button>
       )}
       <header className="wc-header">
-        <div className="wc-title"><span className="wc-dot" aria-hidden></span><h2>Advanced Axle Group & Bridge Calculator</h2></div>
-        <p className="wc-sub">Select axle count or a preset, then enter spacings and weights. Checks single axles, tandems, all groups, and GVW.</p>
+  <div className="wc-title"><span className="wc-dot" aria-hidden></span><h2>Advanced Axle Group & Bridge Calculator</h2></div>
+  <p className="wc-sub">Select axle count, then enter spacings and per-axle weights. Checks single axles, tandems, all groups, and GVW.</p>
       </header>
       <div className="wc-controls">
-        <div className="ctrl"><label>Preset</label><select value={preset} onChange={(e) => applyPreset(e.target.value)}><option value="">— none —</option>{Object.keys(PRESETS).map(k => <option key={k} value={k}>{k}</option>)}</select></div>
         <div className="ctrl"><label>Number of axles</label><select value={axles} onChange={(e) => setAxles(Math.min(12, Math.max(2, Number(e.target.value))))}>{Array.from({ length: 11 }, (_, k) => k + 2).map(n => <option key={n} value={n}>{n}</option>)}</select></div>
-        <div className="ctrl"><label>Overall length (ft)</label><input type="number" min={0} step={1} value={overallLength.ft} onChange={(e)=>setOverallLength(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
-        <div className="ctrl"><label>Overall length (in)</label><input type="number" min={0} max={11} step={1} value={overallLength.in} onChange={(e)=>setOverallLength(v=>({...v, in:Number(e.target.value)||0}))} /></div>
-        <div className="ctrl"><label>Load width (ft)</label><input type="number" min={0} step={0.1} value={loadWidth} onChange={(e)=>setLoadWidth(Number(e.target.value)||0)} /></div>
+  <div className="ctrl"><label>Overall length (ft)</label><input type="number" min={0} step={1} value={overallLength.ft} onChange={(e)=>setOverallLength(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
+  <div className="ctrl"><label>Overall length (in)</label><input type="number" min={0} max={11} step={1} value={overallLength.in} onChange={(e)=>setOverallLength(v=>({...v, in:Number(e.target.value)||0}))} /></div>
+  <div className="ctrl"><label>Load width (ft)</label><input type="number" min={0} step={1} value={loadWidth.ft} onChange={(e)=>setLoadWidth(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
+  <div className="ctrl"><label>Load width (in)</label><input type="number" min={0} max={11} step={1} value={loadWidth.in} onChange={(e)=>setLoadWidth(v=>({...v, in:Number(e.target.value)||0}))} /></div>
       </div>
       <div className="wc-section"><div className="wc-h3">Measure between axles (center → next)</div><div className="wc-grid-3">{spacings.map((s, i) => (<div className="ctrl" key={i}><label>{spacingLabel(i)}</label><div className="wc-duo"><input type="number" min={0} step={1} value={s.ft} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], ft:Number(e.target.value)||0}; setSpacings(v)}} /><input type="number" min={0} max={11} step={1} value={s.in} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], in:Number(e.target.value)||0}; setSpacings(v)}} /></div></div>))}</div></div>
       <div className="wc-section"><div className="wc-h3">Per-axle weights (lb)</div><div className="wc-grid-5">{axleWeights.map((w, i) => (<div className="ctrl" key={i}><label>Axle {i+1}</label><input type="number" min={0} step={100} value={w} onChange={(e)=>{const v=[...axleWeights]; v[i]=Number(e.target.value)||0; setAxleWeights(v)}} /></div>))}</div></div>
