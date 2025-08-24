@@ -7,12 +7,19 @@
 /* Overview cards reuse landing-card; add accents */
 .states-section { margin-top:2rem; }
 .states-section .landing-grid { --card-min:230px; }
+@media (min-width:1000px){
+  /* Force 3x3 layout on large screens */
+  .states-section .landing-grid { grid-template-columns:repeat(3,1fr); }
+}
 .states-card-permits { border-left:8px solid var(--color-accent-orange); background:#fff7ed; }
 .states-card-trip { border-left:8px solid var(--color-accent-blue); background:#eff6ff; }
 .states-card-ifta { border-left:8px solid var(--color-accent-purple); background:#f5f3ff; }
 .states-card-irp { border-left:8px solid var(--color-accent-green); background:#ecfdf5; }
 .states-card-research { border-left:8px solid var(--color-accent-yellow); background:#fef9c3; }
 .states-card-weight { border-left:8px solid var(--color-accent-red); background:#ffe4e6; }
+.states-card-tolling { border-left:8px solid var(--color-accent-blue); background:#e0f2fe; }
+.states-card-ports { border-left:8px solid var(--color-accent-purple); background:#ede9fe; }
+.states-card-escort { border-left:8px solid var(--color-accent-yellow); background:#fefce8; }
 .states-section .landing-card h3 { margin-top:.2rem; }
 .landing-card .mini-link { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.5px; color:#1e3a8a; margin-top:auto; }
 

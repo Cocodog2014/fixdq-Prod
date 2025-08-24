@@ -51,6 +51,21 @@ export default function States() {
             <p>Plan axle groups & check federal bridge formula limits.</p>
             <a className="mini-link" href="#weight-tool">Open Tool</a>
           </div>
+          <div className="landing-card states-card-tolling">
+            <h3>Tolling & Transponders</h3>
+            <p>Multi-region passes (EZPass, BestPass, PrePass) and cost control tactics.</p>
+            <a className="mini-link" href="#tolling">Learn More</a>
+          </div>
+          <div className="landing-card states-card-ports">
+            <h3>Port of Entry Prep</h3>
+            <p>Documents & inspection expectations when entering new jurisdictions.</p>
+            <a className="mini-link" href="#port-entry">Learn More</a>
+          </div>
+          <div className="landing-card states-card-escort">
+            <h3>Escort / Pilot Cars</h3>
+            <p>Width / length / overheight thresholds that trigger escorts & certifications.</p>
+            <a className="mini-link" href="#escort">Learn More</a>
+          </div>
         </div>
       </section>
 
@@ -91,6 +106,30 @@ export default function States() {
           <li>Allocate distance by jurisdiction from previous period (or estimate new fleet).</li>
           <li>Maintain records supporting reported distance for each power unit.</li>
           <li>Cab cards must match actual plate / unit; update promptly when adding units.</li>
+        </ul>
+      </section>
+
+      <section className="states-detail container" id="tolling">
+        <h2>Tolling & Transponders</h2>
+        <ul className="dash-list">
+          <li>Coming soon: comparison of major toll & bypass programs with regional coverage.</li>
+          <li>Best practices: consolidate passes, monitor statements, dispute misreads quickly.</li>
+        </ul>
+      </section>
+
+      <section className="states-detail container" id="port-entry">
+        <h2>Port of Entry Preparation</h2>
+        <ul className="dash-list">
+          <li>Have registration, IFTA, authority, insurance, and permits immediately accessible.</li>
+          <li>Document binder / digital folder structure guidance coming soon.</li>
+        </ul>
+      </section>
+
+      <section className="states-detail container" id="escort">
+        <h2>Escort / Pilot Car Requirements</h2>
+        <ul className="dash-list">
+          <li>Threshold matrix (width / length / rear overhang / height) by state coming soon.</li>
+          <li>Plan routing early to avoid last‑minute escort scheduling delays.</li>
         </ul>
       </section>
 
