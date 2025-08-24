@@ -59,12 +59,60 @@ export default function WeightCalculator({ onClose }) {
     setSpacings(prev => {
       const next = prev.slice(0, needSpacings)
       while (next.length < needSpacings) next.push({ ft: 10, in: 0 })
-      // Default: if Unit 1 has a 4th axle, set spacing between axle 3 and 4 to 4 ft (index 2) if still placeholder 10 ft
-      if (unit1Axles >= 4) {
-        const idx = 2 // spacing index between axle 3 and 4
-        if (next[idx] && Number(next[idx].ft) === 10 && Number(next[idx].in) === 0) {
-          next[idx] = { ft: 4, in: 0 }
+      // When Unit 1 upgrades from 3 to 4 axles we want the new 4th drive axle only ~4 ft behind axle 3.
+      // In the 3-axle tractor case index 2 (between axle 3 and 4 overall) was the tractor->trailer gap (often 33 ft).
+      // After adding a 4th tractor axle that long gap must shift one position later.
+      if (unit1Axles >= 4 && unit2Axles > 0) {
+        const driveToNewIdx = 2 // spacing between axle3 and new axle4 (all within tractor now)
+        const orig = next[driveToNewIdx]
+        // Detect a long trailer gap sitting where the new drive spacing should be (e.g., >= 20 ft)
+        if (orig && Number(orig.ft) >= 20) {
+          const trailerGap = { ...orig }
+          // Place 4 ft default for new internal drive spacing
+          next[driveToNewIdx] = { ft: 4, in: 0 }
+          // Shift old long gap to the following index (after new drive axle)
+          const afterIdx = driveToNewIdx + 1
+          const prevAfter = next[afterIdx]
+          next[afterIdx] = trailerGap
+          // If there was a previous short spacing (e.g., 4 ft between trailer axles) move it one further if free/placeholder
+          if (prevAfter && (afterIdx + 1) < needSpacings) {
+            const target = afterIdx + 1
+            if (next[target] && Number(next[target].ft) === 10 && Number(next[target].in) === 0) {
+              next[target] = prevAfter
+            } else if (!next[target]) {
+              next[target] = prevAfter
+            }
+          }
+        } else if (orig && Number(orig.ft) === 10 && Number(orig.in) === 0) {
+          // If placeholder still present just set to 4 ft.
+            next[driveToNewIdx] = { ft: 4, in: 0 }
         }
+      } else if (unit1Axles >= 4) {
+        // No trailer, just ensure internal spacing default if placeholder.
+        const idx = 2
+        if (next[idx] && Number(next[idx].ft) === 10 && Number(next[idx].in) === 0) next[idx] = { ft: 4, in: 0 }
+      }
+
+      // Default internal trailer (Unit 2) spacings (excluding the Unit1→Unit2 transition gap) to 4 ft.
+      if (unit2Axles > 1) {
+        const jeepCount = equipment === 'jeep' ? jeepAxles : 0
+        const transitionIdx = (unit1Axles + jeepCount) - 1 // spacing index where trailer begins
+        const trailerStartAxle = unit1Axles + jeepCount + 1
+        const internalStartIdx = trailerStartAxle - 1 // first spacing wholly inside trailer group
+        const internalCount = unit2Axles - 1
+        for (let k = 0; k < internalCount; k++) {
+          const si = internalStartIdx + k
+          if (si === transitionIdx) continue
+            if (si < next.length) {
+              const val = next[si]
+              if (!val) continue
+              // If placeholder (10') or an unintended long gap (>=20') inside trailer, set to 4'.
+              if ((Number(val.ft) === 10 && Number(val.in) === 0) || Number(val.ft) >= 20) {
+                next[si] = { ft: 4, in: 0 }
+              }
+            }
+        }
+        // Ensure the transition gap remains long (preserve if already long). If it's placeholder 10' and we have a known long gap stored elsewhere, leave for user; otherwise leave as is.
       }
       return next
     })
@@ -102,8 +150,8 @@ export default function WeightCalculator({ onClose }) {
 
   const spacingLabel = (i) => {
     const left = i + 1, right = i + 2
-  const name = (idx) => (idx === 1 ? 'Steer' : `Axle ${idx}`)
-    return `${name(left)} → ${name(right)} (ft/in)`
+  if (left === 1) return `Steering to Axle 2 (ft/in)`
+  return `Axle ${left} to Axle ${right} (ft/in)`
   }
 
   // All consecutive axle groups
