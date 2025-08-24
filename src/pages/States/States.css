@@ -38,6 +38,21 @@
 
 .states-footer { margin:4rem auto 3rem; text-align:center; color:#cbd5e1; font-size:.85rem; max-width:860px; }
 
+/* Article card styling (adapted from BOC-3 deep dive) */
+.states-article { border-radius:14px; padding:1rem .95rem .95rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); box-shadow:0 3px 10px -2px rgba(0,0,0,.25); }
+.states-article + .states-article { margin-top:2.5rem; }
+.states-article h2 { font-size:1.9rem; line-height:1.25; }
+.states-article:hover, .states-article:focus-visible { box-shadow:0 4px 16px -3px rgba(0,0,0,.35); transform:translateY(-2px); transition:box-shadow .25s, transform .25s; }
+
+/* Accent heading colors to match left border pastel set */
+.states-card-permits h2 { color:var(--color-accent-orange); }
+.states-card-trip h2 { color:var(--color-accent-blue); }
+.states-card-ifta h2 { color:var(--color-accent-purple); }
+.states-card-irp h2 { color:var(--color-accent-green); }
+.states-card-tolling h2 { color:var(--color-accent-blue); }
+.states-card-ports h2 { color:var(--color-accent-purple); }
+.states-card-escort h2 { color:var(--color-accent-yellow); }
+
 /* Responsive adjustments */
 @media (min-width:900px){
   .states-detail { gap:1.1rem; }

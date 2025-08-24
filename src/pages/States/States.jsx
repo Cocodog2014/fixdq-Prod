@@ -70,7 +70,7 @@ export default function States() {
       </section>
 
       {/* Detail Sections */}
-      <section className="states-detail container" id="oversize">
+      <section className="states-detail container states-article states-card-permits" id="oversize">
         <h2>Oversize / Overweight Permitting</h2>
   <p className="lead">Typical state thresholds (verify locally): width &gt; 8&apos;6&quot;, height &gt; 13&apos;6&quot; (western states may allow higher), length combinations &amp; axle / gross weights exceeding federal limits.</p>
         <ul className="dash-list">
@@ -81,7 +81,7 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-detail container" id="trip-fuel">
+      <section className="states-detail container states-article states-card-trip" id="trip-fuel">
         <h2>Trip & Fuel Permits</h2>
         <ul className="dash-list">
           <li>Temporary permits allow operation while awaiting IRP plates or IFTA credentials.</li>
@@ -90,7 +90,7 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-detail container" id="ifta">
+      <section className="states-detail container states-article states-card-ifta" id="ifta">
         <h2>IFTA Filing Essentials</h2>
         <ul className="dash-list">
             <li>Quarterly deadlines: Apr 30, Jul 31, Oct 31, Jan 31 (most jurisdictions).</li>
@@ -100,7 +100,7 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-detail container" id="irp">
+      <section className="states-detail container states-article states-card-irp" id="irp">
         <h2>IRP Apportioned Registration</h2>
         <ul className="dash-list">
           <li>Allocate distance by jurisdiction from previous period (or estimate new fleet).</li>
@@ -109,7 +109,7 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-detail container" id="tolling">
+      <section className="states-detail container states-article states-card-tolling" id="tolling">
         <h2>Tolling & Transponders</h2>
         <ul className="dash-list">
           <li>Coming soon: comparison of major toll & bypass programs with regional coverage.</li>
@@ -117,7 +117,7 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-detail container" id="port-entry">
+      <section className="states-detail container states-article states-card-ports" id="port-entry">
         <h2>Port of Entry Preparation</h2>
         <ul className="dash-list">
           <li>Have registration, IFTA, authority, insurance, and permits immediately accessible.</li>
@@ -125,7 +125,7 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-detail container" id="escort">
+      <section className="states-detail container states-article states-card-escort" id="escort">
         <h2>Escort / Pilot Car Requirements</h2>
         <ul className="dash-list">
           <li>Threshold matrix (width / length / rear overhang / height) by state coming soon.</li>
