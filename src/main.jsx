@@ -64,6 +64,7 @@ import Violations from './pages/FMCSACompliance/MedicalRequirements/Violations'
 import OfficialLinks from './pages/FMCSACompliance/MedicalRequirements/OfficialLinks'
 import BOC3ProcessAgent from './pages/FMCSACompliance/Insurance/BOC3ProcessAgent'
 import States from './pages/States/States'
+import IFTA from './pages/States/IFTA/IFTA'
 
 // Small helper to append the GlobalFooter to any page component without editing each file.
 const withFooter = (Component) => (
@@ -140,6 +141,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/about" element={withFooter(About)} />
         <Route path="/consultation" element={withFooter(Consultation)} />
   <Route path="/states" element={withFooter(States)} />
+  <Route path="/states/ifta" element={withFooter(IFTA)} />
         <Route path="/getting-started" element={withFooter(GettingStarted)} />
         <Route path="/terms" element={withFooter(Terms)} />
   <Route path="/privacy" element={withFooter(Privacy)} />
