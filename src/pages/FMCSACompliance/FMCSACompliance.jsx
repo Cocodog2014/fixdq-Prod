@@ -4,8 +4,6 @@ import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
 import { lazy, Suspense } from 'react'
-const StateRules = lazy(() => import('../States/StateRules'))
-const WeightCalculator = lazy(() => import('../States/WeightCalculator'))
 const ComplianceQuiz = lazy(() => import('./ComplianceQuiz'))
 import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'
@@ -32,8 +30,7 @@ export default function FMCSACompliance() {
     schoolBus: 'no'
   })
   const [showCdlChart, setShowCdlChart] = useState(false)
-  const [showStateRules, setShowStateRules] = useState(false)
-  const [showWeightCalc, setShowWeightCalc] = useState(false)
+  // Removed state rules & weight calculator tools
   const [showQuiz, setShowQuiz] = useState(false)
   // Dynamic hero panel selection
   const [activePanel, setActivePanel] = useState(null) // null = slideshow default
@@ -341,34 +338,7 @@ export default function FMCSACompliance() {
                 CDL Class Comparison Chart (A, B, C)
               </a>
             </li>
-            <li>
-              <a
-                href="#weight-calculator"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowWeightCalc(true)
-                  setTimeout(() => {
-                    document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }, 0)
-                }}
-              >
-                Weight & Endorsement Guide
-              </a>
-            </li>
-            <li>
-              <a
-                href="#state-rules"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowStateRules(true)
-                  setTimeout(() => {
-                    document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }, 0)
-                }}
-              >
-                State-by-State FMCSA Rules
-              </a>
-            </li>
+            {/* Removed Weight & Endorsement Guide and State-by-State Rules links */}
           </ul>
           <div id="cdl-chart" style={{ marginTop: '1rem', display: showCdlChart ? 'block' : 'none' }}>
             <CdlClassComparison
@@ -404,35 +374,7 @@ export default function FMCSACompliance() {
         </div>
       </section>
 
-      {/* Weight Calculator (show on click) */}
-      <section className="fmcsa-tools" id="weight-calculator" style={{ display: showWeightCalc ? 'block' : 'none' }}>
-        <div className="container">
-          <Suspense fallback={<div style={{color:'#fff'}}>Loading weight calculator…</div>}>
-          <WeightCalculator onClose={() => {
-            setShowWeightCalc(false)
-            if (typeof window !== 'undefined') {
-              const { pathname, search } = window.location
-              window.history.replaceState(null, '', pathname + search)
-            }
-          }} />
-          </Suspense>
-        </div>
-      </section>
-
-      {/* State-by-State Rules (show on click) */}
-      <section className="fmcsa-tools" id="state-rules" style={{ display: showStateRules ? 'block' : 'none' }}>
-        <div className="container">
-          <Suspense fallback={<div style={{color:'#fff'}}>Loading state rules…</div>}>
-          <StateRules onClose={() => {
-            setShowStateRules(false)
-            if (typeof window !== 'undefined') {
-              const { pathname, search } = window.location
-              window.history.replaceState(null, '', pathname + search)
-            }
-          }} />
-          </Suspense>
-        </div>
-      </section>
+  {/* Removed Weight Calculator and State-by-State Rules sections */}
 
       {/* 5) Call-to-Action */}
       <section className="fmcsa-cta">

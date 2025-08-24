@@ -1,0 +1,112 @@
+import React from 'react'
+import GlobalHeader from '../../components/GlobalHeader'
+import StateRules from './StateRules'
+import WeightCalculator from './WeightCalculator'
+
+/*
+  States Landing Page
+  - Provides hub for state-focused tools/resources: Oversize/Overweight permits guidance, Trip & Fuel permits, IFTA basics, IRP overview
+  - Reuses existing grid & landing-card system per development.md conventions
+*/
+export default function States() {
+  return (
+    <div className="states-page gradient-page">
+      <GlobalHeader />
+      <header className="states-hero container">
+        <h1>State Permits & IFTA Hub</h1>
+        <p className="states-sub">Oversize/overweight permitting, temporary trip & fuel permits, IFTA filing, IRP registration, and quick state-by-state research tools.</p>
+      </header>
+
+      {/* Overview Cards */}
+      <section className="states-section container" aria-labelledby="states-overview">
+        <h2 id="states-overview" className="visually-hidden">Overview</h2>
+        <div className="landing-grid">
+          <div className="landing-card states-card-permits">
+            <h3>Oversize / Overweight</h3>
+            <p>Key dimension & weight triggers plus how to request permits and routing.</p>
+            <a className="mini-link" href="#oversize">Learn More</a>
+          </div>
+          <div className="landing-card states-card-trip">
+            <h3>Trip & Fuel Permits</h3>
+            <p>Short-term operating and fuel permits when IRP/IFTA are not yet active.</p>
+            <a className="mini-link" href="#trip-fuel">Learn More</a>
+          </div>
+          <div className="landing-card states-card-ifta">
+            <h3>IFTA Basics</h3>
+            <p>Quarterly filings, distance & fuel records, common audit triggers.</p>
+            <a className="mini-link" href="#ifta">Learn More</a>
+          </div>
+          <div className="landing-card states-card-irp">
+            <h3>IRP Registration</h3>
+            <p>Fleet apportionment, cab cards, adding units, and recordkeeping.</p>
+            <a className="mini-link" href="#irp">Learn More</a>
+          </div>
+          <div className="landing-card states-card-research">
+            <h3>State Research</h3>
+            <p>Interactive finder for intrastate rules and enforcement contacts.</p>
+            <a className="mini-link" href="#state-rules-tool">Open Tool</a>
+          </div>
+          <div className="landing-card states-card-weight">
+            <h3>Bridge & Axle Weights</h3>
+            <p>Plan axle groups & check federal bridge formula limits.</p>
+            <a className="mini-link" href="#weight-tool">Open Tool</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Detail Sections */}
+      <section className="states-detail container" id="oversize">
+        <h2>Oversize / Overweight Permitting</h2>
+  <p className="lead">Typical state thresholds (verify locally): width &gt; 8&apos;6&quot;, height &gt; 13&apos;6&quot; (western states may allow higher), length combinations &amp; axle / gross weights exceeding federal limits.</p>
+        <ul className="dash-list">
+          <li>Gather dimensions (overall, trailer, load) & axle weights before requesting permits.</li>
+          <li>Check holiday / weekend travel restrictions and curfews (metro areas).</li>
+          <li>Escort / pilot car requirements escalate with width, length, or overheight.</li>
+          <li>Route surveys or utility clearances may be required for extreme heights.</li>
+        </ul>
+      </section>
+
+      <section className="states-detail container" id="trip-fuel">
+        <h2>Trip & Fuel Permits</h2>
+        <ul className="dash-list">
+          <li>Temporary permits allow operation while awaiting IRP plates or IFTA credentials.</li>
+          <li>Usually valid 72 hours (trip) and set number of days (fuel) per jurisdiction.</li>
+          <li>Retain receipts & copies; apply fees to permanent account once active.</li>
+        </ul>
+      </section>
+
+      <section className="states-detail container" id="ifta">
+        <h2>IFTA Filing Essentials</h2>
+        <ul className="dash-list">
+            <li>Quarterly deadlines: Apr 30, Jul 31, Oct 31, Jan 31 (most jurisdictions).</li>
+            <li>Keep per-trip distance (ELD, GPS, or manual logs) + fuel receipts/invoices.</li>
+            <li>Bulk fuel withdrawals must have inventory & vehicle allocation records.</li>
+            <li>Late filings accrue interest & penalties; chronic issues trigger audits.</li>
+        </ul>
+      </section>
+
+      <section className="states-detail container" id="irp">
+        <h2>IRP Apportioned Registration</h2>
+        <ul className="dash-list">
+          <li>Allocate distance by jurisdiction from previous period (or estimate new fleet).</li>
+          <li>Maintain records supporting reported distance for each power unit.</li>
+          <li>Cab cards must match actual plate / unit; update promptly when adding units.</li>
+        </ul>
+      </section>
+
+      <section className="states-tools container" id="state-rules-tool">
+        <h2>State Rules Finder</h2>
+        <StateRules />
+      </section>
+
+      <section className="states-tools container" id="weight-tool">
+        <h2>Bridge & Axle Weight Planner</h2>
+        <WeightCalculator />
+      </section>
+
+      <footer className="states-footer container">
+        <p>Always verify current permitting & fuel tax requirements with the issuing state authority. This hub is for planning and education only.</p>
+      </footer>
+    </div>
+  )
+}

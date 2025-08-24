@@ -178,6 +178,10 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Button variant of feature-card (State Permits) */
+.feature-card-btn { cursor:pointer; text-align:left; background:var(--color-white); border:none; }
+.feature-card-btn:focus-visible { outline:3px solid var(--color-accent-blue); outline-offset:2px; }
+
 .feature-link-card:hover .card-cta {
   filter: brightness(1.05);
 }
