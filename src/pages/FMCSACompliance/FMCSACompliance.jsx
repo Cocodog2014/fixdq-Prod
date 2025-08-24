@@ -4,14 +4,12 @@ import GlobalHeader from '../../components/GlobalHeader'
 import FMCSARegulations from './FMCSARegulations'
 import CdlClassComparison from './CdlClassComparison'
 import { lazy, Suspense } from 'react'
-const StateRules = lazy(() => import('./StateRules'))
-const WeightCalculator = lazy(() => import('./WeightCalculator'))
 const ComplianceQuiz = lazy(() => import('./ComplianceQuiz'))
 import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'
 import NewReg, { NewRegPanel } from './HeroButton/NewReg'
 import ManageReg from './HeroButton/ManageReg'
-import Insurance from './HeroButton/Insurance'
+import Insurance, { InsurancePanel } from './Insurance/Insurance'
 import { LicensePanel } from './HeroButton/License'
 
 // License tool state packaged for WhatLicense component
@@ -32,8 +30,7 @@ export default function FMCSACompliance() {
     schoolBus: 'no'
   })
   const [showCdlChart, setShowCdlChart] = useState(false)
-  const [showStateRules, setShowStateRules] = useState(false)
-  const [showWeightCalc, setShowWeightCalc] = useState(false)
+  // Removed state rules & weight calculator tools
   const [showQuiz, setShowQuiz] = useState(false)
   // Dynamic hero panel selection
   const [activePanel, setActivePanel] = useState(null) // null = slideshow default
@@ -161,18 +158,7 @@ export default function FMCSACompliance() {
               </div>
             )}
             {activePanel === 'insurance' && (
-              <div className="info-panel" role="region" aria-label="Insurance Requirements">
-                <h2 style={{marginTop:0}}>Insurance Requirements</h2>
-                <p>Minimum public liability (BI & PD) depends on commodity & radius:</p>
-                <ul>
-                  <li>$300K: Non-hazardous property under 10,001 lbs.</li>
-                  <li>$750K: General freight ≥ 10,001 lbs.</li>
-                  <li>$1M: Oil listed in 49 CFR 172.101.</li>
-                  <li>$5M: Certain hazmat / explosives.</li>
-                </ul>
-                <p>Cargo insurance federally required only for household goods carriers (some states add more).</p>
-                <p><a href="https://www.fmcsa.dot.gov/registration/insurance-requirements" target="_blank" rel="noopener noreferrer">FMCSA Insurance Details</a></p>
-              </div>
+              <InsurancePanel onClose={() => setActivePanel(null)} />
             )}
           </div>
         </section>
@@ -352,35 +338,7 @@ export default function FMCSACompliance() {
                 CDL Class Comparison Chart (A, B, C)
               </a>
             </li>
-            <li>
-              <a
-                href="#weight-calculator"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowWeightCalc(true)
-                  setTimeout(() => {
-                    document.getElementById('weight-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }, 0)
-                }}
-              >
-                Weight & Endorsement Guide
-              </a>
-            </li>
-            <li>
-              <a
-                href="#state-rules"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowStateRules(true)
-                  setTimeout(() => {
-                    document.getElementById('state-rules')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }, 0)
-                }}
-              >
-                State-by-State FMCSA Rules
-              </a>
-            </li>
-            <li><a href="#printable-checklist">Printable Pre-trip Checklist</a></li>
+            {/* Removed Weight & Endorsement Guide and State-by-State Rules links */}
           </ul>
           <div id="cdl-chart" style={{ marginTop: '1rem', display: showCdlChart ? 'block' : 'none' }}>
             <CdlClassComparison
@@ -416,35 +374,7 @@ export default function FMCSACompliance() {
         </div>
       </section>
 
-      {/* Weight Calculator (show on click) */}
-      <section className="fmcsa-tools" id="weight-calculator" style={{ display: showWeightCalc ? 'block' : 'none' }}>
-        <div className="container">
-          <Suspense fallback={<div style={{color:'#fff'}}>Loading weight calculator…</div>}>
-          <WeightCalculator onClose={() => {
-            setShowWeightCalc(false)
-            if (typeof window !== 'undefined') {
-              const { pathname, search } = window.location
-              window.history.replaceState(null, '', pathname + search)
-            }
-          }} />
-          </Suspense>
-        </div>
-      </section>
-
-      {/* State-by-State Rules (show on click) */}
-      <section className="fmcsa-tools" id="state-rules" style={{ display: showStateRules ? 'block' : 'none' }}>
-        <div className="container">
-          <Suspense fallback={<div style={{color:'#fff'}}>Loading state rules…</div>}>
-          <StateRules onClose={() => {
-            setShowStateRules(false)
-            if (typeof window !== 'undefined') {
-              const { pathname, search } = window.location
-              window.history.replaceState(null, '', pathname + search)
-            }
-          }} />
-          </Suspense>
-        </div>
-      </section>
+  {/* Removed Weight Calculator and State-by-State Rules sections */}
 
       {/* 5) Call-to-Action */}
       <section className="fmcsa-cta">

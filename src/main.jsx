@@ -6,7 +6,12 @@ import HomePage from './pages/HomePage'
 import FMCSACompliance from './pages/FMCSACompliance'
 import FMCSARegulations from './pages/FMCSACompliance/FMCSARegulations'
 import HoursOfService from './pages/FMCSACompliance/HoursOfService'
-import MedicalRequirements from './pages/FMCSACompliance/MedicalRequirements'
+import MedicalRequirements from './pages/FMCSACompliance/MedicalRequirements/MedicalRequirements'
+import WhoNeedsIt from './pages/FMCSACompliance/MedicalRequirements/WhoNeedsIt'
+import CertificationFlow from './pages/FMCSACompliance/MedicalRequirements/CertificationFlow'
+import KeyStandards from './pages/FMCSACompliance/MedicalRequirements/KeyStandards'
+import RiskConditions from './pages/FMCSACompliance/MedicalRequirements/RiskConditions'
+import FarmVehicleDriverExemptions from './pages/FMCSACompliance/FarmVehicleDriverExemptions/FarmVehicleDriverExemptions'
 import SafetyManagement from './pages/FMCSACompliance/SafetyManagement'
 import SafetyTraining from './pages/SafetyTraining/SafetyTraining'
 import DefensiveDriving from './pages/SafetyTraining/DefensiveDriving'
@@ -54,6 +59,12 @@ import Disclaimer from './pages/Legal/Disclaimer'
 import GlobalFooter from './components/GlobalFooter/GlobalFooter'
 import { initGA } from './analytics/initGA'
 import RouteTracker from './components/Analytics/RouteTracker'
+import Monitoring from './pages/FMCSACompliance/MedicalRequirements/Monitoring'
+import Violations from './pages/FMCSACompliance/MedicalRequirements/Violations'
+import OfficialLinks from './pages/FMCSACompliance/MedicalRequirements/OfficialLinks'
+import BOC3ProcessAgent from './pages/FMCSACompliance/Insurance/BOC3ProcessAgent'
+import States from './pages/States/States'
+import IFTA from './pages/States/IFTA/IFTA'
 
 // Small helper to append the GlobalFooter to any page component without editing each file.
 const withFooter = (Component) => (
@@ -81,6 +92,14 @@ createRoot(document.getElementById('root')).render(
         <Route path="/fmcsa-regulations" element={withFooter(FMCSARegulations)} />
         <Route path="/hours-of-service" element={withFooter(HoursOfService)} />
         <Route path="/medical-requirements" element={withFooter(MedicalRequirements)} />
+        <Route path="/medical-requirements/who-needs" element={withFooter(WhoNeedsIt)} />
+  <Route path="/medical-requirements/certification-flow" element={withFooter(CertificationFlow)} />
+  <Route path="/medical-requirements/key-standards" element={withFooter(KeyStandards)} />
+  <Route path="/medical-requirements/risk-conditions" element={withFooter(RiskConditions)} />
+        <Route path="/medical-requirements/monitoring" element={withFooter(Monitoring)} />
+        <Route path="/medical-requirements/violations" element={withFooter(Violations)} />
+        <Route path="/medical-requirements/official-links" element={withFooter(OfficialLinks)} />
+        <Route path="/farm-vehicle-driver-exemptions" element={withFooter(FarmVehicleDriverExemptions)} />
         <Route path="/safety-management" element={withFooter(SafetyManagement)} />
         <Route path="/safety-training" element={withFooter(SafetyTraining)} />
         <Route path="/safety-training/defensive-driving" element={withFooter(DefensiveDriving)} />
@@ -121,6 +140,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/faq" element={withFooter(FAQ)} />
         <Route path="/about" element={withFooter(About)} />
         <Route path="/consultation" element={withFooter(Consultation)} />
+  <Route path="/states" element={withFooter(States)} />
+  <Route path="/states/ifta" element={withFooter(IFTA)} />
         <Route path="/getting-started" element={withFooter(GettingStarted)} />
         <Route path="/terms" element={withFooter(Terms)} />
   <Route path="/privacy" element={withFooter(Privacy)} />
@@ -128,6 +149,8 @@ createRoot(document.getElementById('root')).render(
   <Route path="/acceptable-use" element={withFooter(AcceptableUse)} />
   <Route path="/cookies" element={withFooter(Cookies)} />
   <Route path="/disclaimer" element={withFooter(Disclaimer)} />
+  <Route path="/boc-3" element={withFooter(BOC3ProcessAgent)} />
+  <Route path="/boc-3-process-agents" element={withFooter(BOC3ProcessAgent)} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

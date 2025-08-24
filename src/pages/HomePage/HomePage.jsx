@@ -1,7 +1,9 @@
 import GlobalHeader from '../../components/GlobalHeader';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function HomePage() {
+  // Hook for programmatic navigation (used by State Permits button)
+  const navigate = useNavigate();
   return (
     <div className="app">
       <GlobalHeader />
@@ -179,20 +181,26 @@ function HomePage() {
         <div className="container">
           <h2>Permits and IFTA</h2>
           <div className="grid">
-            <div className="feature-card blue-border">
+            <button
+              type="button"
+              className="feature-card blue-border feature-card-btn"
+              onClick={() => navigate('/states')}
+              aria-label="Open State Permits & IFTA Hub"
+            >
               <div className="feature-header">
-                <span className="icon">�️</span>
+                <span className="icon">🛣️</span>
                 <h3>State Permits</h3>
               </div>
               <ul>
                 <li>Oversize/Overweight permits by state</li>
-                <li>Trip and fuel permits (temporary)</li>
-                <li>Tolling and transponder setup</li>
+                <li>Trip & fuel permits (temporary)</li>
+                <li>Toll & transponder setup</li>
                 <li>IRP registration basics</li>
                 <li>Port-of-entry requirements</li>
               </ul>
-            </div>
-            <div className="feature-card green-border">
+              <div className="feature-footer"><span className="card-cta">Open Hub</span></div>
+            </button>
+            <Link to="/states/ifta" className="feature-card green-border feature-link-card" aria-label="Open IFTA Guide">
               <div className="feature-header">
                 <span className="icon">⛽</span>
                 <h3>IFTA (International Fuel Tax Agreement)</h3>
@@ -204,7 +212,8 @@ function HomePage() {
                 <li>Common audit triggers</li>
                 <li>Best practices to stay compliant</li>
               </ul>
-            </div>
+              <div className="feature-footer"><span className="card-cta">Open IFTA Guide</span></div>
+            </Link>
           </div>
         </div>
       </section>

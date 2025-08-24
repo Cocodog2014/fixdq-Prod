@@ -21,7 +21,8 @@ export function initGA(measurementId, options = {}) {
   function gtag(){ window.dataLayer.push(arguments); }
   if (!window.gtag) window.gtag = gtag;
   gtag('js', new Date());
-  gtag('config', measurementId, { anonymize_ip: true, transport_type: 'beacon' });
+  // Disable automatic page_view so we control all page_view events via RouteTracker
+  gtag('config', measurementId, { anonymize_ip: true, transport_type: 'beacon', send_page_view: false });
   initializedId = measurementId;
   if (options.debug) console.info('[GA] GA4 initialized with ID', measurementId);
   return true;

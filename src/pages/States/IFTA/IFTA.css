@@ -1,0 +1,75 @@
+/* IFTA Page Styles (imported via global.css per development guide) */
+.ifta-page { /* gradient applied via utility class; ensure layout + text */
+  min-height: 100vh;
+  color: var(--color-white);
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+}
+.ifta-head { text-align:center; max-width: 1080px; margin: var(--spacing-xl) auto var(--spacing-xl); }
+.ifta-page h1 { margin: 0 0 var(--spacing-sm); text-shadow:0 1px 2px rgba(0,0,0,.35); }
+.ifta-page h2 { text-shadow:0 1px 2px rgba(0,0,0,.35); }
+.ifta-intro { font-size: 0.95rem; line-height:1.55; max-width: 900px; margin: 0 auto; }
+
+/* Constrain inner content width (header kept full width by moving it outside) */
+.ifta-page > * { width: 100%; max-width: 1080px; margin-left: auto; margin-right: auto; }
+
+.ifta-grid { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit,minmax(250px,280px)); justify-content:center; margin:0 auto var(--spacing-2xl); }
+
+.ifta-card { background: var(--color-white); color: var(--color-gray-800); border:1px solid var(--color-gray-200); border-left:8px solid transparent; border-radius:12px; padding:.65rem .75rem .7rem; display:flex; flex-direction:column; box-shadow: var(--shadow-sm); position:relative; font-size:.85rem; line-height:1.35; }
+.ifta-card h3 { margin:0 0 .35rem; font-size:.95rem; line-height:1.15; color: var(--color-gray-900); text-align:center; }
+/* Variant color accents */
+.ifta-card-register { border-left-color: var(--color-accent-green); }
+.ifta-card-register h3 { color: var(--color-accent-green); }
+
+.ifta-card-timeline { border-left-color: var(--color-accent-orange); }
+.ifta-card-timeline h3 { color: var(--color-accent-orange); }
+
+.ifta-card-records { border-left-color: var(--color-accent-blue); }
+.ifta-card-records h3 { color: var(--color-accent-blue); }
+
+.ifta-card-audit { border-left-color: var(--color-accent-red); }
+.ifta-card-audit h3 { color: var(--color-accent-red); }
+
+.ifta-card-rates { border-left-color: var(--color-accent-purple); }
+.ifta-card-rates h3 { color: var(--color-accent-purple); }
+
+.ifta-card-best { border-left-color: var(--color-accent-teal); }
+.ifta-card-best h3 { color: var(--color-accent-teal); }
+
+.ifta-card ul, .ifta-card ol { padding-left:.85rem; margin:0 0 .45rem; }
+.ifta-card li { margin:.15rem 0; }
+.ifta-card:hover { box-shadow: var(--shadow-md); transition: box-shadow .2s; }
+
+.ifta-quarter-table { width:100%; border-collapse:collapse; margin:.4rem 0 .7rem; font-size:.8rem; }
+.ifta-quarter-table th, .ifta-quarter-table td { border:1px solid var(--color-gray-200); padding:.35rem .4rem; text-align:left; }
+.ifta-quarter-table th { background: var(--color-gray-100); color: var(--color-gray-800); }
+
+.ifta-best-practices li::marker { color: var(--color-accent-green); }
+
+.ifta-callout { border-left:5px solid var(--color-accent-green); background: rgba(255,255,255,0.09); padding:.8rem 1rem; margin: var(--spacing-xl) auto; font-size:.95rem; line-height:1.5; backdrop-filter: blur(4px); border-radius:8px; max-width:900px; }
+.ifta-callout strong { color: var(--color-white); }
+
+/* Related link + local footer */
+.ifta-related { margin: var(--spacing-lg) auto 0; max-width: 800px; text-align:center; }
+.ifta-related a { font-weight:600; }
+.ifta-local-footer { margin: var(--spacing-xl) auto 0; max-width: 900px; text-align:center; font-size:.85rem; opacity:.9; }
+.ifta-local-footer p { margin:0; }
+
+/* Workflow section centered, readable width */
+.ifta-workflow { max-width: 640px; margin: var(--spacing-2xl) auto 0; }
+.ifta-workflow h2 { text-align:center; }
+.ifta-workflow ol { padding-left: 1.2rem; margin: var(--spacing-sm) 0 0; }
+.ifta-workflow li { margin: .35rem 0; }
+
+@media (min-width: 768px) {
+  .ifta-page { padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
+}
+@media (min-width: 1024px) {
+  .ifta-page { padding-left: var(--spacing-xl); padding-right: var(--spacing-xl); }
+}
+
+/* High contrast adaptation for prefers-color-scheme:dark already covered by gradient; keep cards readable */
+@media (prefers-color-scheme: dark) {
+  .ifta-card { background:#ffffff; border-color: var(--color-gray-300); }
+}

@@ -72,6 +72,59 @@ Example pattern:
 .my-feature-page .card { background:#fff; color: var(--color-gray-800); }
 ```
 
+### Landing page grid guideline (NEW)
+All landing / hub pages (top-level navigational entry points like FMCSA Compliance, Safety Training, Vehicle Inspections, ELD Coach, etc.) should present their primary feature links in a responsive grid of cards instead of long vertical lists. This improves scan speed and visual balance.
+
+Core rules:
+1. Responsive auto-fit grid.
+   ```css
+   .landing-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:1rem; }
+   ```
+2. Card base style (accessible surface + subtle elevation):
+   ```css
+   .landing-card { background:#fff; color:var(--color-gray-900); border:1px solid var(--color-gray-200); border-radius:12px; padding:1rem .95rem 0.9rem; box-shadow:0 1px 2px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:.5rem; text-decoration:none; }
+   .landing-card:hover, .landing-card:focus-visible { box-shadow:0 2px 6px rgba(0,0,0,.15); border-color:var(--color-primary); outline:none; }
+   .landing-card h3 { margin:.25rem 0 0; font-size:1.05rem; line-height:1.2; }
+   .landing-card p { margin:0; font-size:.8rem; line-height:1.4; }
+   ```
+3. Layout variants: Accept any grid shape (2x2, 2x3, 3x3, 4x4, single wide row) because `auto-fit + minmax` adapts automatically. Only force a custom pattern when semantic grouping is required.
+4. Background diversity: Do not use the exact same blue gradient on every landing. Pick from a small curated set of background utility classes for variety while keeping brand cohesion:
+   ```css
+   .bg-gradient-primary { background: var(--bg-gradient-primary); }
+   .bg-gradient-green { background: linear-gradient(135deg,#065f46,#16a34a); }
+   .bg-gradient-slate { background: linear-gradient(135deg,#1e293b,#334155); }
+   .bg-gradient-amber { background: linear-gradient(135deg,#92400e,#f59e0b); }
+   .bg-gradient-indigo { background: linear-gradient(135deg,#312e81,#6366f1); }
+   ```
+   Apply on the page root plus `min-height:100vh` and set a contrasting foreground.
+5. Contrast: When the background is dark, set `color: var(--color-white)` on the wrapper and keep cards light (white) for dense text. For lighter / high‑chroma backgrounds (amber/green) ensure card + text contrast ≥ 4.5:1. Run a quick check if you introduce new colors.
+6. Density: Limit each card to (a) Icon/emoji (optional), (b) Title, (c) ≤ 2 line descriptive blurb, (d) optional small metadata (badge / status). Avoid buttons inside—make the whole card a link (anchor) with `aria-label` when title text alone is insufficient.
+7. Keyboard & a11y: Entire card must be focusable (`<a class="landing-card" ...>`). Provide focus-visible outline via border-color or box-shadow for 3:1 contrast minimum.
+8. Content ordering: Favor most used / critical items first; avoid alphabetical unless all items are equal weight. On mobile the order becomes a vertical stacking of the same DOM sequence.
+9. Reusability: Define the grid + card utility classes once (add them to `global.css`). Individual pages only provide content + chosen background class.
+10. Empty states: If a landing page has < 3 cards, center them with `justify-items:center` or add placeholder/in-progress cards labeled "Coming Soon" (avoid blank gaps on wide screens).
+
+Implementation snippet to copy into a landing page JSX:
+```jsx
+<section className="container">
+  <h2>Explore Safety Training</h2>
+  <div className="landing-grid">
+    <a className="landing-card" href="/safety-training/defensive-driving" data-track="open_defensive_driving">
+      <h3>Defensive Driving</h3>
+      <p>Core strategies to reduce collision risk in daily CMV operations.</p>
+    </a>
+    {/* more cards... */}
+  </div>
+</section>
+```
+
+Additions required when adopting:
+- Add the new background utility to `global.css` if not already present.
+- Ensure page root uses a distinct gradient class (avoid repeating the same gradient across adjacent navigation hubs for visual variety).
+- Update this guide if you add new gradient tokens or adjust min card width.
+
+Goal: Consistent, scannable hubs with adaptive grids, varied but accessible backgrounds, and concise card content.
+
 ## Routing
 - Router is declared in `src/main.jsx` using React Router v6.
 - Current routes:
@@ -189,11 +242,12 @@ Setup:
 4. Deployment: ensure the environment variable is present during build (you can keep `.env` committed here since this repo is already public and the ID is not secret, but rotate if needed).
 
 Implementation details:
-* `src/analytics/initGA.js` injects GA script once (IP anonymized) and exposes helpers: `trackPageView`, `trackEvent`, `enableAutoClickTracking`.
+* `src/analytics/initGA.js` injects GA script once (IP anonymized, `send_page_view:false` to avoid double counting) and exposes helpers: `trackPageView`, `trackEvent`, `enableAutoClickTracking`.
 * Auto page view + delegated click tracking provided by `RouteTracker.jsx` (mounted in `main.jsx`). On every route change it:
   - Derives a human readable title from the path (or uses a map) and sets `document.title` (`FixDQ | <Page>` except home)
   - Fires a `page_view` with `page_path`, `page_title`, and `page_location`
 * All custom events (`trackEvent` & auto click events) now include `page_title` automatically for easier funnel / content reports.
+* Because we manually manage `page_view` events, the initial `gtag('config')` call is set with `send_page_view:false` to prevent a duplicate first page view.
 * Add `data-track="Custom Label"` to any element for a cleaner click label; otherwise inner text / aria-label is used.
 * For custom events: `trackEvent({ action: 'download_pdf', category: 'resource', label: 'PreTrip Checklist' })`.
 * Cookies page shows active/disabled status.

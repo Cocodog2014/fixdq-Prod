@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
-import fixdqLogo from '../../assets/logos/fixdq.png';
+import fixdqLogo from '../../assets/logos/fixdqb.png';
 import { Link, useLocation } from 'react-router-dom';
 import heroSlides from './data/banner/slides.js';
 import ribbonItems from './data/ribbon/items.js';
