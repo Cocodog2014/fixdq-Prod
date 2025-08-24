@@ -19,7 +19,7 @@ function IFTA() {
       <div className="ifta-grid">
         <div className="ifta-card ifta-card-register">
           <h3>Who Must Register?</h3>
-          <ul>c:\Users\sutto\AppData\Local\Packages\MicrosoftWindows.Client.Core_cw5n1h2txyewy\TempState\ScreenClip\{2A27B507-F842-492C-9899-1A21C2511FED}.png
+          <ul>
             <li>Interstate carriers with a qualified motor vehicle</li>
             <li>GVW or registered weight &gt; 26,000 lbs (11,797 kg) OR</li>
             <li>3+ axles regardless of weight OR</li>
