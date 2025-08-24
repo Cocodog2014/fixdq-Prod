@@ -62,6 +62,7 @@ import RouteTracker from './components/Analytics/RouteTracker'
 import Monitoring from './pages/FMCSACompliance/MedicalRequirements/Monitoring'
 import Violations from './pages/FMCSACompliance/MedicalRequirements/Violations'
 import OfficialLinks from './pages/FMCSACompliance/MedicalRequirements/OfficialLinks'
+import BOC3ProcessAgent from './pages/FMCSACompliance/Insurance/BOC3ProcessAgent'
 
 // Small helper to append the GlobalFooter to any page component without editing each file.
 const withFooter = (Component) => (
@@ -144,6 +145,8 @@ createRoot(document.getElementById('root')).render(
   <Route path="/acceptable-use" element={withFooter(AcceptableUse)} />
   <Route path="/cookies" element={withFooter(Cookies)} />
   <Route path="/disclaimer" element={withFooter(Disclaimer)} />
+  <Route path="/boc-3" element={withFooter(BOC3ProcessAgent)} />
+  <Route path="/boc-3-process-agents" element={withFooter(BOC3ProcessAgent)} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
