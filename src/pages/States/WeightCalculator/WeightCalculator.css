@@ -22,8 +22,10 @@
 .ctrl input, .ctrl select { width:100%; border-radius:.6rem; border:1px solid #24385f; background:#0f244a; color:#fff; padding:.5rem .6rem; }
 .wc-section { margin-top:.75rem; }
 .wc-h3 { font-weight:700; margin-bottom:.25rem; }
-.wc-duo { display:grid; grid-template-columns: 1fr 1fr; gap:.4rem; }
+.wc-duo { display:grid; grid-template-columns: 1fr 1fr; gap:.65rem; }
 .wc-grid-3 { display:grid; grid-template-columns: 1fr; gap:.5rem; }
+/* Larger gap for axle spacing groups (labels like Drive 1 → Drive 2, etc.) */
+.wc-spacing-grid { gap:1.15rem; }
 @media (min-width: 768px) { .wc-grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 .wc-grid-5 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:.5rem; }
 @media (min-width: 1024px) { .wc-grid-5 { grid-template-columns: repeat(5, minmax(0,1fr)); } }

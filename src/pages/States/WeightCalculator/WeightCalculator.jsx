@@ -18,6 +18,8 @@ export default function WeightCalculator({ onClose }) {
   const [unit2Axles, setUnit2Axles] = useState(2) // axles on second unit (e.g., trailer) touching ground
   const [equipment, setEquipment] = useState('') // jeep dolly / booster / stinger / flip axle / flip booster
   const [jeepAxles, setJeepAxles] = useState(2) // when jeep selected: 2 or 3
+  const [boosterAxles, setBoosterAxles] = useState(1) // when booster selected: 1-3
+  const [flipAxles, setFlipAxles] = useState(1) // when flip selected: 1–2
   const [spacings, setSpacings] = useState([12, 4, 33, 4].map(ft => ({ ft, in: 0 })))
   const [axleWeights, setAxleWeights] = useState([12000, 17000, 17000, 10000, 10000])
   const [overallLength, setOverallLength] = useState({ ft: 72, in: 0 })
@@ -26,7 +28,30 @@ export default function WeightCalculator({ onClose }) {
   // Maintain array sizes when axle count changes
   useEffect(() => {
     const jeepCount = equipment === 'jeep' ? jeepAxles : 0
-    const desired = Math.min(12, unit1Axles + jeepCount + unit2Axles)
+    const boosterCount = equipment === 'booster' ? boosterAxles : 0
+    const flipCount = equipment === 'flip' ? flipAxles : 0
+    // Clamp booster/jeep counts if combined exceeds capacity
+    let desired = unit1Axles + jeepCount + unit2Axles + boosterCount + flipCount
+    if (desired > 12) {
+      // Try reducing booster or flip first (these can be smaller), then jeep
+      if (boosterCount && equipment === 'booster') {
+        const overflow = desired - 12
+        const newBooster = Math.max(0, boosterCount - overflow)
+        if (newBooster !== boosterAxles) setBoosterAxles(newBooster || 1)
+        desired = unit1Axles + jeepCount + unit2Axles + (equipment === 'booster' ? newBooster : 0) + flipCount
+      } else if (flipCount && equipment === 'flip') {
+        const overflow = desired - 12
+        const newFlip = Math.max(0, flipCount - overflow)
+        if (newFlip !== flipAxles) setFlipAxles(newFlip || 1)
+        desired = unit1Axles + jeepCount + unit2Axles + boosterCount + (equipment === 'flip' ? newFlip : 0)
+      } else if (jeepCount && equipment === 'jeep') {
+        const overflow = desired - 12
+        const newJeep = Math.max(0, jeepCount - overflow)
+        if (newJeep !== jeepAxles) setJeepAxles(Math.max(2, newJeep) || 2)
+        desired = unit1Axles + (equipment === 'jeep' ? newJeep : 0) + unit2Axles + boosterCount + flipCount
+      }
+    }
+    desired = Math.min(12, desired)
     if (axles !== desired) setAxles(desired)
     const needSpacings = Math.max(1, desired - 1)
     setSpacings(prev => {
@@ -39,7 +64,7 @@ export default function WeightCalculator({ onClose }) {
       while (next.length < desired) next.push(0)
       return next
     })
-  }, [unit1Axles, unit2Axles, equipment, jeepAxles, axles])
+  }, [unit1Axles, unit2Axles, equipment, jeepAxles, boosterAxles, flipAxles, axles])
 
   // Preset application removed.
 
@@ -58,6 +83,8 @@ export default function WeightCalculator({ onClose }) {
   const spacingLabel = (i) => {
     const left = i + 1, right = i + 2
     const jeepCount = equipment === 'jeep' ? jeepAxles : 0
+    const boosterCount = equipment === 'booster' ? boosterAxles : 0
+    const flipCount = equipment === 'flip' ? flipAxles : 0
     const name = (idx) => {
       if (idx === 1) return 'Steer'
       if (idx === 2 && unit1Axles > 1) return 'Drive 1'
@@ -65,8 +92,22 @@ export default function WeightCalculator({ onClose }) {
       const jeepStart = unit1Axles + 1
       const jeepEnd = unit1Axles + jeepCount
       if (jeepCount && idx >= jeepStart && idx <= jeepEnd) return `Jeep ${idx - unit1Axles}`
-      const trailerIndex = idx - unit1Axles - jeepCount
-      if (trailerIndex >= 1) return `Unit2 ${trailerIndex}`
+      const trailerStart = jeepEnd + 1
+      const trailerEnd = jeepEnd + unit2Axles
+      if (idx >= trailerStart && idx <= trailerEnd) {
+        // Add space for readability: 'Unit 2' instead of 'Unit2'
+        return `Unit 2 ${idx - jeepEnd}`
+      }
+      const boosterStart = trailerEnd + 1
+      const boosterEnd = trailerEnd + boosterCount
+      if (boosterCount && idx >= boosterStart && idx <= boosterEnd) {
+        return `Booster ${idx - trailerEnd}`
+      }
+      const flipStart = boosterEnd + 1
+      const flipEnd = boosterEnd + flipCount
+      if (flipCount && idx >= flipStart && idx <= flipEnd) {
+        return `Flip ${idx - boosterEnd}`
+      }
       return `Axle ${idx}`
     }
     return `${name(left)} → ${name(right)} (ft/in)`
@@ -110,9 +151,6 @@ export default function WeightCalculator({ onClose }) {
 
   return (
     <section className="wc-wrap" aria-label="Advanced axle & bridge weight calculator">
-      {onClose && (
-        <button type="button" className="wc-close" aria-label="Close weight calculator" onClick={onClose}>✕</button>
-      )}
       <header className="wc-header">
         <div className="wc-title"><span className="wc-dot" aria-hidden></span><h2>Advanced Axle Group & Bridge Calculator</h2></div>
         <p className="wc-sub">Select axle count, then enter spacings and per-axle weights. Checks single axles, tandems, all groups, and GVW.</p>
@@ -145,9 +183,29 @@ export default function WeightCalculator({ onClose }) {
               <p className="wc-note-jeep">Jeep dolly: a 2–3-axle dolly between the tractor and the lowboy to add axles up front and spread weight (no deck cargo).</p>
             </div>
           )}
+          {equipment === 'booster' && (
+            <div className="wc-jeep-config">
+              <label>Booster axles
+                <select value={boosterAxles} onChange={(e)=>setBoosterAxles(Math.min(3, Math.max(1, Number(e.target.value))))}>
+                  {[1,2,3].map(n => <option key={n} value={n}>{n}</option>)}
+                </select>
+              </label>
+              <p className="wc-note-jeep">Booster: 1–3 axle group attached to rear of trailer to add axles and lengthen group for Bridge Formula.</p>
+            </div>
+          )}
+          {equipment === 'flip' && (
+            <div className="wc-jeep-config">
+              <label>Flip axle(s)
+                <select value={flipAxles} onChange={(e)=>setFlipAxles(Math.min(2, Math.max(1, Number(e.target.value))))}>
+                  {[1,2].map(n => <option key={n} value={n}>{n}</option>)}
+                </select>
+              </label>
+              <p className="wc-note-jeep">Flip axle: 1–2 axle add-on hinged at trailer rear; flips down to increase axle count when needed.</p>
+            </div>
+          )}
         </div>
       </div>
-      <div className="wc-section"><div className="wc-h3">Measure between axles (center → next)</div><div className="wc-grid-3">{spacings.map((s, i) => (<div className="ctrl" key={i}><label>{spacingLabel(i)}</label><div className="wc-duo"><input type="number" min={0} step={1} value={s.ft} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], ft:Number(e.target.value)||0}; setSpacings(v)}} /><input type="number" min={0} max={11} step={1} value={s.in} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], in:Number(e.target.value)||0}; setSpacings(v)}} /></div></div>))}</div></div>
+  <div className="wc-section"><div className="wc-h3">Measure between axles (center of hub to center of hub)</div><div className="wc-grid-3 wc-spacing-grid">{spacings.map((s, i) => (<div className="ctrl" key={i}><label>{spacingLabel(i)}</label><div className="wc-duo"><input type="number" min={0} step={1} value={s.ft} placeholder="ft" aria-label={`${spacingLabel(i)} feet`} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], ft:Number(e.target.value)||0}; setSpacings(v)}} /><input type="number" min={0} max={11} step={1} value={s.in} placeholder="in" aria-label={`${spacingLabel(i)} inches`} onChange={(e)=>{const v=[...spacings]; v[i]={...v[i], in:Number(e.target.value)||0}; setSpacings(v)}} /></div></div>))}</div></div>
       <div className="wc-section"><div className="wc-h3">Per-axle weights (lb)</div><div className="wc-grid-5">{axleWeights.map((w, i) => (<div className="ctrl" key={i}><label>Axle {i+1}</label><input type="number" min={0} step={100} value={w} onChange={(e)=>{const v=[...axleWeights]; v[i]=Number(e.target.value)||0; setAxleWeights(v)}} /></div>))}</div></div>
       <div className="wc-kpis"><div className="k"><div className="small">GVW</div><div className="v">{fmt(gvw)} lb</div></div><div className="k"><div className="small">GVW Limit</div><div className="v">{fmt(FEDERAL_LIMITS.gross)} lb</div></div><div className="k"><div className="small">Outer Group W (1→{axles})</div><div className="v">{fmt(outerGroup?.W)} lb</div></div><div className={`badge ${overallPass ? 'ok' : 'warn'}`}>{overallPass ? 'Overall: PASS' : 'Overall: ATTENTION'}</div></div>
       <div className="wc-card"><h3>Single-Axle Checks</h3><div className="wc-table-wrap"><table className="wc-table"><thead><tr><th>Axle</th><th>Weight</th><th>Limit</th><th>Status</th></tr></thead><tbody>{singleAxle.map((s, i) => (<tr key={i}><td>{i+1}</td><td>{fmt(s.actual)} lb</td><td>{fmt(s.limit)} lb</td><td><span className={`pill ${s.actual <= s.limit ? 'ok' : 'bad'}`}>{s.actual <= s.limit ? 'OK' : 'OVER'}</span></td></tr>))}</tbody></table></div></div>
