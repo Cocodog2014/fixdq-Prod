@@ -66,7 +66,7 @@ const StateRulesDrawer = forwardRef(function StateRulesDrawer(_props, ref) {
 			>
 				<header className="sr-drawer-head">
 					<h2>State-by-State FMCSA Rules</h2>
-					<button type="button" className="sr-close" onClick={close} aria-label="Close state rules drawer">✕</button>
+					<button type="button" className="sr-close-footer" onClick={close} aria-label="Close state rules drawer">Close</button>
 				</header>
 				<div className="sr-drawer-body">
 					<StateRulesFinder onClose={close} />

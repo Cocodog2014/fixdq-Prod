@@ -39,8 +39,7 @@ export default function StateRulesFinder({ onClose }) {
 	return (
 		<div className="sr-finder">
 			<div className="sr-finder-head" style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-				<p style={{ fontSize:'.65rem', margin:0, opacity:.85 }}>Intrastate nuances & enforcement references. Always verify locally.</p>
-				{onClose && <button onClick={onClose} className="sr-close-footer" style={{ fontSize:'.55rem' }}>Close</button>}
+				<p className="sr-subtext">Intrastate nuances & enforcement references. Always verify locally.</p>
 			</div>
 			<div className="sr-finder" aria-label="State rules finder">
 				<div className="sr-controls">
@@ -88,7 +87,7 @@ export default function StateRulesFinder({ onClose }) {
 			</div>
 			<div className="sr-footer">
 				<span>Draft reference tool</span>
-				<span aria-hidden>🚚</span>
+				<span aria-hidden className="sr-emoji-truck">🚚</span>
 			</div>
 		</div>
 	)
