@@ -55,7 +55,7 @@ export default function BOC3ProcessAgent() {
         {/* Deep Dive */}
         <section className="boc3-detail" aria-labelledby="boc3-detail-heading">
           <h2 id="boc3-detail-heading">In Depth</h2>
-          <article className="boc3-article" aria-labelledby="boc3-definition">
+          <article className="boc3-article landing-card boc3-card-def" aria-labelledby="boc3-definition">
             <h3 id="boc3-definition">What Is a BOC‑3?</h3>
             <p>A federal filing (49 CFR §366) designating a process agent in each state where operations occur. For most interstate authorities, a blanket process agent service supplies all 50 states + D.C. with a single electronic filing.</p>
             <ul className="boc3-list">
@@ -65,7 +65,7 @@ export default function BOC3ProcessAgent() {
             </ul>
           </article>
 
-          <article className="boc3-article" aria-labelledby="boc3-who">
+          <article className="boc3-article landing-card boc3-card-who" aria-labelledby="boc3-who">
             <h3 id="boc3-who">Who Must File</h3>
             <ul className="boc3-list">
               <li>For‑hire Motor Carriers (property or passenger)</li>
@@ -75,7 +75,7 @@ export default function BOC3ProcessAgent() {
             <p><strong>Not usually required</strong> for purely intrastate carriers not seeking federal operating authority (check state law).</p>
           </article>
 
-          <article className="boc3-article" aria-labelledby="boc3-why">
+          <article className="boc3-article landing-card boc3-card-why" aria-labelledby="boc3-why">
             <h3 id="boc3-why">Why It Matters</h3>
             <p>Without a reliable process agent network you could miss time‑sensitive legal documents (summons, complaints). That can lead to default judgments or delayed authority issuance.</p>
             <ul className="boc3-list">
@@ -85,7 +85,7 @@ export default function BOC3ProcessAgent() {
             </ul>
           </article>
 
-          <article className="boc3-article" aria-labelledby="boc3-how-filed">
+          <article className="boc3-article landing-card boc3-card-how" aria-labelledby="boc3-how-filed">
             <h3 id="boc3-how-filed">How Filing Works</h3>
             <ol className="boc3-ordered">
               <li>Select a reputable blanket process agent company.</li>
@@ -97,7 +97,7 @@ export default function BOC3ProcessAgent() {
             <p className="boc3-note">Self‑filing: Only brokers with no commercial motor vehicles may self‑file. Must still designate an agent in each state – manual and slower.</p>
           </article>
 
-          <article className="boc3-article" aria-labelledby="boc3-choosing">
+          <article className="boc3-article landing-card boc3-card-special" aria-labelledby="boc3-choosing">
             <h3 id="boc3-choosing">Choosing a Blanket Company</h3>
             <ul className="boc3-list">
               <li><strong>Transparency:</strong> Clear published pricing and service terms.</li>
@@ -110,7 +110,7 @@ export default function BOC3ProcessAgent() {
             <p className="boc3-warning">Red flags: No physical address, high-pressure sales, refusal to send sample filing, or unreasonably high fees.</p>
           </article>
 
-          <article className="boc3-article" aria-labelledby="boc3-maintenance">
+          <article className="boc3-article landing-card boc3-card-updates" aria-labelledby="boc3-maintenance">
             <h3 id="boc3-maintenance">Maintaining Compliance</h3>
             <ul className="boc3-list">
               <li>Keep BOC‑3 copy with corporate / compliance records.</li>
@@ -120,7 +120,7 @@ export default function BOC3ProcessAgent() {
             </ul>
           </article>
 
-          <article className="boc3-article" aria-labelledby="boc3-faq" id="boc3-faq">
+          <article className="boc3-article landing-card boc3-card-faq" aria-labelledby="boc3-faq" id="boc3-faq">
             <h3 id="boc3-faq-heading">FAQ</h3>
             <details>
               <summary>Is the BOC‑3 the same as a Registered Agent?</summary>
