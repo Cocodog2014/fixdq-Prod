@@ -7,14 +7,27 @@
 .wc-title h2 { margin:0; font-size: clamp(1.125rem,2.2vw,1.5rem); }
 .wc-dot { width:8px; height:8px; border-radius:999px; background:#5aa2ff; box-shadow:0 0 0 4px rgba(90,162,255,.15); }
 .wc-sub { color:#c8d1e8; font-size:.9rem; }
+.wc-equip-select { margin-top:.6rem; }
+.wc-jeep-config { margin-top:1.5rem; padding:1.25rem 1rem; border:1px solid #24385f; border-radius:.75rem; background:#0f244a; }
+.wc-jeep-config label { font-weight:600; display:block; margin-bottom:.35rem; }
+.wc-jeep-config select { margin-left:.5rem; }
+.wc-note-jeep { margin:.6rem 0 0; font-size:.75rem; line-height:1.2; color:#afbdd4; }
+.wc-equip-examples { color:#f87171; font-weight:600; }
+.wc-optional-tag { background:#1e3a8a; color:#93c5fd; font-size:.65rem; text-transform:uppercase; letter-spacing:.5px; padding:.15rem .4rem; border-radius:.5rem; margin:0 .35rem 0 .4rem; position:relative; top:-1px; }
+.wc-equip-label { display:block; color:#f87171; font-weight:600; }
 .wc-controls { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.5rem; margin-top:.5rem; }
 @media (min-width: 768px) { .wc-controls { grid-template-columns: repeat(5, minmax(0,1fr)); } }
+.wc-controls .full-row { grid-column: 1 / -1; }
+.wc-inline-four { display:flex; gap:.5rem; flex-wrap:wrap; }
+.wc-inline-four .ctrl { flex:1 1 140px; }
 .ctrl label { display:block; font-weight:600; margin-bottom:.2rem; }
 .ctrl input, .ctrl select { width:100%; border-radius:.6rem; border:1px solid #24385f; background:#0f244a; color:#fff; padding:.5rem .6rem; }
 .wc-section { margin-top:.75rem; }
 .wc-h3 { font-weight:700; margin-bottom:.25rem; }
-.wc-duo { display:grid; grid-template-columns: 1fr 1fr; gap:.4rem; }
+.wc-duo { display:grid; grid-template-columns: 1fr 1fr; gap:.65rem; }
 .wc-grid-3 { display:grid; grid-template-columns: 1fr; gap:.5rem; }
+/* Larger gap for axle spacing groups (labels like Drive 1 → Drive 2, etc.) */
+.wc-spacing-grid { gap:1.15rem; }
 @media (min-width: 768px) { .wc-grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 .wc-grid-5 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:.5rem; }
 @media (min-width: 1024px) { .wc-grid-5 { grid-template-columns: repeat(5, minmax(0,1fr)); } }
@@ -45,4 +58,11 @@
 .wc-drawer-body { padding:1rem; overflow:auto; -webkit-overflow-scrolling:touch; }
 @media (min-width:600px){ .wc-overlay{align-items:center;} .wc-drawer{height:85vh; width:92vw; border-radius:14px;} }
 @media (min-width:1024px){ .wc-drawer{height:80vh; width:min(1100px,92vw);} }
+
+/* Axle diagram styles */
+.wc-axle-diagram { width:100%; }
+.wc-axle-svg { width:100%; height:auto; display:block; }
+.wc-axle-legend { font-size:.75rem; color:#c8d1e8; opacity:.9; margin-top:.4rem; display:flex; align-items:center; gap:.4rem; }
+.wc-axle-dot { width:10px; height:10px; border-radius:50%; background:#ffd84d; display:inline-block; }
+@media (max-width:599px){ .wc-axle-diagram text { font-size:11px !important; } }
 
