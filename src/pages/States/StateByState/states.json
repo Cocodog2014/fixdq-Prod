@@ -1,0 +1,7 @@
+[
+	{ "code": "AL", "name": "Alabama", "links": { "dot": "https://www.dot.state.al.us/" }, "notes": [] },
+	{ "code": "AK", "name": "Alaska", "links": { "dot": "https://dot.alaska.gov/" }, "notes": [] },
+	{ "code": "AZ", "name": "Arizona", "links": { "dot": "https://azdot.gov/" }, "notes": [] },
+	{ "code": "AR", "name": "Arkansas", "links": { "dot": "https://www.ardot.gov/" }, "notes": [] },
+	{ "code": "CA", "name": "California", "links": { "dot": "https://dot.ca.gov/" }, "notes": [] }
+]

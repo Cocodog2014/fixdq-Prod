@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { lazy, Suspense, useRef } from 'react'
 import GlobalHeader from '../../components/GlobalHeader'
-import StateRules from './StateRules'
 import WeightCalculator from './WeightCalculator'
+const StateRulesDrawer = lazy(()=>import('./StateByState/StateRulesDrawer'))
 
 /*
   States Landing Page
@@ -9,6 +9,7 @@ import WeightCalculator from './WeightCalculator'
   - Reuses existing grid & landing-card system per development.md conventions
 */
 export default function States() {
+  const drawerRef = useRef(null)
   return (
     <div className="states-page gradient-page">
       <GlobalHeader />
@@ -41,10 +42,10 @@ export default function States() {
             <p>Fleet apportionment, cab cards, adding units, and recordkeeping.</p>
             <a className="mini-link" href="#irp">Learn More</a>
           </div>
-          <div className="landing-card states-card-research">
+          <div className="landing-card states-card-research" onClick={()=>drawerRef.current?.open()} role="button" tabIndex={0} onKeyDown={(e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); drawerRef.current?.open(); } }} aria-label="Open State-by-State FMCSA Rules tool">
             <h3>State-by-State FMCSA Rules</h3>
             <p>Interactive finder for intrastate rules and enforcement contacts.</p>
-            <a className="mini-link" href="#state-rules-tool">Open Tool</a>
+            <span className="mini-link" aria-hidden>Open Tool</span>
           </div>
           <div className="landing-card states-card-weight">
             <h3>Bridge & Axle Weights</h3>
@@ -133,10 +134,9 @@ export default function States() {
         </ul>
       </section>
 
-      <section className="states-tools container" id="state-rules-tool">
-        <h2>State Rules Finder</h2>
-        <StateRules />
-      </section>
+      <Suspense fallback={<div className="sr-loading">Loading tool…</div>}>
+        <StateRulesDrawer ref={drawerRef} />
+      </Suspense>
 
       <section className="states-tools container" id="weight-tool">
         <h2>Bridge & Axle Weight Planner</h2>
