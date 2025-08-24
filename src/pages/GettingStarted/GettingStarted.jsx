@@ -50,7 +50,7 @@ function CMVFlowchart({ cdlLink = '#' }) {
       tags: ['USDOT', 'MC #', 'BOC‑3', 'IRP/IFTA', 'ELD'],
       extraActions: [
   { label: 'Do I Need a Commercial License?', href: '/fmcsa-compliance#flowchart', defKey: 'cdl' },
-  { label: 'Medical Requirements (Guide)', href: '/medical-requirements', defKey: 'medical' }
+  { label: 'Do I Need a Medical Certificate?', href: '/medical-requirements', defKey: 'medical' }
       ]
     },
     broker: {
@@ -64,7 +64,7 @@ function CMVFlowchart({ cdlLink = '#' }) {
       ],
       tags: ['MC #', '$75k Bond/Trust', 'BOC‑3'],
       extraActions: [
-  { label: 'Medical Requirements (Guide)', href: '/medical-requirements', defKey: 'medical' }
+  { label: 'Do I Need a Medical Certificate?', href: '/medical-requirements', defKey: 'medical' }
       ]
     }
   }
@@ -198,9 +198,9 @@ function CMVFlowchart({ cdlLink = '#' }) {
         </article>
         <div className="gs-links">
           <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>{'Do I Need a Commercial License?'}</a>
-          <a href="/medical-requirements" onClick={e => { e.preventDefault(); window.location.href='/medical-requirements'; }}>Medical Requirements (Guide)</a>
-          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>Tank / HazMat (N / H / X) Endorsements</a>
-          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>Farm Vehicle Driver Exemptions (CDL?)</a>
+          <a href="/medical-requirements" onClick={e => { e.preventDefault(); window.location.href='/medical-requirements'; }}>Do I Need a Medical Certificate?</a>
+          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>Do I Need HazMat or Tanker (H / N / X) Endorsements?</a>
+          <a href="/fmcsa-compliance#flowchart" onClick={e => { e.preventDefault(); window.location.href='/fmcsa-compliance#flowchart'; }}>Do I Fall Under the Farm Vehicle Driver Exemptions?</a>
           <div className="gs-def-box" aria-live="polite">{definition}</div>
         </div>
       </div>

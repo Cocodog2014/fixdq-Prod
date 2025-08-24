@@ -11,7 +11,7 @@ import License from './HeroButton/License'
 import Usdot from './HeroButton/Usdot'
 import NewReg, { NewRegPanel } from './HeroButton/NewReg'
 import ManageReg from './HeroButton/ManageReg'
-import Insurance from './HeroButton/Insurance'
+import Insurance, { InsurancePanel } from './Insurance/Insurance'
 import { LicensePanel } from './HeroButton/License'
 
 // License tool state packaged for WhatLicense component
@@ -161,18 +161,7 @@ export default function FMCSACompliance() {
               </div>
             )}
             {activePanel === 'insurance' && (
-              <div className="info-panel" role="region" aria-label="Insurance Requirements">
-                <h2 style={{marginTop:0}}>Insurance Requirements</h2>
-                <p>Minimum public liability (BI & PD) depends on commodity & radius:</p>
-                <ul>
-                  <li>$300K: Non-hazardous property under 10,001 lbs.</li>
-                  <li>$750K: General freight ≥ 10,001 lbs.</li>
-                  <li>$1M: Oil listed in 49 CFR 172.101.</li>
-                  <li>$5M: Certain hazmat / explosives.</li>
-                </ul>
-                <p>Cargo insurance federally required only for household goods carriers (some states add more).</p>
-                <p><a href="https://www.fmcsa.dot.gov/registration/insurance-requirements" target="_blank" rel="noopener noreferrer">FMCSA Insurance Details</a></p>
-              </div>
+              <InsurancePanel onClose={() => setActivePanel(null)} />
             )}
           </div>
         </section>

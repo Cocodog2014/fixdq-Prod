@@ -1,0 +1,94 @@
+/* BOC-3 Process Agent Page Styles (Doubled Typography + Red Primary Link) */
+.boc3-page { --boc3-accent:#f59e0b; }
+.boc3-container { padding-top:2.5rem; padding-bottom:3rem; }
+.boc3-hero { display:flex; flex-direction:column; gap:1.5rem; }
+.boc3-page h1 { font-size:4.5rem; line-height:1.1; margin:0; }
+.boc3-sub { font-size:2.1rem; max-width:880px; line-height:1.45; }
+.boc3-hero-links { display:flex; flex-wrap:wrap; gap:1rem; }
+.boc3-btn { background:var(--color-accent-teal); color:#fff; font-weight:600; padding:1.1rem 1.75rem; border-radius:999px; text-decoration:none; font-size:1.8rem; letter-spacing:.4px; border:1px solid var(--color-accent-teal); box-shadow:0 4px 14px -2px rgba(0,0,0,.45); line-height:1.1; }
+.boc3-btn:hover { background:#0d9488; }
+.boc3-btn.ghost { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.4); }
+.boc3-btn.ghost:hover { background:rgba(255,255,255,.28); }
+.boc3-btn--fmcsa { background:#ef4444; border-color:#ef4444; }
+.boc3-btn--fmcsa:hover { background:#dc2626; }
+
+/* Card color accents */
+.boc3-card-def { border-left:8px solid var(--color-accent-blue); background:#e0f2fe; }
+.boc3-card-who { border-left:8px solid var(--color-accent-purple); background:#ede9fe; }
+.boc3-card-why { border-left:8px solid var(--color-accent-orange); background:#fef3c7; }
+.boc3-card-how { border-left:8px solid var(--color-accent-green); background:#ecfdf5; }
+.boc3-card-special { border-left:8px solid var(--color-accent-yellow); background:#fef9c3; }
+.boc3-card-updates { border-left:8px solid var(--color-accent-red); background:#ffe4e6; }
+.boc3-page .landing-card { min-height:105px; padding:.75rem .75rem .7rem; }
+.boc3-page .landing-card h3 { font-size:1.6rem; margin-top:.15rem; }
+.boc3-page .landing-card p { font-size:1.2rem; }
+.boc3-page .landing-card .badge { font-size:.825rem; padding:.35rem .55rem; }
+
+/* Color headings to match accent border (override gradient-page white heading rule) */
+.boc3-page .boc3-card-def h3 { color:var(--color-accent-blue); }
+.boc3-page .boc3-card-who h3 { color:var(--color-accent-purple); }
+.boc3-page .boc3-card-why h3 { color:var(--color-accent-orange); }
+.boc3-page .boc3-card-how h3 { color:var(--color-accent-green); }
+.boc3-page .boc3-card-special h3 { color:var(--color-accent-yellow); }
+.boc3-page .boc3-card-updates h3 { color:var(--color-accent-red); }
+
+/* Deep detail section (scaled back to 50%) */
+.boc3-detail { margin-top:3rem; display:flex; flex-direction:column; gap:2rem; }
+/* Base deep-dive article layout now piggybacks on .landing-card look */
+.boc3-article { border-radius:14px; padding:1rem .95rem .95rem; display:flex; flex-direction:column; gap:.9rem; position:relative; }
+/* Elevation hover like hero cards */
+.boc3-article:hover, .boc3-article:focus-visible { box-shadow:0 3px 10px -2px rgba(0,0,0,.28); transform:translateY(-2px); transition:box-shadow .25s, transform .25s; outline:none; }
+.boc3-article h3 { margin:.15rem 0 0; font-size:1.35rem; line-height:1.25; }
+.boc3-article p { margin:0; font-size:.95rem; line-height:1.5; }
+.boc3-list, .boc3-ordered { margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:.45rem; font-size:.92rem; line-height:1.45; }
+.boc3-list li, .boc3-ordered li { margin:0; }
+.boc3-note { font-size:.85rem; background:rgba(255,255,255,.15); padding:.6rem .7rem; border-radius:10px; border:1px solid rgba(255,255,255,.25); }
+.boc3-warning { font-size:.9rem; background:linear-gradient(135deg,#7c2d12,#f97316); padding:.7rem .8rem; border-radius:10px; border:1px solid rgba(255,255,255,.25); color:#fff; font-weight:600; }
+
+.boc3-article details { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:10px; padding:.65rem .75rem; font-size:.9rem; }
+.boc3-article details + details { margin-top:.7rem; }
+.boc3-article summary { cursor:pointer; font-weight:600; }
+.boc3-article details[open] { background:rgba(255,255,255,.18); }
+.boc3-article details p { margin-top:.5rem; font-size:.85rem; }
+
+.boc3-footer { margin-top:4rem; text-align:center; font-size:1.7rem; opacity:.9; display:flex; flex-direction:column; gap:1rem; }
+.boc3-footer a { color:#ef4444; font-weight:700; font-size:1.7rem; }
+
+/* Accessibility helpers */
+.visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+@media (min-width:900px){
+  .boc3-detail { gap:2.4rem; }
+  .boc3-article { padding:1.15rem 1.05rem 1.05rem; }
+}
+
+/* Map deep-dive variant classes (reuse hero palette) */
+.boc3-card-faq { border-left:8px solid var(--color-accent-blue); background:#192755; }
+/* Tighten FAQ details spacing inside variant card */
+.boc3-card-faq details { background:rgba(255,255,255,.1); }
+
+/* FAQ text color overrides (questions + answers white) */
+.boc3-card-faq, .boc3-card-faq h3, .boc3-card-faq p, .boc3-card-faq details, .boc3-card-faq summary { color:#fff; }
+.boc3-card-faq summary { display:flex; align-items:center; gap:.4rem; font-weight:600; }
+.boc3-card-faq details { border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.08); }
+.boc3-card-faq details[open] { background:rgba(255,255,255,.13); }
+.boc3-card-faq details + details { margin-top:.55rem; }
+.boc3-card-faq details p { font-size:.85rem; line-height:1.45; }
+
+/* Ensure headings inside pastel deep-dive keep accent colors */
+.boc3-article.boc3-card-def h3 { color:var(--color-accent-blue); }
+.boc3-article.boc3-card-who h3 { color:var(--color-accent-purple); }
+.boc3-article.boc3-card-why h3 { color:var(--color-accent-orange); }
+.boc3-article.boc3-card-how h3 { color:var(--color-accent-green); }
+.boc3-article.boc3-card-special h3 { color:var(--color-accent-yellow); }
+.boc3-article.boc3-card-updates h3 { color:var(--color-accent-red); }
+.boc3-article.boc3-card-faq h3 { color:var(--color-accent-blue); }
+
+/* BOC-3 landing grid override: force 3x3 structure on wide screens */
+.boc3-page .landing-grid { grid-template-columns:1fr; }
+@media (min-width:640px){
+  .boc3-page .landing-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (min-width:980px){
+  .boc3-page .landing-grid { grid-template-columns:repeat(3,1fr); }
+}
