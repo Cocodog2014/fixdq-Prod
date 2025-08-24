@@ -33,3 +33,31 @@
 .sr-loading { font-size:.75rem; opacity:.85; }
 @media (min-width:600px){ .sr-overlay { align-items:center; } .sr-drawer { height:85vh; width:92vw; border-radius:var(--sr-radius); } }
 @media (min-width:1024px){ .sr-drawer { height:80vh; width:min(1100px,92vw); } }
+
+/* === Accessibility / Readability: 50% Font Scale Increase === */
+.sr-drawer-head h2 { font-size:1.575rem; }
+.sr-input { font-size:1.2rem; }
+.sr-clear { font-size:1.05rem; }
+.sr-state-btn { font-size:.975rem; }
+.sr-state-btn .sr-code { font-size:1.05rem; }
+.sr-detail h3 { font-size:1.35rem; }
+.sr-links a { font-size:.975rem; }
+.sr-notes { font-size:.9rem; }
+.sr-empty, .sr-links-empty, .sr-notes-empty { font-size:.975rem; }
+.sr-footer { font-size:.825rem; }
+.sr-close-footer { font-size:.9rem; }
+.sr-loading { font-size:1.125rem; }
+
+/* === Additional 25% Font Scale Increase (cumulative ~1.875x original) === */
+.sr-drawer-head h2 { font-size:1.97rem; }
+.sr-input { font-size:1.5rem; }
+.sr-clear { font-size:1.31rem; }
+.sr-state-btn { font-size:1.22rem; }
+.sr-state-btn .sr-code { font-size:1.31rem; }
+.sr-detail h3 { font-size:1.69rem; }
+.sr-links a { font-size:1.22rem; }
+.sr-notes { font-size:1.125rem; }
+.sr-empty, .sr-links-empty, .sr-notes-empty { font-size:1.22rem; }
+.sr-footer { font-size:1.03rem; }
+.sr-close-footer { font-size:1.125rem; }
+.sr-loading { font-size:1.41rem; }
