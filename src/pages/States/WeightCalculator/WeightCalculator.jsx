@@ -15,6 +15,7 @@ function bridgeLimitW(Lft, N) {
 
 export default function WeightCalculator({ onClose }) {
   const [axles, setAxles] = useState(5)
+  const [manualUnits, setManualUnits] = useState(null) // null = auto, else explicit 1–5
   const [unit1Axles, setUnit1Axles] = useState(3) // axles on first power unit touching ground
   const [unit2Axles, setUnit2Axles] = useState(2) // axles on second unit (e.g., trailer) touching ground
   const [equipment, setEquipment] = useState('') // jeep dolly / booster / stinger / flip axle / flip booster
@@ -58,6 +59,13 @@ export default function WeightCalculator({ onClose }) {
     setSpacings(prev => {
       const next = prev.slice(0, needSpacings)
       while (next.length < needSpacings) next.push({ ft: 10, in: 0 })
+      // Default: if Unit 1 has a 4th axle, set spacing between axle 3 and 4 to 4 ft (index 2) if still placeholder 10 ft
+      if (unit1Axles >= 4) {
+        const idx = 2 // spacing index between axle 3 and 4
+        if (next[idx] && Number(next[idx].ft) === 10 && Number(next[idx].in) === 0) {
+          next[idx] = { ft: 4, in: 0 }
+        }
+      }
       return next
     })
     setAxleWeights(prev => {
@@ -94,34 +102,7 @@ export default function WeightCalculator({ onClose }) {
 
   const spacingLabel = (i) => {
     const left = i + 1, right = i + 2
-    const jeepCount = equipment === 'jeep' ? jeepAxles : 0
-    const boosterCount = equipment === 'booster' ? boosterAxles : 0
-    const flipCount = equipment === 'flip' ? flipAxles : 0
-    const name = (idx) => {
-      if (idx === 1) return 'Steer'
-      if (idx === 2 && unit1Axles > 1) return 'Drive 1'
-      if (idx === 3 && unit1Axles > 2) return 'Drive 2'
-      const jeepStart = unit1Axles + 1
-      const jeepEnd = unit1Axles + jeepCount
-      if (jeepCount && idx >= jeepStart && idx <= jeepEnd) return `Jeep ${idx - unit1Axles}`
-      const trailerStart = jeepEnd + 1
-      const trailerEnd = jeepEnd + unit2Axles
-      if (idx >= trailerStart && idx <= trailerEnd) {
-        // Add space for readability: 'Unit 2' instead of 'Unit2'
-        return `Unit 2 ${idx - jeepEnd}`
-      }
-      const boosterStart = trailerEnd + 1
-      const boosterEnd = trailerEnd + boosterCount
-      if (boosterCount && idx >= boosterStart && idx <= boosterEnd) {
-        return `Booster ${idx - trailerEnd}`
-      }
-      const flipStart = boosterEnd + 1
-      const flipEnd = boosterEnd + flipCount
-      if (flipCount && idx >= flipStart && idx <= flipEnd) {
-        return `Flip ${idx - boosterEnd}`
-      }
-      return `Axle ${idx}`
-    }
+  const name = (idx) => (idx === 1 ? 'Steer' : `Axle ${idx}`)
     return `${name(left)} → ${name(right)} (ft/in)`
   }
 
@@ -168,13 +149,30 @@ export default function WeightCalculator({ onClose }) {
         <p className="wc-sub">Select axle count, then enter spacings and per-axle weights. Checks single axles, tandems, all groups, and GVW.</p>
       </header>
       <div className="wc-controls">
+  {/** Total units (auto or manual override). Auto counts tractor + optional jeep + trailer + booster/flip. Manual allows 1–5 for special cases (e.g., multi-trailer piggyback). */}
+  {(() => {
+    const autoUnits = 1 + (equipment === 'jeep' ? 1 : 0) + (unit2Axles > 0 ? 1 : 0) + (equipment === 'booster' ? 1 : 0) + (equipment === 'flip' ? 1 : 0)
+    const displayVal = manualUnits === null ? 'auto' : String(manualUnits)
+    return (
+      <div className="ctrl">
+        <label>Total units {manualUnits === null && <span style={{fontWeight:400, fontSize:'.7rem', marginLeft:4}}>(auto)</span>}</label>
+        <select aria-label="Total units (auto or override)" value={displayVal} onChange={(e)=>{ const v=e.target.value; if(v==='auto'){ setManualUnits(null); } else { const num=Number(v); if(num>=1 && num<=5) setManualUnits(num); } }}>
+          <option value="auto">Auto: {autoUnits}</option>
+          {[1,2,3,4,5].map(n => <option key={n} value={n}>{n}</option>)}
+        </select>
+      </div>
+    )
+  })()}
   <div className="ctrl"><label>Unit 1 axles touching the ground</label><select value={unit1Axles} onChange={(e)=>{const val=Math.min(5, Math.max(1, Number(e.target.value))); setUnit1Axles(val);}}>{Array.from({ length: 5 }, (_, i) => i + 1).map(n => <option key={n} value={n}>{n}</option>)}</select></div>
   <div className="ctrl"><label>Unit 2 axles touching the ground</label><select value={unit2Axles} onChange={(e)=>{const val=Math.min(5, Math.max(0, Number(e.target.value))); setUnit2Axles(val);}}>{Array.from({ length: 6 }, (_, i) => i).map(n => <option key={n} value={n}>{n}</option>)}</select></div>
         <div className="ctrl"><label>Total axles (auto)</label><input type="number" value={axles} disabled aria-label="Total axles automatically calculated" /></div>
-  <div className="ctrl"><label>Overall length (ft)</label><input type="number" min={0} step={1} value={overallLength.ft} onChange={(e)=>setOverallLength(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
-  <div className="ctrl"><label>Overall length (in)</label><input type="number" min={0} max={11} step={1} value={overallLength.in} onChange={(e)=>setOverallLength(v=>({...v, in:Number(e.target.value)||0}))} /></div>
-  <div className="ctrl"><label>Load width (ft)</label><input type="number" min={0} step={1} value={loadWidth.ft} onChange={(e)=>setLoadWidth(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
-  <div className="ctrl"><label>Load width (in)</label><input type="number" min={0} max={11} step={1} value={loadWidth.in} onChange={(e)=>setLoadWidth(v=>({...v, in:Number(e.target.value)||0}))} /></div>
+        {/* Second row: overall length & load width all inline (4 controls) */}
+        <div className="full-row wc-inline-four">
+          <div className="ctrl"><label>Overall length (ft)</label><input type="number" min={0} step={1} value={overallLength.ft} onChange={(e)=>setOverallLength(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
+          <div className="ctrl"><label>Overall length (in)</label><input type="number" min={0} max={11} step={1} value={overallLength.in} onChange={(e)=>setOverallLength(v=>({...v, in:Number(e.target.value)||0}))} /></div>
+          <div className="ctrl"><label>Load width (ft)</label><input type="number" min={0} step={1} value={loadWidth.ft} onChange={(e)=>setLoadWidth(v=>({...v, ft:Number(e.target.value)||0}))} /></div>
+          <div className="ctrl"><label>Load width (in)</label><input type="number" min={0} max={11} step={1} value={loadWidth.in} onChange={(e)=>setLoadWidth(v=>({...v, in:Number(e.target.value)||0}))} /></div>
+        </div>
         <div className="ctrl full-row wc-equip-select">
           <label>
             <span className="wc-equip-label">Additional equipment <span className="wc-optional-tag" aria-hidden>optional</span> – <span className="wc-equip-examples">dollies, boosters, flip axles</span></span>
