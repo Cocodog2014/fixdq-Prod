@@ -18,8 +18,9 @@
 @import './pages/FMCSACompliance/Insurance/Insurance.css';
 @import './pages/FMCSACompliance/Insurance/BOC3ProcessAgent.css';
 @import './pages/FMCSACompliance/CdlClassComparison.css';
-@import './pages/States/WeightCalculator.css';
+@import './pages/States/WeightCalculator/WeightCalculator.css';
 @import './pages/States/States.css';
+@import './pages/States/IFTA/IFTA.css';
 @import './pages/FMCSACompliance/ComplianceQuiz.css';
 @import './pages/FMCSACompliance/FarmVehicleDriverExemptions/FarmVehicleDriverExemptions.css';
 @import './pages/FMCSACompliance/MedicalRequirements/MedicalRequirements.css';

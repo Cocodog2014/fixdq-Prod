@@ -1,7 +1,8 @@
 import React, { lazy, Suspense, useRef } from 'react'
 import GlobalHeader from '../../components/GlobalHeader'
-import WeightCalculator from './WeightCalculator'
+import { Link } from 'react-router-dom'
 const StateRulesDrawer = lazy(()=>import('./StateByState/StateRulesDrawer'))
+const WeightCalculatorDrawer = lazy(()=>import('./WeightCalculator/WeightCalculatorDrawer.jsx'))
 
 /*
   States Landing Page
@@ -10,6 +11,7 @@ const StateRulesDrawer = lazy(()=>import('./StateByState/StateRulesDrawer'))
 */
 export default function States() {
   const drawerRef = useRef(null)
+  const weightRef = useRef(null)
   return (
     <div className="states-page gradient-page">
       <GlobalHeader />
@@ -32,11 +34,11 @@ export default function States() {
             <p>Short-term operating and fuel permits when IRP/IFTA are not yet active.</p>
             <a className="mini-link" href="#trip-fuel">Learn More</a>
           </div>
-          <div className="landing-card states-card-ifta">
+          <Link className="landing-card states-card-ifta" to="/states/ifta" data-track="open_ifta_page" aria-label="Open IFTA detailed page">
             <h3>IFTA Basics</h3>
             <p>Quarterly filings, distance & fuel records, common audit triggers.</p>
-            <a className="mini-link" href="#ifta">Learn More</a>
-          </div>
+            <span className="mini-link" aria-hidden>Open IFTA Page</span>
+          </Link>
           <div className="landing-card states-card-irp">
             <h3>IRP Registration</h3>
             <p>Fleet apportionment, cab cards, adding units, and recordkeeping.</p>
@@ -47,10 +49,10 @@ export default function States() {
             <p>Interactive finder for intrastate rules and enforcement contacts.</p>
             <span className="mini-link" aria-hidden>Open Tool</span>
           </div>
-          <div className="landing-card states-card-weight">
+          <div className="landing-card states-card-weight" onClick={()=>weightRef.current?.open()} role="button" tabIndex={0} onKeyDown={(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); weightRef.current?.open() } }} aria-label="Open Bridge & Axle Weight Planner">
             <h3>Bridge & Axle Weights</h3>
             <p>Plan axle groups & check federal bridge formula limits.</p>
-            <a className="mini-link" href="#weight-tool">Open Tool</a>
+            <span className="mini-link" aria-hidden>Open Tool</span>
           </div>
           <div className="landing-card states-card-tolling">
             <h3>Tolling & Transponders</h3>
@@ -138,10 +140,9 @@ export default function States() {
         <StateRulesDrawer ref={drawerRef} />
       </Suspense>
 
-      <section className="states-tools container" id="weight-tool">
-        <h2>Bridge & Axle Weight Planner</h2>
-        <WeightCalculator />
-      </section>
+      <Suspense fallback={<div className="sr-loading">Loading tool…</div>}>
+        <WeightCalculatorDrawer ref={weightRef} />
+      </Suspense>
 
       <footer className="states-footer container">
         <p>Always verify current permitting & fuel tax requirements with the issuing state authority. This hub is for planning and education only.</p>

@@ -26,6 +26,9 @@
 .states-page .states-card-permits h3 { color:var(--color-accent-orange); text-shadow:none; }
 .states-page .states-card-trip h3 { color:var(--color-accent-blue); text-shadow:none; }
 .states-page .states-card-ifta h3 { color:var(--color-accent-purple); text-shadow:none; }
+/* IFTA link card body text should be dark (was inheriting white styles if anchor defaults applied) */
+.states-page .landing-grid .states-card-ifta, .states-page .landing-grid .states-card-ifta p, .states-page .landing-grid .states-card-ifta span.mini-link { color:#0f172a; }
+.states-page .landing-grid .states-card-ifta span.mini-link { text-decoration:underline; text-decoration-color:#0f172a; }
 .states-page .states-card-irp h3 { color:var(--color-accent-green); text-shadow:none; }
 .states-page .states-card-research h3 { color:var(--color-accent-yellow); text-shadow:none; }
 .states-page .states-card-weight h3 { color:var(--color-accent-red); text-shadow:none; }

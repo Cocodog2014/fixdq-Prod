@@ -1,20 +1,16 @@
-/* Weight Calculator - advanced axle/bridge tool */
-
+/* Weight Calculator styles (migrated into subfolder) */
 .wc-wrap { position: relative; color: #f5f7fb; background: linear-gradient(180deg,#0b1b3a,#09152d 60%); border-radius: 1rem; padding: 1rem 1rem 1.5rem; box-shadow: var(--shadow-blue); overflow: hidden; }
 .wc-close { position:absolute; top:8px; right:8px; width:32px; height:32px; border-radius:999px; border:1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); color:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
 .wc-close:hover { background: rgba(255,255,255,0.18); }
-
 .wc-header { margin-bottom: .5rem; }
 .wc-title { display:flex; align-items:center; gap:.5rem; }
 .wc-title h2 { margin:0; font-size: clamp(1.125rem,2.2vw,1.5rem); }
 .wc-dot { width:8px; height:8px; border-radius:999px; background:#5aa2ff; box-shadow:0 0 0 4px rgba(90,162,255,.15); }
 .wc-sub { color:#c8d1e8; font-size:.9rem; }
-
 .wc-controls { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.5rem; margin-top:.5rem; }
 @media (min-width: 768px) { .wc-controls { grid-template-columns: repeat(5, minmax(0,1fr)); } }
 .ctrl label { display:block; font-weight:600; margin-bottom:.2rem; }
 .ctrl input, .ctrl select { width:100%; border-radius:.6rem; border:1px solid #24385f; background:#0f244a; color:#fff; padding:.5rem .6rem; }
-
 .wc-section { margin-top:.75rem; }
 .wc-h3 { font-weight:700; margin-bottom:.25rem; }
 .wc-duo { display:grid; grid-template-columns: 1fr 1fr; gap:.4rem; }
@@ -22,24 +18,31 @@
 @media (min-width: 768px) { .wc-grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 .wc-grid-5 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:.5rem; }
 @media (min-width: 1024px) { .wc-grid-5 { grid-template-columns: repeat(5, minmax(0,1fr)); } }
-
 .wc-kpis { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem; align-items:center; }
 .wc-kpis .k { background:#0f244a; border:1px solid #24385f; border-radius:.6rem; padding:.4rem .6rem; }
 .wc-kpis .v { font-weight:800; }
 .badge { padding:.35rem .6rem; border-radius:999px; font-weight:800; }
 .badge.ok { background: rgba(16,185,129,.18); color:#a7f3d0; border:1px solid rgba(16,185,129,.5); }
 .badge.warn { background: rgba(245,158,11,.18); color:#fde68a; border:1px solid rgba(245,158,11,.5); }
-
 .wc-card { margin-top:.75rem; background:#0f244a; border:1px solid #24385f; border-radius:.75rem; padding:.75rem; }
 .wc-table-wrap { overflow:auto; border-radius:.5rem; }
 .wc-table { width:100%; border-collapse: collapse; }
 .wc-table thead th { position: sticky; top: 0; background:#102a53; color:#dbeafe; text-align:left; padding:.5rem; }
 .wc-table tbody td { border-top: 1px solid #24385f; padding:.45rem; }
 .wc-table tbody tr:hover { background:#112f5d; }
-
 .pill { display:inline-block; padding:.2rem .5rem; border-radius:999px; font-weight:800; }
 .pill.ok { background: rgba(16,185,129,.18); color:#a7f3d0; border:1px solid rgba(16,185,129,.5); }
 .pill.bad { background: rgba(239,68,68,.18); color:#fecaca; border:1px solid rgba(239,68,68,.5); }
 .pill.na { background: rgba(148,163,184,.18); color:#e5e7eb; border:1px solid rgba(148,163,184,.4); }
-
 .wc-note { color:#c8d1e8; margin-top:.6rem; }
+/* Drawer / overlay styling */
+.wc-overlay { position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:flex-end; justify-content:center; z-index:1000; }
+.wc-drawer { width:100%; height:90vh; background:#0b1b3a; color:#fff; border-top-left-radius:14px; border-top-right-radius:14px; box-shadow:0 -10px 30px rgba(0,0,0,.3); display:flex; flex-direction:column; overflow:hidden; animation:wcSlideUp .18s ease-out; }
+@keyframes wcSlideUp { from { transform:translateY(12%); opacity:.9 } to { transform:none; opacity:1 } }
+.wc-drawer-head { display:flex; justify-content:space-between; align-items:center; padding:.8rem 1rem; background:#09152d; }
+.wc-close-btn { background:none; border:1px solid #2d456d; color:#fff; padding:.45rem .9rem; border-radius:999px; cursor:pointer; font-weight:600; }
+.wc-close-btn:hover { background:#132d57; }
+.wc-drawer-body { padding:1rem; overflow:auto; -webkit-overflow-scrolling:touch; }
+@media (min-width:600px){ .wc-overlay{align-items:center;} .wc-drawer{height:85vh; width:92vw; border-radius:14px;} }
+@media (min-width:1024px){ .wc-drawer{height:80vh; width:min(1100px,92vw);} }
+

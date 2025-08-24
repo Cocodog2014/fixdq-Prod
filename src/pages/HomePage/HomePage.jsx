@@ -200,7 +200,7 @@ function HomePage() {
               </ul>
               <div className="feature-footer"><span className="card-cta">Open Hub</span></div>
             </button>
-            <div className="feature-card green-border">
+            <Link to="/states/ifta" className="feature-card green-border feature-link-card" aria-label="Open IFTA Guide">
               <div className="feature-header">
                 <span className="icon">⛽</span>
                 <h3>IFTA (International Fuel Tax Agreement)</h3>
@@ -212,7 +212,8 @@ function HomePage() {
                 <li>Common audit triggers</li>
                 <li>Best practices to stay compliant</li>
               </ul>
-            </div>
+              <div className="feature-footer"><span className="card-cta">Open IFTA Guide</span></div>
+            </Link>
           </div>
         </div>
       </section>
