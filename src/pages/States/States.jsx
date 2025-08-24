@@ -42,7 +42,7 @@ export default function States() {
             <a className="mini-link" href="#irp">Learn More</a>
           </div>
           <div className="landing-card states-card-research">
-            <h3>State Research</h3>
+            <h3>State-by-State FMCSA Rules</h3>
             <p>Interactive finder for intrastate rules and enforcement contacts.</p>
             <a className="mini-link" href="#state-rules-tool">Open Tool</a>
           </div>
