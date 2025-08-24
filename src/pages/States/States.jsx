@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useRef } from 'react'
 import GlobalHeader from '../../components/GlobalHeader'
-import WeightCalculator from './WeightCalculator'
+// Explicit path to subfolder component to avoid ambiguity with directory name
+import WeightCalculator from './WeightCalculator/WeightCalculator.jsx'
 const StateRulesDrawer = lazy(()=>import('./StateByState/StateRulesDrawer'))
 
 /*
