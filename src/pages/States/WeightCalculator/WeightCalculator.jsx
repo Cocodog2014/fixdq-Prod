@@ -1,15 +1,16 @@
-// Moved from FMCSACompliance folder to States folder
 import React, { useEffect, useMemo, useState } from 'react'
 
 // Federal baseline limits (informational; verify with posted limits/permits)
 const FEDERAL_LIMITS = { singleAxle: 20000, tandemAxle: 34000, gross: 80000 }
 
+// Bridge Formula B utility: W = 500 * [ (L*N)/(N-1) + 12N + 36 ]
 function bridgeLimitW(Lft, N) {
   if (!isFinite(Lft) || Lft <= 0 || !Number.isFinite(N) || N < 2) return null
   const raw = 500 * ((Lft * N) / (N - 1) + 12 * N + 36)
-  return Math.floor(raw / 500) * 500
+  return Math.floor(raw / 500) * 500 // round down to nearest 500 lb
 }
 
+// Common configuration presets (lengths in feet)
 const PRESETS = {
   '5-axle semi': { axles: 5, spacings: [12, 4, 33, 4], weights: [12000, 17000, 17000, 10000, 10000], length: { ft: 72, in: 0 }, width: 8.5 },
   '7-axle': { axles: 7, spacings: [12, 4, 10, 10, 10, 4], weights: [12000, 16000, 16000, 9000, 9000, 9000, 9000], length: { ft: 80, in: 0 }, width: 8.5 },
@@ -24,6 +25,7 @@ export default function WeightCalculator({ onClose }) {
   const [overallLength, setOverallLength] = useState({ ft: 72, in: 0 })
   const [loadWidth, setLoadWidth] = useState(8.5)
 
+  // Maintain array sizes when axle count changes
   useEffect(() => {
     const needSpacings = Math.max(1, axles - 1)
     setSpacings(prev => {
@@ -40,10 +42,15 @@ export default function WeightCalculator({ onClose }) {
 
   const applyPreset = (key) => {
     const p = PRESETS[key]; if (!p) return
-    setPreset(key); setAxles(p.axles); setSpacings(p.spacings.map(ft => ({ ft, in: 0 })))
-    setAxleWeights(p.weights); setOverallLength(p.length); setLoadWidth(p.width)
+    setPreset(key)
+    setAxles(p.axles)
+    setSpacings(p.spacings.map(ft => ({ ft, in: 0 })))
+    setAxleWeights(p.weights)
+    setOverallLength(p.length)
+    setLoadWidth(p.width)
   }
 
+  // Axle positions from front, in feet
   const positions = useMemo(() => {
     const pos = [0]
     for (let i = 0; i < spacings.length; i++) {
@@ -61,6 +68,7 @@ export default function WeightCalculator({ onClose }) {
     return `${name(left)} → ${name(right)} (ft/in)`
   }
 
+  // All consecutive axle groups
   const groups = useMemo(() => {
     const out = []
     for (let i = 0; i < axles; i++) {
@@ -75,6 +83,7 @@ export default function WeightCalculator({ onClose }) {
     return out
   }, [axles, positions, axleWeights])
 
+  // Tandem checks (40" < spacing <= 96")
   const tandems = useMemo(() => {
     const out = []
     for (let i = 0; i < axles - 1; i++) {
